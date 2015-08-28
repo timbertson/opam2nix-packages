@@ -1,0 +1,1 @@
+import ./opam2nix

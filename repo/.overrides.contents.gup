@@ -1,0 +1,8 @@
+#!bash -eu
+set -o pipefail
+gup --always
+find ../../src/nix -type f | while read f; do
+	echo "$f"
+	cat "$f"
+done > "$1"
+gup --contents "$1"

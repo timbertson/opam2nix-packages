@@ -1,0 +1,8 @@
+#!bash -eu
+gup -u ../opam2nix/bin/opam2nix ../packages.repo
+../opam2nix/bin/opam2nix generate \
+	--src ../opam-repository \
+	--dest "$1" \
+	--cache ../cache \
+	--max-age 7776000 \
+	$(cat ../packages.repo)

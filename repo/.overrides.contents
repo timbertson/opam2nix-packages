@@ -1,0 +1,108 @@
+../../src/nix/overrides/default.nix
+defs: { pkgs }:
+with pkgs; with lib;
+let
+	overrideAll = fn: versions: mapAttrs (version: def: def.withOverride fn) versions;
+
+	# XXX it's not really a `configure` phase, is it?
+	addBinDir = def: overrideAll (impl: impl // { configurePhase = ''mkdir -p $out/bin''; }) def;
+in
+defs // {
+	ocamlfind = overrideAll (import ./ocamlfind {inherit pkgs;}) defs.ocamlfind;
+
+	cstruct = overrideAll (impl: impl // {
+		installPhase = "make install JS_DEST=$OCAMLFIND_DESTDIR";
+	}) defs.cstruct;
+
+	gmp-xen = overrideAll (impl: impl // {
+		# this is a plain C lib
+		configurePhase = "unset OCAMLFIND_DESTDIR";
+	}) defs.gmp-xen;
+
+	zarith-xen = overrideAll (impl: impl // {
+		buildPhase = "${pkgs.bash}/bin/bash ${./zarith-xen}/install.sh";
+	}) defs.zarith-xen;
+
+	# TODO: should this be automated?
+	biniou = addBinDir defs.biniou;
+	yojson = addBinDir defs.yojson;
+	fat-filesystem = addBinDir defs.fat-filesystem;
+}
+../../src/nix/overrides/zarith-xen/install.sh
+set -ex
+
+PKG_CONFIG_DEPS="gmp-xen mirage-xen-posix"
+function check_deps {
+	pkg-config --print-errors --exists ${PKG_CONFIG_DEPS}
+}
+check_deps || exit 1
+
+LDFLAGS=`pkg-config --libs gmp-xen`
+export LDFLAGS
+
+# WARNING: if you pass invalid cflags here, zarith will silently
+# fall back to compiling with the default flags instead!
+CFLAGS="`pkg-config --cflags gmp-xen mirage-xen-posix` -O2 -pedantic -fomit-frame-pointer -fno-builtin"
+export CFLAGS
+./configure
+make
+ZARITH_LIB=`ocamlfind query zarith`
+dest="$out/lib/zarith-xen"
+cp -a "$ZARITH_LIB" "$dest/"
+chmod -R u+w "$dest"
+cp libzarith.a "$dest/libzarith-xen.a"
+cp META "$dest/META"
+../../src/nix/overrides/ocamlfind/ldconf.patch
+Setting paths to search for dnynmic libraries isn't very useful in Nix.
+
+--- findlib-1.2.6/findlib.conf.in	2010-08-17 14:50:28.000000000 -0400
++++ findlib-1.2.6/findlib.conf.in	2010-11-24 09:46:55.179648354 -0500
+@@ -1,2 +1,3 @@
+ destdir="@SITELIB@"
+ path="@SITELIB@"
++ldconf="ignore"
+../../src/nix/overrides/ocamlfind/default.nix
+{pkgs}:
+impl:
+let
+	ocaml_version = (builtins.parseDrvName impl.passthru.opamSelection.ocaml.name).version;
+in impl // {
+	patches = [ ./ldconf.patch ./install_topfind.patch ];
+	buildPhase = ''
+		./configure \
+			-bindir $out/bin \
+			-mandir $out/share/man \
+			-sitelib $out/lib \
+			-no-topfind \
+			-config $out/etc/findlib.conf
+		make all
+		make opt
+		make install
+	'';
+
+	setupHook = pkgs.writeText "setupHook.sh" ''
+		addOCamlPath () {
+			if test -d "''$1/lib"; then
+					export OCAMLPATH="''${OCAMLPATH}''${OCAMLPATH:+:}''$1/lib"
+			fi
+			export OCAMLFIND_DESTDIR="''$out/lib/"
+			mkdir -p "''$out/lib"
+		}
+		envHooks+=(addOCamlPath)
+	'';
+}
+
+../../src/nix/overrides/ocamlfind/install_topfind.patch
+--- findlib-1.5.3/src/findlib/Makefile	2014-09-16 13:21:46.000000000 +0200
++++ findlib-1.5.3/src/findlib/Makefile.new	2014-10-01 14:30:54.141082521 +0200
+@@ -89,7 +89,7 @@
+ install: all
+ 	mkdir -p "$(prefix)$(OCAML_SITELIB)/$(NAME)"
+ 	mkdir -p "$(prefix)$(OCAMLFIND_BIN)"
+-	test $(INSTALL_TOPFIND) -eq 0 || cp topfind "$(prefix)$(OCAML_CORE_STDLIB)"
++	test $(INSTALL_TOPFIND) -eq 0 || cp topfind "$(prefix)$(OCAML_SITELIB)"
+ 	files=`$(TOP)/tools/collect_files $(TOP)/Makefile.config findlib.cmi findlib.mli findlib.cma topfind.cmi topfind.mli fl_package_base.mli fl_package_base.cmi fl_metascanner.mli fl_metascanner.cmi fl_metatoken.cmi findlib_top.cma findlib.cmxa findlib.a findlib.cmxs META` && \
+ 	cp $$files "$(prefix)$(OCAML_SITELIB)/$(NAME)"
+ 	f="ocamlfind$(EXEC_SUFFIX)"; { test -f ocamlfind_opt$(EXEC_SUFFIX) && f="ocamlfind_opt$(EXEC_SUFFIX)"; }; \
+../../src/nix/default.nix
+import ./overrides (import ./packages)

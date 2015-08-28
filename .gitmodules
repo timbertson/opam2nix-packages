@@ -1,0 +1,6 @@
+[submodule "opam-repository"]
+	path = opam-repository
+	url = git://github.com/gfxmonk/opam-repository.git
+[submodule "opam2nix"]
+	path = opam2nix
+	url = git://github.com/gfxmonk/opam2nix.git
