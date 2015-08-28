@@ -35,7 +35,7 @@ let
       propagatedBuildInputs = inputs;
       src = fetchurl 
       {
-        sha256 = "0mdqa9w1p6cmli6976v4wi0sw9r4p5prkj7lzfd1877wk11c9c73";
+        sha256 = "0ymzy1l6z85b6779lfxk179igfpf7rgfik70kr3c7lxmzwy8j6cw";
         url = "http://erratique.ch/software/cmdliner/releases/cmdliner-0.9.7.tbz";
       };
       unpackCmd = "tar -xf \"$curSrc\"";

@@ -38,7 +38,7 @@ let
       propagatedBuildInputs = inputs;
       src = fetchurl 
       {
-        sha256 = "0mdqa9w1p6cmli6976v4wi0sw9r4p5prkj7lzfd1877wk11c9c73";
+        sha256 = "1ml5cm02diwf44sjjnnqg4zxflpjqixqvb50w2pzig8i4xdgkvbi";
         url = "https://github.com/mirage/mirage-channel/archive/1.0.0.tar.gz";
       };
     })

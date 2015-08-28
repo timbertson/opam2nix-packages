@@ -40,7 +40,7 @@ let
       propagatedBuildInputs = inputs;
       src = fetchurl 
       {
-        sha256 = "1bfa83080r7hha84c3qwl138aacf7g0p39wcff10d826jx5s2dlx";
+        sha256 = "08pkc8zi7frlb5bxxfhqcm3bmjjchgwzzsxa7s9zy32hvw06g6fv";
         url = "https://github.com/mirage/ocaml-cstruct/archive/v1.7.0.tar.gz";
       };
     })

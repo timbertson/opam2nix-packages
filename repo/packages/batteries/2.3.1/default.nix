@@ -34,7 +34,7 @@ let
       propagatedBuildInputs = inputs;
       src = fetchurl 
       {
-        sha256 = "0ls5nh4rpsdw64ap1a693yay0cbaq141d56ni3pir28b9cc240am";
+        sha256 = "1m5ib3mfh23miis8r221drybpmkmvm8nxa4jkn6jh9nvzj88nxyz";
         url = "https://github.com/ocaml-batteries-team/batteries-included/archive/v2.3.1.tar.gz";
       };
     })

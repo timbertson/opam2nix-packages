@@ -47,7 +47,7 @@ let
       propagatedBuildInputs = inputs;
       src = fetchurl 
       {
-        sha256 = "0mdqa9w1p6cmli6976v4wi0sw9r4p5prkj7lzfd1877wk11c9c73";
+        sha256 = "1hvw6zbf9k318bm0skxr3a1srimszp43475gyzaj13lqgngnxvhc";
         url = "https://github.com/mirage/ocaml-conduit/archive/v0.8.6.tar.gz";
       };
     })

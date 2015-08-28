@@ -35,7 +35,7 @@ let
       propagatedBuildInputs = inputs;
       src = fetchurl 
       {
-        sha256 = "0mdqa9w1p6cmli6976v4wi0sw9r4p5prkj7lzfd1877wk11c9c73";
+        sha256 = "1pfzch4ys5gjac2lrkqq0gzmm5plkq2jl17b2m3n06kmwashqplp";
         url = "http://mjambon.com/releases/cppo/cppo-1.1.2.tar.gz";
       };
     })

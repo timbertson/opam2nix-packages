@@ -35,7 +35,7 @@ let
       propagatedBuildInputs = inputs;
       src = fetchurl 
       {
-        sha256 = "0mdqa9w1p6cmli6976v4wi0sw9r4p5prkj7lzfd1877wk11c9c73";
+        sha256 = "0b4c4fvhz1d3kj59kqv089pgzxg56hshz3jwq9yhffj9y5x6m6q2";
         url = "https://github.com/mirage/ocaml-base64/archive/v2.0.0.tar.gz";
       };
     })
