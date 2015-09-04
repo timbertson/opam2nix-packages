@@ -1,7 +1,15 @@
-{ pkgs ? import <nixpkgs> {}, src ? null, opam2nix ? null }:
+{ pkgs ? import <nixpkgs> {} }:
+{ src ? null, opam2nix ? null }:
 with pkgs;
 let
 	makeDirectory = name: src: runCommand name {} ''
+		if [ ! -e "${src}" ]; then
+			echo "Error: ${src} does not exist"
+			echo "  (Note: if you passed in a `src` attribute which doesn't"
+			echo "  contain a nested opam2nix directory, you need to provide"
+			echo "  an explicit `opam2nix` argument too)"
+			exit 1
+		fi
 		if [ -f "${src}" ]; then
 			mkdir "$out"
 			tar xaf ${src} -C "$out" --strip-components=1;
@@ -10,12 +18,12 @@ let
 		fi
 	'';
 
-	_src = if src == null then ./local.tgz else sec;
+	_src = if src == null then ./local.tgz else src;
 	_opam2nix = if opam2nix == null then
 		(if src == null then ../opam2nix/nix/local.tgz else "${srcDir}/opam2nix")
 		else opam2nix;
 
-	srcDir = makeDirectory "opam2nix-packages" _src;
+	srcDir = makeDirectory "opam2nix-packages-src" _src;
 	repository = stdenv.mkDerivation {
 		name = "opam2nix-repo";
 		buildCommand = ''
