@@ -28,7 +28,7 @@ let
 		'';
 	};
 	opam2nixDir = makeDirectory "opam2nix" _opam2nix;
-	opam2nixImpl = callPackage "${opam2nixDir}/default.nix" { src = _opam2nix; };
+	opam2nixImpl = callPackage "${opam2nixDir}/nix" { src = _opam2nix; };
 	utils = {
 		# Provide nix functions for selecting & importing,
 		# rather than making users go via the command line.
@@ -59,8 +59,7 @@ let
 				opam2nix = opam2nixImpl;
 				inherit opamPackages;
 			} // args);
-		inherit repository;
-		build  = { package, packages ? []}: (utils.import (utils.select { packages = [package] ++ packages; }) {});
+		build = { packages, ... }@args: (utils.import (utils.select args) {});
 		buildPackage = name: utils.build { package = name; };
 	};
 
