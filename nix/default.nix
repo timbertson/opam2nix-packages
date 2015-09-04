@@ -68,7 +68,7 @@ let
 				inherit opamPackages;
 			} // args);
 		build = { packages, ... }@args: (utils.import (utils.select args) {});
-		buildPackage = name: utils.build { package = name; };
+		buildPackage = name: args: builtins.getAttr name (utils.build ({ packages = [name]; } // args));
 	};
 
 	impl = stdenv.mkDerivation {
