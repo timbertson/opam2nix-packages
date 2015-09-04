@@ -8,21 +8,11 @@ let
         lib = pkgs.lib;
         opamDeps = 
         {
-          async = opamSelection.async or null;
-          base-bytes = opamSelection.base-bytes;
-          base64 = opamSelection.base64;
-          cmdliner = opamSelection.cmdliner;
-          conduit = opamSelection.conduit;
-          fieldslib = opamSelection.fieldslib;
-          js_of_ocaml = opamSelection.js_of_ocaml or null;
-          lwt = opamSelection.lwt or null;
-          magic-mime = opamSelection.magic-mime;
+          conf-pkg-config = opamSelection.conf-pkg-config;
+          mirage-xen-posix = opamSelection.mirage-xen-posix;
           ocaml = opamSelection.ocaml;
+          ocaml-src = opamSelection.ocaml-src;
           ocamlfind = opamSelection.ocamlfind;
-          re = opamSelection.re;
-          sexplib = opamSelection.sexplib;
-          stringext = opamSelection.stringext;
-          uri = opamSelection.uri;
         };
     in
     stdenv.mkDerivation (override 
@@ -32,12 +22,12 @@ let
       configurePhase = "true";
       createFindlibDestdir = true;
       installPhase = "${opam2nix}/bin/opam2nix invoke install";
-      name = "cohttp-0.19.0";
+      name = "mirage-xen-ocaml-2.3.4";
       opamEnv = builtins.toJSON 
       {
         deps = opamDeps;
         files = null;
-        name = "cohttp";
+        name = "mirage-xen-ocaml";
         spec = ./opam;
       };
       passthru = 
@@ -47,8 +37,8 @@ let
       propagatedBuildInputs = inputs;
       src = fetchurl 
       {
-        sha256 = "1281gglqyn3fr1ds9wr8h635bkfbmal4yqzkamkd7bhiyylld0hx";
-        url = "https://github.com/mirage/ocaml-cohttp/archive/v0.19.0.tar.gz";
+        sha256 = "066kl9x1548075ckyf12xlh995vfhcihl8amxpf2pkcpz6c9x2sm";
+        url = "https://github.com/mirage/mirage-platform/archive/v2.3.4.tar.gz";
       };
     })
     

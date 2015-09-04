@@ -8,9 +8,21 @@ let
         lib = pkgs.lib;
         opamDeps = 
         {
-          camlp4 = opamSelection.camlp4;
+          async = opamSelection.async or null;
+          async_ssl = opamSelection.async_ssl or null;
+          cstruct = opamSelection.cstruct;
+          ipaddr = opamSelection.ipaddr;
+          lwt = opamSelection.lwt or null;
+          mirage-dns = opamSelection.mirage-dns or null;
+          mirage-types-lwt = opamSelection.mirage-types-lwt or null;
           ocaml = opamSelection.ocaml;
           ocamlfind = opamSelection.ocamlfind;
+          sexplib = opamSelection.sexplib;
+          ssl = opamSelection.ssl or null;
+          stringext = opamSelection.stringext;
+          tls = opamSelection.tls or null;
+          uri = opamSelection.uri;
+          vchan = opamSelection.vchan or null;
         };
     in
     stdenv.mkDerivation (override 
@@ -20,12 +32,12 @@ let
       configurePhase = "true";
       createFindlibDestdir = true;
       installPhase = "${opam2nix}/bin/opam2nix invoke install";
-      name = "extlib-1.6.1";
+      name = "conduit-0.8.7";
       opamEnv = builtins.toJSON 
       {
         deps = opamDeps;
         files = null;
-        name = "extlib";
+        name = "conduit";
         spec = ./opam;
       };
       passthru = 
@@ -35,8 +47,8 @@ let
       propagatedBuildInputs = inputs;
       src = fetchurl 
       {
-        sha256 = "1jmfj2w0f3ap0swz8k3qqmrl6x2y4gkmg88vv024xnmliiiv7m48";
-        url = "http://ocaml-extlib.googlecode.com/files/extlib-1.6.1.tar.gz";
+        sha256 = "0zbw5dqlax5dvzy6m5r78s7gck6df23gbiwinx0kxkb9b7jaw7sc";
+        url = "https://github.com/mirage/ocaml-conduit/archive/v0.8.7.tar.gz";
       };
     })
     

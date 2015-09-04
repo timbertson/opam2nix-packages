@@ -7,7 +7,7 @@ build: [
 remove: [
  [make "uninstall" "DESTDIR=%{prefix}%" "OCAMLLIBDIR=lib" "BINDIR=bin" "LIBDIR=lib" "INCDIR=include"]
 ]
-depends: [ "ocamlfind" "camlp4" ("extlib" | "extlib-compat") ]
+depends: [ "camlp4" ("extlib" | "extlib-compat") ]
 depexts: [
  [["nixkgs"] ["perl"]]
 ]

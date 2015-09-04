@@ -9,20 +9,20 @@ let
         opamDeps = 
         {
           async = opamSelection.async or null;
-          async_ssl = opamSelection.async_ssl or null;
-          cstruct = opamSelection.cstruct;
-          ipaddr = opamSelection.ipaddr;
+          base-bytes = opamSelection.base-bytes;
+          base64 = opamSelection.base64;
+          cmdliner = opamSelection.cmdliner;
+          conduit = opamSelection.conduit;
+          fieldslib = opamSelection.fieldslib;
+          js_of_ocaml = opamSelection.js_of_ocaml or null;
           lwt = opamSelection.lwt or null;
-          mirage-dns = opamSelection.mirage-dns or null;
-          mirage-types-lwt = opamSelection.mirage-types-lwt or null;
+          magic-mime = opamSelection.magic-mime;
           ocaml = opamSelection.ocaml;
           ocamlfind = opamSelection.ocamlfind;
+          re = opamSelection.re;
           sexplib = opamSelection.sexplib;
-          ssl = opamSelection.ssl or null;
           stringext = opamSelection.stringext;
-          tls = opamSelection.tls or null;
           uri = opamSelection.uri;
-          vchan = opamSelection.vchan or null;
         };
     in
     stdenv.mkDerivation (override 
@@ -32,12 +32,12 @@ let
       configurePhase = "true";
       createFindlibDestdir = true;
       installPhase = "${opam2nix}/bin/opam2nix invoke install";
-      name = "conduit-0.8.6";
+      name = "cohttp-0.19.2";
       opamEnv = builtins.toJSON 
       {
         deps = opamDeps;
         files = null;
-        name = "conduit";
+        name = "cohttp";
         spec = ./opam;
       };
       passthru = 
@@ -47,8 +47,8 @@ let
       propagatedBuildInputs = inputs;
       src = fetchurl 
       {
-        sha256 = "1hvw6zbf9k318bm0skxr3a1srimszp43475gyzaj13lqgngnxvhc";
-        url = "https://github.com/mirage/ocaml-conduit/archive/v0.8.6.tar.gz";
+        sha256 = "0kj177l3j5i36qaybpm0vq166qxibya7ypwdax42vgdrd4b7788l";
+        url = "https://github.com/mirage/ocaml-cohttp/archive/v0.19.2.tar.gz";
       };
     })
     

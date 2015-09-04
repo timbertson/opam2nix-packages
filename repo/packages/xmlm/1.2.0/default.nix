@@ -1,20 +1,15 @@
 let
     buildWithOverride = override:
-    { fetchurl, opam2nix, opamSelection, perl, pkgs, stdenv
+    { fetchurl, opam2nix, opamSelection, pkgs, stdenv
     }:
     let
         inputs = lib.filter (dep: dep != true && dep != null)
-        ([ perl ]++(lib.attrValues opamDeps));
+        ([  ]++(lib.attrValues opamDeps));
         lib = pkgs.lib;
         opamDeps = 
         {
-          cudf = opamSelection.cudf;
-          extlib = opamSelection.extlib or null;
-          extlib-compat = opamSelection.extlib-compat or null;
           ocaml = opamSelection.ocaml;
-          ocamlfind = opamSelection.ocamlfind or null;
-          ocamlgraph = opamSelection.ocamlgraph;
-          re = opamSelection.re;
+          ocamlfind = opamSelection.ocamlfind;
         };
     in
     stdenv.mkDerivation (override 
@@ -24,25 +19,25 @@ let
       configurePhase = "true";
       createFindlibDestdir = true;
       installPhase = "${opam2nix}/bin/opam2nix invoke install";
-      name = "dose-3.3";
+      name = "xmlm-1.2.0";
       opamEnv = builtins.toJSON 
       {
         deps = opamDeps;
-        files = ./files;
-        name = "dose";
+        files = null;
+        name = "xmlm";
         spec = ./opam;
       };
       passthru = 
       {
         opamSelection = opamSelection;
       };
-      postUnpack = "cp -r ${./files}/* \"$sourceRoot/\"";
       propagatedBuildInputs = inputs;
       src = fetchurl 
       {
-        sha256 = "03k800zg0s8wh9skic99vq5b0gmshpvksa5v5ajb66x8n7lxmi4d";
-        url = "https://gforge.inria.fr/frs/download.php/file/34277/dose3-3.3.tar.gz";
+        sha256 = "1jywcrwn5z3gkgvicr004cxmdaqfmq8wh72f81jqz56iyn5024nh";
+        url = "http://erratique.ch/software/xmlm/releases/xmlm-1.2.0.tbz";
       };
+      unpackCmd = "tar -xf \"$curSrc\"";
     })
     
     ;

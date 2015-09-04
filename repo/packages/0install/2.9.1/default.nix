@@ -1,17 +1,25 @@
 let
     buildWithOverride = override:
-    { fetchurl, opam2nix, opamSelection, pkgs, stdenv
+    { fetchurl, opam2nix, opamSelection, pkgs, stdenv, unzip ? null
     }:
     let
         inputs = lib.filter (dep: dep != true && dep != null)
-        ([  ]++(lib.attrValues opamDeps));
+        ([ unzip ]++(lib.attrValues opamDeps));
         lib = pkgs.lib;
         opamDeps = 
         {
-          conf-pkg-config = opamSelection.conf-pkg-config;
-          mirage-xen-minios = opamSelection.mirage-xen-minios;
+          extlib = opamSelection.extlib;
+          lablgtk = opamSelection.lablgtk or null;
+          lwt = opamSelection.lwt;
+          obus = opamSelection.obus or null;
           ocaml = opamSelection.ocaml;
           ocamlfind = opamSelection.ocamlfind or null;
+          ocurl = opamSelection.ocurl;
+          ounit = opamSelection.ounit;
+          react = opamSelection.react;
+          sha = opamSelection.sha;
+          xmlm = opamSelection.xmlm;
+          yojson = opamSelection.yojson;
         };
     in
     stdenv.mkDerivation (override 
@@ -21,23 +29,24 @@ let
       configurePhase = "true";
       createFindlibDestdir = true;
       installPhase = "${opam2nix}/bin/opam2nix invoke install";
-      name = "mirage-xen-posix-2.3.3";
+      name = "0install-2.9.1";
       opamEnv = builtins.toJSON 
       {
         deps = opamDeps;
-        files = null;
-        name = "mirage-xen-posix";
+        files = ./files;
+        name = "0install";
         spec = ./opam;
       };
       passthru = 
       {
         opamSelection = opamSelection;
       };
+      postUnpack = "cp -r ${./files}/* \"$sourceRoot/\"";
       propagatedBuildInputs = inputs;
       src = fetchurl 
       {
-        sha256 = "0s33fmbl2mn0am8rx0l0q12dgjw3sqwfqvmcb2fqhpz72i3s29gi";
-        url = "https://github.com/mirage/mirage-platform/archive/v2.3.3.tar.gz";
+        sha256 = "0c8qj25p9r3glihxbpla1c3k06lqbcgwwdsba83jhw9g6yricfyf";
+        url = "https://downloads.sf.net/project/zero-install/0install/2.9.1/0install-2.9.1.tar.bz2";
       };
     })
     

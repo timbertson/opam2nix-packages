@@ -1,11 +1,10 @@
 let
     buildWithOverride = override:
-    { fetchurl, libcurl-devel ? null, libcurl4-gnutls-dev ? null, opam2nix,
-        opamSelection, openssl-devel ? null, pkgs, stdenv
+    { curl, fetchurl, opam2nix, opamSelection, openssl, pkgs, stdenv
     }:
     let
         inputs = lib.filter (dep: dep != true && dep != null)
-        ([ libcurl-devel libcurl4-gnutls-dev openssl-devel ]++(lib.attrValues opamDeps));
+        ([ curl openssl ]++(lib.attrValues opamDeps));
         lib = pkgs.lib;
         opamDeps = 
         {

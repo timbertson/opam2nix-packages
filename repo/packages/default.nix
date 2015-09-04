@@ -1,4 +1,5 @@
 {
+  "0install" = import ./0install;
   base-bytes = import ./base-bytes;
   base-no-ppx = import ./base-no-ppx;
   base64 = import ./base64;
@@ -78,6 +79,7 @@
   xen-evtchn = import ./xen-evtchn;
   xen-gnt = import ./xen-gnt;
   xenstore = import ./xenstore;
+  xmlm = import ./xmlm;
   yojson = import ./yojson;
   zarith = import ./zarith;
   zarith-xen = import ./zarith-xen;

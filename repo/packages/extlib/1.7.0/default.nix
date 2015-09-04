@@ -1,20 +1,17 @@
 let
     buildWithOverride = override:
-    { fetchurl, opam2nix, opamSelection, perl, pkgs, stdenv
+    { fetchurl, opam2nix, opamSelection, pkgs, stdenv
     }:
     let
         inputs = lib.filter (dep: dep != true && dep != null)
-        ([ perl ]++(lib.attrValues opamDeps));
+        ([  ]++(lib.attrValues opamDeps));
         lib = pkgs.lib;
         opamDeps = 
         {
-          cudf = opamSelection.cudf;
-          extlib = opamSelection.extlib or null;
-          extlib-compat = opamSelection.extlib-compat or null;
+          base-bytes = opamSelection.base-bytes;
+          cppo = opamSelection.cppo;
           ocaml = opamSelection.ocaml;
-          ocamlfind = opamSelection.ocamlfind or null;
-          ocamlgraph = opamSelection.ocamlgraph;
-          re = opamSelection.re;
+          ocamlfind = opamSelection.ocamlfind;
         };
     in
     stdenv.mkDerivation (override 
@@ -24,24 +21,23 @@ let
       configurePhase = "true";
       createFindlibDestdir = true;
       installPhase = "${opam2nix}/bin/opam2nix invoke install";
-      name = "dose-3.3";
+      name = "extlib-1.7.0";
       opamEnv = builtins.toJSON 
       {
         deps = opamDeps;
-        files = ./files;
-        name = "dose";
+        files = null;
+        name = "extlib";
         spec = ./opam;
       };
       passthru = 
       {
         opamSelection = opamSelection;
       };
-      postUnpack = "cp -r ${./files}/* \"$sourceRoot/\"";
       propagatedBuildInputs = inputs;
       src = fetchurl 
       {
-        sha256 = "03k800zg0s8wh9skic99vq5b0gmshpvksa5v5ajb66x8n7lxmi4d";
-        url = "https://gforge.inria.fr/frs/download.php/file/34277/dose3-3.3.tar.gz";
+        sha256 = "0qws1l9wgyc99wx7z6pd5i2k6jbs65wfb5jzj1ciah7clicx37rw";
+        url = "https://github.com/ygrek/ocaml-extlib/archive/1.7.0.tar.gz";
       };
     })
     

@@ -9,10 +9,9 @@ let
         opamDeps = 
         {
           conf-pkg-config = opamSelection.conf-pkg-config;
-          mirage-xen-posix = opamSelection.mirage-xen-posix;
+          mirage-xen-minios = opamSelection.mirage-xen-minios;
           ocaml = opamSelection.ocaml;
-          ocaml-src = opamSelection.ocaml-src;
-          ocamlfind = opamSelection.ocamlfind;
+          ocamlfind = opamSelection.ocamlfind or null;
         };
     in
     stdenv.mkDerivation (override 
@@ -22,12 +21,12 @@ let
       configurePhase = "true";
       createFindlibDestdir = true;
       installPhase = "${opam2nix}/bin/opam2nix invoke install";
-      name = "mirage-xen-ocaml-2.3.1";
+      name = "mirage-xen-posix-2.3.4";
       opamEnv = builtins.toJSON 
       {
         deps = opamDeps;
         files = null;
-        name = "mirage-xen-ocaml";
+        name = "mirage-xen-posix";
         spec = ./opam;
       };
       passthru = 
@@ -37,8 +36,8 @@ let
       propagatedBuildInputs = inputs;
       src = fetchurl 
       {
-        sha256 = "1xly8565a40pbv509lbjn15bf4y9xrxg2s0p4bpzvy6fg6jrfmkf";
-        url = "https://github.com/mirage/mirage-platform/archive/v2.3.1.tar.gz";
+        sha256 = "066kl9x1548075ckyf12xlh995vfhcihl8amxpf2pkcpz6c9x2sm";
+        url = "https://github.com/mirage/mirage-platform/archive/v2.3.4.tar.gz";
       };
     })
     

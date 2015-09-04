@@ -1,4 +1,4 @@
 {
-  "1.6.1" = import ./1.6.1;
-  latest = import ./1.6.1;
+  "1.7.0" = import ./1.7.0;
+  latest = import ./1.7.0;
 }

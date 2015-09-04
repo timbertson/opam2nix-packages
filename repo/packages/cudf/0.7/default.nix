@@ -12,7 +12,7 @@ let
           extlib = opamSelection.extlib or null;
           extlib-compat = opamSelection.extlib-compat or null;
           ocaml = opamSelection.ocaml;
-          ocamlfind = opamSelection.ocamlfind;
+          ocamlfind = opamSelection.ocamlfind or null;
         };
     in
     stdenv.mkDerivation (override 
