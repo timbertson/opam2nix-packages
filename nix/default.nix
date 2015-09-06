@@ -1,6 +1,7 @@
 { pkgs ? import <nixpkgs> {} }:
-{ src ? null, opam2nix ? null }:
+{ src, opam2nix ? null }:
 with pkgs;
+let _opam2nix = opam2nix; in
 let
 	makeDirectory = name: src: runCommand name {} ''
 		if [ ! -e "${src}" ]; then
@@ -18,12 +19,9 @@ let
 		fi
 	'';
 
-	_src = if src == null then ./local.tgz else src;
-	_opam2nix = if opam2nix == null then
-		(if src == null then ../opam2nix/nix/local.tgz else "${srcDir}/opam2nix")
-		else opam2nix;
+	opam2nix = if _opam2nix == null then "${srcDir}/opam2nix" else _opam2nix;
 
-	srcDir = makeDirectory "opam2nix-packages-src" _src;
+	srcDir = makeDirectory "opam2nix-packages-src" src;
 	repository = stdenv.mkDerivation {
 		name = "opam2nix-repo";
 		buildCommand = ''
@@ -35,8 +33,8 @@ let
 			done
 		'';
 	};
-	opam2nixDir = makeDirectory "opam2nix" _opam2nix;
-	opam2nixImpl = callPackage "${opam2nixDir}/nix" {} { src = _opam2nix; };
+	opam2nixDir = makeDirectory "opam2nix" opam2nix;
+	opam2nixImpl = callPackage "${opam2nixDir}/nix" {} { src = opam2nix; };
 	utils = {
 		# Provide nix functions for selecting & importing,
 		# rather than making users go via the command line.
@@ -85,6 +83,7 @@ EOF
 			chmod +x $out/bin/opam2nix-select
 		'';
 
+		buildInputs = [ opam2nixImpl ];
 		passthru = utils;
 	};
 in
