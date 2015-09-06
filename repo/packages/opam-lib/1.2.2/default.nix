@@ -11,6 +11,7 @@ let
           cmdliner = opamSelection.cmdliner;
           cudf = opamSelection.cudf;
           dose = opamSelection.dose;
+          extlib = opamSelection.extlib;
           jsonm = opamSelection.jsonm;
           ocaml = opamSelection.ocaml;
           ocamlfind = opamSelection.ocamlfind;

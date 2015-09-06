@@ -47,7 +47,7 @@ let
       propagatedBuildInputs = inputs;
       src = fetchurl 
       {
-        sha256 = "0hji7a91j29kr3apz3rhpv8q1k4pqgc5wjbxcdydkh3znhbsx4gf";
+        sha256 = "0lxl4bgydk77fqgygb2nbnssppfv593bk9vmrhn44ykncrz7w1ls";
         url = "https://github.com/mirage/ocaml-cohttp/archive/v0.17.2.tar.gz";
       };
     })
