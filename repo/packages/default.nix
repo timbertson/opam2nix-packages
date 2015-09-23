@@ -1,5 +1,6 @@
 {
   "0install" = import ./0install;
+  asn1-combinators = import ./asn1-combinators;
   base-bytes = import ./base-bytes;
   base-no-ppx = import ./base-no-ppx;
   base64 = import ./base64;
@@ -72,10 +73,12 @@
   shared-memory-ring = import ./shared-memory-ring;
   stringext = import ./stringext;
   tcpip = import ./tcpip;
+  tls = import ./tls;
   tuntap = import ./tuntap;
   type_conv = import ./type_conv;
   uri = import ./uri;
   uutf = import ./uutf;
+  x509 = import ./x509;
   xen-evtchn = import ./xen-evtchn;
   xen-gnt = import ./xen-gnt;
   xenstore = import ./xenstore;
