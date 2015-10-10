@@ -1,1 +1,1 @@
-../opam2nix/src/nix/default.nix
+import ./overrides (import ./packages)

@@ -1,0 +1,6 @@
+#!bash -eu
+# XXX `-n100` is to protect against EMFILE in gup
+gup -u .opam-repository.files
+cd opam-repository/packages
+git ls-files . | xargs -n100 gup -u
+touch "$1"

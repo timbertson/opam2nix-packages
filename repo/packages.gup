@@ -1,6 +1,7 @@
 #!bash -eu
-gup -u ../opam2nix/bin/opam2nix ../packages.repo
-../opam2nix/bin/opam2nix generate \
+opam2nix_base="../opam2nix/local"
+gup -u ../packages.repo "$opam2nix_base" ../.opam-repository.stamp
+"$opam2nix_base/bin/opam2nix" generate \
 	--src ../opam-repository \
 	--dest "$1" \
 	--cache ../cache \
