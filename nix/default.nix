@@ -25,12 +25,7 @@ let
 	repository = stdenv.mkDerivation {
 		name = "opam2nix-repo";
 		buildCommand = ''
-			mkdir $out
-			cd $out
-			ln -s ${srcDir}/repo/packages
-			for f in ${opam2nixDir}/src/nix/*; do
-				ln -s "$f"
-			done
+			ln -s ${srcDir}/repo $out
 		'';
 	};
 	opam2nixDir = makeDirectory "opam2nix" opam2nix;
