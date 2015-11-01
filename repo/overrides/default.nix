@@ -25,7 +25,14 @@ defs // {
 	"0install" = overrideAll (impl:
 		# disable tests, beause they require additional setup
 		let deps = lib.remove impl.passthru.opamSelection.ounit impl.buildInputs; in
-		impl // { buildInputs = deps; propagatedBuildInputs = deps; }
+		impl // {
+			buildInputs = deps ++ [ pkgs.makeWrapper ];
+			propagatedBuildInputs = deps;
+			preFixup = ''
+				wrapProgram $out/bin/0install \
+					--prefix PATH : "${pkgs.gnupg}/bin"
+			'';
+		}
 	) defs."0install";
 
 	# TODO: should this be automated?

@@ -1,10 +1,10 @@
 let
     buildWithOverride = override:
-    { fetchurl, gnupg, opam2nix, opamSelection, pkgs, stdenv, unzip
+    { fetchurl, opam2nix, opamSelection, pkgs, stdenv, unzip ? null
     }:
     let
         inputs = lib.filter (dep: dep != true && dep != null)
-        ([ gnupg unzip ]++(lib.attrValues opamDeps));
+        ([ unzip ]++(lib.attrValues opamDeps));
         lib = pkgs.lib;
         opamDeps = 
         {
