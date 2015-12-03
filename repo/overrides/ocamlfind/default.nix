@@ -1,8 +1,7 @@
-{pkgs}:
-impl:
+world: def:
 let
-	ocaml_version = (builtins.parseDrvName impl.passthru.opamSelection.ocaml.name).version;
-in impl // {
+	ocaml_version = (builtins.parseDrvName world.opamSelection.ocaml.name).version;
+in {
 	patches = [ ./ldconf.patch ./install_topfind.patch ];
 	buildPhase = ''
 		./configure \
@@ -16,7 +15,7 @@ in impl // {
 		make install
 	'';
 
-	setupHook = pkgs.writeText "setupHook.sh" ''
+	setupHook = world.pkgs.writeText "setupHook.sh" ''
 		addOCamlPath () {
 			if test -d "''$1/lib"; then
 					export OCAMLPATH="''${OCAMLPATH}''${OCAMLPATH:+:}''$1/lib"

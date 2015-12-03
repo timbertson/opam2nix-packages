@@ -28,15 +28,15 @@ To include these nix expressions in your own package, you can use the following 
         sha256 = "...";
       };
     
-      opam2nix = fetchgit {
+      opam2nixSrc = fetchgit {
         url = "https://github.com/gfxmonk/opam2nix.git";
         rev = "...";
         sha256 = "...";
       };
     in
-    callPackage "${src}/nix" {} { inherit src opam2nix; }
+    callPackage "${src}/nix" {} { inherit src opam2nixSrc; }
 
-This will import nix/default.nix  from the exact version of the repo that you specified. With this file, you can use it like:
+This will import nix/default.nix  from the exact version of the repo that you specified. With this file, you can use it like so:
 
     let opam2nix = import ./opam2nix-packages.nix { inherit pkgs; };
 
@@ -45,11 +45,27 @@ This will import nix/default.nix  from the exact version of the repo that you sp
 
     # for more advanced usage, you can make a selections object
     # and build it separately:
-    let selections_file = opam2nix-packages.select {packages = names;};
-    let deps = opam2nix-packages.import selections_file { [ "pkg1" "pkg2" };
+    let selections_file = opam2nix.select {packages = names;};
+    let deps = opam2nix.import selections_file {};
     # deps has a named attribute for each package (including dependencies). Use it
     # for `buildInputs` with:
     let buildInputs = with deps; [ pkg1 pkg2 ... ];
+
+## Configuration
+
+ - `opam2nix.select` takes an attribute set with the following properties:
+    - `ocamlAttr`: defaults to "ocaml"
+    - `ocamlVersion`: default is extracted from the derivaiton name of `pkgs.<ocamlAttr>`, should rarely need to be overriden
+    - `basePackages`: defaults to `["base-unix" "base-bigarray" "base-threads"]`, which is hacky.
+    - `packages`: string list of package names
+    - `args`: extra list of string arguments to pass to the `opam2nix` tool (default `[]`)
+
+ - `opam2nix.import selections_file` takes an attribute set with the following properties, all optinoal:
+   - `pkgs`
+   - `overrides`: function accepting a `world` argument and returning attributes to be overriden / added
+   - `opam2nix`
+
+ - `opam2nix.build` and `opam2nix.buildPackage <pkgname>` take an attribute set which is passed to both `select` and `import` (both functions take distinct arguments, so there should be no overlap).
 
 # How is the repo generated?
 

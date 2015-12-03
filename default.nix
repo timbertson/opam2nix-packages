@@ -1,1 +1,1 @@
-import ./nix/local.nix
+import ./nix/default.nix

@@ -1,52 +1,35 @@
+world:
 let
-    buildWithOverride = override:
-    { opam2nix, opamSelection, pkg-config ? null, pkgconfig ? null, pkgs,
-        stdenv
-    }:
-    let
-        inputs = lib.filter (dep: dep != true && dep != null)
-        ([ pkg-config pkgconfig ]++(lib.attrValues opamDeps));
-        lib = pkgs.lib;
-        opamDeps = 
-        {
-          ocaml = opamSelection.ocaml;
-          ocamlfind = opamSelection.ocamlfind or null;
-        };
-    in
-    stdenv.mkDerivation (override 
+    inputs = lib.filter (dep: dep != true && dep != null)
+    ([ (pkgs.pkg-config or null) (pkgs.pkgconfig or null) ] ++ (lib.attrValues opamDeps));
+    lib = pkgs.lib;
+    opam2nix = world.opam2nix;
+    opamDeps = 
     {
-      buildInputs = inputs;
-      buildPhase = "true";
-      installPhase = "mkdir -p $out";
-      name = "conf-pkg-config-1.0";
-      opamEnv = builtins.toJSON 
-      {
-        deps = opamDeps;
-        files = null;
-        name = "conf-pkg-config";
-        spec = ./opam;
-      };
-      passthru = 
-      {
-        opamSelection = opamSelection;
-      };
-      propagatedBuildInputs = inputs;
-      unpackPhase = "true";
-    })
-    
-    ;
-    identity = x: x;
-    wrap = buildWithOverride:
-    {
-      impl = buildWithOverride identity;
-      withOverride = override:
-      wrap (additionalOverride:
-      buildWithOverride (attrs:
-      additionalOverride (override attrs)
-      )
-      )
-      ;
-    }
-    ;
+      ocaml = opamSelection.ocaml;
+      ocamlfind = opamSelection.ocamlfind or null;
+    };
+    opamSelection = world.opamSelection;
+    pkgs = world.pkgs;
 in
-wrap buildWithOverride
+pkgs.stdenv.mkDerivation 
+{
+  buildInputs = inputs;
+  buildPhase = "true";
+  installPhase = "mkdir -p $out";
+  name = "conf-pkg-config-1.0";
+  opamEnv = builtins.toJSON 
+  {
+    deps = opamDeps;
+    files = null;
+    name = "conf-pkg-config";
+    spec = ./opam;
+  };
+  passthru = 
+  {
+    opamSelection = opamSelection;
+  };
+  propagatedBuildInputs = inputs;
+  unpackPhase = "true";
+}
+

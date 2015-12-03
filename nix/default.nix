@@ -1,5 +1,5 @@
 { pkgs ? import <nixpkgs> {} }:
-{ src, opam2nix ? null }:
+{ src, opam2nix ? null, opam2nixImpl ? null }:
 with pkgs;
 let _opam2nix = opam2nix; in
 let
@@ -19,17 +19,22 @@ let
 		fi
 	'';
 
-	opam2nix = if _opam2nix == null then "${srcDir}/opam2nix" else _opam2nix;
-
 	srcDir = makeDirectory "opam2nix-packages-src" src;
+	opam2nix = let
+		buildFromSrc = src: pkgs.callPackage "${src}/nix" {} { inherit src; };
+	in
+		if opam2nixImpl != null
+			then opam2nixImpl
+			else if _opam2nix != null
+				then buildFromSrc (makeDirectory "opam2nix-src" _opam2nix)
+				else buildFromSrc "${src}/opam2nix";
+
 	repository = stdenv.mkDerivation {
 		name = "opam2nix-repo";
 		buildCommand = ''
 			ln -s ${srcDir}/repo $out
 		'';
 	};
-	opam2nixDir = makeDirectory "opam2nix" opam2nix;
-	opam2nixImpl = callPackage "${opam2nixDir}/nix" {} { src = opam2nix; };
 	utils = {
 		# Provide nix functions for selecting & importing,
 		# rather than making users go via the command line.
@@ -51,24 +56,21 @@ let
 					${concatStringsSep " " packages} \
 					;
 			'';
-		"import" = let parentPkgs = pkgs; in selection_file: args@{
-				pkgs ? parentPkgs,
-				opamPackages ? pkgs.callPackage repository {},
-				...
-			}:
-			pkgs.callPackage selection_file ({
-				opam2nix = opam2nixImpl;
-				inherit opamPackages;
-			} // args);
-		build = { packages, ... }@args: (utils.import (utils.select args) {});
+		"import" = selection_file: world:
+			assert opam2nix.format_version == 1; (import repository ({
+				inherit pkgs opam2nix; # default, overrideable
+				select = (import selection_file);
+				format_version = import ../repo/format_version.nix;
+			} // world)).opamSelection;
+		build = { packages, ... }@args: (utils.import (utils.select args) args);
 		buildPackage = name: args: builtins.getAttr name (utils.build ({ packages = [name]; } // args));
 	};
 
 	impl = stdenv.mkDerivation {
-		name = "opam2nix-packages";
+		name = "opam2nix-packages-${lib.removeSuffix "\n" (builtins.readFile ../VERSION)}";
 		buildCommand = ''
 			mkdir -p $out/bin
-			ln -s ${opam2nixImpl}/bin/opam2nix $out/bin/
+			ln -s ${opam2nix}/bin/opam2nix $out/bin/
 			ln -s ${repository} $out/repo
 			cat > $out/bin/opam2nix-select <<EOF
 #!${bash}/bin/bash
@@ -78,8 +80,8 @@ EOF
 			chmod +x $out/bin/opam2nix-select
 		'';
 
-		buildInputs = [ opam2nixImpl ];
-		passthru = utils;
+		buildInputs = [ opam2nix ];
+		passthru = utils // { formatVersion = 1; };
 	};
 in
 impl

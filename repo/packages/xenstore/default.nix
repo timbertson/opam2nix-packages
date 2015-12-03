@@ -1,4 +1,6 @@
+world:
 {
-  "1.2.5" = import ./1.2.5;
-  latest = import ./1.2.5;
+  "1.2.5" = import ./1.2.5 world;
+  latest = import ./1.2.5 world;
 }
+

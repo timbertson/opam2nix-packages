@@ -1,4 +1,6 @@
+world:
 {
-  base = import ./base;
-  latest = import ./base;
+  base = import ./base world;
+  latest = import ./base world;
 }
+

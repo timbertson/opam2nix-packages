@@ -1,42 +1,48 @@
-defs: { pkgs }:
-with pkgs; with lib;
+{self, super}:
+with self.pkgs;
+with lib;
 let
-	overrideAll = fn: versions: mapAttrs (version: def: def.withOverride fn) versions;
+	overrideAll = fn: versions: mapAttrs (version: def: lib.overrideDerivation def fn) versions;
 
 	# XXX it's not really a `configure` phase, is it?
-	addBinDir = def: overrideAll (impl: impl // { configurePhase = ''mkdir -p $out/bin''; }) def;
+	addBinDir = def: overrideAll (impl: { configurePhase = ''mkdir -p $out/bin''; }) def;
+	opamPackages = super.opamPackages;
 in
-defs // {
-	ocamlfind = overrideAll (import ./ocamlfind {inherit pkgs;}) defs.ocamlfind;
+{
+	opamPackages = super.opamPackages // {
+		ocamlfind = overrideAll ((import ./ocamlfind) self) opamPackages.ocamlfind;
 
-	cstruct = overrideAll (impl: impl // {
-		installPhase = "make install JS_DEST=$OCAMLFIND_DESTDIR";
-	}) defs.cstruct;
+		cstruct = overrideAll (impl: {
+			installPhase = "make install JS_DEST=$OCAMLFIND_DESTDIR";
+		}) opamPackages.cstruct;
 
-	gmp-xen = overrideAll (impl: impl // {
-		# this is a plain C lib
-		configurePhase = "unset OCAMLFIND_DESTDIR";
-	}) defs.gmp-xen;
+		gmp-xen = overrideAll (impl: {
+			# this is a plain C lib
+			configurePhase = "unset OCAMLFIND_DESTDIR";
+		}) opamPackages.gmp-xen;
 
-	zarith-xen = overrideAll (impl: impl // {
-		buildPhase = "${pkgs.bash}/bin/bash ${./zarith-xen}/install.sh";
-	}) defs.zarith-xen;
+		zarith-xen = overrideAll (impl: {
+			buildPhase = "${pkgs.bash}/bin/bash ${./zarith-xen}/install.sh";
+		}) opamPackages.zarith-xen;
 
-	"0install" = overrideAll (impl:
-		# disable tests, beause they require additional setup
-		let deps = lib.remove impl.passthru.opamSelection.ounit impl.buildInputs; in
-		impl // {
-			buildInputs = deps ++ [ pkgs.makeWrapper ];
-			propagatedBuildInputs = deps;
-			preFixup = ''
-				wrapProgram $out/bin/0install \
-					--prefix PATH : "${pkgs.gnupg}/bin"
-			'';
-		}
-	) defs."0install";
+		"0install" = overrideAll (impl:
+			# disable tests, beause they require additional setup
+			{
+				buildInputs = [ pkgs.makeWrapper ];
+				configurePhase = ''
+					# ZI makes it very difficult to opt out of tests
+					sed -i -e 's|tests/test\.|__disabled_tests/test.|' ocaml/Makefile
+				'';
+				preFixup = ''
+					wrapProgram $out/bin/0install \
+						--prefix PATH : "${pkgs.gnupg}/bin"
+				'';
+			}
+		) opamPackages."0install";
 
-	# TODO: should this be automated?
-	biniou = addBinDir defs.biniou;
-	yojson = addBinDir defs.yojson;
-	fat-filesystem = addBinDir defs.fat-filesystem;
+		# TODO: should this be automated?
+		biniou = addBinDir opamPackages.biniou;
+		yojson = addBinDir opamPackages.yojson;
+		fat-filesystem = addBinDir opamPackages.fat-filesystem;
+	};
 }

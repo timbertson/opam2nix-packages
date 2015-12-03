@@ -1,4 +1,6 @@
+world:
 {
-  latest = import ./legacy;
-  legacy = import ./legacy;
+  latest = import ./legacy world;
+  legacy = import ./legacy world;
 }
+
