@@ -23,6 +23,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = ./files;
     name = "conf-gmp";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

@@ -14,6 +14,7 @@ let
       mirage-block-unix = opamSelection.mirage-block-unix;
       mirage-types = opamSelection.mirage-types;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       ounit = opamSelection.ounit;
       re = opamSelection.re;
@@ -34,6 +35,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = null;
     name = "fat-filesystem";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

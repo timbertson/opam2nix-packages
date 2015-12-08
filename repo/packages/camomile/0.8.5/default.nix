@@ -26,6 +26,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = ./files;
     name = "camomile";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

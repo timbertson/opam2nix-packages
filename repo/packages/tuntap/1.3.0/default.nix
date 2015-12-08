@@ -9,6 +9,7 @@ let
     {
       ipaddr = opamSelection.ipaddr;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
     };
     opamSelection = world.opamSelection;
@@ -27,6 +28,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = null;
     name = "tuntap";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

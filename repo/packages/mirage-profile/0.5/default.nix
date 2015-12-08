@@ -12,6 +12,7 @@ let
       lwt = opamSelection.lwt;
       mirage-xen-minios = opamSelection.mirage-xen-minios or null;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       ocplib-endian = opamSelection.ocplib-endian;
     };
@@ -31,6 +32,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = null;
     name = "mirage-profile";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

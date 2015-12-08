@@ -11,6 +11,7 @@ let
       cmdliner = opamSelection.cmdliner;
       lwt = opamSelection.lwt;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       ounit = opamSelection.ounit;
     };
@@ -30,6 +31,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = null;
     name = "xen-evtchn";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

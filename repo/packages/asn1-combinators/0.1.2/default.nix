@@ -9,6 +9,7 @@ let
     {
       cstruct = opamSelection.cstruct;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       zarith = opamSelection.zarith;
     };
@@ -28,6 +29,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = null;
     name = "asn1-combinators";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

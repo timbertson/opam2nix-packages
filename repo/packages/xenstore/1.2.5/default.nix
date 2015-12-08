@@ -11,6 +11,7 @@ let
       cstruct = opamSelection.cstruct;
       lwt = opamSelection.lwt;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
     };
     opamSelection = world.opamSelection;
@@ -29,6 +30,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = null;
     name = "xenstore";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

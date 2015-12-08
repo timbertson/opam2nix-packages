@@ -23,6 +23,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = null;
     name = "camlp4";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

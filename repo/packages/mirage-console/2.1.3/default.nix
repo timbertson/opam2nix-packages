@@ -12,6 +12,7 @@ let
       mirage-unix = opamSelection.mirage-unix;
       mirage-xen = opamSelection.mirage-xen or null;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       shared-memory-ring = opamSelection.shared-memory-ring or null;
       xen-evtchn = opamSelection.xen-evtchn or null;
@@ -35,6 +36,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = null;
     name = "mirage-console";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

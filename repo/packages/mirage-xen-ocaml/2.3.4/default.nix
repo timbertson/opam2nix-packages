@@ -11,7 +11,8 @@ let
       mirage-xen-posix = opamSelection.mirage-xen-posix;
       ocaml = opamSelection.ocaml;
       ocaml-src = opamSelection.ocaml-src;
-      ocamlfind = opamSelection.ocamlfind;
+      ocamlbuild = opamSelection.ocamlbuild;
+      ocamlfind = opamSelection.ocamlfind or null;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;
@@ -29,6 +30,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = null;
     name = "mirage-xen-ocaml";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

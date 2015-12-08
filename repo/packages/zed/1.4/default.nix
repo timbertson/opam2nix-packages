@@ -10,6 +10,7 @@ let
       base-bytes = opamSelection.base-bytes;
       camomile = opamSelection.camomile;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       react = opamSelection.react;
     };
@@ -29,6 +30,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = null;
     name = "zed";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

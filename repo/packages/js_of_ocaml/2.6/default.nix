@@ -17,6 +17,7 @@ let
       lwt = opamSelection.lwt;
       menhir = opamSelection.menhir;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       ppx_tools = opamSelection.ppx_tools or null;
       reactiveData = opamSelection.reactiveData or null;
@@ -38,6 +39,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = null;
     name = "js_of_ocaml";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

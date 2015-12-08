@@ -13,6 +13,7 @@ let
       extlib = opamSelection.extlib;
       jsonm = opamSelection.jsonm;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       ocamlgraph = opamSelection.ocamlgraph;
       re = opamSelection.re;
@@ -33,6 +34,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = ./files;
     name = "opam-lib";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

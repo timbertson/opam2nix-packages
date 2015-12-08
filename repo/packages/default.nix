@@ -16,12 +16,14 @@ world:
   conf-gmp = import ./conf-gmp world;
   conf-pkg-config = import ./conf-pkg-config world;
   cppo = import ./cppo world;
+  cryptokit = import ./cryptokit world;
   cstruct = import ./cstruct world;
   cudf = import ./cudf world;
   dns = import ./dns world;
   dose = import ./dose world;
   easy-format = import ./easy-format world;
   extlib = import ./extlib world;
+  extunix = import ./extunix world;
   fat-filesystem = import ./fat-filesystem world;
   fieldslib = import ./fieldslib world;
   gmp-xen = import ./gmp-xen world;
@@ -59,6 +61,7 @@ world:
   mirage-xen-posix = import ./mirage-xen-posix world;
   nocrypto = import ./nocrypto world;
   ocaml-src = import ./ocaml-src world;
+  ocamlbuild = import ./ocamlbuild world;
   ocamlfind = import ./ocamlfind world;
   ocamlgraph = import ./ocamlgraph world;
   ocplib-endian = import ./ocplib-endian world;

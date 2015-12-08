@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       uutf = opamSelection.uutf;
     };
@@ -27,6 +28,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = ./files;
     name = "jsonm";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

@@ -11,6 +11,7 @@ let
       extlib = opamSelection.extlib or null;
       extlib-compat = opamSelection.extlib-compat or null;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind or null;
     };
     opamSelection = world.opamSelection;
@@ -29,6 +30,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = null;
     name = "cudf";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

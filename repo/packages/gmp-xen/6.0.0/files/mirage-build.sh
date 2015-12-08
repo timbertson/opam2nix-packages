@@ -4,7 +4,7 @@ if [ -z "$PREFIX" ]; then
 fi
 
 PKG_CONFIG_DEPS="mirage-xen-posix"
-function check_deps {
+check_deps () {
   pkg-config --print-errors --exists ${PKG_CONFIG_DEPS}
 }
 

@@ -9,6 +9,7 @@ let
     {
       lwt = opamSelection.lwt;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       react = opamSelection.react;
       zed = opamSelection.zed;
@@ -29,6 +30,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = ./files;
     name = "lambda-term";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

@@ -14,6 +14,7 @@ let
       conf-libev = opamSelection.conf-libev or null;
       lablgtk = opamSelection.lablgtk or null;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       ppx_tools = opamSelection.ppx_tools or null;
       react = opamSelection.react or null;
@@ -35,6 +36,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = null;
     name = "lwt";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

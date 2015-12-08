@@ -17,6 +17,7 @@ let
       lwt = opamSelection.lwt or null;
       magic-mime = opamSelection.magic-mime;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       re = opamSelection.re;
       sexplib = opamSelection.sexplib;
@@ -39,6 +40,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = null;
     name = "cohttp";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

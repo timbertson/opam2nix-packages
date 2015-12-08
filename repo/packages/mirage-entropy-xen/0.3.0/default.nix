@@ -10,6 +10,7 @@ let
       cstruct = opamSelection.cstruct;
       mirage-xen = opamSelection.mirage-xen;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
     };
     opamSelection = world.opamSelection;
@@ -28,6 +29,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = null;
     name = "mirage-entropy-xen";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

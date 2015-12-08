@@ -11,6 +11,7 @@ let
       extlib = opamSelection.extlib or null;
       extlib-compat = opamSelection.extlib-compat or null;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind or null;
       ocamlgraph = opamSelection.ocamlgraph;
       re = opamSelection.re;
@@ -31,6 +32,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = ./files;
     name = "dose";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

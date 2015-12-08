@@ -9,6 +9,7 @@ let
     {
       camlp4 = opamSelection.camlp4;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       type_conv = opamSelection.type_conv or null;
     };
@@ -28,6 +29,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = null;
     name = "sexplib";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

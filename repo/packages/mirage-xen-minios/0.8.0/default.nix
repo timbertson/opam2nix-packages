@@ -27,6 +27,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = null;
     name = "mirage-xen-minios";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

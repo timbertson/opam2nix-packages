@@ -57,11 +57,12 @@ let
 					;
 			'';
 		"import" = selection_file: world:
-			assert opam2nix.format_version == 1; (import repository ({
+			assert opam2nix.format_version == 1; let result = (import repository ({
 				inherit pkgs opam2nix; # default, overrideable
+				ocamlVersion = with builtins; (parseDrvName result.opamSelection.ocaml.name).version;
 				select = (import selection_file);
 				format_version = import ../repo/format_version.nix;
-			} // world)).opamSelection;
+			} // world)); in result.opamSelection;
 		build = { packages, ... }@args: (utils.import (utils.select args) args);
 		buildPackage = name: args: builtins.getAttr name (utils.build ({ packages = [name]; } // args));
 	};

@@ -26,6 +26,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = null;
     name = "labltk";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

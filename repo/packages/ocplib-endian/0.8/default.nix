@@ -10,6 +10,7 @@ let
       base-bytes = opamSelection.base-bytes;
       cppo = opamSelection.cppo;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
     };
     opamSelection = world.opamSelection;
@@ -28,6 +29,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = null;
     name = "ocplib-endian";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

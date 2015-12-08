@@ -12,6 +12,7 @@ let
       ipaddr = opamSelection.ipaddr or null;
       lwt = opamSelection.lwt or null;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
     };
     opamSelection = world.opamSelection;
@@ -30,6 +31,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = null;
     name = "mirage-types";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

@@ -13,6 +13,7 @@ let
       lwt = opamSelection.lwt;
       mirage-profile = opamSelection.mirage-profile;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind or null;
       ounit = opamSelection.ounit;
     };
@@ -32,6 +33,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = null;
     name = "xen-gnt";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

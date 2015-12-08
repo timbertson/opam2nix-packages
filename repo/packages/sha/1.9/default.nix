@@ -26,6 +26,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = ./files;
     name = "sha";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

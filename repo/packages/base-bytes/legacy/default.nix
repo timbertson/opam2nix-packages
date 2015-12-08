@@ -23,6 +23,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = null;
     name = "base-bytes";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

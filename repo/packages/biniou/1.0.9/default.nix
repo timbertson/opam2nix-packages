@@ -27,6 +27,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = ./files;
     name = "biniou";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

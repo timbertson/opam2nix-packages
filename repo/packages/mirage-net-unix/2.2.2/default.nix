@@ -12,6 +12,7 @@ let
       lwt = opamSelection.lwt;
       mirage-types = opamSelection.mirage-types;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       ounit = opamSelection.ounit;
       tuntap = opamSelection.tuntap;
@@ -32,6 +33,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = null;
     name = "mirage-net-unix";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

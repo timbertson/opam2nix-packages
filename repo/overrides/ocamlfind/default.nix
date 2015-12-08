@@ -2,7 +2,7 @@ world: def:
 let
 	ocaml_version = (builtins.parseDrvName world.opamSelection.ocaml.name).version;
 in {
-	patches = [ ./ldconf.patch ./install_topfind.patch ];
+	patches = [ ./ldconf.patch ];
 	buildPhase = ''
 		./configure \
 			-bindir $out/bin \

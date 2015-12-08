@@ -11,6 +11,7 @@ let
       camlp4 = opamSelection.camlp4 or null;
       lwt = opamSelection.lwt or null;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       ocplib-endian = opamSelection.ocplib-endian;
       sexplib = opamSelection.sexplib;
@@ -32,6 +33,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = null;
     name = "cstruct";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

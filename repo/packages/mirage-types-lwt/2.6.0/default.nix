@@ -28,6 +28,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = null;
     name = "mirage-types-lwt";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

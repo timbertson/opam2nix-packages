@@ -16,6 +16,7 @@ let
       mirage-xen-minios = opamSelection.mirage-xen-minios;
       mirage-xen-ocaml = opamSelection.mirage-xen-ocaml;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       shared-memory-ring = opamSelection.shared-memory-ring;
       xen-evtchn = opamSelection.xen-evtchn;
@@ -38,6 +39,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = null;
     name = "mirage-xen";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

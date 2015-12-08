@@ -13,6 +13,7 @@ let
       mirage-clock-unix = opamSelection.mirage-clock-unix;
       mirage-profile = opamSelection.mirage-profile;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       shared-memory-ring = opamSelection.shared-memory-ring;
     };
@@ -32,6 +33,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = null;
     name = "mirage-unix";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

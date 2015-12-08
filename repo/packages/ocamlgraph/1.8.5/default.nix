@@ -28,6 +28,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = ./files;
     name = "ocamlgraph";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

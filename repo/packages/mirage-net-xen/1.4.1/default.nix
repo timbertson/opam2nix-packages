@@ -15,6 +15,7 @@ let
       mirage-types = opamSelection.mirage-types;
       mirage-xen = opamSelection.mirage-xen;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
     };
     opamSelection = world.opamSelection;
@@ -33,6 +34,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = null;
     name = "mirage-net-xen";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 

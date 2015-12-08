@@ -15,6 +15,7 @@ conduit@latest
 conf-gmp@latest
 conf-pkg-config@latest
 cppo@latest
+cryptokit@latest
 cstruct@1.5.0
 cstruct@latest
 cudf@latest
@@ -22,6 +23,7 @@ dns@latest
 dose@3.3
 easy-format@latest
 extlib@latest
+extunix@latest
 fat-filesystem@latest
 fieldslib@latest
 gmp-xen@latest
@@ -64,6 +66,7 @@ mirage-xen-minios@latest
 mirage-xen-ocaml@latest
 mirage-xen-posix@latest
 nocrypto@latest
+ocamlbuild@latest
 ocamlfind@latest
 ocamlgraph@1.8.5
 ocamlgraph@latest

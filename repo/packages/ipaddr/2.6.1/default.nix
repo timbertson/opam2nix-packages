@@ -9,6 +9,7 @@ let
     {
       base-bytes = opamSelection.base-bytes;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       sexplib = opamSelection.sexplib;
       type_conv = opamSelection.type_conv;
@@ -29,6 +30,7 @@ pkgs.stdenv.mkDerivation
     deps = opamDeps;
     files = null;
     name = "ipaddr";
+    ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
   passthru = 
