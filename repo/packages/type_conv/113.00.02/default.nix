@@ -2,13 +2,14 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.perl) ] ++ (lib.attrValues opamDeps));
+    ([  ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
     {
-      conf-gmp = opamSelection.conf-gmp;
+      camlp4 = opamSelection.camlp4;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
     };
     opamSelection = world.opamSelection;
@@ -21,12 +22,12 @@ pkgs.stdenv.mkDerivation
   configurePhase = "true";
   createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
-  name = "zarith-1.4.1";
+  name = "type_conv-113.00.02";
   opamEnv = builtins.toJSON 
   {
     deps = opamDeps;
     files = null;
-    name = "zarith";
+    name = "type_conv";
     ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
@@ -37,8 +38,8 @@ pkgs.stdenv.mkDerivation
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "0l36hzmfbvdai2kcgynh13vfdim5x2grnaw61fxqalyjm90c3di3";
-    url = "https://forge.ocamlcore.org/frs/download.php/1574/zarith-1.4.1.tgz";
+    sha256 = "1718yl2q8zandrs4xqffkfmssfld1iz62dzcqdm925735c1x01fk";
+    url = "https://ocaml.janestreet.com/ocaml-core/113.00/files/type_conv-113.00.02.tar.gz";
   };
 }
 

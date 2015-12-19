@@ -2,13 +2,13 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.perl) ] ++ (lib.attrValues opamDeps));
+    ([ (pkgs.which or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
     {
-      conf-gmp = opamSelection.conf-gmp;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
     };
     opamSelection = world.opamSelection;
@@ -21,12 +21,12 @@ pkgs.stdenv.mkDerivation
   configurePhase = "true";
   createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
-  name = "zarith-1.4.1";
+  name = "camlp4-4.02+6";
   opamEnv = builtins.toJSON 
   {
     deps = opamDeps;
     files = null;
-    name = "zarith";
+    name = "camlp4";
     ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
@@ -37,8 +37,8 @@ pkgs.stdenv.mkDerivation
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "0l36hzmfbvdai2kcgynh13vfdim5x2grnaw61fxqalyjm90c3di3";
-    url = "https://forge.ocamlcore.org/frs/download.php/1574/zarith-1.4.1.tgz";
+    sha256 = "0icdfzhsbgf89925gc8gl3fm8z2xzszzlib0v9dj5wyzkyv3a342";
+    url = "https://github.com/ocaml/camlp4/archive/4.02+6.tar.gz";
   };
 }
 

@@ -35,7 +35,34 @@ let
 			ln -s ${srcDir}/repo $out
 		'';
 	};
-	utils = {
+	utils = let
+
+		flattenSingleSpec = attrMapper: obj: if builtins.isString obj
+			then [obj] # plain string
+			else lib.mapAttrsToList attrMapper obj;
+
+		flattenSpecs = attrMapper: specs: if builtins.isList specs
+			then lib.concatMap (flattenSingleSpec attrMapper) specs
+			else (flattenSingleSpec attrMapper) specs;
+
+		specOfVersionPair = name: spec: assert spec != null; assert name != null; if spec == true then name else
+			if lib.any (pfx: lib.hasPrefix pfx spec) ["!" "<" "=" ">"]
+				then "'${name}${spec}'" # includes relop
+				else "'${name}=${spec}'"; # no relop, assume exact version
+		packageSpecs = flattenSpecs specOfVersionPair;
+
+		packageNameOfVersionPair = name: spec: name;
+		packageNames = flattenSpecs packageNameOfVersionPair;
+
+		to_s = obj:
+			builtins.typeOf obj;
+			# if obj == null then "null" else
+			# if builtins.isString obj then obj else
+			# if builtins.isList obj then "LIST" else
+			# if builtins.isList obj then concatMap ", " (map to_s obj) else
+			# "Unknoen type";
+
+	in {
 		# Provide nix functions for selecting & importing,
 		# rather than making users go via the command line.
 		# As a bonus, we can derive a few of the tedious arguments
@@ -47,14 +74,20 @@ let
 			packages, args ? []
 		}:
 			with lib;
+			# possible format for "specs":
+			# list of strings
+			# object with key = pkgname, attr = versionSpec, or
+			# list with intermixed strings / objects
+			let
+			in
 			runCommand "opam-selection.nix" {} ''
-				${impl}/bin/opam2nix-select --dest "$out" \
-					--ocaml-version ${ocamlVersion} \
-					--ocaml-attr ${ocamlAttr} \
-					--base-packages ${concatStringsSep "," basePackages} \
-					${concatStringsSep " " args} \
-					${concatStringsSep " " packages} \
-					;
+			env OCAMLRUNPARAM=b ${impl}/bin/opam2nix-select --dest "$out" \
+				--ocaml-version ${ocamlVersion} \
+				--ocaml-attr ${ocamlAttr} \
+				--base-packages ${concatStringsSep "," basePackages} \
+				${concatStringsSep " " args} \
+				${concatStringsSep " " (packageSpecs packages)} \
+			;
 			'';
 		"import" = selection_file: world:
 			assert opam2nix.format_version == 1; let result = (import repository ({
@@ -63,6 +96,8 @@ let
 				select = (import selection_file);
 				format_version = import ../repo/format_version.nix;
 			} // world)); in result.opamSelection;
+		packageNames = specs: packageNames specs;
+		directDependencies = specs: selections: (map (name: builtins.getAttr name selections) (packageNames specs));
 		build = { packages, ... }@args: (utils.import (utils.select args) args);
 		buildPackage = name: args: builtins.getAttr name (utils.build ({ packages = [name]; } // args));
 	};

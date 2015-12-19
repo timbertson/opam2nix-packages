@@ -12,6 +12,22 @@ in
 	opamPackages = super.opamPackages // {
 		ocamlfind = overrideAll ((import ./ocamlfind) self) opamPackages.ocamlfind;
 
+		camlp4 = overrideAll (impl: {
+			# camlp4 uses +camlp4 directory, but when installed individually it's just
+			# ../ocaml/camlp4
+			configurePhase = ''
+				find . -name META.in | while read f; do
+					sed -i -e 's|"+|"../ocaml/|' "$f"
+				done
+				'';
+		}) opamPackages.camlp4;
+
+		js_of_ocaml = overrideAll (impl: {
+			configurePhase = ''
+				sed -i -e 's|-I +camlp4|-package camlp4|' lib/Makefile
+			'';
+		}) opamPackages.js_of_ocaml;
+
 		cstruct = overrideAll (impl: {
 			installPhase = "make install JS_DEST=$OCAMLFIND_DESTDIR";
 		}) opamPackages.cstruct;
