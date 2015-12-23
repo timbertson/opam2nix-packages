@@ -23,7 +23,7 @@ pkgs.stdenv.mkDerivation
   configurePhase = "true";
   createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
-  name = "yojson-1.2.3";
+  name = "yojson-1.3.0";
   opamEnv = builtins.toJSON 
   {
     deps = opamDeps;
@@ -40,8 +40,8 @@ pkgs.stdenv.mkDerivation
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "0y30lcsxsaqgylidhmmq3b7jzdjvqskmddd204chafzl8z68w3by";
-    url = "https://github.com/mjambon/yojson/archive/v1.2.3.tar.gz";
+    sha256 = "153hqcf1pyv969mcd4q04s4y3r1hrjjz4rs4yjnbnmrcj1nnxql0";
+    url = "https://github.com/mjambon/yojson/archive/v1.3.0.tar.gz";
   };
 }
 

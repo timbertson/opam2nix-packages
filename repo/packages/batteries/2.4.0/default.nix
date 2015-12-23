@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
     };
     opamSelection = world.opamSelection;
@@ -20,12 +21,12 @@ pkgs.stdenv.mkDerivation
   configurePhase = "true";
   createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
-  name = "easy-format-1.1.0";
+  name = "batteries-2.4.0";
   opamEnv = builtins.toJSON 
   {
     deps = opamDeps;
     files = null;
-    name = "easy-format";
+    name = "batteries";
     ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
@@ -36,8 +37,8 @@ pkgs.stdenv.mkDerivation
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "1pqvgmi88isg3q2yandicfddha33ad39394y11dbn50an48nfn3i";
-    url = "https://github.com/mjambon/easy-format/archive/v1.1.0.tar.gz";
+    sha256 = "17s3g00zh98gy1n3sgfpbilda8qq5kwh89iswvhp5himz9gg2gzi";
+    url = "https://github.com/ocaml-batteries-team/batteries-included/archive/v2.4.0.tar.gz";
   };
 }
 

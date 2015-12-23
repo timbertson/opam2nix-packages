@@ -2,23 +2,20 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([  ] ++ (lib.attrValues opamDeps));
+    ([ (pkgs.time or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
     {
-      base-no-ppx = opamSelection.base-no-ppx or null;
-      base-threads = opamSelection.base-threads or null;
-      base-unix = opamSelection.base-unix or null;
+      async = opamSelection.async or null;
       camlp4 = opamSelection.camlp4 or null;
-      conf-libev = opamSelection.conf-libev or null;
-      lablgtk = opamSelection.lablgtk or null;
+      lwt = opamSelection.lwt or null;
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
-      ppx_tools = opamSelection.ppx_tools or null;
-      react = opamSelection.react or null;
-      ssl = opamSelection.ssl or null;
+      ocplib-endian = opamSelection.ocplib-endian;
+      sexplib = opamSelection.sexplib;
+      type_conv = opamSelection.type_conv;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;
@@ -30,12 +27,12 @@ pkgs.stdenv.mkDerivation
   configurePhase = "true";
   createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
-  name = "lwt-2.5.0";
+  name = "cstruct-1.7.1";
   opamEnv = builtins.toJSON 
   {
     deps = opamDeps;
     files = null;
-    name = "lwt";
+    name = "cstruct";
     ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
@@ -46,8 +43,8 @@ pkgs.stdenv.mkDerivation
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "0c31aigpfavb0zib3c6b9van68mxgyrn4igqgya15qf5dfjjibip";
-    url = "https://github.com/ocsigen/lwt/archive/2.5.0.tar.gz";
+    sha256 = "19dadsaldypx5iz4n5zl21n8pchpahhb5qzgrsxk2qkwzsbd0sbq";
+    url = "https://github.com/mirage/ocaml-cstruct/archive/v1.7.1.tar.gz";
   };
 }
 
