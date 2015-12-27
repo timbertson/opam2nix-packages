@@ -2,7 +2,7 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.zlib-devel or null) (pkgs.zlib1g-dev or null) ] ++ (lib.attrValues opamDeps));
+    ([  ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
@@ -21,12 +21,12 @@ pkgs.stdenv.mkDerivation
   configurePhase = "true";
   createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
-  name = "cryptokit-1.10";
+  name = "astring-0.8.0";
   opamEnv = builtins.toJSON 
   {
     deps = opamDeps;
     files = null;
-    name = "cryptokit";
+    name = "astring";
     ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
@@ -37,8 +37,9 @@ pkgs.stdenv.mkDerivation
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "1k2f2ixm7jcsgrzn9lz1hm9qqgq71lk9lxy3v3cwsd8xdrj3jrnv";
-    url = "https://forge.ocamlcore.org/frs/download.php/1493/cryptokit-1.10.tar.gz";
+    sha256 = "1hybmhjblv5ikaxjjl3qnrcfj39bl9n1mzfnr4rgffvzv1vsk6yq";
+    url = "http://erratique.ch/software/astring/releases/astring-0.8.0.tbz";
   };
+  unpackCmd = "tar -xf \"$curSrc\"";
 }
 

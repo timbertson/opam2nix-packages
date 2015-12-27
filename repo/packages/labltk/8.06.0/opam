@@ -12,6 +12,7 @@ depends: ["ocamlfind"]
 depexts: [
   [["debian"] ["tcl-dev" "tk-dev"]]
   [["ubuntu"] ["tcl-dev" "tk-dev"]]
+  [["nixpkgs"] ["tcl" "tk"]]
 ]
 post-messages: [
   "This package requires Tcl/Tk with its development packages installed on your system" {failure}

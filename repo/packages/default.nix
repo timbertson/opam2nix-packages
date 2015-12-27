@@ -2,6 +2,7 @@ world:
 {
   "0install" = import ./0install world;
   asn1-combinators = import ./asn1-combinators world;
+  astring = import ./astring world;
   base-bytes = import ./base-bytes world;
   base-no-ppx = import ./base-no-ppx world;
   base64 = import ./base64 world;
@@ -26,6 +27,7 @@ world:
   extunix = import ./extunix world;
   fat-filesystem = import ./fat-filesystem world;
   fieldslib = import ./fieldslib world;
+  fileutils = import ./fileutils world;
   gmp-xen = import ./gmp-xen world;
   io-page = import ./io-page world;
   ipaddr = import ./ipaddr world;

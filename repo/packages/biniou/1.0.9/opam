@@ -11,6 +11,3 @@ depends: [
   "ocamlfind"
   "easy-format"
 ]
-depexts: [
-  [["nixpkgs"] ["which"]]
-]

@@ -1,0 +1,13 @@
+opam-version: "1.2"
+maintainer: "contact@ocamlpro.com"
+build: [
+  ["./configure"]
+  [make]
+  [make "install"]
+]
+remove: [["ocamlfind" "remove" "fileutils"]]
+depends: [
+  "ocamlfind"
+  "ounit"
+  "ocamlbuild" {build}
+]
