@@ -11,13 +11,11 @@ install: [
   [make "install"]
 ]
 remove:  ["ocamlfind" "remove" "zarith"]
-depexts: [
-  [["nixpkgs"] ["perl"]]
-]
 depends: [
   "ocamlfind"
   "conf-gmp"
 ]
+patches: [ "z_pp.pl.patch" ]
 depexts: [
   [["nixpkgs"] ["perl"]]
 ]

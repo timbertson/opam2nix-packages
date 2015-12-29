@@ -75,6 +75,7 @@ ocamlfind@latest
 ocamlgraph@1.8.5
 ocamlgraph@latest
 ocaml-src@4.01.0
+ocaml-src@4.02.3
 ocplib-endian@latest
 ocurl@latest
 opam-lib@latest
@@ -103,5 +104,6 @@ xenstore@latest
 xmlm@latest
 yojson@latest
 zarith@latest
+zarith@1.4
 zarith-xen@latest
 zed@latest

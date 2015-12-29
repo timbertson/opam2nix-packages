@@ -2,7 +2,7 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.perl) ] ++ (lib.attrValues opamDeps));
+    ([  ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
@@ -20,12 +20,12 @@ pkgs.stdenv.mkDerivation
   configurePhase = "true";
   createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
-  name = "minios-xen-0.8";
+  name = "ocaml-src-4.02.3";
   opamEnv = builtins.toJSON 
   {
     deps = opamDeps;
-    files = null;
-    name = "minios-xen";
+    files = ./files;
+    name = "ocaml-src";
     ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
@@ -33,11 +33,12 @@ pkgs.stdenv.mkDerivation
   {
     opamSelection = opamSelection;
   };
+  postUnpack = "cp -r ${./files}/* \"$sourceRoot/\"";
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "16dwihjdi9qj3zijfm2p819jq4qb72kvf3f43ar7y3jhfqsj1c7q";
-    url = "https://github.com/talex5/mini-os/archive/v0.8.tar.gz";
+    sha256 = "0wksi1r23gmizy89bgjq3fappp6qc9xzazsnpa01j52f9zvbb3wj";
+    url = "http://caml.inria.fr/pub/distrib/ocaml-4.02/ocaml-4.02.3.tar.gz";
   };
 }
 

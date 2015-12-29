@@ -38,7 +38,8 @@ in
 		}) opamPackages.gmp-xen;
 
 		zarith-xen = overrideAll (impl: {
-			buildPhase = "${pkgs.bash}/bin/bash ${./zarith-xen}/install.sh";
+			buildPhase = "${pkgs.bash}/bin/bash ${./zarith-xen/install.sh}";
+			installPhase = "true";
 		}) opamPackages.zarith-xen;
 
 		"0install" = overrideAll (impl:

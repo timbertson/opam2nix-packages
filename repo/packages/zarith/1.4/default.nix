@@ -7,8 +7,9 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      conf-gmp = opamSelection.conf-gmp;
       ocaml = opamSelection.ocaml;
-      ocamlfind = opamSelection.ocamlfind or null;
+      ocamlfind = opamSelection.ocamlfind;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;
@@ -20,12 +21,12 @@ pkgs.stdenv.mkDerivation
   configurePhase = "true";
   createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
-  name = "minios-xen-0.8";
+  name = "zarith-1.4";
   opamEnv = builtins.toJSON 
   {
     deps = opamDeps;
-    files = null;
-    name = "minios-xen";
+    files = ./files;
+    name = "zarith";
     ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
@@ -33,11 +34,12 @@ pkgs.stdenv.mkDerivation
   {
     opamSelection = opamSelection;
   };
+  postUnpack = "cp -r ${./files}/* \"$sourceRoot/\"";
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "16dwihjdi9qj3zijfm2p819jq4qb72kvf3f43ar7y3jhfqsj1c7q";
-    url = "https://github.com/talex5/mini-os/archive/v0.8.tar.gz";
+    sha256 = "0qa8dcw609s3gqc484v97wmza6wshmp4q2hycjsjcdvcx3cj3g4q";
+    url = "https://forge.ocamlcore.org/frs/download.php/1567/zarith-1.4.tgz";
   };
 }
 
