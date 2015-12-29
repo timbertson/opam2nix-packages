@@ -96,6 +96,7 @@ tuntap@latest
 type_conv@111.13.00
 type_conv@latest
 uri@latest
+utop@latest
 uutf@latest
 x509@latest
 xen-evtchn@latest

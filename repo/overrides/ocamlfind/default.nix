@@ -2,13 +2,12 @@ world: def:
 let
 	ocaml_version = (builtins.parseDrvName world.opamSelection.ocaml.name).version;
 in {
-	patches = [ ./ldconf.patch ];
+	patches = [ ./ldconf.patch ./install_topfind.patch ];
 	buildPhase = ''
 		./configure \
 			-bindir $out/bin \
 			-mandir $out/share/man \
 			-sitelib $out/lib \
-			-no-topfind \
 			-config $out/etc/findlib.conf
 		make all
 		make opt

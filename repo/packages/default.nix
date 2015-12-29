@@ -83,6 +83,7 @@ world:
   tuntap = import ./tuntap world;
   type_conv = import ./type_conv world;
   uri = import ./uri world;
+  utop = import ./utop world;
   uutf = import ./uutf world;
   x509 = import ./x509 world;
   xen-evtchn = import ./xen-evtchn world;
