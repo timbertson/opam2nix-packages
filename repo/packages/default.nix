@@ -89,6 +89,7 @@ world:
   xen-evtchn = import ./xen-evtchn world;
   xen-gnt = import ./xen-gnt world;
   xenstore = import ./xenstore world;
+  xenstore_transport = import ./xenstore_transport world;
   xmlm = import ./xmlm world;
   yojson = import ./yojson world;
   zarith = import ./zarith world;

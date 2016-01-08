@@ -33,7 +33,6 @@ fileutils@latest
 gmp-xen@latest
 io-page@1.3.0
 io-page@latest
-io-page@latest
 ipaddr@latest
 js_of_ocaml@latest
 jsonm@latest
@@ -88,7 +87,6 @@ sexplib@111.25.00
 sexplib@latest
 sha@latest
 shared-memory-ring@latest
-shared-memory-ring@latest
 stringext@latest
 tcpip@latest
 tls@latest
@@ -102,6 +100,7 @@ x509@latest
 xen-evtchn@latest
 xen-gnt@latest
 xenstore@latest
+xenstore_transport@latest
 xmlm@latest
 yojson@latest
 zarith@latest
