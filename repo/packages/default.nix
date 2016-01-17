@@ -62,10 +62,14 @@ world:
   mirage-xen-ocaml = import ./mirage-xen-ocaml world;
   mirage-xen-posix = import ./mirage-xen-posix world;
   nocrypto = import ./nocrypto world;
+  oasis = import ./oasis world;
+  ocaml-data-notation = import ./ocaml-data-notation world;
   ocaml-src = import ./ocaml-src world;
   ocamlbuild = import ./ocamlbuild world;
   ocamlfind = import ./ocamlfind world;
   ocamlgraph = import ./ocamlgraph world;
+  ocamlify = import ./ocamlify world;
+  ocamlmod = import ./ocamlmod world;
   ocplib-endian = import ./ocplib-endian world;
   ocurl = import ./ocurl world;
   opam-lib = import ./opam-lib world;

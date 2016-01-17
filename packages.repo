@@ -69,10 +69,14 @@ mirage-xen-minios@latest
 mirage-xen-ocaml@latest
 mirage-xen-posix@latest
 nocrypto@latest
+oasis@latest
 ocamlbuild@latest
 ocamlfind@latest
 ocamlgraph@1.8.5
 ocamlgraph@latest
+ocamlify@latest
+ocamlmod@latest
+ocaml-data-notation@latest
 ocaml-src@4.01.0
 ocaml-src@4.02.3
 ocplib-endian@latest
