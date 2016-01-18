@@ -60,7 +60,7 @@ let
 			# if builtins.isString obj then obj else
 			# if builtins.isList obj then "LIST" else
 			# if builtins.isList obj then concatMap ", " (map to_s obj) else
-			# "Unknoen type";
+			# "Unknown type";
 
 	in {
 		# Provide nix functions for selecting & importing,
@@ -117,7 +117,10 @@ EOF
 		'';
 
 		buildInputs = [ opam2nix ];
-		passthru = utils // { formatVersion = 1; };
+		passthru = utils // {
+			formatVersion = 1;
+			inherit opam2nix;
+		};
 	};
 in
 impl
