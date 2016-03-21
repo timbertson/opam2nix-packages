@@ -1,0 +1,11 @@
+opam-version: "1.2"
+maintainer: "thomas@gazagnaire.org"
+authors: ["Thomas Gazagnaire <thomas@gazagnaire.org>"]
+license: "ISC"
+depends: ["ocamlfind"]
+build: [
+  [make]
+  [make "install"]
+]
+available: [ocaml-version >= "4.00.1"]
+dev-repo: "git://github.com/samoht/ocaml-dumpast"

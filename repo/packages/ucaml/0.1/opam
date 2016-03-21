@@ -1,0 +1,9 @@
+opam-version: "1.2"
+authors: ["Masateru Kawaguchi"]
+maintainer: "francois.berenger@inria.fr"
+homepage: "https://github.com/masateruk/micro-caml"
+license: "BSD-3"
+build: [
+  ["make"]
+]
+dev-repo: "git://github.com/masateruk/micro-caml"

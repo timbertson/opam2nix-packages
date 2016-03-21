@@ -39,7 +39,7 @@ pkgs.stdenv.mkDerivation
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "073qhahw4b1azip3xarmgv5jvqk4z5wl000hj61yclwissa9qx5c";
+    sha256 = "1vyvy9cazv1grh0xn0j47w8bnhw93jbn29cqv34k1r0px16yyxdx";
     url = "http://ocamlgraph.lri.fr/download/ocamlgraph-1.8.6.tar.gz";
   };
 }

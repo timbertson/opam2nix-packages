@@ -1,0 +1,9 @@
+opam-version: "1.2"
+maintainer: "romain.bardou@inria.fr"
+build: [
+  [make]
+  [make "install"]
+]
+remove: [["ocamlfind" "remove" "procord"]]
+depends: ["ocamlfind"]
+dev-repo: "git://github.com/cryptosense/procord"

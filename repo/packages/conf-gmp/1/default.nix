@@ -1,13 +1,13 @@
 world:
 let
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.gmp or null) (pkgs.gmp-devel or null) (pkgs.libgmp-dev or null) ] ++ (lib.attrValues opamDeps));
+    ([ (pkgs.gmp or null) (pkgs.gmp-dev or null) (pkgs.gmp-devel or null)
+        (pkgs.libgmp-dev or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
     {
       ocaml = opamSelection.ocaml;
-      ocamlfind = opamSelection.ocamlfind or null;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;

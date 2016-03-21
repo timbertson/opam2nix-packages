@@ -1,0 +1,22 @@
+opam-version: "1.2"
+maintainer: "dave.scott@citrix.com"
+build: [
+  ["make"]
+  ["make" "install" "BINDIR=%{bin}%" "MANDIR=%{man}%/man1"]
+]
+remove: [
+  ["make" "uninstall" "BINDIR=%{bin}%" "MANDIR=%{man}%/man1"]
+]
+depends: [
+  "ocamlfind"
+  "cmdliner"
+  "lwt"
+  "xen-api-client"
+  "cstruct"
+  "mbr-format" {>= "0.3"}
+  "fat-filesystem"
+  "io-page"
+  "mirage-types" {>= "2.3.0"}
+  "ocamlbuild" {build}
+]
+dev-repo: "git://github.com/djs55/xe-unikernel-upload"

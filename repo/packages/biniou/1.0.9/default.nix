@@ -2,11 +2,12 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.which) ] ++ (lib.attrValues opamDeps));
+    ([  ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      conf-which = opamSelection.conf-which;
       easy-format = opamSelection.easy-format;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;

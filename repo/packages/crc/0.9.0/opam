@@ -1,0 +1,16 @@
+opam-version: "1.2"
+maintainer: "john.else@citrix.com"
+build: [
+  [make]
+  [make "PREFIX=%{prefix}%" "install"]
+]
+remove: [
+  [make "PREFIX=%{prefix}%" "uninstall"]
+]
+depends: [
+  "cstruct" {>= "1.0.1"}
+  "ounit"
+  "ocamlbuild" {build}
+]
+ocaml-version: [>= "4.00.1"]
+dev-repo: "git://github.com/xapi-project/ocaml-crc"

@@ -1,0 +1,21 @@
+opam-version: "1"
+maintainer: "vb@luminar.eu.org"
+build: [
+  ["./configure" "-bindir" bin "-sharedir" "%{lib}%/plasma/share"]
+  ["omake"]
+  ["omake" "install"]
+]
+depends: [
+  "ocamlfind"
+  "ocamlnet"
+  "cryptokit"
+  "pcre"
+  "ocamlgraph" {= "1.8.2"}
+  "omake"
+  "xstrp4"
+]
+depexts: [
+  [["debian"] ["libpq-dev"]]
+  [["ubuntu"] ["libpq-dev"]]
+]
+ocaml-version: [<"4.01.0"]

@@ -1,0 +1,13 @@
+opam-version: "1.2"
+maintainer: "anil@recoil.org"
+build: [
+  [make]
+  [make "all.opt"]
+  [make "install"]
+]
+remove: [["ocamlfind" "remove" "ulex"]]
+depends: [
+  "ocamlfind"
+  "camlp4"
+  "ocamlbuild" {build}
+]

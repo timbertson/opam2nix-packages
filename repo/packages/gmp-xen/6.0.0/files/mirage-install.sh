@@ -3,7 +3,6 @@ if [ -z "$PREFIX" ]; then
 	PREFIX=`opam config var prefix`
 fi
 LIBDIR="$PREFIX/lib/gmp-xen"
-
 PKG_CONFIG_PATH="$PREFIX/lib/pkgconfig"
 export PKG_CONFIG_PATH
 

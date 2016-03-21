@@ -1,0 +1,18 @@
+opam-version: "1.2"
+maintainer: "thomas@gazagnaire.org"
+homepage: "https://github.com/ocamllabs/opam-doc"
+tags: [
+  "org:ocamllabs"
+]
+build: [
+  [make]
+  [make "install"]
+]
+remove: [make "uninstall"]
+depends: [
+  "ocamlfind"
+  "cow" {>= "0.8.1"}
+  "ocamlbuild" {build}
+]
+available: [ preinstalled & (ocaml-version = "4.01.0") ]
+dev-repo: "git://github.com/ocamllabs/opam-doc"

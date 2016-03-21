@@ -2,11 +2,13 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.m4) (pkgs.ncurses) ] ++ (lib.attrValues opamDeps));
+    ([  ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      conf-m4 = opamSelection.conf-m4;
+      conf-ncurses = opamSelection.conf-ncurses;
       ocaml = opamSelection.ocaml;
     };
     opamSelection = world.opamSelection;

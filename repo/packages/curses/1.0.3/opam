@@ -1,0 +1,14 @@
+opam-version: "1"
+maintainer: "ogunden@phauna.org"
+build: [
+  ["./configure" "--enable-widec"]
+  [make "OCAMLMAKEFILE=OCamlMakefile" "byte"]
+  [make "OCAMLMAKEFILE=OCamlMakefile" "opt"]
+  [make "OCAMLMAKEFILE=OCamlMakefile" "install"]
+]
+remove: [["ocamlfind" "remove" "curses"]]
+depends: ["ocamlfind"]
+depexts: [
+ [ ["ubuntu"] ["libncurses-dev"] ]
+ [ ["debian"] ["libncurses-dev"] ]
+]

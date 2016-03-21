@@ -1,0 +1,17 @@
+opam-version: "1.2"
+maintainer: "contact@ocamlpro.com"
+patches: [
+  "4.01.patch" {ocaml-version >= "4.01.0"}
+]
+build: [
+  ["./configure"]
+  [make "all"]
+  [make "install"]
+]
+remove: [["ocamlfind" "remove" "mascot"]]
+depends: [
+  "ocamlfind"
+  "camlp4"
+  "ocamlbuild" {build}
+]
+ocaml-version: [>= "4.0.0" & < "4.02.0"]

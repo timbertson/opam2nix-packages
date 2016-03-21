@@ -1,0 +1,26 @@
+opam-version: "1.2"
+maintainer: "anil@recoil.org"
+tags: [
+  "org:mirage"
+  "org:xapi-project"
+]
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+  ["ocaml" "setup.ml" "-install"]
+]
+remove: [
+  ["ocamlfind" "remove" "plugin-loader"]
+  ["ocamlfind" "remove" "userconf"]
+  ["ocamlfind" "remove" "oasis"]
+]
+depends: [
+  "ocamlfind"
+  "fileutils"
+  "ocaml-data-notation"
+  "ocamlify"
+  "ocamlmod"
+  "ocamlbuild"
+]
+conflicts: ["oasis"]
+dev-repo: "git://github.com/avsm/oasis"

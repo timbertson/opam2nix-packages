@@ -1,0 +1,16 @@
+opam-version: "1.2"
+maintainer: "romain.slootmaekers@incubaid.com"
+build: [
+  ["%{make}%" "-C" "src"]
+  ["%{make}%" "-C" "src" "install"]
+]
+remove: [
+  ["ocamlfind" "remove" "camltc"]
+]
+depends: [
+  "ocamlfind"
+  "ounit"
+  "lwt" {>= "2.4.4"}
+  "ocamlbuild" {build}
+]
+available: [ ocaml-version > "4.00.0" ]

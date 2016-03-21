@@ -1,0 +1,18 @@
+opam-version: "1.2"
+maintainer: "siraaj@khandkar.net"
+build: [
+  [make "build"]
+  [make "install"]
+]
+remove: [
+  ["ocamlfind" "remove" "caravan"]
+]
+depends: [
+  "ocamlfind"
+  "oasis"
+  "core"
+  "async"
+  "textutils"
+  "ocamlbuild" {build}
+]
+dev-repo: "git://github.com/ibnfirnas/caravan"

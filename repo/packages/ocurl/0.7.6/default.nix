@@ -2,12 +2,12 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.libcurl-devel or null) (pkgs.libcurl4-gnutls-dev or null)
-        (pkgs.openssl-devel or null) ] ++ (lib.attrValues opamDeps));
+    ([  ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      conf-libcurl = opamSelection.conf-libcurl;
       lwt = opamSelection.lwt or null;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;

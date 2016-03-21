@@ -1,0 +1,12 @@
+opam-version: "1.2"
+maintainer: "martin@mjambon.com"
+homepage: "https://github.com/mjambon/cmitomli"
+ocaml-version: [>= "4.00.0"]
+build: [
+  [make]
+  [make "install" "BINDIR=%{bin}%"]
+]
+remove: [
+  [make "uninstall" "BINDIR=%{bin}%"]
+]
+dev-repo: "git://github.com/mjambon/cmitomli"

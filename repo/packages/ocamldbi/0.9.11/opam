@@ -1,0 +1,19 @@
+opam-version: "1"
+maintainer: "contact@ocamlpro.com"
+build: [
+  [make]
+  [make "install" "OCAMLDBIDIR=%{lib}%/ocamldbi" "DOCDIR=%{doc}%/ocamldbi"]
+]
+remove: [["ocamlfind" "remove" "ocamldbi"]]
+depends: [
+  "ocamlfind"
+  "pcre"
+]
+depopts: [
+  "postgres"
+  "mysql"
+]
+conflicts: [
+  "postgresql"
+  "freetds"
+]

@@ -1,0 +1,16 @@
+opam-version: "1"
+maintainer: "contact@ocamlpro.com"
+build: [
+  ["./configure" "--prefix" prefix "--datarootdir" prefix]
+  [make "byte" "opt"]
+  [make "install"]
+]
+remove: [
+  ["./configure" "--prefix" prefix "--datarootdir" prefix]
+  [make "uninstall"]
+]
+depends: ["ocamlfind"]
+depexts: [
+  [["debian"] ["libmagic-dev"]]
+  [["ubuntu"] ["libmagic-dev"]]
+]

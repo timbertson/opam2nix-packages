@@ -1,0 +1,10 @@
+opam-version: "1.2"
+maintainer: "jakub.zwolakowski@inria.fr"
+build: [[make]]
+depends: [
+  "atd" {>= "1.0.3" & <= "2"}
+  "atdgen" {>= "1.2.4" & < "1.4.0"}
+  "menhir"
+  ("extlib" | "extlib-compat")
+  "ocamlbuild" {build}
+]

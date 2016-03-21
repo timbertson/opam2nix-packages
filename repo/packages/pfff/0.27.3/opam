@@ -1,0 +1,14 @@
+opam-version: "1.2"
+maintainer: "pad@fb.com"
+homepage: "https://github.com/facebook/pfff/wiki/Main"
+build: [
+  ["./configure" "--novisual" "--nocmt" "--nobytecode"]
+  [make "depend"]
+  [make]
+  [make "opt"]
+  [make "install-findlib"]
+]
+remove: [[make "uninstall-findlib"]]
+depends: ["ocamlfind" "camlp4"]
+ocaml-version: [>= "3.12.1" & < "4.02.0"]
+dev-repo: "git://github.com/facebook/pfff"

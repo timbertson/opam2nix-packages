@@ -1,0 +1,18 @@
+opam-version: "1.2"
+maintainer: "pmundkur.ocaml@gmail.com"
+homepage: "https://github.com/discoproject/odisco"
+build: [
+  [make]
+  [make "install"]
+]
+remove: [["ocamlfind" "remove" "odisco"]]
+depends: [
+  "ocamlfind"
+  "sonet"
+  "atdgen"
+  "biniou"
+  "camlzip"
+  "ocamlbuild" {build}
+]
+ocaml-version: [>= "4.00.0"]
+dev-repo: "git://github.com/discoproject/odisco"

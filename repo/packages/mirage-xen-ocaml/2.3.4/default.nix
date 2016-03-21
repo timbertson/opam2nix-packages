@@ -12,7 +12,7 @@ let
       ocaml = opamSelection.ocaml;
       ocaml-src = opamSelection.ocaml-src;
       ocamlbuild = opamSelection.ocamlbuild;
-      ocamlfind = opamSelection.ocamlfind or null;
+      ocamlfind = opamSelection.ocamlfind;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;

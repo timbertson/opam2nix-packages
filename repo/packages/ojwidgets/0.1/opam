@@ -1,0 +1,19 @@
+opam-version: "1.2"
+maintainer: "dev@ocsigen.org"
+build: [
+  ["./configure"
+      "--prefix" prefix]
+  [make]
+  [make "install"]
+]
+remove: [
+  ["ocamlfind" "remove" "ojwidgets"]
+]
+depends: [
+  "ocamlfind"
+  "deriving"
+  "js_of_ocaml" {>= "2.1" & < "2.4"}
+  "ojquery"
+  "ocamlbuild" {build}
+]
+dev-repo: "git://github.com/ocsigen/ojwidgets"

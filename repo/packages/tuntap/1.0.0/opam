@@ -1,0 +1,21 @@
+opam-version: "1.2"
+maintainer: "vb@luminar.eu.org"
+tags: [
+  "org:mirage"
+  "org:xapi-project"
+]
+build: [
+  [make "PREFIX=%{prefix}%"]
+  [make "PREFIX=%{prefix}%" "install"]
+]
+remove: [["ocamlfind" "remove" "tuntap"]]
+depends: [
+  "ocamlfind"
+  "ipaddr" {>= "2.2.0"}
+  "cmdliner"
+  "lwt"
+  "ounit"
+  "ocamlbuild" {build}
+]
+ocaml-version: [>="4.00.0"]
+dev-repo: "git://github.com/mirage/ocaml-tuntap"

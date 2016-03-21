@@ -1,0 +1,14 @@
+opam-version: "1.2"
+maintainer: "contact@ocamlpro.com"
+homepage: "https://github.com/pmundkur/sonet"
+build: [
+  [make]
+  [make "install"]
+]
+remove: [["ocamlfind" "remove" "sonet"]]
+depends: [
+  "ocamlfind"
+  "ocamlbuild" {build}
+]
+ocaml-version: [>= "4.00.0"]
+dev-repo: "git://github.com/pmundkur/sonet"

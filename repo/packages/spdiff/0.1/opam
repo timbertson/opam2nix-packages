@@ -1,0 +1,12 @@
+opam-version: "1.2"
+authors: ["Jesper Andersen"]
+homepage: "http://www.diku.dk/~jespera/index.html"
+license: "GPL"
+build: [
+  ["make" "depend"]
+  ["make" "opt"]
+]
+depends: [
+  "menhir" {<= "20140422"}
+]
+dev-repo: "git://github.com/jespera/spdiff"

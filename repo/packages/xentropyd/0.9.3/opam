@@ -1,0 +1,35 @@
+opam-version: "1.2"
+maintainer: "dave.scott@citrix.com"
+build: [
+  [ "oasis" "setup" ]
+  [ "ocaml" "setup.ml" "-configure" ]
+  [ "ocaml" "setup.ml" "-build" ]
+  [ "cp" "main.native" "%{bin}%/xentropyd" ]
+]
+depends: [
+  "oasis"
+  "cstruct" {>= "0.6.0"}
+  "lwt"
+  "sexplib" {< "113.01.00"}
+  "ocamlfind"
+  "io-page"
+  "xen-evtchn"
+  "xen-gnt"
+  "shared-memory-ring"
+  "cmdliner"
+  "cstruct"
+  "mirage-clock-unix"
+  "mirage-types"
+  "ipaddr"
+  "uri"
+  "stringext"
+  "ocamlbuild" {build}
+]
+depexts: [
+  [["debian"] ["libxen-dev" "uuid-dev"]]
+  [["ubuntu"] ["libxen-dev" "uuid-dev"]]
+  [["centos"] ["xen-devel"]]
+  [["xenserver"] ["xen-dom0-libs-devel" "xen-libs-devel"]]
+]
+ocaml-version: [>= "4.01.0"]
+dev-repo: "git://github.com/mirage/xentropyd"

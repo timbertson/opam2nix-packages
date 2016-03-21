@@ -1,7 +1,7 @@
 world:
 {
   "20140422" = import ./20140422 world;
-  "20151112" = import ./20151112 world;
-  latest = import ./20151112 world;
+  "20160303" = import ./20160303 world;
+  latest = import ./20160303 world;
 }
 

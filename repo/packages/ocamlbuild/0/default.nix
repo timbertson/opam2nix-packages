@@ -6,6 +6,7 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      base-ocamlbuild = opamSelection.base-ocamlbuild;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind or null;
     };

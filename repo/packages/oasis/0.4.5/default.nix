@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       base-unix = opamSelection.base-unix;
+      gettext = opamSelection.gettext or null;
       ocaml = opamSelection.ocaml;
       ocaml-data-notation = opamSelection.ocaml-data-notation;
       ocamlbuild = opamSelection.ocamlbuild;

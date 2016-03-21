@@ -1,0 +1,9 @@
+opam-version: "1.2"
+maintainer: "kaspar.rohrer@gmail.com"
+build: [
+  [make]
+  [make "install"]
+]
+remove: [[make "uninstall"]]
+depends: ["ocamlfind"]
+dev-repo: "git://github.com/krohrer/caml-inspect"
