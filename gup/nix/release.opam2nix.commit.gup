@@ -1,0 +1,5 @@
+#!bash -eu
+gup --always
+cd ../opam2nix
+git rev-parse HEAD > "$1"
+gup --contents "$1"

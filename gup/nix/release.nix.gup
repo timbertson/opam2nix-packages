@@ -1,0 +1,44 @@
+#!/bin/bash -eu
+function gupcat {
+	gup -u "$@"
+	cat "$@"
+}
+
+function fetchgitargs {
+	repo="$1"
+	workdir="$2"
+	rev="$3"
+	digest="$(nix-prefetch-git "$(pwd)/$workdir" "$rev" | tail -n 1)"
+	[ -n "$digest" ]
+	cat <<EOF
+		url = "$repo";
+		rev = "$rev";
+		sha256 = "$digest";
+EOF
+}
+
+# gup -u release.{opam2nix,repo}.commit
+cat > "$1" <<EOF
+{ pkgs ? import <nixpkgs> {}}:
+with pkgs;
+let
+	src = fetchgit {
+		fetchSubmodules = false;
+$(fetchgitargs \
+			"https://github.com/timbertson/opam2nix-packages.git" \
+			".." \
+			"$(gupcat release.packages.commit)")
+	};
+
+	# We could leave this out and just use `fetchSubmodules` above,
+	# but that leads to mass-rebuilds every time the repo changes
+	# (rather than only when opam2nix is updated)
+	opam2nix = fetchgit {
+$(fetchgitargs \
+			"https://github.com/timbertson/opam2nix.git" \
+			"../opam2nix" \
+			"$(gupcat release.opam2nix.commit)")
+	};
+in
+callPackage "\${src}/nix" {} { inherit src opam2nix; }
+EOF
