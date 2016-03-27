@@ -412,6 +412,7 @@ world:
   imap = import ./imap world;
   imaplet-lwt = import ./imaplet-lwt world;
   incremental = import ./incremental world;
+  incremental_kernel = import ./incremental_kernel world;
   indexmap = import ./indexmap world;
   inotify = import ./inotify world;
   inspect = import ./inspect world;
@@ -475,6 +476,7 @@ world:
   lbfgs = import ./lbfgs world;
   ledit = import ./ledit world;
   lemonade = import ./lemonade world;
+  lemonade-sqlite = import ./lemonade-sqlite world;
   lens = import ./lens world;
   leveldb = import ./leveldb world;
   levenshtein = import ./levenshtein world;
@@ -650,6 +652,7 @@ world:
   ocaml-markdown = import ./ocaml-markdown world;
   ocaml-monadic = import ./ocaml-monadic world;
   ocaml-posix-resource = import ./ocaml-posix-resource world;
+  ocaml-protoc = import ./ocaml-protoc world;
   ocaml-radixtree = import ./ocaml-radixtree world;
   ocaml-src = import ./ocaml-src world;
   ocaml-systemd = import ./ocaml-systemd world;
@@ -935,6 +938,7 @@ world:
   schoca = import ./schoca world;
   schroedinger = import ./schroedinger world;
   scrypt = import ./scrypt world;
+  scrypt-kdf = import ./scrypt-kdf world;
   sedlex = import ./sedlex world;
   semver = import ./semver world;
   sequence = import ./sequence world;
@@ -1072,6 +1076,7 @@ world:
   uuseg = import ./uuseg world;
   uutf = import ./uutf world;
   uwt = import ./uwt world;
+  valentine = import ./valentine world;
   variantslib = import ./variantslib world;
   vchan = import ./vchan world;
   vector3 = import ./vector3 world;

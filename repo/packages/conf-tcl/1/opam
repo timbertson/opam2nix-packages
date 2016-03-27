@@ -3,6 +3,7 @@ maintainer: "tim@gfxmonk.net"
 bug-reports: "https://github.com/ocaml/opam-repository/issues"
 dev-repo: "https://github.com/ocaml/opam-repository.git"
 build: [["pkg-config" "tcl"]]
+depends: ["conf-pkg-config"]
 depexts: [
   [["debian"] ["tcl-dev"]]
   [["ubuntu"] ["tcl-dev"]]

@@ -8,6 +8,3 @@ build: [
 ]
 remove: []
 os: ["linux"]
-depends: [
-  "conf-perl" {build}
-]

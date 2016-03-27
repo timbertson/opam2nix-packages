@@ -2,13 +2,14 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.libssl-dev or null) (pkgs.openssl-devel or null) ] ++ (lib.attrValues opamDeps));
+    ([  ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
     {
       async = opamSelection.async;
       bin_prot = opamSelection.bin_prot;
+      conf-openssl = opamSelection.conf-openssl;
       core = opamSelection.core;
       ctypes = opamSelection.ctypes;
       ctypes-foreign = opamSelection.ctypes-foreign;

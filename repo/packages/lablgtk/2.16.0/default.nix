@@ -2,7 +2,8 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.expat or null) (pkgs.gtk or null) (pkgs.libexpat1-dev or null)
+    ([ (pkgs.expat or null) (pkgs.gtk or null) (pkgs."gtk+2.0-dev" or null)
+        (pkgs.gtk2-devel or null) (pkgs.libexpat1-dev or null)
         (pkgs."libgtk2.0-dev" or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;

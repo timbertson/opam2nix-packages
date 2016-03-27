@@ -7,7 +7,6 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
-      conf-which = opamSelection.conf-which;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
     };

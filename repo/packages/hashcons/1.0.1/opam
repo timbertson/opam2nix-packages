@@ -15,5 +15,4 @@ install: [
 remove: [["ocamlfind" "remove" "hashcons"]]
 depends: [
   "ocamlfind" {build}
-  "conf-which" {build}
 ]

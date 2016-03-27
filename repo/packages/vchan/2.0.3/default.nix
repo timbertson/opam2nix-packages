@@ -17,6 +17,7 @@ let
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       sexplib = opamSelection.sexplib;
+      type_conv = opamSelection.type_conv;
       xen-evtchn = opamSelection.xen-evtchn or null;
       xen-gnt = opamSelection.xen-gnt or null;
       xenstore = opamSelection.xenstore;

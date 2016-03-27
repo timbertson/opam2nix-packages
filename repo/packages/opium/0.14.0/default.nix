@@ -11,6 +11,7 @@ let
       cmdliner = opamSelection.cmdliner;
       cohttp = opamSelection.cohttp;
       core_kernel = opamSelection.core_kernel;
+      cppo = opamSelection.cppo;
       ezjsonm = opamSelection.ezjsonm;
       fieldslib = opamSelection.fieldslib;
       lwt = opamSelection.lwt;

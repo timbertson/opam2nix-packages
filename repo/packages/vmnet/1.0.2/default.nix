@@ -15,6 +15,7 @@ let
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       sexplib = opamSelection.sexplib;
+      type_conv = opamSelection.type_conv;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;

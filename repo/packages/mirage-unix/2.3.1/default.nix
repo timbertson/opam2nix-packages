@@ -17,6 +17,7 @@ let
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       shared-memory-ring = opamSelection.shared-memory-ring;
+      type_conv = opamSelection.type_conv;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;
