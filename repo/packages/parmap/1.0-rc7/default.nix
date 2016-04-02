@@ -2,20 +2,15 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([
-        (pkgs."https://gist.githubusercontent.com/andersfugmann/11168509/raw" or null)
-        ] ++ (lib.attrValues opamDeps));
+    ([  ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
     {
-      base-unix = opamSelection.base-unix;
-      oasis = opamSelection.oasis;
+      conf-autoconf = opamSelection.conf-autoconf;
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
-      ounit = opamSelection.ounit;
-      uint = opamSelection.uint;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;
@@ -27,12 +22,12 @@ pkgs.stdenv.mkDerivation
   configurePhase = "true";
   createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
-  name = "zmq-4.0-1";
+  name = "parmap-1.0-rc7";
   opamEnv = builtins.toJSON 
   {
     deps = opamDeps;
     files = null;
-    name = "zmq";
+    name = "parmap";
     ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
@@ -43,8 +38,8 @@ pkgs.stdenv.mkDerivation
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "1a5jskq9wm5lhgh36c173npfj03f2z4h0gi858fq4zl305r3brk3";
-    url = "https://github.com/issuu/ocaml-zmq/archive/4.0-1.tar.gz";
+    sha256 = "04hrgvgagmsf2brhinr7qpwb8r12lnmlc6w5kf1l4lwfidxx94xr";
+    url = "https://github.com/rdicosmo/parmap/archive/1.0-rc7.tar.gz";
   };
 }
 

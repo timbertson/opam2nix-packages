@@ -15,4 +15,7 @@ install: [
 ]
 remove: []
 available: [os = "linux"]
-depends: ["minios-xen"]
+depends: [
+  "minios-xen"
+  "conf-perl" {build}
+]

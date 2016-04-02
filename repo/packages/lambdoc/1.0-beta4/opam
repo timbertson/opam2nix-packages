@@ -5,11 +5,16 @@ homepage: "http://lambdoc.forge.ocamlcore.org/"
 bug-reports: "https://github.com/darioteixeira/lambdoc/issues"
 dev-repo: "https://github.com/darioteixeira/lambdoc.git"
 license: "GPL-2.0"
-ocaml-version: [>= "4.01.0"]
+available: [ocaml-version >= "4.02.0"]
 build: [
+    ["./configure" "--prefix" prefix
+                   "--docdir" "%{doc}%/lambdoc"
+                   "--%{alcotest:enable}%-tests"]
     [make]
-    [make "install"]
+    [make "doc"]
 ]
+build-test: [make "test"]
+install: [[make "install"]]
 remove: [["ocamlfind" "remove" "lambdoc"]]
 depends: [
   "ocamlfind"
@@ -18,12 +23,14 @@ depends: [
   "menhir"
   "ulex"
   "sexplib" {< "113.01.00"}
+  "type_conv"
   "pcre"
   "pxp"
   "xstrp4"
-  "tyxml" {>= "3.2" & < "4"}
+  "tyxml" {>= "3.2" & < "3.6"}
   "omd" {>= "1.0.0"}
   "blahcaml"
   "camlhighlight" {>= "3.0" & < "4"}
+  "alcotest" {test}
   "ocamlbuild" {build}
 ]

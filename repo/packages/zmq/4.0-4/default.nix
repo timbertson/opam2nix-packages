@@ -7,11 +7,14 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
-      camlp4 = opamSelection.camlp4;
-      conf-autoconf = opamSelection.conf-autoconf;
+      base-unix = opamSelection.base-unix;
+      conf-zmq = opamSelection.conf-zmq;
+      oasis = opamSelection.oasis;
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
+      ounit = opamSelection.ounit;
+      uint = opamSelection.uint;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;
@@ -23,12 +26,12 @@ pkgs.stdenv.mkDerivation
   configurePhase = "true";
   createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
-  name = "parmap-1.0-rc2";
+  name = "zmq-4.0-4";
   opamEnv = builtins.toJSON 
   {
     deps = opamDeps;
     files = null;
-    name = "parmap";
+    name = "zmq";
     ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
@@ -39,8 +42,8 @@ pkgs.stdenv.mkDerivation
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "1i7p4a888kf6c59413wvvakqy9fs6dmfx3rrj711qwnviib4xs2h";
-    url = "https://github.com/rdicosmo/parmap/tarball/1.0-rc2";
+    sha256 = "11z7f49bc3lyvf1wp17fkpqnvg8xhlan1kywp6lkfnw3sl9fb1hv";
+    url = "https://github.com/issuu/ocaml-zmq/archive/4.0-4.tar.gz";
   };
 }
 

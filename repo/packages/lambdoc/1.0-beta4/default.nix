@@ -7,9 +7,22 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
-      conf-which = opamSelection.conf-which;
+      batteries = opamSelection.batteries;
+      blahcaml = opamSelection.blahcaml;
+      camlhighlight = opamSelection.camlhighlight;
+      camlp4 = opamSelection.camlp4;
+      menhir = opamSelection.menhir;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
+      omd = opamSelection.omd;
+      pcre = opamSelection.pcre;
+      pxp = opamSelection.pxp;
+      sexplib = opamSelection.sexplib;
+      type_conv = opamSelection.type_conv;
+      tyxml = opamSelection.tyxml;
+      ulex = opamSelection.ulex;
+      xstrp4 = opamSelection.xstrp4;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;
@@ -21,12 +34,12 @@ pkgs.stdenv.mkDerivation
   configurePhase = "true";
   createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
-  name = "hashcons-1.0.1";
+  name = "lambdoc-1.0-beta4";
   opamEnv = builtins.toJSON 
   {
     deps = opamDeps;
-    files = null;
-    name = "hashcons";
+    files = ./files;
+    name = "lambdoc";
     ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
@@ -34,11 +47,12 @@ pkgs.stdenv.mkDerivation
   {
     opamSelection = opamSelection;
   };
+  postUnpack = "cp -r ${./files}/* \"$sourceRoot/\"";
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "0ncb1c5sjydd9vphnb780ay60nhwsxwq070l63rng4lw2ljmc2c3";
-    url = "https://github.com/dsheets/ocaml-hashcons/releases/download/1.0.1/ocaml-hashcons-1.0.1.tar.gz";
+    sha256 = "1b5jwkf9266vapmh8jwq6mbdr7w0aacsbhxiaavrwazskxqfrylp";
+    url = "https://github.com/darioteixeira/lambdoc/archive/v1.0-beta4.tar.gz";
   };
 }
 

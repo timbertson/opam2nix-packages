@@ -2,20 +2,23 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([
-        (pkgs."https://gist.github.com/hcarty/77e32afdecbf09af0213/raw" or null)
-        ] ++ (lib.attrValues opamDeps));
+    ([  ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
     {
-      base-unix = opamSelection.base-unix;
-      oasis = opamSelection.oasis;
+      cstruct = opamSelection.cstruct;
+      lwt = opamSelection.lwt or null;
+      mirage-entropy-xen = opamSelection.mirage-entropy-xen or null;
+      mirage-no-xen = opamSelection.mirage-no-xen or null;
+      mirage-xen = opamSelection.mirage-xen or null;
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
-      ounit = opamSelection.ounit;
-      uint = opamSelection.uint;
+      sexplib = opamSelection.sexplib;
+      type_conv = opamSelection.type_conv;
+      zarith = opamSelection.zarith;
+      zarith-xen = opamSelection.zarith-xen or null;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;
@@ -27,12 +30,12 @@ pkgs.stdenv.mkDerivation
   configurePhase = "true";
   createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
-  name = "zmq-4.0-2";
+  name = "nocrypto-0.5.1";
   opamEnv = builtins.toJSON 
   {
     deps = opamDeps;
     files = null;
-    name = "zmq";
+    name = "nocrypto";
     ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
@@ -43,8 +46,8 @@ pkgs.stdenv.mkDerivation
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "0cnw36249ph9f05ralccwszls2mzf4wx7ng9vfdvbgfvj3q8fqzz";
-    url = "https://github.com/issuu/ocaml-zmq/archive/4.0-2.tar.gz";
+    sha256 = "132bndb83isw35529mdjqb92jc58x4d7kvj7x0i3lwasyaq774b0";
+    url = "https://github.com/mirleft/ocaml-nocrypto/archive/0.5.1.tar.gz";
   };
 }
 

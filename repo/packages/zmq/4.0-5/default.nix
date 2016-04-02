@@ -2,15 +2,19 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs."https://gist.github.com/flixr/10003993/raw" or null)
-        (pkgs."libglib2.0-dev" or null) (pkgs.libpcre3-dev or null)
-        (pkgs.tk-dev or null) ] ++ (lib.attrValues opamDeps));
+    ([  ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      base-unix = opamSelection.base-unix;
+      conf-zmq = opamSelection.conf-zmq;
+      oasis = opamSelection.oasis;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
+      ounit = opamSelection.ounit;
+      uint = opamSelection.uint;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;
@@ -22,12 +26,12 @@ pkgs.stdenv.mkDerivation
   configurePhase = "true";
   createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
-  name = "ivy-1.3.1";
+  name = "zmq-4.0-5";
   opamEnv = builtins.toJSON 
   {
     deps = opamDeps;
     files = null;
-    name = "ivy";
+    name = "zmq";
     ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
@@ -38,8 +42,8 @@ pkgs.stdenv.mkDerivation
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "1dnyzxf9i650mh3w6grhb4kn6dh25bnpanqkip5sfb7az5wx3ddp";
-    url = "http://www.eei.cena.fr/products/ivy/download/packages/ivy-ocaml_1.3.1.tar.xz";
+    sha256 = "1157rfl4ss7cw0wk7l3pblfbpxnc3jb0xl67nzzkcbldzr3f70zw";
+    url = "https://github.com/issuu/ocaml-zmq/archive/4.0-5.tar.gz";
   };
 }
 

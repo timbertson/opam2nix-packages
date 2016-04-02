@@ -7,21 +7,10 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
-      batteries = opamSelection.batteries;
-      blahcaml = opamSelection.blahcaml;
-      camlhighlight = opamSelection.camlhighlight;
-      camlp4 = opamSelection.camlp4;
-      menhir = opamSelection.menhir;
+      conf-autoconf = opamSelection.conf-autoconf;
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
-      omd = opamSelection.omd;
-      pcre = opamSelection.pcre;
-      pxp = opamSelection.pxp;
-      sexplib = opamSelection.sexplib;
-      tyxml = opamSelection.tyxml;
-      ulex = opamSelection.ulex;
-      xstrp4 = opamSelection.xstrp4;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;
@@ -33,12 +22,12 @@ pkgs.stdenv.mkDerivation
   configurePhase = "true";
   createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
-  name = "lambdoc-1.0-beta2";
+  name = "parmap-1.0-rc6";
   opamEnv = builtins.toJSON 
   {
     deps = opamDeps;
-    files = ./files;
-    name = "lambdoc";
+    files = null;
+    name = "parmap";
     ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
@@ -46,12 +35,11 @@ pkgs.stdenv.mkDerivation
   {
     opamSelection = opamSelection;
   };
-  postUnpack = "cp -r ${./files}/* \"$sourceRoot/\"";
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "0pax7637ys92cndvdzbdffb8hvzpbyipl4a32ziqlilf3ikr3yy1";
-    url = "https://forge.ocamlcore.org/frs/download.php/1459/lambdoc-1.0-beta2.tgz";
+    sha256 = "1rnriyggcshl721qini170pgzc2avz6xshvl0v4fs7cbxjrfxqi5";
+    url = "https://github.com/rdicosmo/parmap/archive/1.0-rc6.tar.gz";
   };
 }
 

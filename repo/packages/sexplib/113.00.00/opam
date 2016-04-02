@@ -13,15 +13,14 @@ remove: [
 ]
 depends: [
   "ocamlfind"
-  "camlp4"
   "ocamlbuild" {build}
 ]
-depopts: ["type_conv"]
+depopts: ["camlp4" "type_conv"]
 conflicts: [
-  "type_conv" {< "111.13.00"}
-  "type_conv" {> "111.13.00"}
+  "type_conv" {< "113.00.00"}
+  "type_conv" {>= "113.01.00"}
 ]
-available: [ ocaml-version >= "4.00.0" & ocaml-version < "4.03.0" ]
+available: [ ocaml-version >= "4.02.1" & ocaml-version < "4.03" ]
 bug-reports: "https://github.com/janestreet/sexplib/issues"
 dev-repo: "https://github.com/janestreet/sexplib.git"
 install: [[make "install"]]

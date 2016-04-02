@@ -7,7 +7,7 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
-      camlp4 = opamSelection.camlp4;
+      camlp4 = opamSelection.camlp4 or null;
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
@@ -23,7 +23,7 @@ pkgs.stdenv.mkDerivation
   configurePhase = "true";
   createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
-  name = "sexplib-111.25.00";
+  name = "sexplib-113.00.00";
   opamEnv = builtins.toJSON 
   {
     deps = opamDeps;
@@ -39,8 +39,8 @@ pkgs.stdenv.mkDerivation
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "0qh0zqp5nakqpmmhh4x7cg03vqj3j2bj4zj0nqdlksai188p9ila";
-    url = "https://ocaml.janestreet.com/ocaml-core/111.25.00/individual/sexplib-111.25.00.tar.gz";
+    sha256 = "1r20hamrh1mnn89ia3k70rnbbxj05hd642mhrdb6i4z3masg34fz";
+    url = "https://ocaml.janestreet.com/ocaml-core/113.00/files/sexplib-113.00.00.tar.gz";
   };
 }
 

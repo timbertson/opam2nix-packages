@@ -7,11 +7,14 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
-      camlp4 = opamSelection.camlp4;
-      conf-autoconf = opamSelection.conf-autoconf;
+      base-bytes = opamSelection.base-bytes;
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
+      re = opamSelection.re;
+      sexplib = opamSelection.sexplib;
+      stringext = opamSelection.stringext;
+      type_conv = opamSelection.type_conv;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;
@@ -23,12 +26,12 @@ pkgs.stdenv.mkDerivation
   configurePhase = "true";
   createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
-  name = "parmap-1.0-rc1";
+  name = "uri-1.9.1";
   opamEnv = builtins.toJSON 
   {
     deps = opamDeps;
     files = null;
-    name = "parmap";
+    name = "uri";
     ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
@@ -39,8 +42,8 @@ pkgs.stdenv.mkDerivation
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "1k18g706ldilsam1f0xp6kk0jyi5b61mi1yaissvkyrp6cisna0f";
-    url = "https://github.com/rdicosmo/parmap/tarball/1.0-rc1";
+    sha256 = "00j40g7clnslalvdwz12m3l0bak9n6fi2j3dapmyqrxza0qzbsg7";
+    url = "https://github.com/mirage/ocaml-uri/archive/v1.9.1.tar.gz";
   };
 }
 
