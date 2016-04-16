@@ -30,7 +30,7 @@ $(fetchgitargs \
 			"$(gupcat release.packages.commit)")
 	};
 
-	# We could leave this out and just use `fetchSubmodules` above,
+	# We could leave this out and just use \`fetchSubmodules\` above,
 	# but that leads to mass-rebuilds every time the repo changes
 	# (rather than only when opam2nix is updated)
 	opam2nix = fetchgit {

@@ -1,3 +1,5 @@
+<img src="http://gfxmonk.net/dist/status/project/opam2nix.png">
+
 # opam2nix is experimental software
 
 I'm hoping to make it stable and a future part of `nixpkgs`. But for now, it's just this code which might work sometimes, and will probably change a lot.
