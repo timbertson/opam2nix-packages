@@ -4,7 +4,7 @@
 
 I'm hoping to make it stable and a future part of `nixpkgs`. But for now, it's just this code which might work sometimes, and will probably change a lot.
 
-# This repository contains prebuilt nix derivations, as well as specific overrides (in `repo/`) for certain packages which require it.
+This repository contains prebuilt nix derivations, as well as specific overrides (in `repo/`) for certain packages which require it.
 
 ## Building:
 
