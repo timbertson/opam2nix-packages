@@ -13,7 +13,9 @@ world:
 	mergeTwoLevels = lib.recursiveUpdateUntil (parent: l: r: (lib.length parent) == 1);
 	mergePackageSets = sources: self: lib.foldl (acc: p: mergeTwoLevels acc (p self)) {} sources;
 	basePackages = self: world // {
-		opamPackages = mergePackageSets ([ packageDefs ] ++ (world.extraRepos or [])) self; };
+		overrideOcaml = world.pkgs.callPackage ./overrides/ocaml.nix {};
+		opamPackages = mergePackageSets ([ packageDefs ] ++ (world.extraRepos or [])) self;
+	};
 
 	addSelection = ({super, self}: { opamSelection = world.select self; });
 in
