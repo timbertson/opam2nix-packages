@@ -1,8 +1,8 @@
 world:
 let
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.gsl or null) (pkgs.libgsl-devel or null)
-        (pkgs.libgsl0-dev or null) ] ++ (lib.attrValues opamDeps));
+    ([ (pkgs.gsl or null) (pkgs.gsl-devel or null)
+        (pkgs.libgsl-devel or null) (pkgs.libgsl0-dev or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 

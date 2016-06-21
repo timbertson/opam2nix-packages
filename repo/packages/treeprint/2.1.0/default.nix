@@ -10,6 +10,7 @@ let
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
       omake = opamSelection.omake;
+      ppx_meta_conv = opamSelection.ppx_meta_conv;
       spotlib = opamSelection.spotlib;
     };
     opamSelection = world.opamSelection;

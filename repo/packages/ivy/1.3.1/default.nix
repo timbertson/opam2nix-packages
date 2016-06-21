@@ -3,12 +3,12 @@ let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
     ([ (pkgs."https://gist.github.com/flixr/10003993/raw" or null)
-        (pkgs."libglib2.0-dev" or null) (pkgs.libpcre3-dev or null)
-        (pkgs.tk-dev or null) ] ++ (lib.attrValues opamDeps));
+        (pkgs."libglib2.0-dev" or null) (pkgs.libpcre3-dev or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      conf-tk = opamSelection.conf-tk;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
     };

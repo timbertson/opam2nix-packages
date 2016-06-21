@@ -11,7 +11,7 @@ let
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
       pcre = opamSelection.pcre;
-      postgres = opamSelection.postgres or null;
+      postgresql = opamSelection.postgresql or null;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;

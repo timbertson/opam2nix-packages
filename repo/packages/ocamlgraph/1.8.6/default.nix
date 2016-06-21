@@ -26,7 +26,7 @@ pkgs.stdenv.mkDerivation
   opamEnv = builtins.toJSON 
   {
     deps = opamDeps;
-    files = ./files;
+    files = null;
     name = "ocamlgraph";
     ocaml-version = world.ocamlVersion;
     spec = ./opam;
@@ -35,7 +35,6 @@ pkgs.stdenv.mkDerivation
   {
     opamSelection = opamSelection;
   };
-  postUnpack = "cp -r ${./files}/* \"$sourceRoot/\"";
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {

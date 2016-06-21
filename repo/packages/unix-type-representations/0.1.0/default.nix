@@ -9,6 +9,7 @@ let
     {
       base-unix = opamSelection.base-unix;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
     };
     opamSelection = world.opamSelection;

@@ -8,7 +8,6 @@ let
     opamDeps = 
     {
       conf-m4 = opamSelection.conf-m4;
-      conf-ncurses = opamSelection.conf-ncurses;
       ocaml = opamSelection.ocaml;
     };
     opamSelection = world.opamSelection;

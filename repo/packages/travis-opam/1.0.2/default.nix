@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind or null;
     };
     opamSelection = world.opamSelection;

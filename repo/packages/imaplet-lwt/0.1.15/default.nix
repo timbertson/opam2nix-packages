@@ -10,6 +10,7 @@ let
       camlzip = opamSelection.camlzip;
       cohttp = opamSelection.cohttp;
       dns = opamSelection.dns;
+      fieldslib = opamSelection.fieldslib;
       git = opamSelection.git;
       irmin = opamSelection.irmin;
       irmin-unix = opamSelection.irmin-unix;
@@ -20,6 +21,7 @@ let
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       re = opamSelection.re;
+      sexplib = opamSelection.sexplib;
       tls = opamSelection.tls;
     };
     opamSelection = world.opamSelection;

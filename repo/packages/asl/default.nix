@@ -1,6 +1,6 @@
 world:
 {
-  "0.6" = import ./0.6 world;
-  latest = import ./0.6 world;
+  "0.10" = import ./0.10 world;
+  latest = import ./0.10 world;
 }
 

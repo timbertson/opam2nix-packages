@@ -1,7 +1,7 @@
 world:
 let
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.libgnutls-dev or null) ] ++ (lib.attrValues opamDeps));
+    ([ (pkgs.libgnutls-dev or null) (pkgs.nettle-dev or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 

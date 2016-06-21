@@ -10,6 +10,7 @@ let
       broken = opamSelection.broken;
       bsdowl = opamSelection.bsdowl;
       camomile = opamSelection.camomile;
+      conf-bmake = opamSelection.conf-bmake;
       configuration = opamSelection.configuration;
       getopts = opamSelection.getopts;
       lemonade = opamSelection.lemonade;

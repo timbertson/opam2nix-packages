@@ -9,6 +9,7 @@ let
     {
       broken = opamSelection.broken;
       bsdowl = opamSelection.bsdowl;
+      conf-bmake = opamSelection.conf-bmake;
       lemonade = opamSelection.lemonade;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;

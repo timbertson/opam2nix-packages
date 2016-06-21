@@ -1,6 +1,6 @@
 world:
 {
-  "3.5.141112" = import ./3.5.141112 world;
-  latest = import ./3.5.141112 world;
+  "3.5.150925" = import ./3.5.150925 world;
+  latest = import ./3.5.150925 world;
 }
 

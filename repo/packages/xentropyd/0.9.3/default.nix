@@ -9,6 +9,7 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      camlp4 = opamSelection.camlp4;
       cmdliner = opamSelection.cmdliner;
       cstruct = opamSelection.cstruct;
       io-page = opamSelection.io-page;

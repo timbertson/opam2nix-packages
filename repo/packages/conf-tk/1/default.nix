@@ -6,6 +6,7 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      conf-pkg-config = opamSelection.conf-pkg-config;
       ocaml = opamSelection.ocaml;
     };
     opamSelection = world.opamSelection;
@@ -20,7 +21,7 @@ pkgs.stdenv.mkDerivation
   opamEnv = builtins.toJSON 
   {
     deps = opamDeps;
-    files = null;
+    files = ./files;
     name = "conf-tk";
     ocaml-version = world.ocamlVersion;
     spec = ./opam;
@@ -29,6 +30,7 @@ pkgs.stdenv.mkDerivation
   {
     opamSelection = opamSelection;
   };
+  postUnpack = "cp -r ${./files}/* \"$sourceRoot/\"";
   propagatedBuildInputs = inputs;
   unpackPhase = "true";
 }

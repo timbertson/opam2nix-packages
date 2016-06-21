@@ -9,6 +9,7 @@ let
     {
       base-bigarray = opamSelection.base-bigarray;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
     };
     opamSelection = world.opamSelection;

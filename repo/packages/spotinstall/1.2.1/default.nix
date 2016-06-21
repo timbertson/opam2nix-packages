@@ -10,7 +10,7 @@ let
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
       omake = opamSelection.omake;
-      orakuda = opamSelection.orakuda;
+      ppx_orakuda = opamSelection.ppx_orakuda;
       spotlib = opamSelection.spotlib;
     };
     opamSelection = world.opamSelection;

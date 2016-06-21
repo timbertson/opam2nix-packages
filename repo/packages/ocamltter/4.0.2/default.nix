@@ -14,7 +14,9 @@ let
       omake = opamSelection.omake;
       orakuda = opamSelection.orakuda;
       ppx_meta_conv = opamSelection.ppx_meta_conv;
+      ppx_monadic = opamSelection.ppx_monadic;
       spotlib = opamSelection.spotlib;
+      tiny_json = opamSelection.tiny_json;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;

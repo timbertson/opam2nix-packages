@@ -7,6 +7,7 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      conf-autoconf = opamSelection.conf-autoconf;
       frama-c-base = opamSelection.frama-c-base;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind or null;

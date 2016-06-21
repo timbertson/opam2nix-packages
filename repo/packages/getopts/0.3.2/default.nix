@@ -2,13 +2,14 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.bmake or null) ] ++ (lib.attrValues opamDeps));
+    ([  ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
     {
       broken = opamSelection.broken;
       bsdowl = opamSelection.bsdowl;
+      conf-bmake = opamSelection.conf-bmake;
       lemonade = opamSelection.lemonade;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;

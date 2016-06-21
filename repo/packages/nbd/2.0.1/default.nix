@@ -17,6 +17,7 @@ let
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
       sexplib = opamSelection.sexplib;
+      type_conv = opamSelection.type_conv;
       uri = opamSelection.uri;
     };
     opamSelection = world.opamSelection;

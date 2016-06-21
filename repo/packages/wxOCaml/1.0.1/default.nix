@@ -2,13 +2,12 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs."libwxgtk-media3.0-dev" or null)
-        (pkgs."libwxgtk-webview3.0-dev" or null)
-        (pkgs."libwxgtk3.0-dev" or null) (pkgs."wx3.0-headers" or null) ] ++ (lib.attrValues opamDeps));
+    ([  ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      conf-wxwidgets = opamSelection.conf-wxwidgets;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
       ocp-build = opamSelection.ocp-build;

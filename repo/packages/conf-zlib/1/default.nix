@@ -6,6 +6,7 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      conf-pkg-config = opamSelection.conf-pkg-config;
       ocaml = opamSelection.ocaml;
     };
     opamSelection = world.opamSelection;
