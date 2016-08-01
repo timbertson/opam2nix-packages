@@ -23,15 +23,16 @@ To include these nix expressions in your own package, you can use the following 
     { pkgs ? import <nixpkgs> {}}:
     with pkgs;
     let
-      src = fetchgit {
-        fetchSubmodules = false;
-        url = "https://github.com/gfxmonk/opam2nix-packages.git";
+      src = fetchFromGitHub {
+        owner = "gfxmonk"
+        repo = "opam2nix-packages";
         rev = "...";
         sha256 = "...";
       };
     
-      opam2nixSrc = fetchgit {
-        url = "https://github.com/gfxmonk/opam2nix.git";
+      opam2nixSrc = fetchFromGitHub {
+        owner = "gfxmonk"
+        repo = "opam2nix";
         rev = "...";
         sha256 = "...";
       };
