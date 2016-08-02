@@ -23,15 +23,16 @@ To include these nix expressions in your own package, you can use the following 
     { pkgs ? import <nixpkgs> {}}:
     with pkgs;
     let
-      src = fetchgit {
-        fetchSubmodules = false;
-        url = "https://github.com/gfxmonk/opam2nix-packages.git";
+      src = fetchFromGitHub {
+        owner = "timbertson"
+        repo = "opam2nix-packages";
         rev = "...";
         sha256 = "...";
       };
     
-      opam2nixSrc = fetchgit {
-        url = "https://github.com/gfxmonk/opam2nix.git";
+      opam2nixSrc = fetchFromGitHub {
+        owner = "timbertson"
+        repo = "opam2nix";
         rev = "...";
         sha256 = "...";
       };
@@ -40,18 +41,19 @@ To include these nix expressions in your own package, you can use the following 
 
 This will import nix/default.nix  from the exact version of the repo that you specified. With this file, you can use it like so:
 
-    let opam2nix = import ./opam2nix-packages.nix { inherit pkgs; };
+    let
+      opam2nix = import ./opam2nix-packages.nix { inherit pkgs; };
 
-    # for simply building one package, use:
-    let someOpamPackage = opam2nix.buildPackage "someOpamPackage";
+      # for simply building one package, use:
+      someOpamPackage = opam2nix.buildPackage "someOpamPackage";
 
-    # for more advanced usage, you can make a selections object
-    # and build it separately:
-    let selections_file = opam2nix.select {packages = names;};
-    let deps = opam2nix.import selections_file {};
-    # deps has a named attribute for each package (including dependencies). Use it
-    # for `buildInputs` with:
-    let buildInputs = with deps; [ pkg1 pkg2 ... ];
+      # for more advanced usage, you can make a selections object
+      # and build it separately:
+      selections_file = opam2nix.select {packages = names;};
+      deps = opam2nix.import selections_file {};
+      # deps has a named attribute for each package (including
+      # dependencies). Use it for `buildInputs` with:
+      buildInputs = with deps; [ pkg1 pkg2 ... ];
 
 ## Configuration
 
