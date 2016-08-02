@@ -24,14 +24,14 @@ To include these nix expressions in your own package, you can use the following 
     with pkgs;
     let
       src = fetchFromGitHub {
-        owner = "gfxmonk"
+        owner = "timbertson"
         repo = "opam2nix-packages";
         rev = "...";
         sha256 = "...";
       };
     
       opam2nixSrc = fetchFromGitHub {
-        owner = "gfxmonk"
+        owner = "timbertson"
         repo = "opam2nix";
         rev = "...";
         sha256 = "...";
