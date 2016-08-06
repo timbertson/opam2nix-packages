@@ -14,7 +14,7 @@ world:
 	mergePackageSets = sources: self: lib.foldl (acc: p: mergeTwoLevels acc (p self)) {} sources;
 	basePackages = self: world // {
 		overrideOcaml = world.pkgs.callPackage ./overrides/ocaml.nix {};
-		opamPackages = mergePackageSets ([ packageDefs ] ++ (world.extraRepos or [])) self;
+		opamPackages = mergePackageSets ([ packageDefs ] ++ (world.extraPackages or [])) self;
 	};
 
 	addSelection = ({super, self}: { opamSelection = world.select self; });

@@ -12,7 +12,6 @@ let
       base-threads = opamSelection.base-threads or null;
       base-unix = opamSelection.base-unix or null;
       cppo = opamSelection.cppo;
-      oasis = opamSelection.oasis;
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;

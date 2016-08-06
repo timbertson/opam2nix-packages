@@ -15,10 +15,6 @@ in {
 		make opt
 		make install
 	'';
-		# if test ocaml-stub; then
-		# 	mkdir $out/bin/ocaml-stub
-		# 	cp ocaml-stub $out/bin/ocaml-stub/ocaml
-		# fi
 
 	setupHook = world.pkgs.writeText "setupHook.sh" ''
 		setToplevelPath () {
@@ -29,7 +25,10 @@ in {
 
 		addOCamlPath () {
 			if test -d "''$1/lib"; then
-					export OCAMLPATH="''${OCAMLPATH}''${OCAMLPATH:+:}''$1/lib"
+				export OCAMLPATH="''${OCAMLPATH}''${OCAMLPATH:+:}''$1/lib"
+				if test -d "''$1/lib/stublibs"; then
+					export CAML_LD_LIBRARY_PATH="''${CAML_LD_LIBRARY_PATH}''${CAML_LD_LIBRARY_PATH:+:}''$1/lib/stublibs"
+				fi
 			fi
 			export OCAMLFIND_DESTDIR="''$out/lib/"
 			mkdir -p "''$out/lib"

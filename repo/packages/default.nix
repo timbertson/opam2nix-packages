@@ -36,6 +36,7 @@ world:
   archimedes = import ./archimedes world;
   argon2 = import ./argon2 world;
   argot = import ./argot world;
+  arp = import ./arp world;
   ascii85 = import ./ascii85 world;
   asl = import ./asl world;
   asn1-combinators = import ./asn1-combinators world;
@@ -236,6 +237,7 @@ world:
   conf-vim = import ./conf-vim world;
   conf-which = import ./conf-which world;
   conf-wxwidgets = import ./conf-wxwidgets world;
+  conf-x11 = import ./conf-x11 world;
   conf-zlib = import ./conf-zlib world;
   conf-zmq = import ./conf-zmq world;
   config-file = import ./config-file world;
@@ -255,6 +257,7 @@ world:
   cpdf = import ./cpdf world;
   cppo = import ./cppo world;
   crc = import ./crc world;
+  crdt-ml = import ./crdt-ml world;
   crunch = import ./crunch world;
   cry = import ./cry world;
   crypt = import ./crypt world;
@@ -307,6 +310,7 @@ world:
   dyntype = import ./dyntype world;
   dypgen = import ./dypgen world;
   easy-format = import ./easy-format world;
+  edn = import ./edn world;
   efl = import ./efl world;
   electron = import ./electron world;
   electrumAnalyzer = import ./electrumAnalyzer world;
@@ -503,6 +507,7 @@ world:
   lambdasoup = import ./lambdasoup world;
   lambdoc = import ./lambdoc world;
   lame = import ./lame world;
+  landmarks = import ./landmarks world;
   lastfm = import ./lastfm world;
   launchd = import ./launchd world;
   lazy-trie = import ./lazy-trie world;
@@ -542,6 +547,7 @@ world:
   lwt_named_threads = import ./lwt_named_threads world;
   lz4 = import ./lz4 world;
   lzo = import ./lzo world;
+  m17n = import ./m17n world;
   macaque = import ./macaque world;
   macaque_lwt = import ./macaque_lwt world;
   macaroons = import ./macaroons world;
@@ -743,9 +749,15 @@ world:
   ocp-manager = import ./ocp-manager world;
   ocp-ocamlres = import ./ocp-ocamlres world;
   ocp-pack-split = import ./ocp-pack-split world;
+  ocp-pp = import ./ocp-pp world;
+  ocplib-compat = import ./ocplib-compat world;
   ocplib-concur = import ./ocplib-concur world;
+  ocplib-config = import ./ocplib-config world;
   ocplib-endian = import ./ocplib-endian world;
+  ocplib-file = import ./ocplib-file world;
   ocplib-json-typed = import ./ocplib-json-typed world;
+  ocplib-resto = import ./ocplib-resto world;
+  ocplib-simplex = import ./ocplib-simplex world;
   ocsfml = import ./ocsfml world;
   ocsigenserver = import ./ocsigenserver world;
   ocurl = import ./ocurl world;
@@ -783,6 +795,7 @@ world:
   opam-sync-github-prs = import ./opam-sync-github-prs world;
   opam2web = import ./opam2web world;
   opamconfig = import ./opamconfig world;
+  opamfind = import ./opamfind world;
   opamfu = import ./opamfu world;
   opass = import ./opass world;
   opasswd = import ./opasswd world;
@@ -855,10 +868,12 @@ world:
   pipebang = import ./pipebang world;
   piqi = import ./piqi world;
   piqilib = import ./piqilib world;
+  pla = import ./pla world;
   planck = import ./planck world;
   planets = import ./planets world;
   plasma = import ./plasma world;
   plist = import ./plist world;
+  plplot = import ./plplot world;
   podge = import ./podge world;
   polyglot = import ./polyglot world;
   pomap = import ./pomap world;
@@ -1119,6 +1134,7 @@ world:
   typerep = import ./typerep world;
   typerep_extended = import ./typerep_extended world;
   typerex-attic = import ./typerex-attic world;
+  typerex-build = import ./typerex-build world;
   typerex-lldb = import ./typerex-lldb world;
   typpx = import ./typpx world;
   tyxml = import ./tyxml world;
@@ -1137,6 +1153,7 @@ world:
   unix-sys-stat = import ./unix-sys-stat world;
   unix-time = import ./unix-time world;
   unix-type-representations = import ./unix-type-representations world;
+  unmagic = import ./unmagic world;
   uri = import ./uri world;
   usb = import ./usb world;
   usbmux = import ./usbmux world;

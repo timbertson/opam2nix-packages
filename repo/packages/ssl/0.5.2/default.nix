@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       conf-openssl = opamSelection.conf-openssl;
+      conf-which = opamSelection.conf-which;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
     };

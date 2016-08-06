@@ -38,7 +38,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1jp59ankjds8mh4vm0b5h4fd1lcbfn0rd6n151cgh14ihsknnym8";
-    url = "http://www.recherche.enac.fr/opti/facile/distrib/facile-1.1.tar.gz";
+    url = "http://opti.recherche.enac.fr/facile/distrib/facile-1.1.tar.gz";
   };
 }
 

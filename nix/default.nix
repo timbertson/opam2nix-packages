@@ -52,54 +52,94 @@ let
 		packageSpecs = flattenSpecs specOfVersionPair;
 
 		packageNameOfVersionPair = name: spec: name;
+
+		# get a list of package names from a list of specifications
+		# a specification is e.g.:
+		#   "lambda-term"
+		#   {"lwt" = ">=1.5.0"; }
+		#   {"lwt" = true; }
 		packageNames = flattenSpecs packageNameOfVersionPair;
 
-		to_s = obj:
-			builtins.typeOf obj;
-			# if obj == null then "null" else
-			# if builtins.isString obj then obj else
-			# if builtins.isList obj then "LIST" else
-			# if builtins.isList obj then concatMap ", " (map to_s obj) else
-			# "Unknown type";
+		defaultOcamlAttr = "ocaml";
+		defaultOcamlVersion = ocamlAttr: with builtins; (parseDrvName (getAttr ocamlAttr pkgs).name).version;
+		defaultBasePackages = ["base-unix" "base-bigarray" "base-threads"]; #XXX this is a hack.
+		defaultArgs = [];
 
-	in {
-		# Provide nix functions for selecting & importing,
-		# rather than making users go via the command line.
-		# As a bonus, we can derive a few of the tedious arguments
-		# automatically when you go via nix.
-		select = {
-			ocamlAttr ? "ocaml",
-			ocamlVersion ? with builtins; (parseDrvName (getAttr ocamlAttr pkgs).name).version,
-			basePackages ? ["base-unix" "base-bigarray" "base-threads"], #XXX this is a hack.
-			packages, args ? []
+		selectLax = {
+			# used by `build`, so that you can combine import-time (world) options
+			# with select-time options
+			ocamlAttr ? defaultOcamlAttr,
+			ocamlVersion ? defaultOcamlVersion ocamlAttr,
+			basePackages ? defaultBasePackages,
+			packages,
+			extraRepos ? [],
+			args ? defaultArgs,
+			... # ignored
 		}:
 			with lib;
 			# possible format for "specs":
 			# list of strings
 			# object with key = pkgname, attr = versionSpec, or
 			# list with intermixed strings / objects
-			let
-			in
 			runCommand "opam-selection.nix" {} ''
 			env OCAMLRUNPARAM=b ${impl}/bin/opam2nix-select --dest "$out" \
 				--ocaml-version ${ocamlVersion} \
 				--ocaml-attr ${ocamlAttr} \
 				--base-packages ${concatStringsSep "," basePackages} \
+				${concatStringsSep " " (map (repo: "--repo \"${buildNixRepo repo}\"") extraRepos)} \
 				${concatStringsSep " " args} \
 				${concatStringsSep " " (packageSpecs packages)} \
 			;
 			'';
-		"import" = selection_file: world:
+
+		# builds a nix repo from an opam repo. Doesn't allow for customisation like
+		# overrides etc, but useful for adding non-upstreamed opam packages into the world
+		buildNixRepo = opamRepo: runCommand "opam2nix-repo" {} ''
+			mkdir -p "$out/packages"
+			env OCAMLRUNPARAM=b ${impl}/bin/opam2nix generate --src "${opamRepo}" --cache .cache --dest "$out/packages" '*'
+			echo 'import ./packages' > "$out/default.nix"
+		'';
+
+		selectStrict = {
+			# exposed as `select`, so you know if you're using an invalid argument
+			ocamlAttr ? defaultOcamlAttr,
+			ocamlVersion ? defaultOcamlVersion ocamlAttr,
+			basePackages ? defaultBasePackages,
+			packages,
+			extraRepos ? [],
+			args ? defaultArgs,
+		}@conf: selectLax conf;
+
+	in {
+		# low-level selecting & importing
+		selectionsFile = selectStrict;
+		selectionsFileLax = selectLax;
+		importSelectionsFile = selection_file: world:
 			assert opam2nix.format_version == 1; let result = (import repository ({
 				inherit pkgs opam2nix; # default, overrideable
 				ocamlVersion = with builtins; (parseDrvName result.opamSelection.ocaml.name).version;
 				select = (import selection_file);
 				format_version = import ../repo/format_version.nix;
+				extraPackages = map (path: import (buildNixRepo path)) (world.extraRepos or []);
 			} // world)); in result.opamSelection;
-		packageNames = specs: packageNames specs;
-		directDependencies = specs: selections: (map (name: builtins.getAttr name selections) (packageNames specs));
-		build = { packages, ... }@args: (utils.import (utils.select args) args);
-		buildPackage = name: args: builtins.getAttr name (utils.build ({ packages = [name]; } // args));
+
+		inherit buildNixRepo packageNames;
+
+		# get the implementation of each specified package in the selections.
+		# Selections are the result of `build` (or importing the selection file)
+		packagesOfSelections = specs: selections:
+			map (name: builtins.getAttr name selections) (packageNames specs);
+
+		# Select-and-import. Returns a selection object with attributes for each extant package
+		buildPackageSet = { packages, ... }@args: (utils.importSelectionsFile (selectLax args) args);
+
+		# like `buildPackageSet` but also includes ocaml dependency
+		build = { packages, ... }@args:
+			let selections = (utils.buildPackageSet args); in
+			[selections.ocaml] ++ (utils.packagesOfSelections packages selections);
+
+		# Like build but only returns the single selected package.
+		buildPackage = name: args: builtins.getAttr name (utils.buildPackageSet ({ packages = [name]; } // args));
 	};
 
 	impl = stdenv.mkDerivation {

@@ -3,7 +3,7 @@ let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
     ([ (pkgs."database/sqlite3" or null) (pkgs.libsqlite3-dev or null)
-        (pkgs.sqlite-devel or null) ] ++ (lib.attrValues opamDeps));
+        (pkgs.sqlite-dev or null) (pkgs.sqlite-devel or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 

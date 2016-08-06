@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       base-bytes = opamSelection.base-bytes;
+      base-threads = opamSelection.base-threads;
       base-unix = opamSelection.base-unix;
       cmdliner = opamSelection.cmdliner;
       cstruct = opamSelection.cstruct;

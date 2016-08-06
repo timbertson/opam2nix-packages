@@ -2,12 +2,14 @@ world:
 let
     inputs = lib.filter (dep: dep != true && dep != null)
     ([
-        (pkgs."https://gist.githubusercontent.com/fdopen/cbfb14114f4ec423a1a4/raw/1d4144f16aa2c65d39a1be5aae39911dc5e53ef6/install-libuv.sh" or null)
-        (pkgs.libuv or null) (pkgs.pkg-config or null) (pkgs.pkgconf or null) ] ++ (lib.attrValues opamDeps));
+        (pkgs."https://gist.githubusercontent.com/fdopen/cbfb14114f4ec423a1a4/raw/6ba4cef74e94a7307391bddb7ff20db5d8065bfe/install-libuv.sh" or null)
+        (pkgs.libuv or null) (pkgs.libuv-dev or null)
+        (pkgs.libuv-devel or null) (pkgs.libuv1-dev or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      conf-pkg-config = opamSelection.conf-pkg-config;
       ocaml = opamSelection.ocaml;
     };
     opamSelection = world.opamSelection;

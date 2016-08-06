@@ -2,7 +2,8 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.libsoundtouch0-dev or null) ] ++ (lib.attrValues opamDeps));
+    ([ (pkgs."drfill/homebrew-liquidsoap/soundtouch" or null)
+        (pkgs.libsoundtouch-dev or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 

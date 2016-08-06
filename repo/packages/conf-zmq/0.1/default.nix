@@ -1,7 +1,8 @@
 world:
 let
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.libzmq3-dev or null) (pkgs.zeromq or null) ] ++ (lib.attrValues opamDeps));
+    ([ (pkgs.libzmq3-dev or null) (pkgs.zeromq or null)
+        (pkgs.zeromq-dev or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 

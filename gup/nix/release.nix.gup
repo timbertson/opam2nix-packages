@@ -22,6 +22,10 @@ cat > "$1" <<EOF
 { pkgs ? import <nixpkgs> {}}:
 with pkgs;
 let
+	# For development, set OPAM2NIX_DEVEL to your local
+	# opam2nix repo path
+	devRepo = builtins.getEnv "OPAM2NIX_DEVEL";
+
 	src = fetchgit {
 		fetchSubmodules = false;
 $(fetchgitargs \
@@ -40,5 +44,11 @@ $(fetchgitargs \
 			"$(gupcat release.opam2nix.commit)")
 	};
 in
-callPackage "\${src}/nix" {} { inherit src opam2nix; }
+if devRepo != "" then
+	let toPath = s: /. + s; in
+	callPackage "\${devRepo}/nix" {} {
+			src = toPath "\${devRepo}/nix/local.tgz";
+			opam2nix = toPath "\${devRepo}/opam2nix/nix/local.tgz";
+		}
+else callPackage "\${src}/nix" {} { inherit src opam2nix; }
 EOF

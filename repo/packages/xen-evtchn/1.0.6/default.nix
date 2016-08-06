@@ -14,6 +14,7 @@ let
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       ounit = opamSelection.ounit;
+      xenctrl = opamSelection.xenctrl or null;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;

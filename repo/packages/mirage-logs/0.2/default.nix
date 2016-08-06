@@ -11,8 +11,8 @@ let
       lwt = opamSelection.lwt;
       mirage-profile = opamSelection.mirage-profile;
       mirage-types = opamSelection.mirage-types;
-      oasis = opamSelection.oasis;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
     };
     opamSelection = world.opamSelection;
