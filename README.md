@@ -41,15 +41,16 @@ To include these nix expressions in your own package, you can use the following 
 
 This will import nix/default.nix  from the exact version of the repo that you specified. With this file, you can use it like so:
 
-    opam2nix = import ./opam2nix-packages.nix { inherit pkgs; };
+    let
+      opam2nix = import ./opam2nix-packages.nix { inherit pkgs; };
 
-    # for simply building one package, use:
-    someOpamPackage = opam2nix.buildPackage "someOpamPackage";
+      # for simply building one package, use:
+      someOpamPackage = opam2nix.buildPackage "someOpamPackage";
 
-    # for most projects, you'll build selections based on direct dependencies,
-    # and include each direct dependency in your `buildInputs`. This will
-    # include the `ocaml` dependency:
-    buildInputs = opam2nix.build { packages = ["lwt"]; };
+      # for most projects, you'll build selections based on direct dependencies,
+      # and include each direct dependency in your `buildInputs`. This will
+      # include the `ocaml` dependency:
+      buildInputs = opam2nix.build { packages = ["lwt"]; };
 
 As well as `packages`, the `build` function accepts the union of options
 accepted by the lower level `selectionsFile` and `importSelectionsFile` functions (see "Configuration" section).
