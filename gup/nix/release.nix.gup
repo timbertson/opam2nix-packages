@@ -1,54 +1,59 @@
-#!/bin/bash -eu
-function gupcat {
-	gup -u "$@"
-	cat "$@"
-}
+#!/usr/bin/env python
+from __future__ import print_function
+import sys, os, json
+from subprocess import *
 
-function fetchgitargs {
-	repo="$1"
-	workdir="$2"
-	rev="$3"
-	digest="$(nix-prefetch-git "$(pwd)/$workdir" "$rev" | tail -n 1)"
-	[ -n "$digest" ]
-	cat <<EOF
-		url = "$repo";
-		rev = "$rev";
-		sha256 = "$digest";
-EOF
-}
+dest, target = sys.argv[1:]
 
-# gup -u release.{opam2nix,repo}.commit
-cat > "$1" <<EOF
+def gupcat(path):
+	check_call(['gup', '-u', path])
+	with open(path) as f:
+		return f.read().strip()
+
+def fetchgitargs(url, dir, commit):
+	path = os.path.normpath(os.path.join(os.path.dirname(__file__), '..', '..', dir))
+	print('checking out {url}#{commit} from {path}'.format(url=url, path=path, commit=commit))
+	json_str = check_output(['nix-prefetch-git', path, commit])
+	args = json.loads(json_str)
+	del args['date']
+
+	# replace dir with public URL
+	args['url'] = url
+	args['fetchSubmodules'] = False
+	return json.dumps(args, indent=2, separators=(';',' = ')).rstrip('}\n') + ';\n}'
+
+template='''
 { pkgs ? import <nixpkgs> {}}:
 with pkgs;
 let
 	# For development, set OPAM2NIX_DEVEL to your local
 	# opam2nix repo path
 	devRepo = builtins.getEnv "OPAM2NIX_DEVEL";
-
-	src = fetchgit {
-		fetchSubmodules = false;
-$(fetchgitargs \
-			"https://github.com/timbertson/opam2nix-packages.git" \
-			".." \
-			"$(gupcat release.packages.commit)")
-	};
-
-	# We could leave this out and just use \`fetchSubmodules\` above,
-	# but that leads to mass-rebuilds every time the repo changes
-	# (rather than only when opam2nix is updated)
-	opam2nix = fetchgit {
-$(fetchgitargs \
-			"https://github.com/timbertson/opam2nix.git" \
-			"../opam2nix" \
-			"$(gupcat release.opam2nix.commit)")
-	};
+	src = fetchgit %(fetchgit_src)s;
+	opam2nix = fetchgit %(fetchgit_opam2nix)s;
 in
 if devRepo != "" then
 	let toPath = s: /. + s; in
-	callPackage "\${devRepo}/nix" {} {
-			src = toPath "\${devRepo}/nix/local.tgz";
-			opam2nix = toPath "\${devRepo}/opam2nix/nix/local.tgz";
+	callPackage "${devRepo}/nix" {} {
+			src = toPath "${devRepo}/nix/local.tgz";
+			opam2nix = toPath "${devRepo}/opam2nix/nix/local.tgz";
 		}
-else callPackage "\${src}/nix" {} { inherit src opam2nix; }
-EOF
+else callPackage "${src}/nix" {} { inherit src opam2nix; }
+'''
+
+contents = template % {
+	'fetchgit_src': fetchgitargs(
+		url = "https://github.com/timbertson/opam2nix-packages.git",
+		dir=".",
+		commit=gupcat('release.packages.commit'),
+	),
+	'fetchgit_opam2nix': fetchgitargs(
+		url = "https://github.com/timbertson/opam2nix.git",
+		dir="opam2nix",
+		commit=gupcat('release.opam2nix.commit'),
+	)
+}
+
+with open(dest, 'w') as dest:
+	dest.write(contents)
+

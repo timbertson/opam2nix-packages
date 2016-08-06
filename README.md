@@ -18,26 +18,7 @@ This repo contains generated `.nix` expressions, as well as some overrides requi
 
 To add packages, add them in `packages.repo` and rebuild.
 
-To include these nix expressions in your own package, you can use the following `opam2nix-packages.nix` file. Fill in the git URLs and revisions with the latest commits (or a commit in your fork, if you need to make a fork).
-
-    { pkgs ? import <nixpkgs> {}}:
-    with pkgs;
-    let
-      src = fetchFromGitHub {
-        owner = "timbertson"
-        repo = "opam2nix-packages";
-        rev = "...";
-        sha256 = "...";
-      };
-    
-      opam2nixSrc = fetchFromGitHub {
-        owner = "timbertson"
-        repo = "opam2nix";
-        rev = "...";
-        sha256 = "...";
-      };
-    in
-    callPackage "${src}/nix" {} { inherit src opam2nixSrc; }
+To include these nix expressions in your own package, you can copy ./nix/release.nix to your own project (e.g. as `opam2nix-packages.nix`) and import it. If needed, you can replace in the git URLs or revisions with the latest commits (or a commit in your fork).
 
 This will import nix/default.nix  from the exact version of the repo that you specified. With this file, you can use it like so:
 

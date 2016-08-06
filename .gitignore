@@ -2,4 +2,4 @@
 /result/
 /local
 /nix/local.tgz
-/nix/release.*
+/nix/release.*.commit
