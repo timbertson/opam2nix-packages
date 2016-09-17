@@ -2,7 +2,7 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([  ] ++ (lib.attrValues opamDeps));
+    ([ (pkgs.freeglut3-dev or null) (pkgs."homebrew/x11/freeglut" or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 

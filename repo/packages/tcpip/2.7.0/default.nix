@@ -11,7 +11,6 @@ let
       cstruct = opamSelection.cstruct;
       ipaddr = opamSelection.ipaddr;
       lwt = opamSelection.lwt;
-      mirage-clock-unix = opamSelection.mirage-clock-unix;
       mirage-console = opamSelection.mirage-console;
       mirage-net-unix = opamSelection.mirage-net-unix or null;
       mirage-profile = opamSelection.mirage-profile;

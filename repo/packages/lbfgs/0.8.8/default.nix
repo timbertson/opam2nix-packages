@@ -2,7 +2,8 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.gfortran or null) (pkgs.mingw64-x86_64-gcc-fortran or null) ] ++ (lib.attrValues opamDeps));
+    ([ (pkgs.gcc or null) (pkgs.gfortran or null)
+        (pkgs.mingw64-x86_64-gcc-fortran or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 

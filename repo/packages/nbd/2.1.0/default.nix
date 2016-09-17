@@ -16,6 +16,7 @@ let
       oasis = opamSelection.oasis;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
+      ppx_sexp_conv = opamSelection.ppx_sexp_conv;
       sexplib = opamSelection.sexplib;
       type_conv = opamSelection.type_conv;
       uri = opamSelection.uri;

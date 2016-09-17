@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
     };
     opamSelection = world.opamSelection;
@@ -24,7 +25,7 @@ pkgs.stdenv.mkDerivation
   opamEnv = builtins.toJSON 
   {
     deps = opamDeps;
-    files = null;
+    files = ./files;
     name = "choice";
     ocaml-version = world.ocamlVersion;
     spec = ./opam;
@@ -33,6 +34,7 @@ pkgs.stdenv.mkDerivation
   {
     opamSelection = opamSelection;
   };
+  postUnpack = "cp -r ${./files}/* \"$sourceRoot/\"";
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {

@@ -7,8 +7,10 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      camlp4 = opamSelection.camlp4 or null;
       lwt = opamSelection.lwt or null;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
     };
     opamSelection = world.opamSelection;

@@ -41,8 +41,8 @@ pkgs.stdenv.mkDerivation
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "03lscr4nmh6dyi374pmbl08q5d09xlggr2s9kasmq3vk5i1cj5mr";
-    url = "http://calligramme.loria.fr/acg/software/acg-1.3.0-20151130.tar.gz";
+    sha256 = "1drkxz1v0mjkmd92gfcp47nijwl1g69bqhw0kwh15z59smjgr2p1";
+    url = "http://calligramme.loria.fr/acg/software/acg-1.3.0-20160909.tar.gz";
   };
 }
 

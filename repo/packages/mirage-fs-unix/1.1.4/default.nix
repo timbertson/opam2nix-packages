@@ -7,6 +7,7 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      camlp4 = opamSelection.camlp4;
       cstruct = opamSelection.cstruct;
       mirage-types-lwt = opamSelection.mirage-types-lwt;
       ocaml = opamSelection.ocaml;

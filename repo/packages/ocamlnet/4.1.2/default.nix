@@ -7,6 +7,7 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      base-bytes = opamSelection.base-bytes;
       camlzip = opamSelection.camlzip or null;
       conf-gnutls = opamSelection.conf-gnutls or null;
       conf-gssapi = opamSelection.conf-gssapi or null;

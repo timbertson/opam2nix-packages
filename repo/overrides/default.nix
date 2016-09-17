@@ -6,6 +6,7 @@ let
 
 	# XXX it's not really a `configure` phase, is it?
 	addBinDir = def: overrideAll (impl: { configurePhase = ''mkdir -p $out/bin''; }) def;
+	addNcurses = def: overrideAll (impl: { nativeBuildInputs = impl.nativeBuildInputs ++ [ncurses]; }) def;
 	opamPackages = super.opamPackages;
 in
 {
@@ -61,5 +62,8 @@ in
 		biniou = addBinDir opamPackages.biniou;
 		yojson = addBinDir opamPackages.yojson;
 		fat-filesystem = addBinDir opamPackages.fat-filesystem;
+
+		# fallout of https://github.com/ocaml/opam-repository/pull/6657
+		omake = addNcurses opamPackages.omake;
 	};
 }

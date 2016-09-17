@@ -9,8 +9,7 @@ let
     {
       oasis = opamSelection.oasis;
       ocaml = opamSelection.ocaml;
-      ocamlbuild = opamSelection.ocamlbuild;
-      ocamlfind = opamSelection.ocamlfind or null;
+      ocamlfind = opamSelection.ocamlfind;
       ounit = opamSelection.ounit;
       rpc = opamSelection.rpc;
       uuidm = opamSelection.uuidm;

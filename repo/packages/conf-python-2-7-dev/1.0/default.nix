@@ -1,7 +1,7 @@
 world:
 let
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs."python2.7-dev" or null) ] ++ (lib.attrValues opamDeps));
+    ([ (pkgs.python27) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 

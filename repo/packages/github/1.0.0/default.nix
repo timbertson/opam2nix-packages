@@ -9,6 +9,7 @@ let
     {
       atdgen = opamSelection.atdgen;
       base-unix = opamSelection.base-unix;
+      camlp4 = opamSelection.camlp4;
       cmdliner = opamSelection.cmdliner;
       cohttp = opamSelection.cohttp;
       js_of_ocaml = opamSelection.js_of_ocaml or null;

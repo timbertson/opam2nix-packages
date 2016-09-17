@@ -13,6 +13,7 @@ let
       base-unix = opamSelection.base-unix or null;
       camlp4 = opamSelection.camlp4 or null;
       conf-libev = opamSelection.conf-libev or null;
+      conf-ncurses = opamSelection.conf-ncurses;
       lablgtk = opamSelection.lablgtk or null;
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;

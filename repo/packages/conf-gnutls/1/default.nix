@@ -1,11 +1,14 @@
 world:
 let
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.libgnutls-dev or null) (pkgs.nettle-dev or null) ] ++ (lib.attrValues opamDeps));
+    ([ (pkgs.gnutls or null) (pkgs.gnutls-dev or null)
+        (pkgs.gnutls-devel or null) (pkgs.libgnutls28-dev or null)
+        (pkgs.nettle-dev or null) (pkgs.nettle-devel or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      conf-pkg-config = opamSelection.conf-pkg-config;
       ocaml = opamSelection.ocaml;
     };
     opamSelection = world.opamSelection;

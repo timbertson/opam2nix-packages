@@ -39,7 +39,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0mapzn2ls5qcrzjm1az50lqjj76ldkmz4fbv2phc9w6smab50qy5";
-    url = "http://bitstring.googlecode.com/files/ocaml-bitstring-2.0.4.tar.gz";
+    url = "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/bitstring/ocaml-bitstring-2.0.4.tar.gz";
   };
 }
 

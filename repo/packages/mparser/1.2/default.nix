@@ -9,6 +9,7 @@ let
     {
       base-bytes = opamSelection.base-bytes;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       pcre = opamSelection.pcre or null;
       re = opamSelection.re or null;
