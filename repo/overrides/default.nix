@@ -38,6 +38,10 @@ in
 			configurePhase = "unset OCAMLFIND_DESTDIR";
 		}) opamPackages.gmp-xen;
 
+		lablgtk = overrideAll (impl: {
+			nativeBuildInputs = impl.nativeBuildInputs ++ [ pkgconfig gtk2.dev ];
+		});
+
 		zarith-xen = overrideAll (impl: {
 			buildPhase = "${pkgs.bash}/bin/bash ${./zarith-xen/install.sh}";
 			installPhase = "true";
