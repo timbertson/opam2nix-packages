@@ -40,7 +40,7 @@ in
 
 		lablgtk = overrideAll (impl: {
 			nativeBuildInputs = impl.nativeBuildInputs ++ [ pkgconfig gtk2.dev ];
-		});
+		}) opamPackages.lablgtk;
 
 		zarith-xen = overrideAll (impl: {
 			buildPhase = "${pkgs.bash}/bin/bash ${./zarith-xen/install.sh}";
