@@ -133,7 +133,7 @@ let
 		# Select-and-import. Returns a selection object with attributes for each extant package
 		buildPackageSet = { packages, ... }@args: (utils.importSelectionsFile (selectLax args) args);
 
-		# like `buildPackageSet` but also includes ocaml dependency
+		# like just the attribute values from `buildPackageSet`, but also includes ocaml dependency
 		build = { packages, ... }@args:
 			let selections = (utils.buildPackageSet args); in
 			[selections.ocaml] ++ (utils.packagesOfSelections packages selections);
