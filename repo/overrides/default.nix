@@ -42,6 +42,10 @@ in
 			nativeBuildInputs = impl.nativeBuildInputs ++ [ pkgconfig gtk2.dev ];
 		}) opamPackages.lablgtk;
 
+		ctypes = overrideAll (impl: {
+			nativeBuildInputs = impl.nativeBuildInputs ++ [ pkgconfig libffi ncurses ];
+		}) opamPackages.ctypes;
+
 		zarith-xen = overrideAll (impl: {
 			buildPhase = "${pkgs.bash}/bin/bash ${./zarith-xen/install.sh}";
 			installPhase = "true";
