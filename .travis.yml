@@ -1,0 +1,13 @@
+language: nix
+script:
+- ./script/travis.sh
+deploy:
+  script:
+    - ./script/travis-deploy.sh
+cache:
+  directories:
+  - cache
+before_install:
+  - ./script/travis-decrypt.sh
+notifications:
+  email: false
