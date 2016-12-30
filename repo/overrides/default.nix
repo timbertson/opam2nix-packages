@@ -78,6 +78,7 @@ in
 		biniou = addBinDir opamPackages.biniou;
 		yojson = addBinDir opamPackages.yojson;
 		fat-filesystem = addBinDir opamPackages.fat-filesystem;
+		merlin = addBinDir opamPackages.merlin;
 
 		# fallout of https://github.com/ocaml/opam-repository/pull/6657
 		omake = addNcurses opamPackages.omake;
