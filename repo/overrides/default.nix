@@ -44,9 +44,7 @@ in
 
 		lwt = overrideAll (impl: {
 			setupHook = writeText "setupHook.sh" ''
-				set -x
 				export LD_LIBRARY_PATH="$(dirname "$(dirname ''${BASH_SOURCE[0]})")/lib/lwt''${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
-				set +x
 			'';
 		}) opamPackages.lwt;
 

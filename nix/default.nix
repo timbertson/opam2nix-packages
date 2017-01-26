@@ -140,6 +140,31 @@ let
 
 		# Like build but only returns the single selected package.
 		buildPackage = name: args: builtins.getAttr name (utils.buildPackageSet ({ packages = [name]; } // args));
+
+		# build a nix derivation from a (local) opam library, i.e. one not in the official repositories
+		buildOpamLibrary = attrs:
+			let
+				parsedName = builtins.parseDrvName attrs.name;
+				opamName = attrs.opamName or parsedName.name;
+				version = attrs.version or parsedName.version;
+
+				opamRepo = stdenv.mkDerivation {
+					name = "${name}-${version}-repo";
+					inherit (attrs) src;
+					buildPhase = ''
+						destdir="$out/${name}/${name}.${version}/"
+						mkdir -p "$destdir"
+
+
+					'';
+					installPhase = "true";
+				};
+				nixRepo = buildNixRepo opamRepo;
+				selection
+			in
+			stdenv.mkDerivation (attrs // {
+				
+			});
 	};
 
 	impl = stdenv.mkDerivation {

@@ -20,7 +20,8 @@ def fetchgitargs(url, dir, commit):
 	# replace dir with public URL
 	args['url'] = url
 	args['fetchSubmodules'] = False
-	return json.dumps(args, indent=2, separators=(';',' = ')).rstrip('}\n') + ';\n}'
+	source_text = json.dumps(args, indent=2, separators=(';',' = ')).rstrip('}\n') + ';\n}'
+	return '\n'.join(['\t' + line.replace('  ', '\t') for line in source_text.splitlines()])
 
 template='''
 { pkgs ? import <nixpkgs> {}}:
@@ -35,9 +36,9 @@ in
 if devRepo != "" then
 	let toPath = s: /. + s; in
 	callPackage "${devRepo}/nix" {} {
-			src = toPath "${devRepo}/nix/local.tgz";
-			opam2nix = toPath "${devRepo}/opam2nix/nix/local.tgz";
-		}
+		src = toPath "${devRepo}/nix/local.tgz";
+		opam2nix = toPath "${devRepo}/opam2nix/nix/local.tgz";
+	}
 else callPackage "${src}/nix" {} { inherit src opam2nix; }
 '''
 
