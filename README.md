@@ -4,43 +4,49 @@
 
 I'm hoping to make it stable and a future part of `nixpkgs`. But for now, it's just this code which might work sometimes, and will probably change a lot. It's quite complex, and it's likely that some simpler patterns will make themselves obvious after some more extensive use.
 
-This repository contains prebuilt nix derivations, as well as specific overrides (in `repo/`) for certain packages which require it.
+## Important note on using in your own project:
 
-## Building:
+Don't try to clone `opam2nix` as part of your own derivation. If you instead copy the current `nix/release.nix` into your own source code you can import _just that one file_ (unsing `pkgs.callPackage) and it'll in turn clone the relevant commit from this repository and bootstrap itself. If needed, you can replace in the git URLs or revisions with the latest commits (or a commit in your fork).
 
-    $ ./build.sh
+## Getting started:
 
-Note that local changes are whatever `git` knows about - this includes uncommitted changes, but does not include new files that haven't been added to `git`.
+The easiest way to get started is to check out the [examples/](./examples/) directory. It's got small, working examples that you can probably adapt to your own use very easily.
 
-## Usage:
+## Detailed usage instructions:
 
-Note: if you'd prefer to jump straight into working examples, you can run `nix-build` or `nix-shell` yourself in one of the directories inside the [examples/](examples/) directory.
-
-To use `opam2nix` in your own software, you can copy ./nix/release.nix into your own project (e.g. as `opam2nix-packages.nix`) and load it via `pkgs.callPackage`. If needed, you can replace in the git URLs or revisions with the latest commits (or a commit in your fork).
-
-`release.nix` will import `nix/default.nix` from the exact version of the repo that you specified. With this file, you can use it like so:
+One you've copied `release.nix` as `opam2nix-packages.nix`, you can use it like so:
 
     let
       opam2nix = pkgs.callPackage ./opam2nix-packages.nix {};
+    in
 
-      # for simply building one package, use:
-      someOpamPackage = opam2nix.buildPackage "someOpamPackage";
+    # for simply building one package, use:
+    opam2nix.buildPackage "someOpamPackage";
 
-      # for most projects, you'll build selections based on direct dependencies,
-      # and include each direct dependency in your `buildInputs`. This will
-      # include the `ocaml` dependency:
+    # for non-opam software, you'll build selections based on direct dependencies,
+    # and include each direct dependency in your `buildInputs`. This will
+    # include the `ocaml` dependency:
+    mkDerivation {
       buildInputs = opam2nix.build { packages = ["lwt"]; };
+      ( ... )
+    };
 
-As well as `packages`, the `build` function accepts the union of options
-accepted by the lower level `selectionsFile` and `importSelectionsFile` functions (see "Configuration" section).
+    # If you are developing your own package with an .opam file, you can save yourself the
+    # trouble of replicating your dependencies in `nix`-land by using the `buildOpamPackage` function
+    # instead of `mkDerivation`:
+    opam2nix.buildOpamPackage rec {
+      name = "pkgname-version";
+      src = ( ... );
+    };
 
-An alternate function `buildPackageSet` is very useful for re-exposing all transitive ocaml dependencies for debugging purposes:
+The utility `buildPackageSet` is very useful for re-exposing all transitive ocaml dependencies for debugging purposes:
 
     passThru.ocamlPackages = opam2nix.buildPackageSet { packages = ["lwt"]' };
 
 This can be used with e.g. `nix-build -A ocamlPackages.lwt default.nix` if you need to build an individual dependency (but in your project's configuration; i.e. taking all optional dependencies and constraints into account). It accepts all the same arguments as `build` and produces an object with keys for every transitive dependency, rather than a list of direct dependencies.
 
-See the [./examples/](./examples/) directory for some more concrete examples.
+The `build`, `buildPackageSet` and `buildOpamPackage` functions all accept the union of options
+accepted by the lower level `selectionsFile` and `importSelectionsFile` functions (see "Configuration" section).
 
 ## Configuration
 
@@ -53,12 +59,17 @@ See the [./examples/](./examples/) directory for some more concrete examples.
     - `extraRepos`: extra list of string arguments to pass to the `opam2nix` tool (default `[]`)
 
  - `opam2nix.importSelectionsFile selections_file` takes an attribute set with the following properties, all optional:
-   - `pkgs`
+   - `pkgs`: defaults to the `pkgs` set opam2nix was imported with
    - `overrides`: function accepting a `world` argument and returning attributes to be overriden / added
    - `opam2nix`
    - `extraPackages`: extra package definitions (obtained by importing the result of `opam2nix generate`. Automatically generated by running `opam2nix generate` on each item in `extraRepos` by default.
    - `extraRepos`: convenient shortcut for populating `extraPackages`, should match the selectionsFile option
 
+ - `opam2nix.build`, `opam2nix.buildPackageSet`:
+   - accepts any option accepted by either `selectionsFile` or `importSelectionsFile`
+
+ - `opam2nix.buildOpamPackage`:
+   - accepts any option accepted by either `selectionsFile` or `importSelectionsFile`, _except_ `packages`
 
 ## Hacking
 

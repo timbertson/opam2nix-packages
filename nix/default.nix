@@ -144,7 +144,7 @@ let
 		# build a nix derivation from a (local) opam library, i.e. one not in the official repositories
 		buildOpamPackage = attrs:
 			let
-				drvAttrs = removeAttrs attrs ["src" "opamFile" "packageName" "version"];
+				drvAttrs = removeAttrs attrs ["src" "opamFile" "packageName" "version" "passthru"];
 				parsedName = builtins.parseDrvName attrs.name;
 				packageName = attrs.packageName or parsedName.name;
 				version = attrs.version or parsedName.version;
@@ -169,11 +169,15 @@ let
 						fi
 					'';
 				};
+				drv = builtins.getAttr packageName (utils.buildPackageSet (drvAttrs // {
+					packages = [ "${packageName}=${version}" ];
+					extraRepos = (attrs.extraRepos or []) ++ [ opamRepo ];
+				}));
+				passthru = {
+					inherit opamRepo;
+				} // (attrs.passthru or {});
 			in
-			builtins.getAttr packageName (utils.buildPackageSet (drvAttrs // {
-				packages = [ "${packageName}=${version}" ];
-				extraRepos = (attrs.extraRepos or []) ++ [ opamRepo ];
-			}));
+			lib.addPassthru drv passthru
 	};
 
 	impl = stdenv.mkDerivation {
