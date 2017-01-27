@@ -177,7 +177,7 @@ let
 					inherit opamRepo;
 				} // (attrs.passthru or {});
 			in
-			lib.addPassthru drv passthru
+			lib.addPassthru drv passthru;
 	};
 
 	impl = stdenv.mkDerivation {
