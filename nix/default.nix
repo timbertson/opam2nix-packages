@@ -142,29 +142,38 @@ let
 		buildPackage = name: args: builtins.getAttr name (utils.buildPackageSet ({ packages = [name]; } // args));
 
 		# build a nix derivation from a (local) opam library, i.e. one not in the official repositories
-		buildOpamLibrary = attrs:
+		buildOpamPackage = attrs:
 			let
+				drvAttrs = removeAttrs attrs ["src" "opamFile" "packageName" "version"];
 				parsedName = builtins.parseDrvName attrs.name;
-				opamName = attrs.opamName or parsedName.name;
+				packageName = attrs.packageName or parsedName.name;
 				version = attrs.version or parsedName.version;
 
-				opamRepo = stdenv.mkDerivation {
-					name = "${name}-${version}-repo";
-					inherit (attrs) src;
+				opamRepo = let
+					opamFilename = attrs.opamFile or "*.opam";
+					src = attrs.src;
+				in stdenv.mkDerivation {
+					name = "${packageName}-${version}-repo";
+					inherit src;
 					buildPhase = ''
-						destdir="$out/${name}/${name}.${version}/"
-						mkdir -p "$destdir"
-
-
+						true
 					'';
-					installPhase = "true";
+					installPhase = ''
+						dest="$out/packages/${packageName}/${packageName}.${version}/"
+						mkdir -p "$dest"
+						mv ${opamFilename} "$dest/opam"
+						if [ -f "${src}" ]; then
+							echo 'archive: "${src}"' > "$dest/url"
+						else
+							echo 'local: "${src}"' > "$dest/url"
+						fi
+					'';
 				};
-				nixRepo = buildNixRepo opamRepo;
-				selection
 			in
-			stdenv.mkDerivation (attrs // {
-				
-			});
+			builtins.getAttr packageName (utils.buildPackageSet (drvAttrs // {
+				packages = [ "${packageName}=${version}" ];
+				extraRepos = (attrs.extraRepos or []) ++ [ opamRepo ];
+			}));
 	};
 
 	impl = stdenv.mkDerivation {

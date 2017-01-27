@@ -1,0 +1,12 @@
+opam-version: "1.2"
+authors: [ "tim@gfxmonk.net" ]
+homepage: "https://github.com/timbertson/opam2nix-packages"
+maintainer: "tim@gfxmonk.net"
+depends: [
+  "lwt" { >= "2.5.1" }
+  "ocamlfind" {build}
+  "ocamlbuild" {build}
+]
+build: [
+  [ "ocamlbuild" "-use-ocamlfind" "hello.native" ]
+]
