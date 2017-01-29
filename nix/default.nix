@@ -169,12 +169,16 @@ let
 						fi
 					'';
 				};
-				drv = builtins.getAttr packageName (utils.buildPackageSet (drvAttrs // {
-					packages = [ "${packageName}=${version}" ];
+				packageSet = utils.buildPackageSet (drvAttrs // {
+					packages = (attrs.packages or []) ++ [ "${packageName}=${version}" ];
 					extraRepos = (attrs.extraRepos or []) ++ [ opamRepo ];
-				}));
+				});
+				drv = builtins.getAttr packageName packageSet;
 				passthru = {
-					inherit opamRepo;
+					opam2nix = {
+						repo = opamRepo;
+						packages = packageSet;
+					};
 				} // (attrs.passthru or {});
 			in
 			lib.addPassthru drv passthru;
