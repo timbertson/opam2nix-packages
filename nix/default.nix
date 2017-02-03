@@ -150,7 +150,7 @@ let
 				version = attrs.version or parsedName.version;
 
 				opamRepo = let
-					opamFilename = attrs.opamFile or "*.opam";
+					opamFilename = attrs.opamFile or "*opam";
 					src = attrs.src;
 				in stdenv.mkDerivation {
 					name = "${packageName}-${version}-repo";
@@ -159,7 +159,7 @@ let
 						true
 					'';
 					installPhase = ''
-						dest="$out/packages/${packageName}/${packageName}.${version}/"
+						dest="$out/packages/${packageName}/${packageName}.${version}"
 						mkdir -p "$dest"
 						mv ${opamFilename} "$dest/opam"
 						if [ -f "${src}" ]; then
