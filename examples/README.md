@@ -15,7 +15,7 @@ If you build an OPAM library in scenario 2, you can add it as a dependency to ot
 If you're building your new project in scenario 1, modify `nix/default.nix` like so:
 ```nix
 let
-  newlib = import 'path/to/newlib';
+  newlib = import path/to/newlib;
 in
 stdenv.mkDerivation {
   # ...
@@ -29,7 +29,7 @@ stdenv.mkDerivation {
 If your new project is another OPAM library that you're building in scenario 2, modify `nix/default/nix` like this:
 ```nix
 let
-  newlib = import 'path/to/newlib';
+  newlib = import path/to/newlib;
 in
 opam2nix.buildOpamPackage rec {
   # ...
