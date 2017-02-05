@@ -16,8 +16,9 @@ in
 pkgs.stdenv.mkDerivation 
 {
   buildInputs = inputs;
-  buildPhase = "true";
-  installPhase = "mkdir -p $out";
+  buildPhase = "${opam2nix}/bin/opam2nix invoke build";
+  configurePhase = "true";
+  installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "ctypes-foreign-0.4.0";
   opamEnv = builtins.toJSON 
   {

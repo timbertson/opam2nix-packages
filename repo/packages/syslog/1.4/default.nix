@@ -18,7 +18,6 @@ pkgs.stdenv.mkDerivation
   buildInputs = inputs;
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
-  createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "syslog-1.4";
   opamEnv = builtins.toJSON 
@@ -37,7 +36,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1a7d15l6xn3fzhgcvpjgpi770y0g1f29clzyzy2j1lxcw8v5m21d";
-    url = "http://ftp.de.debian.org/debian/pool/main/s/syslog-ocaml/syslog-ocaml_1.4.orig.tar.gz";
+    url = "http://deb.debian.org/debian/pool/main/s/syslog-ocaml/syslog-ocaml_1.4.orig.tar.gz";
   };
 }
 

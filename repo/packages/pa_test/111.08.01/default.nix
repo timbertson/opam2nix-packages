@@ -23,7 +23,6 @@ pkgs.stdenv.mkDerivation
   buildInputs = inputs;
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
-  createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "pa_test-111.08.01";
   opamEnv = builtins.toJSON 

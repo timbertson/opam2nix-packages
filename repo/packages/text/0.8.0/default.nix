@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       base-bytes = opamSelection.base-bytes;
+      camlp4 = opamSelection.camlp4;
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
@@ -21,7 +22,6 @@ pkgs.stdenv.mkDerivation
   buildInputs = inputs;
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
-  createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "text-0.8.0";
   opamEnv = builtins.toJSON 

@@ -20,7 +20,6 @@ pkgs.stdenv.mkDerivation
   buildInputs = inputs;
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
-  createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "atd-1.1.2";
   opamEnv = builtins.toJSON 
@@ -35,12 +34,12 @@ pkgs.stdenv.mkDerivation
   {
     opamSelection = opamSelection;
   };
-  postUnpack = "cp -r ${./files}/* \"$sourceRoot/\"";
+  prePatch = "cp -r ${./files}/* ./";
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
     sha256 = "14bjlflx8fm5xm4rj393xyqyy9yaz72qjki7lklpbv9a35ihrw8f";
-    url = "http://mjambon.com/releases/atd/atd-1.1.2.tar.gz";
+    url = "https://github.com/mjambon/atd/archive/v1.1.2.tar.gz";
   };
 }
 

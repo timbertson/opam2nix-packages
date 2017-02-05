@@ -20,13 +20,12 @@ pkgs.stdenv.mkDerivation
   buildInputs = inputs;
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
-  createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "camlp4-4.03+1";
   opamEnv = builtins.toJSON 
   {
     deps = opamDeps;
-    files = null;
+    files = ./files;
     name = "camlp4";
     ocaml-version = world.ocamlVersion;
     spec = ./opam;
@@ -35,6 +34,7 @@ pkgs.stdenv.mkDerivation
   {
     opamSelection = opamSelection;
   };
+  prePatch = "cp -r ${./files}/* ./";
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {

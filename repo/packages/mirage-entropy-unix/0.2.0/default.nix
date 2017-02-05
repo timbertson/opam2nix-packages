@@ -7,6 +7,7 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      camlp4 = opamSelection.camlp4;
       cstruct = opamSelection.cstruct;
       mirage-types-lwt = opamSelection.mirage-types-lwt;
       mirage-unix = opamSelection.mirage-unix;
@@ -21,7 +22,6 @@ pkgs.stdenv.mkDerivation
   buildInputs = inputs;
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
-  createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "mirage-entropy-unix-0.2.0";
   opamEnv = builtins.toJSON 

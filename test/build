@@ -1,0 +1,64 @@
+#!/usr/bin/env python3
+import os, sys, subprocess
+from optparse import OptionParser
+p = OptionParser()
+p.add_option('--ocamlAttr')
+p.add_option('--shell', action='store_true')
+p.add_option('-A', '--shell-attr')
+opts, packages = p.parse_args()
+
+if opts.shell_attr is not None and opts.shell_attr not in packages:
+	packages.append(opts.shell_attr)
+assert len(packages) > 0, 'specify one or more packages to build'
+
+world = {
+	'packages': packages,
+}
+if opts.ocamlAttr:
+	world['ocamlAttr'] = opts.ocamlAttr
+
+def paren_expr(expr):
+	return '(' + py2nix(expr) + ')'
+
+def py2nix(expr):
+	if isinstance(expr, list):
+		return '[' + (' '.join(map(paren_expr, expr))) + ']'
+	elif isinstance(expr, str):
+		return '"' + expr + '"'
+	elif isinstance(expr, dict):
+		buf = "{"
+		for k, v in expr.items():
+			buf += py2nix(k)
+			buf += " = "
+			buf += py2nix(v)
+			buf += ";"
+		buf += "}"
+		return buf
+	else:
+		assert False, "Unsupported type %s" % (type(expr))
+
+print(repr(world))
+
+if opts.shell:
+	cmd = [
+		'nix-shell',
+	]
+	if opts.shell_attr:
+		cmd.extend(['-A', opts.shell_attr])
+else:
+	cmd = [
+		'nix-build',
+		'--no-out-link',
+	]
+
+cmd.extend([
+	'--show-trace',
+	'--arg', 'world', py2nix(world),
+	os.path.join(os.path.dirname(__file__), 'build.nix')
+])
+
+print(' + ' + ' '.join(["'%s'" % arg for arg in cmd]))
+try:
+	subprocess.check_call(cmd)
+except subprocess.CalledProcessError:
+	sys.exit(1)

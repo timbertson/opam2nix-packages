@@ -1,7 +1,8 @@
 world:
 let
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.libgnomecanvas or null) (pkgs.libgnomecanvas2-dev or null) ] ++ (lib.attrValues opamDeps));
+    ([ (pkgs.libgnomecanvas or null) (pkgs.libgnomecanvas-devel or null)
+        (pkgs.libgnomecanvas2-dev or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
@@ -14,8 +15,9 @@ in
 pkgs.stdenv.mkDerivation 
 {
   buildInputs = inputs;
-  buildPhase = "true";
-  installPhase = "mkdir -p $out";
+  buildPhase = "${opam2nix}/bin/opam2nix invoke build";
+  configurePhase = "true";
+  installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "conf-gnomecanvas-2";
   opamEnv = builtins.toJSON 
   {

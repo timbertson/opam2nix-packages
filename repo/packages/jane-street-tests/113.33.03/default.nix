@@ -11,6 +11,7 @@ let
       core = opamSelection.core;
       fieldslib = opamSelection.fieldslib;
       js-build-tools = opamSelection.js-build-tools;
+      oasis = opamSelection.oasis;
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
@@ -33,7 +34,6 @@ pkgs.stdenv.mkDerivation
   buildInputs = inputs;
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
-  createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "jane-street-tests-113.33.03";
   opamEnv = builtins.toJSON 

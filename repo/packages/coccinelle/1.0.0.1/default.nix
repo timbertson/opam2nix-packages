@@ -7,6 +7,7 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      camlp4 = opamSelection.camlp4;
       conf-pkg-config = opamSelection.conf-pkg-config;
       conf-python-2-7 = opamSelection.conf-python-2-7;
       conf-python-2-7-dev = opamSelection.conf-python-2-7-dev;
@@ -25,7 +26,6 @@ pkgs.stdenv.mkDerivation
   buildInputs = inputs;
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
-  createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "coccinelle-1.0.0.1";
   opamEnv = builtins.toJSON 
@@ -40,7 +40,7 @@ pkgs.stdenv.mkDerivation
   {
     opamSelection = opamSelection;
   };
-  postUnpack = "cp -r ${./files}/* \"$sourceRoot/\"";
+  prePatch = "cp -r ${./files}/* ./";
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {

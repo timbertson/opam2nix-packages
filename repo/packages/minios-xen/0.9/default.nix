@@ -19,13 +19,12 @@ pkgs.stdenv.mkDerivation
   buildInputs = inputs;
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
-  createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "minios-xen-0.9";
   opamEnv = builtins.toJSON 
   {
     deps = opamDeps;
-    files = null;
+    files = ./files;
     name = "minios-xen";
     ocaml-version = world.ocamlVersion;
     spec = ./opam;
@@ -34,6 +33,7 @@ pkgs.stdenv.mkDerivation
   {
     opamSelection = opamSelection;
   };
+  prePatch = "cp -r ${./files}/* ./";
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {

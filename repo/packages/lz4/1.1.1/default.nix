@@ -2,7 +2,7 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.liblz4-dev or null) ] ++ (lib.attrValues opamDeps));
+    ([ (pkgs.liblz4-dev or null) (pkgs.lz4 or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
@@ -20,7 +20,6 @@ pkgs.stdenv.mkDerivation
   buildInputs = inputs;
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
-  createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "lz4-1.1.1";
   opamEnv = builtins.toJSON 

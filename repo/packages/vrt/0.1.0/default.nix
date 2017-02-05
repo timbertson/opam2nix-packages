@@ -26,7 +26,6 @@ pkgs.stdenv.mkDerivation
   buildInputs = inputs;
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
-  createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "vrt-0.1.0";
   opamEnv = builtins.toJSON 
@@ -44,8 +43,8 @@ pkgs.stdenv.mkDerivation
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "1da9pfwbz6r6rkigh5ljn0phq7iw4p9awr5258ww2qrdng2dy680";
-    url = "https://github.com/afiniate/vrt/archive/v0.1.0.tar.gz";
+    sha256 = "1c2h0gkv2zhy0wl56rsf4jkgv6b29l2is1i9jksqr84ad5jhwspq";
+    url = "https://github.com/afiniate/vrt/archive/0.1.0.tar.gz";
   };
 }
 

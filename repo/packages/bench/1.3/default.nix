@@ -20,7 +20,6 @@ pkgs.stdenv.mkDerivation
   buildInputs = inputs;
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
-  createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "bench-1.3";
   opamEnv = builtins.toJSON 
@@ -39,7 +38,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "15mshiz5qyxkq37z4gq4pxyywxky539ysbm5aynva29ik049px4a";
-    url = "http://oasis.ocamlcore.org/dev/dist/bench/1.3/bench-1.3.tar.gz";
+    url = "https://github.com/thelema/bench/releases/download/v1.3/bench-1.3.tar.gz";
   };
 }
 

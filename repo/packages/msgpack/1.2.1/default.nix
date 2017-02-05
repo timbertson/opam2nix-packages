@@ -7,9 +7,9 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
-      camlp4 = opamSelection.camlp4;
       meta_conv = opamSelection.meta_conv or null;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
     };
     opamSelection = world.opamSelection;
@@ -20,13 +20,12 @@ pkgs.stdenv.mkDerivation
   buildInputs = inputs;
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
-  createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "msgpack-1.2.1";
   opamEnv = builtins.toJSON 
   {
     deps = opamDeps;
-    files = null;
+    files = ./files;
     name = "msgpack";
     ocaml-version = world.ocamlVersion;
     spec = ./opam;
@@ -35,6 +34,7 @@ pkgs.stdenv.mkDerivation
   {
     opamSelection = opamSelection;
   };
+  prePatch = "cp -r ${./files}/* ./";
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {

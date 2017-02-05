@@ -2,7 +2,7 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.fftw or null) (pkgs.fftw-devel or null)
+    ([ (pkgs.fftw or null) (pkgs.fftw-dev or null) (pkgs.fftw-devel or null)
         (pkgs.libfftw3-dev or null) (pkgs."math/fftw3" or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
@@ -19,7 +19,6 @@ pkgs.stdenv.mkDerivation
   buildInputs = inputs;
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
-  createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "fftw3-0.7.3";
   opamEnv = builtins.toJSON 

@@ -26,7 +26,6 @@ pkgs.stdenv.mkDerivation
   buildInputs = inputs;
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
-  createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "utop-1.19.3";
   opamEnv = builtins.toJSON 
@@ -41,7 +40,7 @@ pkgs.stdenv.mkDerivation
   {
     opamSelection = opamSelection;
   };
-  postUnpack = "cp -r ${./files}/* \"$sourceRoot/\"";
+  prePatch = "cp -r ${./files}/* ./";
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {

@@ -18,8 +18,9 @@ in
 pkgs.stdenv.mkDerivation 
 {
   buildInputs = inputs;
-  buildPhase = "true";
-  installPhase = "mkdir -p $out";
+  buildPhase = "${opam2nix}/bin/opam2nix invoke build";
+  configurePhase = "true";
+  installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "mirage-irmin-0.9.8";
   opamEnv = builtins.toJSON 
   {

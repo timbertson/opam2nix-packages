@@ -19,7 +19,6 @@ pkgs.stdenv.mkDerivation
   buildInputs = inputs;
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
-  createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "fd-send-recv-1.0.1";
   opamEnv = builtins.toJSON 
@@ -38,7 +37,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "14iw9zlz1bd2qvn4wzp54bhhz3gy704h2mwhd39r6921cfdi0kv6";
-    url = "https://github.com/xen-org/ocaml-fd-send-recv/archive/ocaml-fd-send-recv-1.0.1.tar.gz";
+    url = "https://github.com/xapi-project/ocaml-fd-send-recv/archive/ocaml-fd-send-recv-1.0.1.tar.gz";
   };
 }
 

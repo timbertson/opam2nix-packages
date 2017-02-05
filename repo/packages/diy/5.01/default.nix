@@ -18,7 +18,6 @@ pkgs.stdenv.mkDerivation
   buildInputs = inputs;
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
-  createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "diy-5.01";
   opamEnv = builtins.toJSON 
@@ -36,8 +35,8 @@ pkgs.stdenv.mkDerivation
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "035ql8db680q37q5vmimkimjgbfpwrc02cl3cb2g407j1s1i638s";
-    url = "http://diy.inria.fr/sources/diy-5.01.tar.gz";
+    sha256 = "00ypfnwgk5l2vg8jqisnaag6lqfjgbxrp33f0mc3dlx2kmvdxmrn";
+    url = "http://diy.inria.fr/sources/old/diy-5.01.tar.gz";
   };
 }
 

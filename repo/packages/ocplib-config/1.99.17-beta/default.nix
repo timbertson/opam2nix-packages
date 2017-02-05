@@ -16,8 +16,9 @@ in
 pkgs.stdenv.mkDerivation 
 {
   buildInputs = inputs;
-  buildPhase = "true";
-  installPhase = "mkdir -p $out";
+  buildPhase = "${opam2nix}/bin/opam2nix invoke build";
+  configurePhase = "true";
+  installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "ocplib-config-1.99.17-beta";
   opamEnv = builtins.toJSON 
   {

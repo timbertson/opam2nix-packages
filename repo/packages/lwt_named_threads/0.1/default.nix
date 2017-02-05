@@ -7,7 +7,7 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
-      devkit = opamSelection.devkit;
+      extlib = opamSelection.extlib;
       lwt = opamSelection.lwt;
       objsize = opamSelection.objsize;
       ocaml = opamSelection.ocaml;
@@ -21,7 +21,6 @@ pkgs.stdenv.mkDerivation
   buildInputs = inputs;
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
-  createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "lwt_named_threads-0.1";
   opamEnv = builtins.toJSON 

@@ -7,6 +7,7 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      camlp4 = opamSelection.camlp4;
       lwt = opamSelection.lwt;
       oasis = opamSelection.oasis;
       ocaml = opamSelection.ocaml;
@@ -21,7 +22,6 @@ pkgs.stdenv.mkDerivation
   buildInputs = inputs;
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
-  createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "usb-1.3.0";
   opamEnv = builtins.toJSON 

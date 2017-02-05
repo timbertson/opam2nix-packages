@@ -19,7 +19,6 @@ pkgs.stdenv.mkDerivation
   buildInputs = inputs;
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
-  createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "shcaml-0.1.3";
   opamEnv = builtins.toJSON 
@@ -38,7 +37,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0ah1n300wn2ndwkrwxyx629rbab39ksk9nbc4r19v6mxz04q6ghh";
-    url = "http://www.eecs.harvard.edu/~tov/code/shcaml/shcaml-0.1.3.tar.gz";
+    url = "http://godi.0ok.org/godi-backup/shcaml-0.1.3.tar.gz";
   };
 }
 

@@ -20,7 +20,6 @@ pkgs.stdenv.mkDerivation
   buildInputs = inputs;
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
-  createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "ulex-1.1";
   opamEnv = builtins.toJSON 
@@ -39,7 +38,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0fjlkwps14adfgxdrbb4yg65fhyimplvjjs1xqj5np197cig67x0";
-    url = "http://ftp.de.debian.org/debian/pool/main/u/ulex/ulex_1.1.orig.tar.gz";
+    url = "http://deb.debian.org/debian/pool/main/u/ulex/ulex_1.1.orig.tar.gz";
   };
 }
 

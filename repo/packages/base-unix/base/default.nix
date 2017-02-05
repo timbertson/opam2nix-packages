@@ -15,8 +15,9 @@ in
 pkgs.stdenv.mkDerivation 
 {
   buildInputs = inputs;
-  buildPhase = "true";
-  installPhase = "mkdir -p $out";
+  buildPhase = "${opam2nix}/bin/opam2nix invoke build";
+  configurePhase = "true";
+  installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "base-unix-base";
   opamEnv = builtins.toJSON 
   {

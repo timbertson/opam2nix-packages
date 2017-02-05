@@ -26,7 +26,6 @@ pkgs.stdenv.mkDerivation
   buildInputs = inputs;
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
-  createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "coccinelle-1.0.2";
   opamEnv = builtins.toJSON 
@@ -44,8 +43,8 @@ pkgs.stdenv.mkDerivation
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "1da9pfwbz6r6rkigh5ljn0phq7iw4p9awr5258ww2qrdng2dy680";
-    url = "https://github.com/coccinelle/coccinelle/archive/coccinelle-1.0.2.tar.gz";
+    sha256 = "1fb69hcq1gvi6dv83fwv9dm68af4q89s3kwr9mdw27v9r925r4la";
+    url = "https://github.com/coccinelle/coccinelle/archive/1.0.2.tar.gz";
   };
 }
 

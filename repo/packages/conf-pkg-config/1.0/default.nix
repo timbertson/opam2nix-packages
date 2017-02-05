@@ -1,7 +1,8 @@
 world:
 let
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.pkg-config or null) (pkgs.pkgconfig or null) ] ++ (lib.attrValues opamDeps));
+    ([ (pkgs.pkg-config or null) (pkgs.pkgconf or null)
+        (pkgs.pkgconfig or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
@@ -14,8 +15,9 @@ in
 pkgs.stdenv.mkDerivation 
 {
   buildInputs = inputs;
-  buildPhase = "true";
-  installPhase = "mkdir -p $out";
+  buildPhase = "${opam2nix}/bin/opam2nix invoke build";
+  configurePhase = "true";
+  installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "conf-pkg-config-1.0";
   opamEnv = builtins.toJSON 
   {

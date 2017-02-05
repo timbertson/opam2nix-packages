@@ -1,7 +1,7 @@
 world:
 {
-  "0.8.1" = import ./0.8.1 world;
-  "0.9.2" = import ./0.9.2 world;
-  latest = import ./0.9.2 world;
+  "0.10.3" = import ./0.10.3 world;
+  "0.11.3" = import ./0.11.3 world;
+  latest = import ./0.11.3 world;
 }
 
