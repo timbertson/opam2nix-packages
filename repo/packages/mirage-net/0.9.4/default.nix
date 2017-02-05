@@ -21,7 +21,6 @@ pkgs.stdenv.mkDerivation
   buildInputs = inputs;
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
-  createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "mirage-net-0.9.4";
   opamEnv = builtins.toJSON 
@@ -40,7 +39,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1a16rg5kc5ffdy188zrjgyfiyayi6fnrb3byw6d9vqhsakd32k7r";
-    url = "https://github.com/mirage/mirage-net/archive/v0.9.4.tar.gz";
+    url = "https://github.com/mirage/mirage-tcpip/archive/v0.9.4.tar.gz";
   };
 }
 

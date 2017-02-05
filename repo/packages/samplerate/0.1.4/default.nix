@@ -2,7 +2,8 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.libsamplerate or null) (pkgs.libsamplerate0-dev or null) ] ++ (lib.attrValues opamDeps));
+    ([ (pkgs.libsamplerate or null) (pkgs.libsamplerate-dev or null)
+        (pkgs.libsamplerate0-dev or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
@@ -18,7 +19,6 @@ pkgs.stdenv.mkDerivation
   buildInputs = inputs;
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
-  createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "samplerate-0.1.4";
   opamEnv = builtins.toJSON 

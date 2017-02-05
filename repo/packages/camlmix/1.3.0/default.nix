@@ -18,7 +18,6 @@ pkgs.stdenv.mkDerivation
   buildInputs = inputs;
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
-  createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "camlmix-1.3.0";
   opamEnv = builtins.toJSON 
@@ -33,12 +32,12 @@ pkgs.stdenv.mkDerivation
   {
     opamSelection = opamSelection;
   };
-  postUnpack = "cp -r ${./files}/* \"$sourceRoot/\"";
+  prePatch = "cp -r ${./files}/* ./";
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
     sha256 = "17h2ph0ksmw62pxsmbdj9a5jpq4frh2y02gxjxrsqr888a3mc497";
-    url = "http://mjambon.com/camlmix/camlmix-1.3.0.tar.gz";
+    url = "https://github.com/mjambon/mjambon2016/raw/master/camlmix/camlmix-1.3.0.tar.gz";
   };
 }
 

@@ -20,7 +20,6 @@ pkgs.stdenv.mkDerivation
   buildInputs = inputs;
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
-  createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "json-static-0.9.8";
   opamEnv = builtins.toJSON 
@@ -39,7 +38,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1p9xaqk538i6rnjm3q0h4wyw1kg1l0gdsr6mmm2z268a3rs8nypx";
-    url = "http://mjambon.com/json-static-0.9.8.tar.bz2";
+    url = "https://github.com/mjambon/mjambon2016/raw/master/json-static-0.9.8.tar.bz2";
   };
 }
 

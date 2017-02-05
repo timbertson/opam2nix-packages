@@ -20,7 +20,6 @@ pkgs.stdenv.mkDerivation
   buildInputs = inputs;
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
-  createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "ocaml-zmq-0";
   opamEnv = builtins.toJSON 
@@ -38,8 +37,8 @@ pkgs.stdenv.mkDerivation
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "0hfxwgp5fhpj17rnkjx9ppklfj4ackik33vw1kgdyb62zkczg2z2";
-    url = "https://github.com/pdhborges/ocaml-zmq/tarball/67586823edd";
+    sha256 = "0gac56k2wwi8b5jr1hhsmv9d932ha4mv5f0qsj7hxhqny4w2yl4c";
+    url = "https://github.com/issuu/ocaml-zmq/tarball/67586823edd";
   };
 }
 

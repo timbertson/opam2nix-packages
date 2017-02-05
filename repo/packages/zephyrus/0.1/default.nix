@@ -24,7 +24,6 @@ pkgs.stdenv.mkDerivation
   buildInputs = inputs;
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
-  createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "zephyrus-0.1";
   opamEnv = builtins.toJSON 
@@ -42,8 +41,8 @@ pkgs.stdenv.mkDerivation
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "1wdznrcdh7jq79cxxanfjmli7w9amgjhazv0n9m0jxm6wrpfapl8";
-    url = "http://www.pps.univ-paris-diderot.fr/~qba/archives/2013.08.30/zephyrus-0.1.tar.gz";
+    sha256 = "0y7wllnj6jgb5i71yh30xr3x9mfypqj7wxzfzmh5ic86lvxa6759";
+    url = "http://archives.pps.univ-paris-diderot.fr/~qba/archives/2013.08.30/zephyrus-0.1.tar.gz";
   };
 }
 

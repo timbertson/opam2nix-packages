@@ -5,7 +5,6 @@ let
 	overrideAll = fn: versions: mapAttrs (version: def: lib.overrideDerivation def fn) versions;
 
 	# XXX it's not really a `configure` phase, is it?
-	addBinDir = def: overrideAll (impl: { configurePhase = ''mkdir -p $out/bin''; }) def;
 	addNcurses = def: overrideAll (impl: { nativeBuildInputs = impl.nativeBuildInputs ++ [ncurses]; }) def;
 	opamPackages = super.opamPackages;
 in
@@ -71,12 +70,6 @@ in
 				'';
 			}
 		) opamPackages."0install";
-
-		# TODO: should this be automated?
-		biniou = addBinDir opamPackages.biniou;
-		yojson = addBinDir opamPackages.yojson;
-		fat-filesystem = addBinDir opamPackages.fat-filesystem;
-		merlin = addBinDir opamPackages.merlin;
 
 		# fallout of https://github.com/ocaml/opam-repository/pull/6657
 		omake = addNcurses opamPackages.omake;

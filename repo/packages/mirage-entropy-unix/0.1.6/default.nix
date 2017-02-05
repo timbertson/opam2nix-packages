@@ -7,6 +7,7 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      camlp4 = opamSelection.camlp4;
       cstruct = opamSelection.cstruct;
       io-page = opamSelection.io-page;
       ipaddr = opamSelection.ipaddr;
@@ -24,7 +25,6 @@ pkgs.stdenv.mkDerivation
   buildInputs = inputs;
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
-  createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "mirage-entropy-unix-0.1.6";
   opamEnv = builtins.toJSON 

@@ -9,6 +9,7 @@ let
     {
       async = opamSelection.async or null;
       base-bytes = opamSelection.base-bytes;
+      base-unix = opamSelection.base-unix or null;
       camlp4 = opamSelection.camlp4 or null;
       lwt = opamSelection.lwt or null;
       ocaml = opamSelection.ocaml;
@@ -26,7 +27,6 @@ pkgs.stdenv.mkDerivation
   buildInputs = inputs;
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
-  createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "cstruct-1.9.0";
   opamEnv = builtins.toJSON 

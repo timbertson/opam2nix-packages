@@ -7,6 +7,7 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      camlp4 = opamSelection.camlp4;
       cohttp = opamSelection.cohttp;
       cstruct = opamSelection.cstruct;
       lwt = opamSelection.lwt;
@@ -27,7 +28,6 @@ pkgs.stdenv.mkDerivation
   buildInputs = inputs;
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
-  createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "xe-0.6.3";
   opamEnv = builtins.toJSON 

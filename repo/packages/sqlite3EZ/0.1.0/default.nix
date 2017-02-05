@@ -9,7 +9,7 @@ let
     {
       beluga = opamSelection.beluga or null;
       ocaml = opamSelection.ocaml;
-      "ocaml+twt" = opamSelection."ocaml+twt";
+      ocaml-twt = opamSelection.ocaml-twt;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       ounit = opamSelection.ounit or null;
@@ -23,7 +23,6 @@ pkgs.stdenv.mkDerivation
   buildInputs = inputs;
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
-  createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "sqlite3EZ-0.1.0";
   opamEnv = builtins.toJSON 

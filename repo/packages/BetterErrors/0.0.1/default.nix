@@ -20,7 +20,6 @@ pkgs.stdenv.mkDerivation
   buildInputs = inputs;
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
-  createFindlibDestdir = true;
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "BetterErrors-0.0.1";
   opamEnv = builtins.toJSON 
@@ -38,8 +37,8 @@ pkgs.stdenv.mkDerivation
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "00yimw1f2vqjnchqsl3a8xy5kmhi26lc02pi94i1irrgamzrqkl6";
-    url = "https://github.com/chenglou/BetterErrors/archive/v0.0.1.tar.gz";
+    sha256 = "0iw2y5bxlkdwvimkfsl77cig8vh7mc2ghsgj81vwz8rr6yi2gvv1";
+    url = "https://github.com/reasonml/BetterErrors/archive/v0.0.1.tar.gz";
   };
 }
 

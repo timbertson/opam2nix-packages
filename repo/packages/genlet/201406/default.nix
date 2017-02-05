@@ -6,6 +6,7 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      base-metaocaml-ocamlfind = opamSelection.base-metaocaml-ocamlfind;
       delimcc = opamSelection.delimcc;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
@@ -16,8 +17,9 @@ in
 pkgs.stdenv.mkDerivation 
 {
   buildInputs = inputs;
-  buildPhase = "true";
-  installPhase = "mkdir -p $out";
+  buildPhase = "${opam2nix}/bin/opam2nix invoke build";
+  configurePhase = "true";
+  installPhase = "${opam2nix}/bin/opam2nix invoke install";
   name = "genlet-201406";
   opamEnv = builtins.toJSON 
   {
@@ -31,7 +33,7 @@ pkgs.stdenv.mkDerivation
   {
     opamSelection = opamSelection;
   };
-  postUnpack = "cp -r ${./files}/* \"$sourceRoot/\"";
+  prePatch = "cp -r ${./files}/* ./";
   propagatedBuildInputs = inputs;
   unpackPhase = "true";
 }
