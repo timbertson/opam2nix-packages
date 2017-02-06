@@ -486,6 +486,7 @@ world:
   fury-puyo = import ./fury-puyo world;
   future = import ./future world;
   gadelac = import ./gadelac world;
+  gamepad = import ./gamepad world;
   gammu = import ./gammu world;
   gapi-ocaml = import ./gapi-ocaml world;
   gasoline = import ./gasoline world;

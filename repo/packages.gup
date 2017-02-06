@@ -4,9 +4,11 @@ from __future__ import print_function
 import os, sys, optparse, subprocess
 p = optparse.OptionParser()
 p.add_option("--update", action='store_true')
+p.add_option("--dev", action='store_true')
 opts, args = p.parse_args()
 here = os.path.dirname(__file__)
-opam2nix_base = os.path.join(here, '../opam2nix/local')
+
+opam2nix_base = os.path.join(here, ('../opam2nix' if opts.dev else '../opam2nix/local'))
 
 cmd = [
 	os.path.join(opam2nix_base, 'bin/opam2nix'),
@@ -18,17 +20,20 @@ cmd = [
 	'--ignore-broken'
 ]
 if opts.update:
-	cmd.extend(['--unclean', '--dest', os.path.join(here, 'packages')])
+	cmd.extend(['--update', '--dest', os.path.join(here, 'packages')])
 	cmd.extend(args)
 else:
 	assert len(args) == 2
 	dest, target = args
-	cmd.extend(['--dest', dest, '*'])
-	with open(os.path.join(here, '../packages.repo')) as repo_list:
-		for line in repo_list.readlines():
-			line = line.strip()
-			if line.startswith('#'): continue
-			cmd.append(line)
+	cmd.extend(['--dest', dest])
+
+cmd.append('*')
+
+with open(os.path.join(here, '../packages.repo')) as repo_list:
+	for line in repo_list.readlines():
+		line = line.strip()
+		if line.startswith('#'): continue
+		cmd.append(line)
 
 subprocess.check_call([
 	'gup', '-u',
