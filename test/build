@@ -2,8 +2,9 @@
 import os, sys, subprocess
 from optparse import OptionParser
 p = OptionParser()
-p.add_option('--ocamlAttr')
+p.add_option('--ocamlAttr', default='ocaml_4_03')
 p.add_option('--shell', action='store_true')
+p.add_option('--pure', action='store_true')
 p.add_option('-A', '--shell-attr')
 opts, packages = p.parse_args()
 
@@ -45,6 +46,8 @@ if opts.shell:
 	]
 	if opts.shell_attr:
 		cmd.extend(['-A', opts.shell_attr])
+	if opts.pure:
+		cmd.extend(['--pure'])
 else:
 	cmd = [
 		'nix-build',
