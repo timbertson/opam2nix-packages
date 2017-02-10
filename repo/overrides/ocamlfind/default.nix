@@ -2,9 +2,9 @@ world: def:
 let
 	ocaml_version = (builtins.parseDrvName world.opamSelection.ocaml.name).version;
 in {
+	patches = [ ./install_topfind.patch ];
 	buildPhase = ''
 		echo 'ldconf="ignore"' >> findlib.conf.in
-		sed -i -e 's/OCAML_CORE_STDLIB/OCAML_SITELIB/' src/findlib/Makefile
 		./configure \
 			-bindir $out/bin \
 			-mandir $out/share/man \
