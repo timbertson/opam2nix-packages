@@ -42,6 +42,7 @@ in
 		}) opamPackages.lablgtk;
 
 		lwt = overrideAll (impl: {
+			nativeBuildInputs = impl.nativeBuildInputs ++ [ ncurses ];
 			setupHook = writeText "setupHook.sh" ''
 				export LD_LIBRARY_PATH="$(dirname "$(dirname ''${BASH_SOURCE[0]})")/lib/lwt''${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 			'';
