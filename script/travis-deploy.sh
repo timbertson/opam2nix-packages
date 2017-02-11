@@ -5,9 +5,6 @@ eval "$(ssh-agent -s)"
 chmod 600 keys/*.key
 ssh-add keys/*.key
 
-git config user.name 'travis-ci';
-git config user.email 'travis-ci@gfxmonk.net';
-
 PUSH_ARGS=""
 if [ "$TRAVIS_EVENT_TYPE" != "cron" ]; then
 	echo "(not pushing changes)"
