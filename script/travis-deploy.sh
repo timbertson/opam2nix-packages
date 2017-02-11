@@ -9,7 +9,8 @@ git config user.name 'travis-ci';
 git config user.email 'travis-ci@gfxmonk.net';
 
 PUSH_ARGS=""
-if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then
+if [ "$TRAVIS_EVENT_TYPE" != "cron" ]; then
+	echo "(not pushing changes)"
 	PUSH_ARGS="-n"
 fi
 
