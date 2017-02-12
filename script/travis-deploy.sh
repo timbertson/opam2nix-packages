@@ -27,5 +27,5 @@ function push() {
 	popd
 }
 
-push opam2nix origin HEAD:master
-push . origin HEAD:"$TRAVIS_BRANCH"
+push opam-repository git@github.com:timbertson/opam-repository.git HEAD:master
+push . git@github.com:timbertson/opam-repository.git HEAD:"$TRAVIS_BRANCH"
