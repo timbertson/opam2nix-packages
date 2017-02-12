@@ -4,6 +4,7 @@ script:
 deploy:
   provider: script
   script: ./script/travis-deploy.sh
+  skip_cleanup: true
   on:
     branch: travis # TODO: master
 cache:

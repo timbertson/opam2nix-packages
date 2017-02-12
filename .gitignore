@@ -3,3 +3,5 @@
 /local
 /nix/local.tgz
 /nix/release.*.commit
+.gup/
+*.stamp

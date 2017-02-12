@@ -1,7 +1,11 @@
 #!/bin/bash
-set -eux
+set -eu
 
 eval "$(ssh-agent -s)"
+script/travis-decrypt.sh
+
+set -x
+
 chmod 600 keys/*.key
 ssh-add keys/*.key
 
