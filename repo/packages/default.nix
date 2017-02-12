@@ -729,6 +729,7 @@ world:
   minilight = import ./minilight world;
   minima-theme = import ./minima-theme world;
   minios-xen = import ./minios-xen world;
+  minisat = import ./minisat world;
   mirage = import ./mirage world;
   mirage-block = import ./mirage-block world;
   mirage-block-ccm = import ./mirage-block-ccm world;
@@ -840,6 +841,7 @@ world:
   oasis = import ./oasis world;
   oasis-mirage = import ./oasis-mirage world;
   oasis2opam = import ./oasis2opam world;
+  obandit = import ./obandit world;
   obeanstalk = import ./obeanstalk world;
   obigstore = import ./obigstore world;
   objsize = import ./objsize world;
@@ -1146,6 +1148,8 @@ world:
   profound = import ./profound world;
   proj4 = import ./proj4 world;
   promela = import ./promela world;
+  prometheus = import ./prometheus world;
+  prometheus-app = import ./prometheus-app world;
   protobuf = import ./protobuf world;
   protocol-9p = import ./protocol-9p world;
   proverif = import ./proverif world;
@@ -1486,5 +1490,6 @@ world:
   zlist = import ./zlist world;
   zmq = import ./zmq world;
   zstd = import ./zstd world;
+  zxcvbn = import ./zxcvbn world;
 }
 
