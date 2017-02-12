@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eux
 if [ "$TRAVIS_EVENT_TYPE" != "cron" ]; then
-	: not a cron build; ignoring
+	: not a cron build, ignoring
 	exit 0
 fi
 
