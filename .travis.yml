@@ -1,0 +1,16 @@
+language: nix
+script:
+- ./script/travis.sh
+deploy:
+  provider: script
+  script: ./script/travis-deploy.sh
+  skip_cleanup: true
+  on:
+    branch: master
+cache:
+  directories:
+  - cache
+before_install:
+  - ./script/travis-decrypt.sh
+notifications:
+  email: false

@@ -1,0 +1,2 @@
+#!bash -eux
+tar czf "$1" *.key
