@@ -11,18 +11,21 @@ ssh-add keys/*.key
 
 PUSH_ARGS=""
 if [ "$TRAVIS_EVENT_TYPE" != "cron" ]; then
-	echo "(not pushing changes)"
+	: using dry-run
 	PUSH_ARGS="-n"
 fi
 
 function push() {
-	for dir in "$@"; do
-		pushd "$dir"
-			if [ -e .push ]; then
-				git push $PUSH_ARGS
-			else
-				echo "No changes in $dir"
-			fi
-		popd
-	done
+	dir="$1"
+	shift 1
+	pushd "$dir"
+		if [ -e .push ]; then
+			git push $PUSH_ARGS "$@"
+		else
+			: No changes 'in' $dir
+		fi
+	popd
 }
+
+push opam2nix origin HEAD:master
+push . origin HEAD:"$TRAVIS_BRANCH"
