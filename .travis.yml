@@ -2,8 +2,10 @@ language: nix
 script:
 - ./script/travis.sh
 deploy:
-  script:
-    - ./script/travis-deploy.sh
+  provider: script
+  script: ./script/travis-deploy.sh
+  on:
+    branch: travis # TODO: master
 cache:
   directories:
   - cache
