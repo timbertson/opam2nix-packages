@@ -1,0 +1,17 @@
+opam-version: "1.2"
+maintainer: "andy.ray@ujamjar.com"
+homepage: "https://github.com/ujamjar/hardcaml"
+build: [make "all"]
+remove: [
+  [make "uninstall"]
+]
+depends: [
+  "ocamlfind"
+  "camlp4"
+  "lwt"
+  "js_of_ocaml"
+  "ocamlbuild" {build}
+]
+dev-repo: "git://github.com/ujamjar/hardcaml"
+available: ocaml-version >= "4.01.0"
+install: [make "install"]

@@ -1,0 +1,11 @@
+opam-version: "1.2"
+maintainer: "opensource@janestreet.com"
+build: make
+remove: [["ocamlfind" "remove" "pa_pipebang"]]
+depends: [
+  "camlp4"
+  "ocamlfind"
+  "ocamlbuild" {build}
+]
+available: ocaml-version >= "4.00.1"
+install: [make "install"]
