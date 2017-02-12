@@ -8,4 +8,4 @@ export_archive
 pushd opam2nix
 	export_archive
 popd
-nix-shell --run script/travis-update.sh
+nix-shell --arg ci true --run script/travis-update.sh
