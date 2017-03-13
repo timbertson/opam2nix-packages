@@ -150,7 +150,7 @@ let
 				version = attrs.version or parsedName.version;
 
 				opamRepo = let
-					opamFilename = attrs.opamFile or "{opam,*.opam}";
+					opamFilename = attrs.opamFile or "\"$(find . -maxdepth 1 -name 'opam' -o -name '*.opam')\"";
 					src = attrs.src;
 				in stdenv.mkDerivation {
 					name = "${packageName}-${version}-repo";
