@@ -30,6 +30,8 @@ in {
 
 				if test -d "''$1/lib/stublibs"; then
 					export CAML_LD_LIBRARY_PATH="''${CAML_LD_LIBRARY_PATH}''${CAML_LD_LIBRARY_PATH:+:}''$1/lib/stublibs"
+				else
+					export CAML_LD_LIBRARY_PATH="''${CAML_LD_LIBRARY_PATH}''${CAML_LD_LIBRARY_PATH:+:}''$1/lib"
 				fi
 			fi
 			export OCAMLFIND_DESTDIR="''$out/lib/"

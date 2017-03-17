@@ -162,6 +162,10 @@ let
 						dest="$out/packages/${packageName}/${packageName}.${version}"
 						mkdir -p "$dest"
 						mv ${opamFilename} "$dest/opam"
+						if ! [ -f "$dest/opam" ]; then
+							echo "Error: opam file not created"
+							exit 1
+						fi
 						if [ -f "${src}" ]; then
 							echo 'archive: "${src}"' > "$dest/url"
 						else
