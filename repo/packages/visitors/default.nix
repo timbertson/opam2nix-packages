@@ -1,6 +1,6 @@
 world:
 {
-  "20170308" = import ./20170308 world;
-  latest = import ./20170308 world;
+  "20170317" = import ./20170317 world;
+  latest = import ./20170317 world;
 }
 
