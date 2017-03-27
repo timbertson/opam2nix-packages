@@ -6,6 +6,7 @@ let
 
 	# XXX it's not really a `configure` phase, is it?
 	addNcurses = def: overrideAll (impl: { nativeBuildInputs = impl.nativeBuildInputs ++ [ncurses]; }) def;
+	disableStackProtection = def: overrideAll (impl: { hardeningDisable = [ "stackprotector" ]; }) def;
 	opamPackages = super.opamPackages;
 in
 {
@@ -51,6 +52,9 @@ in
 		ctypes = overrideAll (impl: {
 			nativeBuildInputs = impl.nativeBuildInputs ++ [ pkgconfig libffi ncurses ];
 		}) opamPackages.ctypes;
+
+		solo5-kernel-vertio = disableStackProtection opamPackages.solo5-kernel-vertio;
+		solo5-kernel-ukvm = disableStackProtection opamPackages.solo5-kernel-ukvm;
 
 		zarith-xen = overrideAll (impl: {
 			buildPhase = "${pkgs.bash}/bin/bash ${./zarith-xen/install.sh}";
