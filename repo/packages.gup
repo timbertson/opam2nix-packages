@@ -4,6 +4,7 @@ from __future__ import print_function
 import os, sys, optparse, subprocess
 p = optparse.OptionParser()
 p.add_option("--update", action='store_true')
+p.add_option("--unclean", action='store_true')
 p.add_option("--dev", action='store_true')
 opts, args = p.parse_args()
 here = os.path.dirname(__file__)
@@ -19,21 +20,29 @@ cmd = [
 	'--num-versions', '3',
 	'--ignore-broken'
 ]
+
+include_default_packages = True
+
 if opts.update:
 	cmd.extend(['--update', '--dest', os.path.join(here, 'packages')])
 	cmd.extend(args)
+elif opts.unclean:
+	cmd.extend(['--unclean', '--dest', os.path.join(here, 'packages')])
+	cmd.extend(args)
+	include_default_packages = False
 else:
 	assert len(args) == 2
 	dest, target = args
 	cmd.extend(['--dest', dest])
 
-cmd.append('*')
+if include_default_packages:
+	cmd.append('*')
 
-with open(os.path.join(here, '../packages.repo')) as repo_list:
-	for line in repo_list.readlines():
-		line = line.strip()
-		if line.startswith('#'): continue
-		cmd.append(line)
+	with open(os.path.join(here, '../packages.repo')) as repo_list:
+		for line in repo_list.readlines():
+			line = line.strip()
+			if line.startswith('#'): continue
+			cmd.append(line)
 
 subprocess.check_call([
 	'gup', '-u',
