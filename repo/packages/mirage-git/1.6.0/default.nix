@@ -10,6 +10,7 @@ let
       git = opamSelection.git;
       mirage-flow = opamSelection.mirage-flow;
       mirage-http = opamSelection.mirage-http;
+      mirage-types = opamSelection.mirage-types;
       mirage-types-lwt = opamSelection.mirage-types-lwt;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind or null;

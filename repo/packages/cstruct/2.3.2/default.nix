@@ -43,7 +43,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1q3h6l8pbv3glm2jp3scd9mb6q4la2zaikhplqkh5hs4fsz1kihn";
-    url = "http://github.com/mirage/ocaml-cstruct/archive/v2.3.2.tar.gz";
+    url = "https://github.com/mirage/ocaml-cstruct/archive/v2.3.2.tar.gz";
   };
 }
 

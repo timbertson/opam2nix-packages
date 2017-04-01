@@ -39,7 +39,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0jzl6ayrry0wgzxdqswcynbm6qiw10im4kfmia0ri0w50zxfkyrg";
-    url = "http://github.com/mirage/ocaml-crunch/releases/download/2.0.0/crunch-2.0.0.tbz";
+    url = "https://github.com/mirage/ocaml-crunch/releases/download/2.0.0/crunch-2.0.0.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

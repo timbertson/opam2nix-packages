@@ -22,6 +22,7 @@ let
       mirage-types-lwt = opamSelection.mirage-types-lwt;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
+      ppx_deriving = opamSelection.ppx_deriving;
       ppx_sexp_conv = opamSelection.ppx_sexp_conv;
       ppx_tools = opamSelection.ppx_tools;
       ppx_type_conv = opamSelection.ppx_type_conv;
@@ -55,7 +56,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1mjm4dc0jpyrlk2m8pzlnp6x6snbfy454wlb6ih5r3r3dkhk630x";
-    url = "http://github.com/mirage/ocaml-qcow/archive/v0.8.1.tar.gz";
+    url = "https://github.com/mirage/ocaml-qcow/archive/v0.8.1.tar.gz";
   };
 }
 

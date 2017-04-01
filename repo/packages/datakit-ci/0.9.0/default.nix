@@ -24,6 +24,7 @@ let
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
       pbkdf = opamSelection.pbkdf;
+      ppx_deriving = opamSelection.ppx_deriving;
       ppx_sexp_conv = opamSelection.ppx_sexp_conv;
       prometheus-app = opamSelection.prometheus-app;
       protocol-9p = opamSelection.protocol-9p;

@@ -19,6 +19,7 @@ let
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
+      ppx_deriving = opamSelection.ppx_deriving;
       ppx_fields_conv = opamSelection.ppx_fields_conv;
       ppx_sexp_conv = opamSelection.ppx_sexp_conv;
       re = opamSelection.re;
@@ -52,7 +53,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0c9zq3mi556gswfy594h07hirf4hpgl9iwsbbck0am4j9j3nqg1p";
-    url = "http://github.com/mirage/ocaml-cohttp/archive/v0.21.1.tar.gz";
+    url = "https://github.com/mirage/ocaml-cohttp/archive/v0.21.1.tar.gz";
   };
 }
 

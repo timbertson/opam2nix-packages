@@ -1,8 +1,9 @@
 world:
 let
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.gcc or null) (pkgs.lapack or null) (pkgs.lapack-devel or null)
-        (pkgs.liblapack-dev or null) ] ++ (lib.attrValues opamDeps));
+    ([ (pkgs.gcc or null) (pkgs.lapack or null) (pkgs.lapack-dev or null)
+        (pkgs.lapack-devel or null) (pkgs.liblapack-dev or null)
+        (pkgs.liblapack-devel or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 

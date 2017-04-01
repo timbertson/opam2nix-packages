@@ -41,7 +41,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0ba30mraicqcsrqw04n0gxkdq833lrg436fbm5y8dpwf9z3khkd8";
-    url = "http://github.com/hammerlab/oml/releases/download/0.0.7/oml-0.0.7.tbz";
+    url = "https://github.com/hammerlab/oml/releases/download/0.0.7/oml-0.0.7.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

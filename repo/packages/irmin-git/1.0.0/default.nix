@@ -40,7 +40,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0cn8vcdnfsdya6kv1biw78bps4c5810vppnihzp0r7y1d6z0q1bv";
-    url = "http://github.com/mirage/irmin/releases/download/1.0.0/irmin-1.0.0.tbz";
+    url = "https://github.com/mirage/irmin/releases/download/1.0.0/irmin-1.0.0.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

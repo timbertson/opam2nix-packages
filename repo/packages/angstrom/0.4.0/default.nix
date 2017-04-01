@@ -42,7 +42,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0sydcr4axmb3wsgakclz160lfy9fpmkfrmf7gm5rjfxkqi3r5jj1";
-    url = "http://github.com/inhabitedtype/angstrom/archive/0.4.0.tar.gz";
+    url = "https://github.com/inhabitedtype/angstrom/archive/0.4.0.tar.gz";
   };
 }
 

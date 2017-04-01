@@ -39,7 +39,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1zn12nn6jj8ik3z5dhx1v6kdsi92724d8gr6axdgm1313j8cvwcv";
-    url = "http://github.com/mirage/mirage-device/releases/download/1.0.0/mirage-device-1.0.0.tbz";
+    url = "https://github.com/mirage/mirage-device/releases/download/1.0.0/mirage-device-1.0.0.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

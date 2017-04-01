@@ -10,6 +10,7 @@ let
       ctypes = opamSelection.ctypes;
       ctypes-foreign = opamSelection.ctypes-foreign;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
     };
     opamSelection = world.opamSelection;

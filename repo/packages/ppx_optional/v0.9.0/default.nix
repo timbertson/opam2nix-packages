@@ -41,7 +41,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0kmayb3c2dsapxpzr8sv53x6ik199kbqjbpipcvz7h3m43s58kqc";
-    url = "http://ocaml.janestreet.com/ocaml-core/v0.9/files/ppx_optional-v0.9.0.tar.gz";
+    url = "https://ocaml.janestreet.com/ocaml-core/v0.9/files/ppx_optional-v0.9.0.tar.gz";
   };
 }
 

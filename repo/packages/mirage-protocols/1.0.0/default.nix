@@ -41,7 +41,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0m6fi1mhql9vlb4hfcdfamjpwj2l0dnn1w0vnx6wr1fg3ibs4y1l";
-    url = "http://github.com/mirage/mirage-protocols/releases/download/1.0.0/mirage-protocols-1.0.0.tbz";
+    url = "https://github.com/mirage/mirage-protocols/releases/download/1.0.0/mirage-protocols-1.0.0.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

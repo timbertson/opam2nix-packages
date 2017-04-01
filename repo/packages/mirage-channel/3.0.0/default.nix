@@ -39,7 +39,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0kwd57pa8n4ahz545hkmsb38g7y9dyryp1mnwrh8czmw5lk894wv";
-    url = "http://github.com/mirage/mirage-channel/releases/download/v3.0.0/mirage-channel-3.0.0.tbz";
+    url = "https://github.com/mirage/mirage-channel/releases/download/v3.0.0/mirage-channel-3.0.0.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

@@ -40,7 +40,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "00swqi985a39nnlmwiyfd6d5pssa472d2b03z2yyb3spzb6cvcff";
-    url = "http://github.com/c-cube/sequence/archive/0.10.tar.gz";
+    url = "https://github.com/c-cube/sequence/archive/0.10.tar.gz";
   };
 }
 

@@ -12,6 +12,7 @@ let
       ocamlfind = opamSelection.ocamlfind;
       ocamlgraph = opamSelection.ocamlgraph;
       omake = opamSelection.omake;
+      ppx_deriving = opamSelection.ppx_deriving;
       ppx_monadic = opamSelection.ppx_monadic;
       ppx_sexp_conv = opamSelection.ppx_sexp_conv;
       sexplib = opamSelection.sexplib;

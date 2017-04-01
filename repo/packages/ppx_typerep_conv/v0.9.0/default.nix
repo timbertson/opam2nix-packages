@@ -43,7 +43,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0d2ms2rd0nr4v9zvxrjrw61flxrrr8v7zv8hqs01nwzls8413n4z";
-    url = "http://ocaml.janestreet.com/ocaml-core/v0.9/files/ppx_typerep_conv-v0.9.0.tar.gz";
+    url = "https://ocaml.janestreet.com/ocaml-core/v0.9/files/ppx_typerep_conv-v0.9.0.tar.gz";
   };
 }
 

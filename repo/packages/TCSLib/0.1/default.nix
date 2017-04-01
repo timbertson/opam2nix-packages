@@ -37,7 +37,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "017z07bsgjqyghz4zcjyf915yp9xklh6y63zzbr0vqkw03yj5vfl";
-    url = "http://github.com/tcsprojects/tcslib/archive/v0.1.tar.gz";
+    url = "https://github.com/tcsprojects/tcslib/archive/v0.1.tar.gz";
   };
 }
 

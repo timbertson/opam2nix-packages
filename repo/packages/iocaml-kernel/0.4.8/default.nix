@@ -2,13 +2,13 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.libzmq3-dev or null) (pkgs.zeromq or null)
-        (pkgs.zeromq3-devel or null) ] ++ (lib.attrValues opamDeps));
+    ([  ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
     {
       atdgen = opamSelection.atdgen;
+      conf-zmq = opamSelection.conf-zmq;
       ctypes = opamSelection.ctypes;
       ctypes-foreign = opamSelection.ctypes-foreign;
       lwt = opamSelection.lwt;

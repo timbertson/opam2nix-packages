@@ -47,7 +47,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0vq6y50g56pf4qicw0nv0p59k74v11b8ry9hfxqplc308wg2b1j4";
-    url = "http://ocaml.janestreet.com/ocaml-core/v0.9/files/bin_prot-v0.9.0.tar.gz";
+    url = "https://ocaml.janestreet.com/ocaml-core/v0.9/files/bin_prot-v0.9.0.tar.gz";
   };
 }
 

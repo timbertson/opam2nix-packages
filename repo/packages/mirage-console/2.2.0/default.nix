@@ -40,7 +40,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0yhch167qvyfkg59cxs8bsf0hqi5jljvb9wi7c71jazzgw8w48ha";
-    url = "http://github.com/mirage/mirage-console/releases/download/2.2.0/mirage-console-2.2.0.tbz";
+    url = "https://github.com/mirage/mirage-console/releases/download/2.2.0/mirage-console-2.2.0.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

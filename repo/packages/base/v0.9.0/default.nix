@@ -37,7 +37,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0pdpa3hflbqn978ppvv5y08cjya0k8xpf1h0kcak6bdrmnmiwlyx";
-    url = "http://ocaml.janestreet.com/ocaml-core/v0.9/files/base-v0.9.0.tar.gz";
+    url = "https://ocaml.janestreet.com/ocaml-core/v0.9/files/base-v0.9.0.tar.gz";
   };
 }
 

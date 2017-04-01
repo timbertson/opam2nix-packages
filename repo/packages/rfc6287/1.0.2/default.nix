@@ -43,7 +43,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0cvq8jra3290ncfimi2i8s3562z813k3hh46wll07cgkvbchf1rd";
-    url = "http://github.com/sg2342/ocaml-rfc6287/archive/1.0.2.tar.gz";
+    url = "https://github.com/sg2342/ocaml-rfc6287/archive/1.0.2.tar.gz";
   };
 }
 

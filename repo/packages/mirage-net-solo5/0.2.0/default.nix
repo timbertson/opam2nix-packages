@@ -45,7 +45,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1sqsfaz5jx13pf5k9lhxlq0yjwjnf2il5z5f6d4cb6gbp57r6ya4";
-    url = "http://github.com/mirage/mirage-net-solo5/releases/download/v0.2.0/mirage-net-solo5-0.2.0.tbz";
+    url = "https://github.com/mirage/mirage-net-solo5/releases/download/v0.2.0/mirage-net-solo5-0.2.0.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

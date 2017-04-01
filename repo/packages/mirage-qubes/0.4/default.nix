@@ -49,7 +49,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "13qaw8la5h8zqc7phns7g6d8i9ck9k6b2p32hp3xff991lg361nm";
-    url = "http://github.com/mirage/mirage-qubes/releases/download/0.4/mirage-qubes-0.4.tbz";
+    url = "https://github.com/mirage/mirage-qubes/releases/download/0.4/mirage-qubes-0.4.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

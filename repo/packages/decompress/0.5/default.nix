@@ -40,7 +40,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0v6s86xk2mj15qy3hcxrl6a88fhl1ibjvacr0xjif60fvv20v0l8";
-    url = "http://github.com/oklm-wsh/Decompress/archive/0.5.tar.gz";
+    url = "https://github.com/oklm-wsh/Decompress/archive/0.5.tar.gz";
   };
 }
 

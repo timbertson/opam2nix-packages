@@ -10,6 +10,7 @@ let
       oasis = opamSelection.oasis;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
+      ounit = opamSelection.ounit or null;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;

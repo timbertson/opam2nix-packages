@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       bencode = opamSelection.bencode or null;
+      doc = opamSelection.doc or null;
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;

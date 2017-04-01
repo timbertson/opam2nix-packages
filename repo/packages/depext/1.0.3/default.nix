@@ -36,7 +36,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1xdszwxgwm92r1x235rb1qghgrk7fvcw56hr4id9i4r4g4lq107m";
-    url = "http://github.com/ocaml/opam-depext/releases/download/v1.0.3/opam-depext-full-1.0.3.tbz";
+    url = "https://github.com/ocaml/opam-depext/releases/download/v1.0.3/opam-depext-full-1.0.3.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

@@ -12,6 +12,7 @@ let
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       ppx_core = opamSelection.ppx_core;
+      ppx_deriving = opamSelection.ppx_deriving;
       ppx_driver = opamSelection.ppx_driver;
       ppx_type_conv = opamSelection.ppx_type_conv;
       result = opamSelection.result;

@@ -42,7 +42,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1zg92zzzp4nvrw0170mhdml336r7fjf49ldak63wq6aj8v1nfmv2";
-    url = "http://github.com/ocaml/opam/archive/1.3.1.tar.gz";
+    url = "https://github.com/ocaml/opam/archive/1.3.1.tar.gz";
   };
 }
 

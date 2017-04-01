@@ -37,7 +37,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0gsyh7cnv2mdwwxk2993vaz9cl0bczgj7wpwymalmlnm63np8ra5";
-    url = "http://github.com/herd/herdtools7/archive/7.44.tar.gz";
+    url = "https://github.com/herd/herdtools7/archive/7.44.tar.gz";
   };
 }
 

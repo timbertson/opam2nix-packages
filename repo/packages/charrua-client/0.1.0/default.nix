@@ -48,7 +48,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "04c6lrss2rz8qr87p7a8jqy2afck16279x1fwlh9d0cg9r668wsx";
-    url = "http://github.com/yomimono/charrua-client/releases/download/0.1.0/charrua-client-0.1.0.tbz";
+    url = "https://github.com/yomimono/charrua-client/releases/download/0.1.0/charrua-client-0.1.0.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

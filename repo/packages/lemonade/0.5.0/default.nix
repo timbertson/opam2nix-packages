@@ -13,6 +13,7 @@ let
       mixture = opamSelection.mixture;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
+      ppx_tools = opamSelection.ppx_tools or null;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;

@@ -37,7 +37,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0d129pfzgc69hz00yyrwvc257pnqi1n56hjsam1iwx8696knjd04";
-    url = "http://github.com/let-def/ppx_tools_versioned/archive/5.0alpha.tar.gz";
+    url = "https://github.com/let-def/ppx_tools_versioned/archive/5.0alpha.tar.gz";
   };
 }
 

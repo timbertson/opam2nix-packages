@@ -37,7 +37,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1s3ldg1paf8m6clw645nxhlgncjns1y6sfclfzci4vaxf8c88wxp";
-    url = "http://github.com/janestreet/base/archive/0.2.alpha1.tar.gz";
+    url = "https://github.com/janestreet/base/archive/0.2.alpha1.tar.gz";
   };
 }
 

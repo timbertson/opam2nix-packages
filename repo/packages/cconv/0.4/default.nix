@@ -9,6 +9,7 @@ let
     {
       bencode = opamSelection.bencode or null;
       cppo = opamSelection.cppo;
+      doc = opamSelection.doc or null;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
       ppx_deriving = opamSelection.ppx_deriving or null;

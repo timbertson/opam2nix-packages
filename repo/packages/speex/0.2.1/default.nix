@@ -2,7 +2,8 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.libspeex-dev or null) (pkgs.speex or null) ] ++ (lib.attrValues opamDeps));
+    ([ (pkgs.libspeex-dev or null) (pkgs.speex or null)
+        (pkgs.speex-devel or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 

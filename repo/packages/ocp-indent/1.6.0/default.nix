@@ -38,7 +38,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1a1l0dm3br1frgg21qlrv0xsvrcmmqjf7km657pvnxbm72zccywd";
-    url = "http://github.com/OCamlPro/ocp-indent/archive/1.6.0.tar.gz";
+    url = "https://github.com/OCamlPro/ocp-indent/archive/1.6.0.tar.gz";
   };
 }
 

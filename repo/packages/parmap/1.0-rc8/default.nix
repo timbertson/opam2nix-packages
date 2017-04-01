@@ -38,7 +38,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "197pbilkj0mpjvzaz2iad9j2296nabqfsfqpv1n8ds8h5kky93r8";
-    url = "http://github.com/rdicosmo/parmap/archive/1.0-rc8.tar.gz";
+    url = "https://github.com/rdicosmo/parmap/archive/1.0-rc8.tar.gz";
   };
 }
 

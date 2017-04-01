@@ -41,7 +41,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1mwkwisbm99yc2vr4kii1dfk1xwrxr4lmlj47d36nlq0ffmgizvh";
-    url = "http://github.com/mirage/mirage-clock/releases/download/1.2.0/mirage-clock-freestanding-1.2.0.tbz";
+    url = "https://github.com/mirage/mirage-clock/releases/download/1.2.0/mirage-clock-freestanding-1.2.0.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

@@ -58,7 +58,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1rjkxbwpdvlmzk2kjkw4r09vjsrhzn6w31qfgss0d0j21040svzh";
-    url = "http://github.com/mirage/mirage-tcpip/archive/v3.1.0.tar.gz";
+    url = "https://github.com/mirage/mirage-tcpip/archive/v3.1.0.tar.gz";
   };
 }
 

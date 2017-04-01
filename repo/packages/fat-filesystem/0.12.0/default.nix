@@ -51,7 +51,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0jsd2qbbqiblhn649w2yqfda9fsj04269q1qdj945dcmbwdv0iyy";
-    url = "http://github.com/mirage/ocaml-fat/releases/download/0.12.0/fat-filesystem-0.12.0.tbz";
+    url = "https://github.com/mirage/ocaml-fat/releases/download/0.12.0/fat-filesystem-0.12.0.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

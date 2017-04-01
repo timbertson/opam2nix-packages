@@ -8,6 +8,7 @@ let
     {
       irmin = opamSelection.irmin;
       mirage-git = opamSelection.mirage-git;
+      mirage-types = opamSelection.mirage-types;
       mirage-types-lwt = opamSelection.mirage-types-lwt;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind or null;

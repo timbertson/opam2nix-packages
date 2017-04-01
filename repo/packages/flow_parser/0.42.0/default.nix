@@ -37,7 +37,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "14vs9x1mld3lgfqmq9dd2w59wnlmf7qgn0fh75r3kb226ala8s2n";
-    url = "http://github.com/facebook/flow/archive/v0.42.0.tar.gz";
+    url = "https://github.com/facebook/flow/archive/v0.42.0.tar.gz";
   };
 }
 

@@ -43,7 +43,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1zpgpiahmq7hjja489cqq8cj14x0xlpjzv6dw991k5y6knwh34ql";
-    url = "http://github.com/smondet/trakeva/archive/trakeva.0.1.1.tar.gz";
+    url = "https://github.com/smondet/trakeva/archive/trakeva.0.1.1.tar.gz";
   };
 }
 

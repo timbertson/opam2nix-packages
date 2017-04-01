@@ -9,6 +9,7 @@ let
     {
       camlp4 = opamSelection.camlp4;
       cstruct = opamSelection.cstruct;
+      ipaddr = opamSelection.ipaddr or null;
       lwt = opamSelection.lwt or null;
       mirage-types-lwt = opamSelection.mirage-types-lwt or null;
       nocrypto = opamSelection.nocrypto;

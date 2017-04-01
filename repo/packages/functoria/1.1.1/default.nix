@@ -13,6 +13,7 @@ let
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
       ocamlgraph = opamSelection.ocamlgraph;
+      ounit = opamSelection.ounit or null;
       rresult = opamSelection.rresult;
     };
     opamSelection = world.opamSelection;

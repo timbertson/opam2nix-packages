@@ -7,6 +7,7 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      alcotest = opamSelection.alcotest or null;
       base-bytes = opamSelection.base-bytes;
       base-unix = opamSelection.base-unix;
       cmdliner = opamSelection.cmdliner;
@@ -47,7 +48,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1gall16bxclsa4z0il3743qcfg1aaf053zqis7hm2bpkw42sqvpl";
-    url = "http://github.com/mirage/ocaml-hvsock/archive/v0.13.0.tar.gz";
+    url = "https://github.com/mirage/ocaml-hvsock/archive/v0.13.0.tar.gz";
   };
 }
 

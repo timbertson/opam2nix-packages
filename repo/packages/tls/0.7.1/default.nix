@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       cstruct = opamSelection.cstruct;
+      ipaddr = opamSelection.ipaddr or null;
       lwt = opamSelection.lwt or null;
       mirage-types-lwt = opamSelection.mirage-types-lwt or null;
       nocrypto = opamSelection.nocrypto;
@@ -15,6 +16,7 @@ let
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
+      ppx_deriving = opamSelection.ppx_deriving;
       ppx_sexp_conv = opamSelection.ppx_sexp_conv;
       ppx_tools = opamSelection.ppx_tools;
       result = opamSelection.result;

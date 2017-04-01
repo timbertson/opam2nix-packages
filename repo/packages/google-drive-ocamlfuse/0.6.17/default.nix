@@ -42,7 +42,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0qkrl2v18hhanm4ii3p2zywa02yy8dzszvjy3anwbwphlcpwxdd5";
-    url = "http://github.com/astrada/google-drive-ocamlfuse/archive/v0.6.17.tar.gz";
+    url = "https://github.com/astrada/google-drive-ocamlfuse/archive/v0.6.17.tar.gz";
   };
 }
 

@@ -45,7 +45,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1lfckdc8dj61d2kfw7ai5za9ssc6gnqg2cg3ikgbwpvk8xla88c7";
-    url = "http://github.com/ocsigen/tyxml/archive/4.1.0.tar.gz";
+    url = "https://github.com/ocsigen/tyxml/archive/4.1.0.tar.gz";
   };
 }
 

@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       base-bigarray = opamSelection.base-bigarray;
+      cairo = opamSelection.cairo or null;
       cairo2 = opamSelection.cairo2 or null;
       camlp4 = opamSelection.camlp4;
       ocaml = opamSelection.ocaml;

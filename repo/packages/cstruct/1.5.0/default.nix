@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       async = opamSelection.async or null;
+      base-unix = opamSelection.base-unix or null;
       camlp4 = opamSelection.camlp4 or null;
       lwt = opamSelection.lwt or null;
       ocaml = opamSelection.ocaml;

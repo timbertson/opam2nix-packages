@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       js-build-tools = opamSelection.js-build-tools;
+      mirage-xen = opamSelection.mirage-xen or null;
       mirage-xen-ocaml = opamSelection.mirage-xen-ocaml or null;
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;

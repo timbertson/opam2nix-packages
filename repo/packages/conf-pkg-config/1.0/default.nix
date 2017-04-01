@@ -1,8 +1,8 @@
 world:
 let
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.pkg-config or null) (pkgs.pkgconf or null)
-        (pkgs.pkgconfig or null) ] ++ (lib.attrValues opamDeps));
+    ([ (pkgs."devel/pkgconf" or null) (pkgs.pkg-config or null)
+        (pkgs.pkgconf or null) (pkgs.pkgconfig or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 

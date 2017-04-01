@@ -40,7 +40,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "11982y0vwmlpq5ba4jxqjv59v4bgakn3bf5493xm51bq6qr2lqiy";
-    url = "http://ocaml.janestreet.com/ocaml-core/v0.9/files/fieldslib-v0.9.0.tar.gz";
+    url = "https://ocaml.janestreet.com/ocaml-core/v0.9/files/fieldslib-v0.9.0.tar.gz";
   };
 }
 

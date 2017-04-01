@@ -38,7 +38,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "16jk25mnzvinw0cyhrsnf0yg6jrxm5i8ii2ni90njxjbc0n3zi0w";
-    url = "http://github.com/biocaml/cfstream/archive/1.2.2.tar.gz";
+    url = "https://github.com/biocaml/cfstream/archive/1.2.2.tar.gz";
   };
 }
 

@@ -24,6 +24,7 @@ let
       pvem = opamSelection.pvem;
       pvem_lwt_unix = opamSelection.pvem_lwt_unix;
       reactiveData = opamSelection.reactiveData;
+      sexplib = opamSelection.sexplib;
       sosa = opamSelection.sosa;
       sqlite3 = opamSelection.sqlite3 or null;
       trakeva = opamSelection.trakeva;

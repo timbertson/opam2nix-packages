@@ -41,7 +41,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "022p7f3n7h2nnwrzpzrarllh407yic9gzlxgb23s5sp18ay92b41";
-    url = "http://github.com/OCamlPro/ocaml-top/archive/1.1.3.tar.gz";
+    url = "https://github.com/OCamlPro/ocaml-top/archive/1.1.3.tar.gz";
   };
 }
 

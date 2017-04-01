@@ -17,6 +17,7 @@ let
       ocamlfind = opamSelection.ocamlfind;
       ocamlnet = opamSelection.ocamlnet;
       ocsigenserver = opamSelection.ocsigenserver or null;
+      ppx_deriving = opamSelection.ppx_deriving;
       ppx_sexp_conv = opamSelection.ppx_sexp_conv;
       sexplib = opamSelection.sexplib;
       tyxml = opamSelection.tyxml;

@@ -41,7 +41,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "12srl1vja52cfra49zq8fvlljyj2rf4942v9ll8r8v8wh15scv4x";
-    url = "http://github.com/mirage/mirage-bootvar-solo5/releases/download/v0.2.0/mirage-bootvar-solo5-0.2.0.tbz";
+    url = "https://github.com/mirage/mirage-bootvar-solo5/releases/download/v0.2.0/mirage-bootvar-solo5-0.2.0.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

@@ -16,9 +16,11 @@ let
       mirage-solo5 = opamSelection.mirage-solo5 or null;
       mirage-xen = opamSelection.mirage-xen or null;
       ocaml = opamSelection.ocaml;
+      ocaml-freestanding = opamSelection.ocaml-freestanding or null;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       ocb-stubblr = opamSelection.ocb-stubblr;
+      ppx_deriving = opamSelection.ppx_deriving;
       ppx_sexp_conv = opamSelection.ppx_sexp_conv;
       sexplib = opamSelection.sexplib;
       topkg = opamSelection.topkg;
@@ -52,7 +54,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0zshi9hlhcz61n5z1k6fx6rsi0pl4xgahsyl2jp0crqkaf3hqwlg";
-    url = "http://github.com/mirleft/ocaml-nocrypto/releases/download/v0.5.4/nocrypto-0.5.4.tbz";
+    url = "https://github.com/mirleft/ocaml-nocrypto/releases/download/v0.5.4/nocrypto-0.5.4.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

@@ -39,7 +39,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0vvsw9f9iwfqaqyq2gnz815m2z5lq1q4mliwm57wdpmjvk4lgkhf";
-    url = "http://github.com/dave-tucker/ocaml-nlp/releases/download/v0.0.1/nlp-0.0.1.tbz";
+    url = "https://github.com/dave-tucker/ocaml-nlp/releases/download/v0.0.1/nlp-0.0.1.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

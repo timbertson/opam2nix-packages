@@ -45,7 +45,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0y82assp1vy2w1137y4391c0w1agdaqljjnicvcjfkn5klycvajm";
-    url = "http://github.com/mirage/mirage-net-macosx/releases/download/1.3.0/mirage-net-macosx-1.3.0.tbz";
+    url = "https://github.com/mirage/mirage-net-macosx/releases/download/1.3.0/mirage-net-macosx-1.3.0.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

@@ -42,7 +42,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0g9g5qj00nnslwxrc732kbsmaahmy5c9bdcpv50gx5z7slbm49dq";
-    url = "http://github.com/c-cube/ocaml-containers/archive/1.1.tar.gz";
+    url = "https://github.com/c-cube/ocaml-containers/archive/1.1.tar.gz";
   };
 }
 

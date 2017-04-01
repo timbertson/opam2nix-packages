@@ -47,7 +47,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0xgbh5c0q236vkh68jys8amhhmr8yb1jvkm847q1ci9vq63kfsg4";
-    url = "http://github.com/mirage/charrua-core/releases/download/v0.5/charrua-core-0.5.tbz";
+    url = "https://github.com/mirage/charrua-core/releases/download/v0.5/charrua-core-0.5.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

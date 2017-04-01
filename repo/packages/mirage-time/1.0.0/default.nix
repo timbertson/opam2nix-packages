@@ -39,7 +39,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0nv179bk3hnnahsl2jfvn66ncam4irdma01nc78fmpsv0y8g8kfw";
-    url = "http://github.com/mirage/mirage-time/releases/download/1.0.0/mirage-time-1.0.0.tbz";
+    url = "https://github.com/mirage/mirage-time/releases/download/1.0.0/mirage-time-1.0.0.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

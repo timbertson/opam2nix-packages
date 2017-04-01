@@ -50,7 +50,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "02fbsihs3ns5zcijaqx104b50cx3d3g3sfnpqzqqa47p1gcwj8cp";
-    url = "http://github.com/hannesm/arp/releases/download/0.2.0/arp-0.2.0.tbz";
+    url = "https://github.com/hannesm/arp/releases/download/0.2.0/arp-0.2.0.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

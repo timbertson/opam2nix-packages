@@ -37,7 +37,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "11bppyfm0f44a1s8yvyy05zzgbaapzsfrc9hh44adf86kc5vg0v2";
-    url = "http://github.com/savonet/liquidsoap-daemon/archive/0.1.3.tar.gz";
+    url = "https://github.com/savonet/liquidsoap-daemon/archive/0.1.3.tar.gz";
   };
 }
 

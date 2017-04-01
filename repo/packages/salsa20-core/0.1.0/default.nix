@@ -40,7 +40,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "15ibvzw1q5fklr2q7wilwr1nzkd6h4n7pqz6c2ddrchfigaky2l9";
-    url = "http://github.com/abeaumont/ocaml-salsa20-core/archive/0.1.0.tar.gz";
+    url = "https://github.com/abeaumont/ocaml-salsa20-core/archive/0.1.0.tar.gz";
   };
 }
 

@@ -52,7 +52,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "17b3i00x5f1jdirpgmn376d0vypqs3hkyny4hc6pswcpcwr0vczf";
-    url = "http://github.com/c-cube/calculon/archive/0.1.tar.gz";
+    url = "https://github.com/c-cube/calculon/archive/0.1.tar.gz";
   };
 }
 

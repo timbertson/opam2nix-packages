@@ -37,7 +37,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0awfgvymp1xycg4ab6674qg59ipy5cqyy840w55qb961lp3va6cq";
-    url = "http://github.com/ocaml/camlp4/archive/4.05+1.tar.gz";
+    url = "https://github.com/ocaml/camlp4/archive/4.05+1.tar.gz";
   };
 }
 

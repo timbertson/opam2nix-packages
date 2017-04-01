@@ -11,6 +11,7 @@ let
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
+      pa_ounit = opamSelection.pa_ounit or null;
       quickcheck = opamSelection.quickcheck;
       sexplib = opamSelection.sexplib;
       tcpip = opamSelection.tcpip;

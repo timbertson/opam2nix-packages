@@ -20,6 +20,7 @@ let
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       openflow = opamSelection.openflow;
+      pa_ounit = opamSelection.pa_ounit or null;
       packet = opamSelection.packet;
       quickcheck = opamSelection.quickcheck;
       sexplib = opamSelection.sexplib;

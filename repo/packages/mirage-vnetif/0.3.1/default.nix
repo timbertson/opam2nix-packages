@@ -48,7 +48,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0iq4p312d8cl5j654xqbjl0mmk16c15bilpx601lpnh31npmpsiq";
-    url = "http://github.com/MagnusS/mirage-vnetif/archive/v0.3.1.tar.gz";
+    url = "https://github.com/MagnusS/mirage-vnetif/archive/v0.3.1.tar.gz";
   };
 }
 

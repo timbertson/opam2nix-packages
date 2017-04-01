@@ -41,7 +41,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1zhvzc9x3j57xf2mzg5rshgp14cb4dsqbnj52jjv1qnja97plyjp";
-    url = "http://forge.ocamlcore.org/frs/download.php/1678/ocaml-gettext-0.3.7.tar.gz";
+    url = "https://forge.ocamlcore.org/frs/download.php/1678/ocaml-gettext-0.3.7.tar.gz";
   };
 }
 

@@ -40,7 +40,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0viwwsgdjb0xvmxw0alqhfg7bacwpm4qdd4aql932ga8aw68bjwd";
-    url = "http://github.com/UnixJunkie/get_line/archive/v2.1.0.tar.gz";
+    url = "https://github.com/UnixJunkie/get_line/archive/v2.1.0.tar.gz";
   };
 }
 

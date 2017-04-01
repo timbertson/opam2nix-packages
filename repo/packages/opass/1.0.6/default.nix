@@ -12,6 +12,7 @@ let
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
       pds = opamSelection.pds;
+      ppx_deriving = opamSelection.ppx_deriving;
       ppx_sexp_conv = opamSelection.ppx_sexp_conv;
       sexplib = opamSelection.sexplib;
     };

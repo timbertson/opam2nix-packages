@@ -50,7 +50,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1xx1i5mg0pd99alzzbd01dd17ikdgsm2rgf100rijv6rg1cdal5s";
-    url = "http://github.com/hannesm/logs-syslog/releases/download/0.1.0/logs-syslog-0.1.0.tbz";
+    url = "https://github.com/hannesm/logs-syslog/releases/download/0.1.0/logs-syslog-0.1.0.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

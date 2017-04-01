@@ -27,6 +27,7 @@ let
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       topkg = opamSelection.topkg;
+      uri = opamSelection.uri;
       win-eventlog = opamSelection.win-eventlog;
     };
     opamSelection = world.opamSelection;

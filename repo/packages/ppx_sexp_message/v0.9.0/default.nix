@@ -44,7 +44,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1mbm7jvh3ppd9i7hr2kg23sb4i9lm0zpl43gsp62qa7mlvpbhvin";
-    url = "http://ocaml.janestreet.com/ocaml-core/v0.9/files/ppx_sexp_message-v0.9.0.tar.gz";
+    url = "https://ocaml.janestreet.com/ocaml-core/v0.9/files/ppx_sexp_message-v0.9.0.tar.gz";
   };
 }
 

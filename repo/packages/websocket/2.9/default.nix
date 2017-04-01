@@ -45,7 +45,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1hv0sby5n6psgzwlrj3n5f8kifv38fdfljpcfsyyy3agj3n3mxgw";
-    url = "http://github.com/vbmithr/ocaml-websocket/archive/2.9.tar.gz";
+    url = "https://github.com/vbmithr/ocaml-websocket/archive/2.9.tar.gz";
   };
 }
 

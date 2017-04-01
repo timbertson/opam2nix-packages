@@ -37,7 +37,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "12j32fl7dlixmr3171wvfx1fvjv2gj58xqc2z8k0a03qkb62zkkz";
-    url = "http://github.com/Octachron/codept/archive/0.9.0.tar.gz";
+    url = "https://github.com/Octachron/codept/archive/0.9.0.tar.gz";
   };
 }
 

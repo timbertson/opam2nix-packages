@@ -37,7 +37,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0z06gdivgkaalnjhhlxzjnkpslj8iww4zwdvz03wd19y9swizj9p";
-    url = "http://github.com/Gbury/mSAT/archive/v0.6.1.tar.gz";
+    url = "https://github.com/Gbury/mSAT/archive/v0.6.1.tar.gz";
   };
 }
 

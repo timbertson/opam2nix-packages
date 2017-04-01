@@ -39,7 +39,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0g9skb1c33j38gx25sqzddl0qig1m5i1c2ad07p3b8dgcw1q1pqn";
-    url = "http://github.com/hcarty/lwt-zmq/archive/v2.1.0.tar.gz";
+    url = "https://github.com/hcarty/lwt-zmq/archive/v2.1.0.tar.gz";
   };
 }
 

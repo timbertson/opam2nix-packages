@@ -44,7 +44,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "10f6zpbgq4y381pl8rgdy0mf7z5dwdnk4h9x5q03zwd52440jhhs";
-    url = "http://github.com/c-cube/maki/archive/0.2.tar.gz";
+    url = "https://github.com/c-cube/maki/archive/0.2.tar.gz";
   };
 }
 

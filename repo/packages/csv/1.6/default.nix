@@ -39,7 +39,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0rv7x843vn6scxj87hzl01yqrl26rc27lr8s7z6rp9vs745g05zj";
-    url = "http://github.com/Chris00/ocaml-csv/releases/download/1.6/csv-1.6.tar.gz";
+    url = "https://github.com/Chris00/ocaml-csv/releases/download/1.6/csv-1.6.tar.gz";
   };
 }
 

@@ -57,7 +57,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "05aqxhgxvv6mmkzcdrakk3ddxahlc1qnvzgqyvkmkk473qn8337s";
-    url = "http://github.com/mirage/ocaml-conduit/archive/v0.15.0.tar.gz";
+    url = "https://github.com/mirage/ocaml-conduit/archive/v0.15.0.tar.gz";
   };
 }
 

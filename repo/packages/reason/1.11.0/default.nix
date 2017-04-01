@@ -43,7 +43,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "020zqld06cng64r6snwnqrm9zp8z8sv79250hlxbr5r7kcxvinpr";
-    url = "http://github.com/facebook/reason/archive/1.11.0.tar.gz";
+    url = "https://github.com/facebook/reason/archive/1.11.0.tar.gz";
   };
 }
 

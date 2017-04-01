@@ -42,7 +42,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "01s0vmq78qp47i00qk3nzcdpfb15wf9jvh9ag3f0m9rq8fi436ny";
-    url = "http://github.com/mirage/mirage-stack/releases/download/1.0.0/mirage-stack-lwt-1.0.0.tbz";
+    url = "https://github.com/mirage/mirage-stack/releases/download/1.0.0/mirage-stack-lwt-1.0.0.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

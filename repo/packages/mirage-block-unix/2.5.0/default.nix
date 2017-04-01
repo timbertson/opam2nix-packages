@@ -45,7 +45,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "12cn08yfi9ahdbjqh0nnip1n8c7yk94xkb4n7d95dwh8yw9dizdp";
-    url = "http://github.com/mirage/mirage-block-unix/archive/v2.5.0.tar.gz";
+    url = "https://github.com/mirage/mirage-block-unix/archive/v2.5.0.tar.gz";
   };
 }
 

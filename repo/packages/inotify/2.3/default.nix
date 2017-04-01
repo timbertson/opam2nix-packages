@@ -11,6 +11,7 @@ let
       base-unix = opamSelection.base-unix;
       lwt = opamSelection.lwt or null;
       ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
     };
     opamSelection = world.opamSelection;

@@ -42,7 +42,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1b6v0fh1v8iqi2rcsqqm48cbvq4jm1q3xxrwq7w4i30x3zz787w1";
-    url = "http://github.com/mirage/mirage-console-solo5/releases/download/v0.2.0/mirage-console-solo5-0.2.0.tbz";
+    url = "https://github.com/mirage/mirage-console-solo5/releases/download/v0.2.0/mirage-console-solo5-0.2.0.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

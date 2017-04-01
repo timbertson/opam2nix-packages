@@ -42,7 +42,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0l58qjd9li4ix7gjkqaji99c9dpim6n9bh0ai7fynj04f6mvkzy4";
-    url = "http://github.com/abeaumont/ocaml-scrypt-kdf/archive/0.4.0.tar.gz";
+    url = "https://github.com/abeaumont/ocaml-scrypt-kdf/archive/0.4.0.tar.gz";
   };
 }
 

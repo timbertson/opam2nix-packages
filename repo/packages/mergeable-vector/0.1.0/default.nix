@@ -38,7 +38,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0xqdhppc6yiqcfnwvvdb6xhlfmb5m7xrbf52bfpp1nqw4hxh8bql";
-    url = "http://github.com/kayceesrk/mergeable-vector/releases/download/0.1.0/mergeable-vector-0.1.0.tbz";
+    url = "https://github.com/kayceesrk/mergeable-vector/releases/download/0.1.0/mergeable-vector-0.1.0.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

@@ -45,7 +45,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "08skrqv4yhmfmkzy661ip0ysfsiqlcq4cjp57xsi0f7063474w1c";
-    url = "http://github.com/ryanrhymes/owl/archive/0.2.2.tar.gz";
+    url = "https://github.com/ryanrhymes/owl/archive/0.2.2.tar.gz";
   };
 }
 

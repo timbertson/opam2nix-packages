@@ -43,7 +43,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1szksa99n36hb2dp2zq4hma4508yw9zss0j3d2n8gw7p73iywax8";
-    url = "http://gforge.inria.fr/frs/download.php/file/36589/heptagon-1.03.03.tar.gz";
+    url = "https://gforge.inria.fr/frs/download.php/file/36589/heptagon-1.03.03.tar.gz";
   };
 }
 

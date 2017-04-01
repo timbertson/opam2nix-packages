@@ -45,7 +45,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1nvlrkvqvd5pwl3jpcpv0gs0qws77jsx741fhy8ab02frvx4i6qx";
-    url = "http://github.com/fdopen/uwt/releases/download/0.1.0/uwt-0.1.0.tar.gz";
+    url = "https://github.com/fdopen/uwt/releases/download/0.1.0/uwt-0.1.0.tar.gz";
   };
 }
 

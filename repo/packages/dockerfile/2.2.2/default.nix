@@ -44,7 +44,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "00834vz7azcjvrx2868l888rn0a1qbw6qv4rb8lz029pfmw39z53";
-    url = "http://github.com/avsm/ocaml-dockerfile/releases/download/v2.2.2/dockerfile-2.2.2.tbz";
+    url = "https://github.com/avsm/ocaml-dockerfile/releases/download/v2.2.2/dockerfile-2.2.2.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

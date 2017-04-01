@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       async = opamSelection.async;
+      async_core = opamSelection.async_core;
       core = opamSelection.core;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;

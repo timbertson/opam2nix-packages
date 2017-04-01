@@ -37,7 +37,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0z5iwnc2rfmrb43xj919bcdx8mv2da4ckf0p98rgipmqk67pxd9w";
-    url = "http://github.com/tcsprojects/camldiets/archive/v0.2.tar.gz";
+    url = "https://github.com/tcsprojects/camldiets/archive/v0.2.tar.gz";
   };
 }
 

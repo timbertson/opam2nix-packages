@@ -42,7 +42,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0276hjkj38n0wbw41ssl3ng522agw7yn12w3gifq5qvz5d22d5ii";
-    url = "http://github.com/haesbaert/charrua-unix/archive/v0.5.tar.gz";
+    url = "https://github.com/haesbaert/charrua-unix/archive/v0.5.tar.gz";
   };
 }
 

@@ -40,7 +40,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "139jxj7mawk8lyvksh5brq191fd7scwkr4dcpax0q4fzpi0hxlnh";
-    url = "http://github.com/inhabitedtype/ocaml-webmachine/archive/0.4.0.tar.gz";
+    url = "https://github.com/inhabitedtype/ocaml-webmachine/archive/0.4.0.tar.gz";
   };
 }
 

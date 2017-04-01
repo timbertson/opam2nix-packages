@@ -41,7 +41,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0ajlzcn95i030z8f84ql8l0lz7385l4gkiq9dhc6rr109vk4m1c4";
-    url = "http://github.com/mirage/mirage-console/releases/download/2.2.0/mirage-console-xen-proto-2.2.0.tbz";
+    url = "https://github.com/mirage/mirage-console/releases/download/2.2.0/mirage-console-xen-proto-2.2.0.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

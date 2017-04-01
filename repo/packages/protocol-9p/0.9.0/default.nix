@@ -58,7 +58,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "13by8nj2cgggvbfz7pc59rh0d5z9d1rcy6fj2c956lsg4ivlphwn";
-    url = "http://github.com/mirage/ocaml-9p/archive/v0.9.0.tar.gz";
+    url = "https://github.com/mirage/ocaml-9p/archive/v0.9.0.tar.gz";
   };
 }
 

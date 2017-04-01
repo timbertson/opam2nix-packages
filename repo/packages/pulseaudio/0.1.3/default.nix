@@ -2,7 +2,8 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.libpulse-dev or null) ] ++ (lib.attrValues opamDeps));
+    ([ (pkgs.libpulse-dev or null) (pkgs.pulseaudio or null)
+        (pkgs.pulseaudio-libs-devel or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 

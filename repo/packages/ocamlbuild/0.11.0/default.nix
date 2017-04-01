@@ -36,7 +36,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1vh30731gv1brr4ljfzd6m5lni44ifyb1w8hwir81ff9874fs5qp";
-    url = "http://github.com/ocaml/ocamlbuild/archive/0.11.0.tar.gz";
+    url = "https://github.com/ocaml/ocamlbuild/archive/0.11.0.tar.gz";
   };
 }
 

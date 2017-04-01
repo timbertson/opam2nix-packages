@@ -13,6 +13,7 @@ let
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
+      pa_ounit = opamSelection.pa_ounit or null;
       packet = opamSelection.packet;
       quickcheck = opamSelection.quickcheck;
       sexplib = opamSelection.sexplib;

@@ -47,7 +47,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "019rl4rir4lwgjyqj2wq3ylw4daih1kxxgbc6ld6kzcq66mwr747";
-    url = "http://github.com/mirage/functoria/releases/download/2.0.2/functoria-2.0.2.tbz";
+    url = "https://github.com/mirage/functoria/releases/download/2.0.2/functoria-2.0.2.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

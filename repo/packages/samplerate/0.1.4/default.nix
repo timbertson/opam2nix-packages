@@ -3,7 +3,7 @@ let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
     ([ (pkgs.libsamplerate or null) (pkgs.libsamplerate-dev or null)
-        (pkgs.libsamplerate0-dev or null) ] ++ (lib.attrValues opamDeps));
+        (pkgs.libsamplerate-devel or null) (pkgs.libsamplerate0-dev or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 

@@ -7,7 +7,9 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      alcotest = opamSelection.alcotest or null;
       base-bytes = opamSelection.base-bytes;
+      base-threads = opamSelection.base-threads;
       base-unix = opamSelection.base-unix;
       cmdliner = opamSelection.cmdliner;
       cstruct = opamSelection.cstruct;

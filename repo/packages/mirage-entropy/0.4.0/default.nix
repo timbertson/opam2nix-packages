@@ -45,7 +45,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "13w85n6yvf63iihr5wnzm4q7ycd64a64wasqxfvfncjjfw6s1lpw";
-    url = "http://github.com/mirage/mirage-entropy/archive/0.4.0.tar.gz";
+    url = "https://github.com/mirage/mirage-entropy/archive/0.4.0.tar.gz";
   };
 }
 

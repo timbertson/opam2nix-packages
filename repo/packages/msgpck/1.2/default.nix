@@ -39,7 +39,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0nyplkcjfb2lcr2pb6g6rkbykm5hska0v601sd6wk5ngddzi3wab";
-    url = "http://github.com/vbmithr/ocaml-msgpck/archive/1.2.tar.gz";
+    url = "https://github.com/vbmithr/ocaml-msgpck/archive/1.2.tar.gz";
   };
 }
 

@@ -40,7 +40,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "06icw8bda4wvz3hgxv5795r7j3p6l3wfifzdhlpr5qaap39p0g2x";
-    url = "http://github.com/yallop/omonad/archive/omonad-0.3.3.tar.gz";
+    url = "https://github.com/yallop/omonad/archive/omonad-0.3.3.tar.gz";
   };
 }
 

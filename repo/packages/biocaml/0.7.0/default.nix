@@ -51,7 +51,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1khlabnffm26h7sxzmxf9w334dpnw9h1lnxxyjybnsllrzaj2igm";
-    url = "http://github.com/biocaml/biocaml/archive/0.7.0.tar.gz";
+    url = "https://github.com/biocaml/biocaml/archive/0.7.0.tar.gz";
   };
 }
 

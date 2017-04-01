@@ -2,14 +2,14 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.libsodium or null) (pkgs.libsodium-dev or null)
-        (pkgs."security/libsodium" or null) ] ++ (lib.attrValues opamDeps));
+    ([  ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
     {
       base-bigarray = opamSelection.base-bigarray;
       base-bytes = opamSelection.base-bytes;
+      conf-libsodium = opamSelection.conf-libsodium;
       ctypes = opamSelection.ctypes;
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;

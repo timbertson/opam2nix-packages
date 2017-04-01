@@ -42,7 +42,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "17myl0c6wz254ndghh2yi0vndh45cn3v284263wvckkyvqrcf7ra";
-    url = "http://github.com/facebook/reason/releases/download/1.13.0/reason-parser-1.13.0.tar.gz";
+    url = "https://github.com/facebook/reason/releases/download/1.13.0/reason-parser-1.13.0.tar.gz";
   };
 }
 

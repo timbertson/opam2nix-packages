@@ -40,7 +40,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0zd1yyw99p9bqa2vzs9zfhknmi0hvpw3d9myd4b8a20d27fqklsp";
-    url = "http://github.com/mirage/ocaml-freestanding/archive/v0.2.1.tar.gz";
+    url = "https://github.com/mirage/ocaml-freestanding/archive/v0.2.1.tar.gz";
   };
 }
 

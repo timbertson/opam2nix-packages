@@ -39,7 +39,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1nk8khmbl2af7zns52gvf15dbvb1hv299vl058jhvn3p8ybzr318";
-    url = "http://github.com/OCamlPro/ocplib-json-typed/archive/v0.5.tar.gz";
+    url = "https://github.com/OCamlPro/ocplib-json-typed/archive/v0.5.tar.gz";
   };
 }
 

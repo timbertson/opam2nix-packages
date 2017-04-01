@@ -11,6 +11,7 @@ let
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
+      ounit = opamSelection.ounit or null;
       sexplib = opamSelection.sexplib;
       type_conv = opamSelection.type_conv;
     };

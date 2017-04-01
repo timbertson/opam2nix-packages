@@ -55,7 +55,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "05fmyin87w74sg33pbvy7wzbcdr8pqrhl29xjv1g0khmizv4hqsw";
-    url = "http://github.com/mirage/mirage/archive/v3.0.0.tar.gz";
+    url = "https://github.com/mirage/mirage/archive/v3.0.0.tar.gz";
   };
 }
 

@@ -7,6 +7,7 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      alcotest = opamSelection.alcotest or null;
       cmdliner = opamSelection.cmdliner;
       cohttp = opamSelection.cohttp;
       dolog = opamSelection.dolog;

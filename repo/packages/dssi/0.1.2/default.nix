@@ -2,7 +2,7 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.dssi-dev or null) (pkgs.ladspa-sdk or null) ] ++ (lib.attrValues opamDeps));
+    ([ (pkgs.dssi-dev or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 

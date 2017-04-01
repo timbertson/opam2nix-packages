@@ -37,7 +37,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "04xlvc1kslk4zfhnd1kzk41lmlggjsj0ldvq28d33gpchn1d6spv";
-    url = "http://github.com/rgrinberg/ocaml-mustache/archive/v2.3.0.tar.gz";
+    url = "https://github.com/rgrinberg/ocaml-mustache/archive/v2.3.0.tar.gz";
   };
 }
 

@@ -39,7 +39,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "173g150l5ycnj3zl4jg6rwz0pcmfzsl8vx0jkffn2kgs7md9nfqr";
-    url = "http://github.com/mirage/mirage-block/releases/download/1.0.0/mirage-block-1.0.0.tbz";
+    url = "https://github.com/mirage/mirage-block/releases/download/1.0.0/mirage-block-1.0.0.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

@@ -39,7 +39,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1z0iw6w3pd08v1p004k4hzdl7pw3a00pd429qby0k8xlw27v53zq";
-    url = "http://github.com/mransan/ocaml-protoc-yojson/archive/0.1.0.tar.gz";
+    url = "https://github.com/mransan/ocaml-protoc-yojson/archive/0.1.0.tar.gz";
   };
 }
 

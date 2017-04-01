@@ -42,7 +42,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1fxnb6g0l7z9lzkaz20l7vdvg8lv1442n9j2v2yps50y8d1hmfdy";
-    url = "http://ocaml.janestreet.com/ocaml-core/v0.9/files/ppx_traverse-v0.9.0.tar.gz";
+    url = "https://ocaml.janestreet.com/ocaml-core/v0.9/files/ppx_traverse-v0.9.0.tar.gz";
   };
 }
 

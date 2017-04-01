@@ -37,7 +37,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "09a4kgn9dy5bczmlriqh1yjm431ci7k46ad6hfyc45mpimcp55ry";
-    url = "http://github.com/UnixJunkie/hashset/archive/v1.0.0.tar.gz";
+    url = "https://github.com/UnixJunkie/hashset/archive/v1.0.0.tar.gz";
   };
 }
 

@@ -892,7 +892,6 @@ world:
   oasis = import ./oasis world;
   oasis-mirage = import ./oasis-mirage world;
   oasis2opam = import ./oasis2opam world;
-  obandit = import ./obandit world;
   obeanstalk = import ./obeanstalk world;
   obigstore = import ./obigstore world;
   objsize = import ./objsize world;

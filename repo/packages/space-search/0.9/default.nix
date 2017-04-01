@@ -37,7 +37,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0fxqcg8vxx7nkyh2dai17sf871ycvd1qkkqr0952p33060y56bjz";
-    url = "http://github.com/konne88/SpaceSearch/archive/0.9.tar.gz";
+    url = "https://github.com/konne88/SpaceSearch/archive/0.9.tar.gz";
   };
 }
 

@@ -42,7 +42,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1h2n2j9nw3pqri6hvf29k86h54d20c8wy0an3c22rjmgcc5fkfvj";
-    url = "http://github.com/pqwy/mirage-os-shim/releases/download/v3.0.0/mirage-os-shim-3.0.0.tbz";
+    url = "https://github.com/pqwy/mirage-os-shim/releases/download/v3.0.0/mirage-os-shim-3.0.0.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

@@ -40,7 +40,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0sbgdj686d4vw70h6zzmpirqv9ppslaw2m1kay6v7ip5yzvgqw77";
-    url = "http://github.com/hammerlab/genspio/archive/genspio.0.0.0.tar.gz";
+    url = "https://github.com/hammerlab/genspio/archive/genspio.0.0.0.tar.gz";
   };
 }
 

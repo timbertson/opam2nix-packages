@@ -40,7 +40,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1k945fv00h073yhibj8pfgzxbp23k77arh42rm50m05cnqija7c1";
-    url = "http://github.com/mirage/mirage-fs/releases/download/1.0.0/mirage-fs-1.0.0.tbz";
+    url = "https://github.com/mirage/mirage-fs/releases/download/1.0.0/mirage-fs-1.0.0.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

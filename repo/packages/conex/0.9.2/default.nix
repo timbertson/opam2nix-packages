@@ -48,7 +48,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0pqi84n45jba43nzc9cr9aabagf2q8jjzwnl15k8b8nwc3lgg0a0";
-    url = "http://github.com/hannesm/conex/releases/download/0.9.2/conex-0.9.2.tbz";
+    url = "https://github.com/hannesm/conex/releases/download/0.9.2/conex-0.9.2.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

@@ -53,7 +53,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1aw3kl648wkiqr1s4yhjz86ddfv2k4bp81wsar0s39a9lw6rfcfw";
-    url = "http://ocaml.janestreet.com/ocaml-core/v0.9/files/ppx_expect-v0.9.0.tar.gz";
+    url = "https://ocaml.janestreet.com/ocaml-core/v0.9/files/ppx_expect-v0.9.0.tar.gz";
   };
 }
 

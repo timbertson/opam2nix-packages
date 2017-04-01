@@ -44,7 +44,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "09lf02kz6bhlpxxcgvxlyd4sdninsyxfsbi7id5r9ps2y9p3zy17";
-    url = "http://github.com/mirage/ocaml-dns/archive/v0.20.0.tar.gz";
+    url = "https://github.com/mirage/ocaml-dns/archive/v0.20.0.tar.gz";
   };
 }
 

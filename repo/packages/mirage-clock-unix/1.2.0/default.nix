@@ -41,7 +41,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1iji0szljdbnhh3g99y0cw1r7d9n0s01xfl1i3dylm3m687p7g70";
-    url = "http://github.com/mirage/mirage-clock/releases/download/1.2.0/mirage-clock-unix-1.2.0.tbz";
+    url = "https://github.com/mirage/mirage-clock/releases/download/1.2.0/mirage-clock-unix-1.2.0.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

@@ -7,7 +7,6 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
-      async_kernel = opamSelection.async_kernel or null;
       base-no-ppx = opamSelection.base-no-ppx or null;
       base-unix = opamSelection.base-unix;
       base64 = opamSelection.base64;
@@ -21,7 +20,6 @@ let
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       ppx_deriving = opamSelection.ppx_deriving or null;
-      ppx_driver = opamSelection.ppx_driver or null;
       ppx_tools = opamSelection.ppx_tools or null;
       reactiveData = opamSelection.reactiveData or null;
       tyxml = opamSelection.tyxml or null;

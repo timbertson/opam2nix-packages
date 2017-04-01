@@ -41,7 +41,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0822z8j70n5cxyzxb0kjjkk7cvg0rfvhy0air05pn2x31zk2df2h";
-    url = "http://github.com/mirage/mirage-kv/releases/download/1.0.0/mirage-kv-lwt-1.0.0.tbz";
+    url = "https://github.com/mirage/mirage-kv/releases/download/1.0.0/mirage-kv-lwt-1.0.0.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

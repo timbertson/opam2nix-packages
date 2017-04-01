@@ -18,6 +18,7 @@ let
       ocamlfind = opamSelection.ocamlfind;
       ppx_bin_prot = opamSelection.ppx_bin_prot;
       ppx_compare = opamSelection.ppx_compare;
+      ppx_deriving = opamSelection.ppx_deriving;
       ppx_fields_conv = opamSelection.ppx_fields_conv;
       ppx_here = opamSelection.ppx_here;
       ppx_sexp_conv = opamSelection.ppx_sexp_conv;

@@ -17,6 +17,7 @@ let
       ocamlfind = opamSelection.ocamlfind;
       ounit = opamSelection.ounit or null;
       ppx_compare = opamSelection.ppx_compare;
+      ppx_deriving = opamSelection.ppx_deriving;
       ppx_sexp_conv = opamSelection.ppx_sexp_conv;
       re = opamSelection.re;
       rresult = opamSelection.rresult;

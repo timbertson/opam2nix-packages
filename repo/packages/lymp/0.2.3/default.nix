@@ -38,7 +38,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0m3bbgy53028api4h9ib9isjwl113d1i4jra8m72623ylzas8gpv";
-    url = "http://github.com/dbousque/lymp/archive/0.2.3.tar.gz";
+    url = "https://github.com/dbousque/lymp/archive/0.2.3.tar.gz";
   };
 }
 

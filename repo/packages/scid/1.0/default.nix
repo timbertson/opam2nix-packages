@@ -40,7 +40,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1cjnwnvxln7dzxaxbs0cg6xchr8zz3j9cgc10fv5laaqhc5l1zqp";
-    url = "http://github.com/vbmithr/ocaml-scid/archive/1.0.tar.gz";
+    url = "https://github.com/vbmithr/ocaml-scid/archive/1.0.tar.gz";
   };
 }
 

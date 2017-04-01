@@ -43,7 +43,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0n5g1d3pqq24d0zcdp3qygzvn2dzss3d5fzf0zrvwhjy8fa9kbyb";
-    url = "http://github.com/mirage/ocaml-git/releases/download/1.10.1/git-1.10.1.tbz";
+    url = "https://github.com/mirage/ocaml-git/releases/download/1.10.1/git-1.10.1.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

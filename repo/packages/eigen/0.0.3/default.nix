@@ -40,7 +40,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1mmlzv3cklph9wrsp5aw34z0kxdm59f4g77hcv5f22s2lva912f4";
-    url = "http://github.com/ryanrhymes/eigen/archive/0.0.3.tar.gz";
+    url = "https://github.com/ryanrhymes/eigen/archive/0.0.3.tar.gz";
   };
 }
 

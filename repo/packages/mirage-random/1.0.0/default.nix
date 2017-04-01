@@ -39,7 +39,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "17fpndkknkymwji1n1ap7qp5xc5j3mf0j0yfvdlxd1filmkirs59";
-    url = "http://github.com/mirage/mirage-random/releases/download/1.0.0/mirage-random-1.0.0.tbz";
+    url = "https://github.com/mirage/mirage-random/releases/download/1.0.0/mirage-random-1.0.0.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

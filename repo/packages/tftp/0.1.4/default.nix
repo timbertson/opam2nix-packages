@@ -7,6 +7,7 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      alcotest = opamSelection.alcotest or null;
       camlp4 = opamSelection.camlp4;
       cstruct = opamSelection.cstruct;
       io-page = opamSelection.io-page;

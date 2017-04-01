@@ -42,7 +42,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0p7hming812r982l5x2b8y8rywq0frvwxy9h915c4a0cibhs1vg3";
-    url = "http://github.com/LaurentMazare/tensorflow-ocaml/archive/0.0.9b.tar.gz";
+    url = "https://github.com/LaurentMazare/tensorflow-ocaml/archive/0.0.9b.tar.gz";
   };
 }
 

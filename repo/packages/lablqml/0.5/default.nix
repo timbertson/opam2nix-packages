@@ -38,7 +38,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0dfzbh0md0nymiyr0ziy8vg5vyhn65dsg3fdwkcprn2f7ji69hvb";
-    url = "http://github.com/Kakadu/lablqml/archive/0.5.tar.gz";
+    url = "https://github.com/Kakadu/lablqml/archive/0.5.tar.gz";
   };
 }
 

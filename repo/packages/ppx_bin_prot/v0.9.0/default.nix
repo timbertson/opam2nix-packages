@@ -44,7 +44,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "016prz1b7xjcsagmq5365p9wlcr4v9ldlb758l71a7gk92qxvhhq";
-    url = "http://ocaml.janestreet.com/ocaml-core/v0.9/files/ppx_bin_prot-v0.9.0.tar.gz";
+    url = "https://ocaml.janestreet.com/ocaml-core/v0.9/files/ppx_bin_prot-v0.9.0.tar.gz";
   };
 }
 

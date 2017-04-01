@@ -42,7 +42,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0y7q0kckn9dh78p23b186ayn1h5p7n9xf6lqy5qf7mv05nsfni4k";
-    url = "http://github.com/vbmithr/ocaml-wamp/archive/1.1.tar.gz";
+    url = "https://github.com/vbmithr/ocaml-wamp/archive/1.1.tar.gz";
   };
 }
 

@@ -37,7 +37,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0p7jm7qa7lkkh1inv4c0ldbvhpvyhph9wfrain9aw2iffwbhnzlp";
-    url = "http://github.com/UnixJunkie/bheap/archive/v1.0.0.tar.gz";
+    url = "https://github.com/UnixJunkie/bheap/archive/v1.0.0.tar.gz";
   };
 }
 

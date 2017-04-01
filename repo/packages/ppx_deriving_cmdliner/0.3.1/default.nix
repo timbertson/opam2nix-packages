@@ -40,7 +40,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "12mlwwrvn7ka56l6kfvqxqyfchd3p7f4kfs7lnw1fnvabnrr8b7c";
-    url = "http://github.com/hammerlab/ppx_deriving_cmdliner/archive/v0.3.1.tar.gz";
+    url = "https://github.com/hammerlab/ppx_deriving_cmdliner/archive/v0.3.1.tar.gz";
   };
 }
 

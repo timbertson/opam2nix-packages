@@ -16,6 +16,7 @@ let
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
+      ppx_deriving = opamSelection.ppx_deriving;
       ppx_sexp_conv = opamSelection.ppx_sexp_conv;
       ppx_tools = opamSelection.ppx_tools;
       ptime = opamSelection.ptime;
@@ -50,7 +51,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1x6b96fkgj50ikijsivgiia4drm9nxx9mz1x5c8zrigiwkrgmljv";
-    url = "http://github.com/mirleft/ocaml-tls/releases/download/0.8.0/tls-0.8.0.tbz";
+    url = "https://github.com/mirleft/ocaml-tls/releases/download/0.8.0/tls-0.8.0.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

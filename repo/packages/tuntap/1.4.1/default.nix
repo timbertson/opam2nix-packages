@@ -39,7 +39,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1wwn1qnrw008afbrny0dm269y8zn6pkljs9nzyk7j5bwpk8hgb50";
-    url = "http://github.com/mirage/ocaml-tuntap/releases/download/1.4.1/tuntap-1.4.1.tbz";
+    url = "https://github.com/mirage/ocaml-tuntap/releases/download/1.4.1/tuntap-1.4.1.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

@@ -43,7 +43,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0r5rxv3bxzqx563xnjxvhd35c67xffsbdcpi6zii935jhk2w7mng";
-    url = "http://github.com/mirage/mirage/releases/download/v3.0.0/mirage-runtime-3.0.0.tbz";
+    url = "https://github.com/mirage/mirage/releases/download/v3.0.0/mirage-runtime-3.0.0.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

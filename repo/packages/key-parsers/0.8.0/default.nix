@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       asn1-combinators = opamSelection.asn1-combinators;
+      cstruct = opamSelection.cstruct;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
       ppx_bin_prot = opamSelection.ppx_bin_prot;

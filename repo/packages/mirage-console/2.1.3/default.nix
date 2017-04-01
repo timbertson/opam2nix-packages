@@ -17,6 +17,7 @@ let
       shared-memory-ring = opamSelection.shared-memory-ring or null;
       xen-evtchn = opamSelection.xen-evtchn or null;
       xen-gnt = opamSelection.xen-gnt or null;
+      xenctrl = opamSelection.xenctrl or null;
       xenstore = opamSelection.xenstore or null;
       xenstore_transport = opamSelection.xenstore_transport or null;
     };

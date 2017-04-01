@@ -38,7 +38,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0c7aqdnbxbzb3q4fqhm8sf4zd3fji8y9r20fq2sdqgli7b0lmxhg";
-    url = "http://github.com/LaurentMazare/npy-ocaml/archive/0.0.6.tar.gz";
+    url = "https://github.com/LaurentMazare/npy-ocaml/archive/0.0.6.tar.gz";
   };
 }
 

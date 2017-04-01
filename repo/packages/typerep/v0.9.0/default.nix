@@ -38,7 +38,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1vh9qs6s8j9kvc613f6p7a7lwwhwqy8djrxs7dkr5gmfw95xxh2x";
-    url = "http://ocaml.janestreet.com/ocaml-core/v0.9/files/typerep-v0.9.0.tar.gz";
+    url = "https://ocaml.janestreet.com/ocaml-core/v0.9/files/typerep-v0.9.0.tar.gz";
   };
 }
 

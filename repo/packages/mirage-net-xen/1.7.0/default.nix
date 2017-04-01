@@ -18,6 +18,7 @@ let
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
+      ppx_deriving = opamSelection.ppx_deriving;
       ppx_sexp_conv = opamSelection.ppx_sexp_conv;
       ppx_tools = opamSelection.ppx_tools;
       result = opamSelection.result;
@@ -50,7 +51,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0zcc44vk1w3rqx7cip60m3jld1d49r7sk0d6fgc2y1ykxclcg1x0";
-    url = "http://github.com/mirage/mirage-net-xen/archive/v1.7.0.tar.gz";
+    url = "https://github.com/mirage/mirage-net-xen/archive/v1.7.0.tar.gz";
   };
 }
 

@@ -43,7 +43,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1h6c48aymfa6gqp2y3c8p1mryl5df7l2cy4c7mxa0cx3hkpkpkg5";
-    url = "http://github.com/mirage/mirage-flow/releases/download/1.2.0/mirage-flow-unix-1.2.0.tbz";
+    url = "https://github.com/mirage/mirage-flow/releases/download/1.2.0/mirage-flow-unix-1.2.0.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

@@ -38,7 +38,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "18i6h21ynf970nym9l225sa5667kx0jzybs50yrwjkh0khd8w159";
-    url = "http://github.com/let-def/ocaml-migrate-parsetree/archive/v0.7.tar.gz";
+    url = "https://github.com/let-def/ocaml-migrate-parsetree/archive/v0.7.tar.gz";
   };
 }
 

@@ -39,7 +39,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0wlv267748qmm41raibawvfi2dp67bh4xkxxb9azkn45zlp3j16r";
-    url = "http://github.com/0zat/webidl/archive/v0.1.zip";
+    url = "https://github.com/0zat/webidl/archive/v0.1.zip";
   };
 }
 

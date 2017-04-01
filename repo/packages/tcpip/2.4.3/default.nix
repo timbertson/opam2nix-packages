@@ -7,14 +7,17 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      alcotest = opamSelection.alcotest or null;
       cstruct = opamSelection.cstruct;
       ipaddr = opamSelection.ipaddr;
       mirage-clock-unix = opamSelection.mirage-clock-unix;
       mirage-console = opamSelection.mirage-console;
+      mirage-flow = opamSelection.mirage-flow or null;
       mirage-net-unix = opamSelection.mirage-net-unix;
       mirage-profile = opamSelection.mirage-profile;
       mirage-types-lwt = opamSelection.mirage-types-lwt;
       mirage-unix = opamSelection.mirage-unix;
+      mirage-vnetif = opamSelection.mirage-vnetif or null;
       mirage-xen = opamSelection.mirage-xen or null;
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;

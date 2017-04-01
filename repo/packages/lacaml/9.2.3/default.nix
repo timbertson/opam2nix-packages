@@ -41,7 +41,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1sy17ynddwcxs6zysffckqg7hl9p303v35lyxxlyv38chw13vkmb";
-    url = "http://github.com/mmottl/lacaml/releases/download/v9.2.3/lacaml-9.2.3.tar.gz";
+    url = "https://github.com/mmottl/lacaml/releases/download/v9.2.3/lacaml-9.2.3.tar.gz";
   };
 }
 

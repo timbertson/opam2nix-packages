@@ -11,6 +11,7 @@ let
       bap-future = opamSelection.bap-future;
       base-unix = opamSelection.base-unix;
       camlzip = opamSelection.camlzip;
+      cmdliner = opamSelection.cmdliner;
       core_kernel = opamSelection.core_kernel;
       fileutils = opamSelection.fileutils;
       graphlib = opamSelection.graphlib;

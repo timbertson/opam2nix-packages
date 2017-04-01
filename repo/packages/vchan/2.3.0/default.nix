@@ -15,6 +15,7 @@ let
       mirage-xen = opamSelection.mirage-xen or null;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
+      ppx_deriving = opamSelection.ppx_deriving;
       ppx_sexp_conv = opamSelection.ppx_sexp_conv;
       ppx_tools = opamSelection.ppx_tools;
       result = opamSelection.result;
@@ -50,7 +51,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "124mn38n4f1rccph1x0zrh0kprdn02wq5a6lpjm9rid09b3hvqy2";
-    url = "http://github.com/mirage/ocaml-vchan/archive/v2.3.0.tar.gz";
+    url = "https://github.com/mirage/ocaml-vchan/archive/v2.3.0.tar.gz";
   };
 }
 

@@ -37,7 +37,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "00qfx1xm48j4nrhrj6qlskflbsnarlwfqw3h2x6ssmcx53z7844a";
-    url = "http://www.lri.fr/~filliatr/ftp/ocaml/ds/bitv-1.2.tar.gz";
+    url = "https://www.lri.fr/~filliatr/ftp/ocaml/ds/bitv-1.2.tar.gz";
   };
 }
 

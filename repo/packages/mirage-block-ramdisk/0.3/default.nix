@@ -43,7 +43,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1ajj3rp4v78df705qa4cjlhqp9ic32dawn5gzwydkxznc141n4yk";
-    url = "http://github.com/mirage/mirage-block-ramdisk/archive/v0.3.tar.gz";
+    url = "https://github.com/mirage/mirage-block-ramdisk/archive/v0.3.tar.gz";
   };
 }
 

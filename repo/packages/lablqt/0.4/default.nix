@@ -37,8 +37,8 @@ pkgs.stdenv.mkDerivation
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "1v1pac6nf1hk2wagwpg46sbcj69q8zn77qwrqfxb6ykqbwg7m683";
-    url = "https://github.com/Kakadu/lablqt/archive/0.4.tar.gz";
+    sha256 = "10zj5advcwdb83s60nx6a7599q7v2qljz83hqm8s7y01ma19l26k";
+    url = "https://github.com/Kakadu/lablqml/archive/0.4.tar.gz";
   };
 }
 

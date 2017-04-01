@@ -12,6 +12,7 @@ let
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       ocamlgraph = opamSelection.ocamlgraph;
+      pa_ounit = opamSelection.pa_ounit or null;
       packet = opamSelection.packet;
       sexplib = opamSelection.sexplib;
     };

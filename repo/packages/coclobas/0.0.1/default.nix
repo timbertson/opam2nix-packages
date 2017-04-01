@@ -51,7 +51,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0h2jzc8gyw4kz4bjw05acpgs7x1zq0x0mlcb0hzqvp58hayhahr6";
-    url = "http://github.com/hammerlab/coclobas/archive/coclobas.0.0.1.tar.gz";
+    url = "https://github.com/hammerlab/coclobas/archive/coclobas.0.0.1.tar.gz";
   };
 }
 

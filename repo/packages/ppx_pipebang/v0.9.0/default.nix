@@ -41,7 +41,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0wsvzka6v32vl7anaqw40sbm19z83scd15pfiyj5hnlfywb1dv9v";
-    url = "http://ocaml.janestreet.com/ocaml-core/v0.9/files/ppx_pipebang-v0.9.0.tar.gz";
+    url = "https://ocaml.janestreet.com/ocaml-core/v0.9/files/ppx_pipebang-v0.9.0.tar.gz";
   };
 }
 

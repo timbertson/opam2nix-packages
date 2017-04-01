@@ -42,7 +42,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0dvjcllr7lijmgbnv7jg46r160idcbvkivxqx3k8ic617bzp2aan";
-    url = "http://github.com/mirage/mirage-bootvar-xen/releases/download/0.4.0/mirage-bootvar-xen-0.4.0.tbz";
+    url = "https://github.com/mirage/mirage-bootvar-xen/releases/download/0.4.0/mirage-bootvar-xen-0.4.0.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

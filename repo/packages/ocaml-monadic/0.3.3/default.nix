@@ -39,7 +39,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0vrd8rhj74m2m75gbfxvrl2rfsilkgqv78vw8f2iixw3v79pgbpq";
-    url = "http://github.com/zepalmer/ocaml-monadic/archive/307ea8f294ae075714958cbc546b96a5fc8adfe0.zip";
+    url = "https://github.com/zepalmer/ocaml-monadic/archive/307ea8f294ae075714958cbc546b96a5fc8adfe0.zip";
   };
 }
 

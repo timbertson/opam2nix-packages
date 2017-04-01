@@ -38,7 +38,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1bm56z6d9z50byijq0mplpimjvjw15c2mdhl61gvf7l9rq784ja5";
-    url = "http://github.com/solvuu/solvuu-build/archive/0.3.0.tar.gz";
+    url = "https://github.com/solvuu/solvuu-build/archive/0.3.0.tar.gz";
   };
 }
 

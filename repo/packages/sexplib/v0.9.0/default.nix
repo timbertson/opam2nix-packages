@@ -38,7 +38,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1yfg7ahahc547mkazrvmy82br93va5nvm2qgzbc4vj21rnygz31v";
-    url = "http://ocaml.janestreet.com/ocaml-core/v0.9/files/sexplib-v0.9.0.tar.gz";
+    url = "https://ocaml.janestreet.com/ocaml-core/v0.9/files/sexplib-v0.9.0.tar.gz";
   };
 }
 

@@ -38,7 +38,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "063psc5a3faiv64xdk8wh7zkndy7s3mv0jyjgdccr2xg3bvyddk8";
-    url = "http://github.com/Solo5/solo5/archive/v0.2.1.tar.gz";
+    url = "https://github.com/Solo5/solo5/archive/v0.2.1.tar.gz";
   };
 }
 

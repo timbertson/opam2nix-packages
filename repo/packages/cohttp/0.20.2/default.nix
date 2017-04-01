@@ -19,6 +19,7 @@ let
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
+      ppx_deriving = opamSelection.ppx_deriving;
       ppx_fields_conv = opamSelection.ppx_fields_conv;
       ppx_sexp_conv = opamSelection.ppx_sexp_conv;
       re = opamSelection.re;

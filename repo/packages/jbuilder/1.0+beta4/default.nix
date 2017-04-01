@@ -36,7 +36,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0ss3n7a0zj98w23yl7wcd1khi192x8p2s49xxbzydx4zj2y01r5q";
-    url = "http://github.com/janestreet/jbuilder/archive/1.0+beta4.tar.gz";
+    url = "https://github.com/janestreet/jbuilder/archive/1.0+beta4.tar.gz";
   };
 }
 

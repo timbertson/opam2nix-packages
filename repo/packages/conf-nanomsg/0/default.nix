@@ -1,9 +1,7 @@
 world:
 let
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([
-        (pkgs."https://gist.githubusercontent.com/avsm/ce2ce785f27c9349d99d/raw" or null)
-        (pkgs.nanomsg or null) (pkgs.pkg-config or null) ] ++ (lib.attrValues opamDeps));
+    ([ (pkgs.libnanomsg-dev or null) (pkgs.nanomsg or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 

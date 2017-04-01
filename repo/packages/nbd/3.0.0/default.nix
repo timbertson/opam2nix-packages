@@ -18,6 +18,7 @@ let
       oasis = opamSelection.oasis;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
+      ppx_deriving = opamSelection.ppx_deriving;
       ppx_sexp_conv = opamSelection.ppx_sexp_conv;
       ppx_tools = opamSelection.ppx_tools;
       result = opamSelection.result;
@@ -51,7 +52,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1jvj85dfqi7l97hvqfsxchsw1cpxzkrajpyxlifhkqk34gscxsii";
-    url = "http://github.com/xapi-project/nbd/archive/v3.0.0.tar.gz";
+    url = "https://github.com/xapi-project/nbd/archive/v3.0.0.tar.gz";
   };
 }
 
