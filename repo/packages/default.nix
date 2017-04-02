@@ -126,6 +126,7 @@ world:
   base = import ./base world;
   base-bigarray = import ./base-bigarray world;
   base-bytes = import ./base-bytes world;
+  base-implicits = import ./base-implicits world;
   base-metaocaml-ocamlfind = import ./base-metaocaml-ocamlfind world;
   base-no-ppx = import ./base-no-ppx world;
   base-ocamlbuild = import ./base-ocamlbuild world;
@@ -594,6 +595,7 @@ world:
   imagemagick = import ./imagemagick world;
   imap = import ./imap world;
   imaplet-lwt = import ./imaplet-lwt world;
+  immutable = import ./immutable world;
   incremental = import ./incremental world;
   incremental_kernel = import ./incremental_kernel world;
   indexmap = import ./indexmap world;
@@ -754,6 +756,7 @@ world:
   minima-theme = import ./minima-theme world;
   minios-xen = import ./minios-xen world;
   minisat = import ./minisat world;
+  minivpt = import ./minivpt world;
   mirage = import ./mirage world;
   mirage-block = import ./mirage-block world;
   mirage-block-ccm = import ./mirage-block-ccm world;
@@ -802,6 +805,7 @@ world:
   mirage-logs = import ./mirage-logs world;
   mirage-net = import ./mirage-net world;
   mirage-net-direct = import ./mirage-net-direct world;
+  mirage-net-fd = import ./mirage-net-fd world;
   mirage-net-lwt = import ./mirage-net-lwt world;
   mirage-net-macosx = import ./mirage-net-macosx world;
   mirage-net-socket = import ./mirage-net-socket world;
@@ -839,6 +843,7 @@ world:
   mirror = import ./mirror world;
   missinglib = import ./missinglib world;
   mixture = import ./mixture world;
+  mkaudio = import ./mkaudio world;
   ml2mxml = import ./ml2mxml world;
   mlbdd = import ./mlbdd world;
   mlcuddidl = import ./mlcuddidl world;
@@ -892,6 +897,7 @@ world:
   oasis = import ./oasis world;
   oasis-mirage = import ./oasis-mirage world;
   oasis2opam = import ./oasis2opam world;
+  obandit = import ./obandit world;
   obeanstalk = import ./obeanstalk world;
   obigstore = import ./obigstore world;
   objsize = import ./objsize world;
@@ -1224,6 +1230,7 @@ world:
   ptset = import ./ptset world;
   publish = import ./publish world;
   pulseaudio = import ./pulseaudio world;
+  pumping = import ./pumping world;
   pvem = import ./pvem world;
   pvem_lwt_unix = import ./pvem_lwt_unix world;
   pxp = import ./pxp world;
@@ -1413,6 +1420,7 @@ world:
   topkg-care = import ./topkg-care world;
   toplevel_expect_test = import ./toplevel_expect_test world;
   topology = import ./topology world;
+  touist = import ./touist world;
   tplib = import ./tplib world;
   tptp = import ./tptp world;
   trakeva = import ./trakeva world;
@@ -1429,6 +1437,7 @@ world:
   tsdl-ttf = import ./tsdl-ttf world;
   tuareg = import ./tuareg world;
   tuntap = import ./tuntap world;
+  type-beat = import ./type-beat world;
   type_conv = import ./type_conv world;
   typehashlib = import ./typehashlib world;
   typerep = import ./typerep world;
