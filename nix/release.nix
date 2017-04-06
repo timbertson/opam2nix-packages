@@ -22,6 +22,7 @@ if devRepo != "" then
 	let toPath = s: /. + s; in
 	callPackage "${devRepo}/nix" {} {
 		src = toPath "${devRepo}/nix/local.tgz";
-		opam2nix = toPath "${devRepo}/opam2nix/nix/local.tgz";
+		opam2nix = let devSrc = "${devRepo}/opam2nix/nix/local.tgz"; in
+			if builtins.pathExists devPath then toPath devPath else opam2nix;
 	}
 else callPackage "${src}/nix" {} { inherit src opam2nix; }
