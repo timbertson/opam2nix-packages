@@ -8,8 +8,8 @@ let
 	src = fetchgit 	{
 		"url" = "https://github.com/timbertson/opam2nix-packages.git";
 		"fetchSubmodules" = false;
-		"sha256" = "0af8nbvq0csbfgndmn3vdyi9kl0g6fqs88lp81r3bvpc7jn8yyyh";
-		"rev" = "41c10dc9bcf0d56ebb1eec2aafac7014efd63e26";
+		"sha256" = "0iip79y5a92pg1rxg8vm76qhlq1rnlcv7r2fr81sxrrd9320ahz7";
+		"rev" = "63ebfc6c182920f6b01de04c4ce1e7096a3c9d4f";
 	};
 	opam2nix = fetchgit 	{
 		"url" = "https://github.com/timbertson/opam2nix.git";
@@ -23,6 +23,6 @@ if devRepo != "" then
 	callPackage "${devRepo}/nix" {} {
 		src = toPath "${devRepo}/nix/local.tgz";
 		opam2nix = let devSrc = "${devRepo}/opam2nix/nix/local.tgz"; in
-			if builtins.pathExists devPath then toPath devPath else opam2nix;
+			if builtins.pathExists devSrc then toPath devSrc else opam2nix;
 	}
 else callPackage "${src}/nix" {} { inherit src opam2nix; }
