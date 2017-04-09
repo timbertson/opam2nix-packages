@@ -126,6 +126,7 @@ world:
   base = import ./base world;
   base-bigarray = import ./base-bigarray world;
   base-bytes = import ./base-bytes world;
+  base-flambda = import ./base-flambda world;
   base-implicits = import ./base-implicits world;
   base-metaocaml-ocamlfind = import ./base-metaocaml-ocamlfind world;
   base-no-ppx = import ./base-no-ppx world;
@@ -465,6 +466,8 @@ world:
   facebook-sdk = import ./facebook-sdk world;
   facile = import ./facile world;
   faillib = import ./faillib world;
+  faraday = import ./faraday world;
+  farfadet = import ./farfadet world;
   fat-filesystem = import ./fat-filesystem world;
   fd-send-recv = import ./fd-send-recv world;
   fdkaac = import ./fdkaac world;
@@ -1012,6 +1015,7 @@ world:
   ojwidgets = import ./ojwidgets world;
   olinq = import ./olinq world;
   ollvm = import ./ollvm world;
+  ollvm-tapir = import ./ollvm-tapir world;
   olmi = import ./olmi world;
   oloop = import ./oloop world;
   omake = import ./omake world;
