@@ -193,6 +193,7 @@ world:
   camlimages = import ./camlimages world;
   camllib = import ./camllib world;
   camlmix = import ./camlmix world;
+  camlon = import ./camlon world;
   camlp4 = import ./camlp4 world;
   camlp5 = import ./camlp5 world;
   camlpdf = import ./camlpdf world;
@@ -850,6 +851,7 @@ world:
   ml2mxml = import ./ml2mxml world;
   mlbdd = import ./mlbdd world;
   mlcuddidl = import ./mlcuddidl world;
+  mld = import ./mld world;
   mldonkey = import ./mldonkey world;
   mlgmp = import ./mlgmp world;
   mlgmpidl = import ./mlgmpidl world;
@@ -910,6 +912,7 @@ world:
   obytelib = import ./obytelib world;
   ocal = import ./ocal world;
   ocaml-arg = import ./ocaml-arg world;
+  ocaml-basics = import ./ocaml-basics world;
   ocaml-buddy = import ./ocaml-buddy world;
   ocaml-compiler-libs = import ./ocaml-compiler-libs world;
   ocaml-data-notation = import ./ocaml-data-notation world;
@@ -1350,6 +1353,7 @@ world:
   soundtouch = import ./soundtouch world;
   space-search = import ./space-search world;
   spacetime_lib = import ./spacetime_lib world;
+  sparrow = import ./sparrow world;
   spatial_index = import ./spatial_index world;
   spdiff = import ./spdiff world;
   speex = import ./speex world;
@@ -1385,6 +1389,7 @@ world:
   stone = import ./stone world;
   stringext = import ./stringext world;
   sturgeon = import ./sturgeon world;
+  subtype-refinement = import ./subtype-refinement world;
   sundialsml = import ./sundialsml world;
   swdogen = import ./swdogen world;
   symkat = import ./symkat world;
@@ -1402,6 +1407,7 @@ world:
   tensorflow = import ./tensorflow world;
   termbox = import ./termbox world;
   terminal_size = import ./terminal_size world;
+  testrunner = import ./testrunner world;
   testsimple = import ./testsimple world;
   text = import ./text world;
   text-tags = import ./text-tags world;
