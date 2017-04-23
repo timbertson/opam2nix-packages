@@ -129,6 +129,7 @@ world:
   base-flambda = import ./base-flambda world;
   base-implicits = import ./base-implicits world;
   base-metaocaml-ocamlfind = import ./base-metaocaml-ocamlfind world;
+  base-native-int63 = import ./base-native-int63 world;
   base-no-ppx = import ./base-no-ppx world;
   base-ocamlbuild = import ./base-ocamlbuild world;
   base-threads = import ./base-threads world;
@@ -252,6 +253,7 @@ world:
   conf-ftgl = import ./conf-ftgl world;
   conf-glade = import ./conf-glade world;
   conf-glew = import ./conf-glew world;
+  conf-glib-2 = import ./conf-glib-2 world;
   conf-gmp = import ./conf-gmp world;
   conf-gmp-powm-sec = import ./conf-gmp-powm-sec world;
   conf-gnomecanvas = import ./conf-gnomecanvas world;
