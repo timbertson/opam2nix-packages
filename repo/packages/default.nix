@@ -11,6 +11,7 @@ world:
   TCSLib = import ./TCSLib world;
   aacplus = import ./aacplus world;
   abella = import ./abella world;
+  abt = import ./abt world;
   acgtk = import ./acgtk world;
   acme = import ./acme world;
   acpc = import ./acpc world;
@@ -78,6 +79,7 @@ world:
   aws-cloudtrail = import ./aws-cloudtrail world;
   aws-ec2 = import ./aws-ec2 world;
   aws-elasticloadbalancing = import ./aws-elasticloadbalancing world;
+  aws-s3 = import ./aws-s3 world;
   aws-sdb = import ./aws-sdb world;
   aws-ssm = import ./aws-ssm world;
   aws-sts = import ./aws-sts world;
@@ -714,6 +716,7 @@ world:
   lpi = import ./lpi world;
   lru = import ./lru world;
   lru-cache = import ./lru-cache world;
+  lua_pattern = import ./lua_pattern world;
   lutils = import ./lutils world;
   lwt = import ./lwt world;
   lwt-binio = import ./lwt-binio world;
@@ -1164,6 +1167,7 @@ world:
   ppx_custom_printf = import ./ppx_custom_printf world;
   ppx_debugger = import ./ppx_debugger world;
   ppx_defer = import ./ppx_defer world;
+  ppx_derivers = import ./ppx_derivers world;
   ppx_deriving = import ./ppx_deriving world;
   ppx_deriving_cmdliner = import ./ppx_deriving_cmdliner world;
   ppx_deriving_hardcaml = import ./ppx_deriving_hardcaml world;
@@ -1232,6 +1236,8 @@ world:
   prometheus-app = import ./prometheus-app world;
   protobuf = import ./protobuf world;
   protocol-9p = import ./protocol-9p world;
+  protocol-9p-tool = import ./protocol-9p-tool world;
+  protocol-9p-unix = import ./protocol-9p-unix world;
   proverif = import ./proverif world;
   psq = import ./psq world;
   ptime = import ./ptime world;
@@ -1398,6 +1404,7 @@ world:
   syndic = import ./syndic world;
   syslog = import ./syslog world;
   syslog-message = import ./syslog-message world;
+  systemverilog = import ./systemverilog world;
   taglib = import ./taglib world;
   taglog = import ./taglog world;
   tallgeese = import ./tallgeese world;
@@ -1567,6 +1574,7 @@ world:
   xxhash = import ./xxhash world;
   yajl = import ./yajl world;
   yajl-extra = import ./yajl-extra world;
+  yices2 = import ./yices2 world;
   yojson = import ./yojson world;
   zarith = import ./zarith world;
   zarith-freestanding = import ./zarith-freestanding world;
