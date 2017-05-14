@@ -120,8 +120,10 @@ let
 				ocamlVersion = with builtins; (parseDrvName result.opamSelection.ocaml.name).version;
 				select = (import selection_file);
 				format_version = import ../repo/format_version.nix;
-				extraPackages = map (path: import (buildNixRepo path)) (world.extraRepos or []);
-			} // world)); in result.opamSelection;
+			} // world // {
+				extraPackages = (world.extraPackages or [])
+					++ map (path: import (buildNixRepo path)) (world.extraRepos or []);
+			})); in result.opamSelection;
 
 		inherit buildNixRepo packageNames;
 
