@@ -229,6 +229,7 @@ world:
   cil = import ./cil world;
   clangml = import ./clangml world;
   clangml-transforms = import ./clangml-transforms world;
+  clarity = import ./clarity world;
   cmark = import ./cmark world;
   cmdliner = import ./cmdliner world;
   cmdtui = import ./cmdtui world;
@@ -315,6 +316,7 @@ world:
   conf-zmq = import ./conf-zmq world;
   config-file = import ./config-file world;
   configuration = import ./configuration world;
+  configurator = import ./configurator world;
   containers = import ./containers world;
   cookie-js = import ./cookie-js world;
   coq = import ./coq world;
@@ -382,6 +384,7 @@ world:
   cryptohash = import ./cryptohash world;
   cryptokit = import ./cryptokit world;
   cstruct = import ./cstruct world;
+  cstruct-lwt = import ./cstruct-lwt world;
   csv = import ./csv world;
   csvprovider = import ./csvprovider world;
   ctypes = import ./ctypes world;
@@ -414,6 +417,7 @@ world:
   deriving-yojson = import ./deriving-yojson world;
   devkit = import ./devkit world;
   dht = import ./dht world;
+  digestif = import ./digestif world;
   dispatch = import ./dispatch world;
   distributed = import ./distributed world;
   distwit = import ./distwit world;
@@ -635,6 +639,7 @@ world:
   iso-filesystem = import ./iso-filesystem world;
   itv-tree = import ./itv-tree world;
   ivy = import ./ivy world;
+  jane-street-headers = import ./jane-street-headers world;
   javalib = import ./javalib world;
   javascriptcore = import ./javascriptcore world;
   jbuilder = import ./jbuilder world;
@@ -656,6 +661,7 @@ world:
   json-wheel = import ./json-wheel world;
   jsondiff = import ./jsondiff world;
   jsonm = import ./jsonm world;
+  jsoo_broadcastchannel = import ./jsoo_broadcastchannel world;
   jsoo_router = import ./jsoo_router world;
   junit = import ./junit world;
   jwt = import ./jwt world;
@@ -1039,6 +1045,7 @@ world:
   opam-core = import ./opam-core world;
   opam-devel = import ./opam-devel world;
   opam-doc = import ./opam-doc world;
+  opam-ed = import ./opam-ed world;
   opam-file-format = import ./opam-file-format world;
   opam-format = import ./opam-format world;
   opam-installext = import ./opam-installext world;
@@ -1162,6 +1169,7 @@ world:
   ppx_const = import ./ppx_const world;
   ppx_conv_func = import ./ppx_conv_func world;
   ppx_core = import ./ppx_core world;
+  ppx_cstruct = import ./ppx_cstruct world;
   ppx_csv_conv = import ./ppx_csv_conv world;
   ppx_curried_constr = import ./ppx_curried_constr world;
   ppx_custom_printf = import ./ppx_custom_printf world;
@@ -1344,6 +1352,7 @@ world:
   smart-print = import ./smart-print world;
   smbc = import ./smbc world;
   smtp = import ./smtp world;
+  snabela = import ./snabela world;
   snappy = import ./snappy world;
   sociaml-facebook-api = import ./sociaml-facebook-api world;
   sociaml-oauth-client = import ./sociaml-oauth-client world;
@@ -1363,6 +1372,7 @@ world:
   spacetime_lib = import ./spacetime_lib world;
   sparrow = import ./sparrow world;
   spatial_index = import ./spatial_index world;
+  spawn = import ./spawn world;
   spdiff = import ./spdiff world;
   speex = import ./speex world;
   spelll = import ./spelll world;
@@ -1408,7 +1418,10 @@ world:
   taglib = import ./taglib world;
   taglog = import ./taglog world;
   tallgeese = import ./tallgeese world;
+  tar = import ./tar world;
   tar-format = import ./tar-format world;
+  tar-mirage = import ./tar-mirage world;
+  tar-unix = import ./tar-unix world;
   tcpip = import ./tcpip world;
   tcx = import ./tcx world;
   tdk = import ./tdk world;
