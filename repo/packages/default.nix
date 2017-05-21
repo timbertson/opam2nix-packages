@@ -21,6 +21,7 @@ world:
   agrep = import ./agrep world;
   aifad = import ./aifad world;
   aio = import ./aio world;
+  alba = import ./alba world;
   alberto = import ./alberto world;
   alcotest = import ./alcotest world;
   aliases = import ./aliases world;
@@ -61,6 +62,7 @@ world:
   async_find = import ./async_find world;
   async_graphics = import ./async_graphics world;
   async_inotify = import ./async_inotify world;
+  async_interactive = import ./async_interactive world;
   async_kernel = import ./async_kernel world;
   async_parallel = import ./async_parallel world;
   async_rpc_kernel = import ./async_rpc_kernel world;
@@ -240,6 +242,7 @@ world:
   cohttp = import ./cohttp world;
   coinst = import ./coinst world;
   combine = import ./combine world;
+  command_rpc = import ./command_rpc world;
   commonjs_of_ocaml = import ./commonjs_of_ocaml world;
   comparelib = import ./comparelib world;
   conduit = import ./conduit world;
@@ -439,6 +442,7 @@ world:
   dose3 = import ./dose3 world;
   dropbox = import ./dropbox world;
   dssi = import ./dssi world;
+  dtoa = import ./dtoa world;
   dtools = import ./dtools world;
   dum = import ./dum world;
   dumpast = import ./dumpast world;
@@ -470,6 +474,7 @@ world:
   extunix = import ./extunix world;
   ezirmin = import ./ezirmin world;
   ezjsonm = import ./ezjsonm world;
+  ezsqlite = import ./ezsqlite world;
   ezxmlm = import ./ezxmlm world;
   faad = import ./faad world;
   facebook-sdk = import ./facebook-sdk world;
@@ -590,6 +595,7 @@ world:
   hex = import ./hex world;
   higher = import ./higher world;
   higlo = import ./higlo world;
+  hiredis = import ./hiredis world;
   hkdf = import ./hkdf world;
   hlarp = import ./hlarp world;
   hll = import ./hll world;
@@ -663,6 +669,7 @@ world:
   jsonm = import ./jsonm world;
   jsoo_broadcastchannel = import ./jsoo_broadcastchannel world;
   jsoo_router = import ./jsoo_router world;
+  jsoo_storage = import ./jsoo_storage world;
   junit = import ./junit world;
   jwt = import ./jwt world;
   kafka = import ./kafka world;
@@ -1057,6 +1064,7 @@ world:
   opam-state = import ./opam-state world;
   opam-sync-github-prs = import ./opam-sync-github-prs world;
   opam2web = import ./opam2web world;
+  opam_of_packagejson = import ./opam_of_packagejson world;
   opamconfig = import ./opamconfig world;
   opamfind = import ./opamfind world;
   opamfu = import ./opamfu world;
@@ -1261,6 +1269,7 @@ world:
   qcheck = import ./qcheck world;
   qcow = import ./qcow world;
   qcow-format = import ./qcow-format world;
+  qcow-tool = import ./qcow-tool world;
   qfs = import ./qfs world;
   qmp = import ./qmp world;
   qocamlbrowser = import ./qocamlbrowser world;
@@ -1288,6 +1297,8 @@ world:
   receive-mail = import ./receive-mail world;
   records = import ./records world;
   redis = import ./redis world;
+  redis-lwt = import ./redis-lwt world;
+  redis-sync = import ./redis-sync world;
   reedsolomon = import ./reedsolomon world;
   regstab = import ./regstab world;
   regular = import ./regular world;
@@ -1528,6 +1539,8 @@ world:
   vpnkit = import ./vpnkit world;
   vrt = import ./vrt world;
   wamp = import ./wamp world;
+  wamp-msgpck = import ./wamp-msgpck world;
+  wamp-yojson = import ./wamp-yojson world;
   wasm = import ./wasm world;
   wdialog = import ./wdialog world;
   webbrowser = import ./webbrowser world;
