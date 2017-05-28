@@ -63,6 +63,7 @@ world:
   async_graphics = import ./async_graphics world;
   async_inotify = import ./async_inotify world;
   async_interactive = import ./async_interactive world;
+  async_js = import ./async_js world;
   async_kernel = import ./async_kernel world;
   async_parallel = import ./async_parallel world;
   async_rpc_kernel = import ./async_rpc_kernel world;
@@ -135,6 +136,7 @@ world:
   base-metaocaml-ocamlfind = import ./base-metaocaml-ocamlfind world;
   base-native-int63 = import ./base-native-int63 world;
   base-no-ppx = import ./base-no-ppx world;
+  base-num = import ./base-num world;
   base-ocamlbuild = import ./base-ocamlbuild world;
   base-threads = import ./base-threads world;
   base-unix = import ./base-unix world;
@@ -229,9 +231,11 @@ world:
   charrua-unix = import ./charrua-unix world;
   choice = import ./choice world;
   cil = import ./cil world;
+  cinaps = import ./cinaps world;
   clangml = import ./clangml world;
   clangml-transforms = import ./clangml-transforms world;
   clarity = import ./clarity world;
+  cloudi = import ./cloudi world;
   cmark = import ./cmark world;
   cmdliner = import ./cmdliner world;
   cmdtui = import ./cmdtui world;
@@ -290,6 +294,7 @@ world:
   conf-nanomsg = import ./conf-nanomsg world;
   conf-ncurses = import ./conf-ncurses world;
   conf-ode = import ./conf-ode world;
+  conf-openbabel = import ./conf-openbabel world;
   conf-openssl = import ./conf-openssl world;
   conf-perl = import ./conf-perl world;
   conf-pic-switch = import ./conf-pic-switch world;
@@ -298,6 +303,7 @@ world:
   conf-python-2-7 = import ./conf-python-2-7 world;
   conf-python-2-7-dev = import ./conf-python-2-7-dev world;
   conf-qt = import ./conf-qt world;
+  conf-rdkit = import ./conf-rdkit world;
   conf-sdl-gfx = import ./conf-sdl-gfx world;
   conf-sdl-image = import ./conf-sdl-image world;
   conf-sdl-mixer = import ./conf-sdl-mixer world;
@@ -387,8 +393,11 @@ world:
   cryptohash = import ./cryptohash world;
   cryptokit = import ./cryptokit world;
   cstruct = import ./cstruct world;
+  cstruct-async = import ./cstruct-async world;
   cstruct-lwt = import ./cstruct-lwt world;
+  cstruct-unix = import ./cstruct-unix world;
   csv = import ./csv world;
+  csvfields = import ./csvfields world;
   csvprovider = import ./csvprovider world;
   ctypes = import ./ctypes world;
   ctypes-build = import ./ctypes-build world;
@@ -410,6 +419,7 @@ world:
   dbforge = import ./dbforge world;
   dbm = import ./dbm world;
   dead_code_analyzer = import ./dead_code_analyzer world;
+  debian-formats = import ./debian-formats world;
   decompress = import ./decompress world;
   delimcc = import ./delimcc world;
   depext = import ./depext world;
@@ -451,6 +461,7 @@ world:
   dyntype = import ./dyntype world;
   dypgen = import ./dypgen world;
   easy-format = import ./easy-format world;
+  ecaml = import ./ecaml world;
   edn = import ./edn world;
   efl = import ./efl world;
   eigen = import ./eigen world;
@@ -468,12 +479,15 @@ world:
   exenum = import ./exenum world;
   exn-source = import ./exn-source world;
   expect = import ./expect world;
+  expect_test_helpers = import ./expect_test_helpers world;
+  expect_test_helpers_kernel = import ./expect_test_helpers_kernel world;
   extlib = import ./extlib world;
   extlib-compat = import ./extlib-compat world;
   extprot = import ./extprot world;
   extunix = import ./extunix world;
   ezirmin = import ./ezirmin world;
   ezjsonm = import ./ezjsonm world;
+  ezjsonm-lwt = import ./ezjsonm-lwt world;
   ezsqlite = import ./ezsqlite world;
   ezxmlm = import ./ezxmlm world;
   faad = import ./faad world;
@@ -564,6 +578,9 @@ world:
   graphics = import ./graphics world;
   graphicspdf = import ./graphicspdf world;
   graphlib = import ./graphlib world;
+  graphql = import ./graphql world;
+  graphql-async = import ./graphql-async world;
+  graphql-lwt = import ./graphql-lwt world;
   grenier = import ./grenier world;
   grib = import ./grib world;
   gsasl = import ./gsasl world;
@@ -607,6 +624,7 @@ world:
   hweak = import ./hweak world;
   hydro = import ./hydro world;
   i2c = import ./i2c world;
+  i3ipc = import ./i3ipc world;
   ibx = import ./ibx world;
   igvxml = import ./igvxml world;
   imagelib = import ./imagelib world;
@@ -614,6 +632,9 @@ world:
   imap = import ./imap world;
   imaplet-lwt = import ./imaplet-lwt world;
   immutable = import ./immutable world;
+  incr_dom = import ./incr_dom world;
+  incr_map = import ./incr_map world;
+  incr_select = import ./incr_select world;
   incremental = import ./incremental world;
   incremental_kernel = import ./incremental_kernel world;
   indexmap = import ./indexmap world;
@@ -665,6 +686,7 @@ world:
   json-predicate = import ./json-predicate world;
   json-static = import ./json-static world;
   json-wheel = import ./json-wheel world;
+  json-wheel_jane_street_overlay = import ./json-wheel_jane_street_overlay world;
   jsondiff = import ./jsondiff world;
   jsonm = import ./jsonm world;
   jsoo_broadcastchannel = import ./jsoo_broadcastchannel world;
@@ -756,6 +778,7 @@ world:
   mascot = import ./mascot world;
   maxminddb = import ./maxminddb world;
   mbr-format = import ./mbr-format world;
+  mechaml = import ./mechaml world;
   melt = import ./melt world;
   memcad = import ./memcad world;
   memcpy = import ./memcpy world;
@@ -915,10 +938,13 @@ world:
   notty = import ./notty world;
   nproc = import ./nproc world;
   npy = import ./npy world;
+  nullable-array = import ./nullable-array world;
+  num = import ./num world;
   numerix = import ./numerix world;
   nunchaku = import ./nunchaku world;
   oasis = import ./oasis world;
   oasis-mirage = import ./oasis-mirage world;
+  oasis2debian = import ./oasis2debian world;
   oasis2opam = import ./oasis2opam world;
   obandit = import ./obandit world;
   obeanstalk = import ./obeanstalk world;
@@ -947,6 +973,7 @@ world:
   ocaml-monadic = import ./ocaml-monadic world;
   ocaml-protoc = import ./ocaml-protoc world;
   ocaml-protoc-yojson = import ./ocaml-protoc-yojson world;
+  ocaml-sat-solvers = import ./ocaml-sat-solvers world;
   ocaml-src = import ./ocaml-src world;
   ocaml-systemd = import ./ocaml-systemd world;
   ocaml-top = import ./ocaml-top world;
@@ -1048,6 +1075,7 @@ world:
   opa-base = import ./opa-base world;
   opal = import ./opal world;
   opam-build-revdeps = import ./opam-build-revdeps world;
+  opam-bundle = import ./opam-bundle world;
   opam-client = import ./opam-client world;
   opam-core = import ./opam-core world;
   opam-devel = import ./opam-devel world;
@@ -1126,6 +1154,8 @@ world:
   pareto = import ./pareto world;
   parmap = import ./parmap world;
   parse-argv = import ./parse-argv world;
+  parsexp = import ./parsexp world;
+  parsexp_io = import ./parsexp_io world;
   patdiff = import ./patdiff world;
   patience_diff = import ./patience_diff world;
   patoline = import ./patoline world;
@@ -1163,6 +1193,7 @@ world:
   posix-semaphore = import ./posix-semaphore world;
   posix-time = import ./posix-time world;
   posix-types = import ./posix-types world;
+  posixat = import ./posixat world;
   postgresql = import ./postgresql world;
   pprint = import ./pprint world;
   ppx_assert = import ./ppx_assert world;
@@ -1342,6 +1373,7 @@ world:
   session = import ./session world;
   sessions = import ./sessions world;
   setr = import ./setr world;
+  sexp_pretty = import ./sexp_pretty world;
   sexplib = import ./sexplib world;
   sgf = import ./sgf world;
   sha = import ./sha world;
@@ -1349,6 +1381,7 @@ world:
   shared-memory-ring = import ./shared-memory-ring world;
   shared-secret = import ./shared-secret world;
   shcaml = import ./shcaml world;
+  shexp = import ./shexp world;
   should = import ./should world;
   sibylfs = import ./sibylfs world;
   sibylfs-lem = import ./sibylfs-lem world;
@@ -1461,7 +1494,9 @@ world:
   tophide = import ./tophide world;
   topkg = import ./topkg world;
   topkg-care = import ./topkg-care world;
+  topkg-jbuilder = import ./topkg-jbuilder world;
   toplevel_expect_test = import ./toplevel_expect_test world;
+  topological_sort = import ./topological_sort world;
   topology = import ./topology world;
   touist = import ./touist world;
   tplib = import ./tplib world;
@@ -1532,6 +1567,7 @@ world:
   vhd-format = import ./vhd-format world;
   vhd-tool = import ./vhd-tool world;
   vhdlib = import ./vhdlib world;
+  virtual_dom = import ./virtual_dom world;
   visitors = import ./visitors world;
   vmnet = import ./vmnet world;
   voaacenc = import ./voaacenc world;
@@ -1560,24 +1596,7 @@ world:
   wxOCaml = import ./wxOCaml world;
   wyrd = import ./wyrd world;
   x509 = import ./x509 world;
-  xapi = import ./xapi world;
-  xapi-backtrace = import ./xapi-backtrace world;
-  xapi-forkexecd = import ./xapi-forkexecd world;
-  xapi-idl = import ./xapi-idl world;
-  xapi-inventory = import ./xapi-inventory world;
-  xapi-libs-transitional = import ./xapi-libs-transitional world;
-  xapi-netdev = import ./xapi-netdev world;
-  xapi-networkd = import ./xapi-networkd world;
   xapi-rrd = import ./xapi-rrd world;
-  xapi-rrd-transport = import ./xapi-rrd-transport world;
-  xapi-rrdd = import ./xapi-rrdd world;
-  xapi-rrdd-plugin = import ./xapi-rrdd-plugin world;
-  xapi-squeezed = import ./xapi-squeezed world;
-  xapi-stdext = import ./xapi-stdext world;
-  xapi-tapctl = import ./xapi-tapctl world;
-  xapi-xenops = import ./xapi-xenops world;
-  xapi-xenops-cli = import ./xapi-xenops-cli world;
-  xapi-xenopsd = import ./xapi-xenopsd world;
   xe = import ./xe world;
   xe-unikernel-upload = import ./xe-unikernel-upload world;
   xen-api-client = import ./xen-api-client world;
