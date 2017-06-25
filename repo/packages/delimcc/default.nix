@@ -1,6 +1,7 @@
 world:
 {
-  "0" = import ./0 world;
-  latest = import ./0 world;
+  "2013.08.00" = import ./2013.08.00 world;
+  "2017.03.02" = import ./2017.03.02 world;
+  latest = import ./2017.03.02 world;
 }
 

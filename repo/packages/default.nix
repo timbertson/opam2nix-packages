@@ -175,6 +175,7 @@ world:
   blahcaml = import ./blahcaml world;
   bolt = import ./bolt world;
   bookaml = import ./bookaml world;
+  boomerang = import ./boomerang world;
   bos = import ./bos world;
   broken = import ./broken world;
   brotli = import ./brotli world;
@@ -251,6 +252,7 @@ world:
   comparelib = import ./comparelib world;
   conduit = import ./conduit world;
   conex = import ./conex world;
+  conf-aclocal = import ./conf-aclocal world;
   conf-autoconf = import ./conf-autoconf world;
   conf-bap-llvm = import ./conf-bap-llvm world;
   conf-binutils = import ./conf-binutils world;
@@ -295,6 +297,7 @@ world:
   conf-ncurses = import ./conf-ncurses world;
   conf-ode = import ./conf-ode world;
   conf-openbabel = import ./conf-openbabel world;
+  conf-openblas = import ./conf-openblas world;
   conf-openssl = import ./conf-openssl world;
   conf-perl = import ./conf-perl world;
   conf-pic-switch = import ./conf-pic-switch world;
@@ -413,8 +416,11 @@ world:
   datakit-bridge-local-git = import ./datakit-bridge-local-git world;
   datakit-ci = import ./datakit-ci world;
   datakit-client = import ./datakit-client world;
+  datakit-client-9p = import ./datakit-client-9p world;
+  datakit-client-git = import ./datakit-client-git world;
   datakit-github = import ./datakit-github world;
   datakit-server = import ./datakit-server world;
+  datakit-server-9p = import ./datakit-server-9p world;
   datalog = import ./datalog world;
   dbforge = import ./dbforge world;
   dbm = import ./dbm world;
@@ -444,6 +450,7 @@ world:
   doc-ock-xml = import ./doc-ock-xml world;
   docker-api = import ./docker-api world;
   dockerfile = import ./dockerfile world;
+  dockerfile-opam = import ./dockerfile-opam world;
   docout = import ./docout world;
   dog = import ./dog world;
   dolmen = import ./dolmen world;
@@ -489,6 +496,7 @@ world:
   ezjsonm = import ./ezjsonm world;
   ezjsonm-lwt = import ./ezjsonm-lwt world;
   ezsqlite = import ./ezsqlite world;
+  ezxenstore = import ./ezxenstore world;
   ezxmlm = import ./ezxmlm world;
   faad = import ./faad world;
   facebook-sdk = import ./facebook-sdk world;
@@ -656,9 +664,11 @@ world:
   iri = import ./iri world;
   irmin = import ./irmin world;
   irmin-chunk = import ./irmin-chunk world;
+  irmin-fs = import ./irmin-fs world;
   irmin-git = import ./irmin-git world;
   irmin-http = import ./irmin-http world;
   irmin-indexeddb = import ./irmin-indexeddb world;
+  irmin-mem = import ./irmin-mem world;
   irmin-mirage = import ./irmin-mirage world;
   irmin-unix = import ./irmin-unix world;
   irmin-watcher = import ./irmin-watcher world;
@@ -682,6 +692,13 @@ world:
   js-build-tools = import ./js-build-tools world;
   js-lz4 = import ./js-lz4 world;
   js_of_ocaml = import ./js_of_ocaml world;
+  js_of_ocaml-camlp4 = import ./js_of_ocaml-camlp4 world;
+  js_of_ocaml-compiler = import ./js_of_ocaml-compiler world;
+  js_of_ocaml-lwt = import ./js_of_ocaml-lwt world;
+  js_of_ocaml-ocamlbuild = import ./js_of_ocaml-ocamlbuild world;
+  js_of_ocaml-ppx = import ./js_of_ocaml-ppx world;
+  js_of_ocaml-toplevel = import ./js_of_ocaml-toplevel world;
+  js_of_ocaml-tyxml = import ./js_of_ocaml-tyxml world;
   json-pointer = import ./json-pointer world;
   json-predicate = import ./json-predicate world;
   json-static = import ./json-static world;
@@ -836,6 +853,7 @@ world:
   mirage-entropy-xen = import ./mirage-entropy-xen world;
   mirage-flow = import ./mirage-flow world;
   mirage-flow-lwt = import ./mirage-flow-lwt world;
+  mirage-flow-rawlink = import ./mirage-flow-rawlink world;
   mirage-flow-unix = import ./mirage-flow-unix world;
   mirage-fs = import ./mirage-fs world;
   mirage-fs-lwt = import ./mirage-fs-lwt world;
@@ -851,6 +869,7 @@ world:
   mirage-net = import ./mirage-net world;
   mirage-net-direct = import ./mirage-net-direct world;
   mirage-net-fd = import ./mirage-net-fd world;
+  mirage-net-flow = import ./mirage-net-flow world;
   mirage-net-lwt = import ./mirage-net-lwt world;
   mirage-net-macosx = import ./mirage-net-macosx world;
   mirage-net-socket = import ./mirage-net-socket world;
@@ -861,9 +880,12 @@ world:
   mirage-no-xen = import ./mirage-no-xen world;
   mirage-os-shim = import ./mirage-os-shim world;
   mirage-profile = import ./mirage-profile world;
+  mirage-profile-unix = import ./mirage-profile-unix world;
+  mirage-profile-xen = import ./mirage-profile-xen world;
   mirage-protocols = import ./mirage-protocols world;
   mirage-protocols-lwt = import ./mirage-protocols-lwt world;
   mirage-qubes = import ./mirage-qubes world;
+  mirage-qubes-ipv4 = import ./mirage-qubes-ipv4 world;
   mirage-random = import ./mirage-random world;
   mirage-runtime = import ./mirage-runtime world;
   mirage-seal = import ./mirage-seal world;
@@ -927,6 +949,7 @@ world:
   nbd = import ./nbd world;
   nebula = import ./nebula world;
   netamqp = import ./netamqp world;
+  netchannel = import ./netchannel world;
   netlink = import ./netlink world;
   netml = import ./netml world;
   nit = import ./nit world;
@@ -965,11 +988,13 @@ world:
   ocaml-http = import ./ocaml-http world;
   ocaml-indent = import ./ocaml-indent world;
   ocaml-inifiles = import ./ocaml-inifiles world;
+  ocaml-js-stdlib = import ./ocaml-js-stdlib world;
   ocaml-lua = import ./ocaml-lua world;
   ocaml-makefile = import ./ocaml-makefile world;
   ocaml-manual = import ./ocaml-manual world;
   ocaml-markdown = import ./ocaml-markdown world;
   ocaml-migrate-parsetree = import ./ocaml-migrate-parsetree world;
+  ocaml-migrate-parsetree-ocamlbuild = import ./ocaml-migrate-parsetree-ocamlbuild world;
   ocaml-monadic = import ./ocaml-monadic world;
   ocaml-protoc = import ./ocaml-protoc world;
   ocaml-protoc-yojson = import ./ocaml-protoc-yojson world;
@@ -977,6 +1002,7 @@ world:
   ocaml-src = import ./ocaml-src world;
   ocaml-systemd = import ./ocaml-systemd world;
   ocaml-top = import ./ocaml-top world;
+  ocaml-topexpect = import ./ocaml-topexpect world;
   ocaml-twt = import ./ocaml-twt world;
   ocaml-xdg-basedir = import ./ocaml-xdg-basedir world;
   ocaml-xml-rpc = import ./ocaml-xml-rpc world;
@@ -1025,6 +1051,7 @@ world:
   ocp-build = import ./ocp-build world;
   ocp-indent = import ./ocp-indent world;
   ocp-index = import ./ocp-index world;
+  ocp-index-top = import ./ocp-index-top world;
   ocp-manager = import ./ocp-manager world;
   ocp-ocamlres = import ./ocp-ocamlres world;
   ocp-pack-split = import ./ocp-pack-split world;
@@ -1205,6 +1232,7 @@ world:
   ppx_bitstring = import ./ppx_bitstring world;
   ppx_blob = import ./ppx_blob world;
   ppx_compare = import ./ppx_compare world;
+  ppx_compose = import ./ppx_compose world;
   ppx_const = import ./ppx_const world;
   ppx_conv_func = import ./ppx_conv_func world;
   ppx_core = import ./ppx_core world;
@@ -1254,6 +1282,7 @@ world:
   ppx_pattern_guard = import ./ppx_pattern_guard world;
   ppx_pipebang = import ./ppx_pipebang world;
   ppx_poly_record = import ./ppx_poly_record world;
+  ppx_regexp = import ./ppx_regexp world;
   ppx_sexp = import ./ppx_sexp world;
   ppx_sexp_conv = import ./ppx_sexp_conv world;
   ppx_sexp_message = import ./ppx_sexp_message world;
@@ -1297,6 +1326,7 @@ world:
   pvem_lwt_unix = import ./pvem_lwt_unix world;
   pxp = import ./pxp world;
   pyml = import ./pyml world;
+  qbf = import ./qbf world;
   qcheck = import ./qcheck world;
   qcow = import ./qcow world;
   qcow-format = import ./qcow-format world;
@@ -1365,6 +1395,7 @@ world:
   scid = import ./scid world;
   scrypt = import ./scrypt world;
   scrypt-kdf = import ./scrypt-kdf world;
+  secp256k1 = import ./secp256k1 world;
   sedlex = import ./sedlex world;
   semver = import ./semver world;
   sendmsg = import ./sendmsg world;
@@ -1379,6 +1410,7 @@ world:
   sha = import ./sha world;
   shared-block-ring = import ./shared-block-ring world;
   shared-memory-ring = import ./shared-memory-ring world;
+  shared-memory-ring-lwt = import ./shared-memory-ring-lwt world;
   shared-secret = import ./shared-secret world;
   shcaml = import ./shcaml world;
   shexp = import ./shexp world;
@@ -1562,6 +1594,8 @@ world:
   valentine = import ./valentine world;
   variantslib = import ./variantslib world;
   vchan = import ./vchan world;
+  vchan-unix = import ./vchan-unix world;
+  vchan-xen = import ./vchan-xen world;
   vector3 = import ./vector3 world;
   vg = import ./vg world;
   vhd-format = import ./vhd-format world;
@@ -1596,14 +1630,26 @@ world:
   wxOCaml = import ./wxOCaml world;
   wyrd = import ./wyrd world;
   x509 = import ./x509 world;
+  xapi-backtrace = import ./xapi-backtrace world;
+  xapi-forkexecd = import ./xapi-forkexecd world;
+  xapi-idl = import ./xapi-idl world;
+  xapi-inventory = import ./xapi-inventory world;
+  xapi-libs-transitional = import ./xapi-libs-transitional world;
   xapi-rrd = import ./xapi-rrd world;
+  xapi-rrd-transport = import ./xapi-rrd-transport world;
+  xapi-rrdd = import ./xapi-rrdd world;
+  xapi-stdext = import ./xapi-stdext world;
+  xapi-tapctl = import ./xapi-tapctl world;
+  xapi-xenops = import ./xapi-xenops world;
   xe = import ./xe world;
   xe-unikernel-upload = import ./xe-unikernel-upload world;
   xen-api-client = import ./xen-api-client world;
   xen-block-driver = import ./xen-block-driver world;
   xen-disk = import ./xen-disk world;
   xen-evtchn = import ./xen-evtchn world;
+  xen-evtchn-unix = import ./xen-evtchn-unix world;
   xen-gnt = import ./xen-gnt world;
+  xen-gnt-unix = import ./xen-gnt-unix world;
   xenbigarray = import ./xenbigarray world;
   xenctrl = import ./xenctrl world;
   xenstore = import ./xenstore world;
@@ -1621,6 +1667,7 @@ world:
   yajl-extra = import ./yajl-extra world;
   yices2 = import ./yices2 world;
   yojson = import ./yojson world;
+  yurt = import ./yurt world;
   zarith = import ./zarith world;
   zarith-freestanding = import ./zarith-freestanding world;
   zarith-xen = import ./zarith-xen world;

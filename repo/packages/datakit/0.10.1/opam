@@ -17,7 +17,7 @@ depends: [
   "rresult" "astring" "fmt" "asetmap"
   "git"         {>= "1.9.3"}
   "uri"
-  "irmin"       {>= "1.1.0"}
+  "irmin"       {>= "1.1.0" & < "1.2.0"}
   "irmin-git"   {>= "1.0.0"}
   "camlzip"     {>= "1.06"}
   "cstruct"     {>= "2.2"}
@@ -31,10 +31,12 @@ depends: [
   "asl"         {>= "0.10"}
   "mtime"       {< "1.0.0"}
   "irmin-watcher" {>= "0.2.0"}
+  "protocol-9p-unix" {>= "0.11.0"}
+  "protocol-9p"      {>= "0.11.0"}
   "prometheus-app"
-  "datakit-server" {>= "0.10.0"}
-  "datakit-client" {test & >= "0.10.0"}
-  "datakit-github" {test & >= "0.10.0"}
-  "alcotest"       {test & >= "0.7.0"}
+  "datakit-server" {>= "0.10.0" & < "0.11.0"}
+  "datakit-client" {test & >= "0.10.0" & < "0.11.0"}
+  "datakit-github" {test & >= "0.10.0" & < "0.11.0"}
+  "alcotest"       {test & >= "0.7.0" & < "0.8.0"}
 ]
 available: [ocaml-version >= "4.02.0"]

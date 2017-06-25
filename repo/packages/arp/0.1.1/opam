@@ -15,11 +15,13 @@ depends: [
   "ppx_tools" {build}
   "result"
   "cstruct" {>= "2.2.0"}
-  "ppx_cstruct"
+  "ppx_cstruct" {build}
   "ipaddr" {>= "2.2.0"}
   "logs"
   "alcotest" {test}
   "nocrypto" {test}
+  "mirage-types" {test & < "3.0.0"}
+  "tcpip" {test}
 ]
 
 depopts: [
@@ -27,6 +29,12 @@ depopts: [
   "tcpip"
   "lwt"
 ]
+
+conflicts: [
+  "tcpip" {< "3.0.0"}
+  "mirage-types-lwt" {>= "3.0.0"}
+]
+
 build: [
   [ "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"
     "--with-mirage" "%{mirage-types+tcpip+lwt:installed}%" ]
@@ -36,4 +44,3 @@ build-test: [
   [ "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true" ]
   [ "ocaml" "pkg/pkg.ml" "test" ]
 ]
-
