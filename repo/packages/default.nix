@@ -940,6 +940,7 @@ world:
   mtl = import ./mtl world;
   multipart-form-data = import ./multipart-form-data world;
   mustache = import ./mustache world;
+  mvar = import ./mvar world;
   mybuild = import ./mybuild world;
   mysql = import ./mysql world;
   mysql_protocol = import ./mysql_protocol world;
@@ -1112,6 +1113,7 @@ world:
   opam-format = import ./opam-format world;
   opam-installext = import ./opam-installext world;
   opam-lib = import ./opam-lib world;
+  opam-package-upgrade = import ./opam-package-upgrade world;
   opam-publish = import ./opam-publish world;
   opam-query = import ./opam-query world;
   opam-repository = import ./opam-repository world;
@@ -1198,6 +1200,7 @@ world:
   perf = import ./perf world;
   pfff = import ./pfff world;
   pgocaml = import ./pgocaml world;
+  pgsolver = import ./pgsolver world;
   pipebang = import ./pipebang world;
   piqi = import ./piqi world;
   piqilib = import ./piqilib world;
