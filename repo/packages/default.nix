@@ -177,6 +177,7 @@ world:
   bookaml = import ./bookaml world;
   boomerang = import ./boomerang world;
   bos = import ./bos world;
+  bpf = import ./bpf world;
   broken = import ./broken world;
   brotli = import ./brotli world;
   brozip = import ./brozip world;
@@ -317,6 +318,7 @@ world:
   conf-sdl2-mixer = import ./conf-sdl2-mixer world;
   conf-sdl2-net = import ./conf-sdl2-net world;
   conf-sdl2-ttf = import ./conf-sdl2-ttf world;
+  conf-sdpa = import ./conf-sdpa world;
   conf-sfml2 = import ./conf-sfml2 world;
   conf-tcl = import ./conf-tcl world;
   conf-tk = import ./conf-tk world;
@@ -458,6 +460,7 @@ world:
   dose = import ./dose world;
   dose3 = import ./dose3 world;
   dropbox = import ./dropbox world;
+  dsfo = import ./dsfo world;
   dssi = import ./dssi world;
   dtoa = import ./dtoa world;
   dtools = import ./dtools world;
@@ -571,6 +574,8 @@ world:
   git-unix = import ./git-unix world;
   github = import ./github world;
   github-hooks = import ./github-hooks world;
+  github-jsoo = import ./github-jsoo world;
+  github-unix = import ./github-unix world;
   glMLite = import ./glMLite world;
   gles3 = import ./gles3 world;
   glical = import ./glical world;
@@ -650,6 +655,7 @@ world:
   inspect = import ./inspect world;
   integers = import ./integers world;
   integration1d = import ./integration1d world;
+  interval = import ./interval world;
   inuit = import ./inuit world;
   io = import ./io world;
   io-page = import ./io-page world;
@@ -926,6 +932,7 @@ world:
   mongo = import ./mongo world;
   monomorphic = import ./monomorphic world;
   more-ocaml = import ./more-ocaml world;
+  mosquitto = import ./mosquitto world;
   mparser = import ./mparser world;
   mpi = import ./mpi world;
   mpp = import ./mpp world;
@@ -972,6 +979,7 @@ world:
   oasis2opam = import ./oasis2opam world;
   obandit = import ./obandit world;
   obeanstalk = import ./obeanstalk world;
+  obelisk = import ./obelisk world;
   obigstore = import ./obigstore world;
   objsize = import ./objsize world;
   obrowser = import ./obrowser world;
@@ -1142,6 +1150,7 @@ world:
   orm = import ./orm world;
   orocksdb = import ./orocksdb world;
   osc = import ./osc world;
+  osdp = import ./osdp world;
   osm_xml = import ./osm_xml world;
   ospec = import ./ospec world;
   osx-acl = import ./osx-acl world;
@@ -1155,6 +1164,7 @@ world:
   osx-xattr = import ./osx-xattr world;
   otags = import ./otags world;
   otfm = import ./otfm world;
+  oth = import ./oth world;
   otr = import ./otr world;
   ott = import ./ott world;
   otto = import ./otto world;
@@ -1180,6 +1190,7 @@ world:
   pa_variants_conv = import ./pa_variants_conv world;
   pa_where = import ./pa_where world;
   packet = import ./packet world;
+  parany = import ./parany world;
   pareto = import ./pareto world;
   parmap = import ./parmap world;
   parse-argv = import ./parse-argv world;
@@ -1201,6 +1212,7 @@ world:
   pfff = import ./pfff world;
   pgocaml = import ./pgocaml world;
   pgsolver = import ./pgsolver world;
+  pilat = import ./pilat world;
   pipebang = import ./pipebang world;
   piqi = import ./piqi world;
   piqilib = import ./piqilib world;
@@ -1370,6 +1382,7 @@ world:
   release = import ./release world;
   res = import ./res world;
   result = import ./result world;
+  revops = import ./revops world;
   rfc6287 = import ./rfc6287 world;
   riak = import ./riak world;
   riak-pb = import ./riak-pb world;

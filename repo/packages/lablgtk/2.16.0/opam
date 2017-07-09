@@ -1,5 +1,5 @@
 opam-version: "1"
-maintainer: "contact@ocamlpro.com"
+maintainer: "https://github.com/ocaml/opam-repository/issues"
 homepage: "http://lablgtk.forge.ocamlcore.org/"
 build: [
   ["./configure" "--prefix" prefix "LABLGLDIR=%{lib}%/lablgl"]
@@ -23,6 +23,7 @@ depexts: [
   [["fedora"] ["gtk2-devel"]]
   [["oraclelinux"] ["gtk2-devel"]]
   [["alpine"] ["gtk+2.0-dev"]]
+  [["opensuse"] ["gtk2-devel"]]
 ]
 patches: ["lablgldir.patch"]
 post-messages: [
