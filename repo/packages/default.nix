@@ -386,6 +386,7 @@ world:
   cow = import ./cow world;
   cowabloga = import ./cowabloga world;
   cpdf = import ./cpdf world;
+  cpm = import ./cpm world;
   cppo = import ./cppo world;
   cpuid = import ./cpuid world;
   crc = import ./crc world;
@@ -1085,6 +1086,7 @@ world:
   odate = import ./odate world;
   odb-server = import ./odb-server world;
   odbc = import ./odbc world;
+  odds = import ./odds world;
   odepack = import ./odepack world;
   odiff-gtk = import ./odiff-gtk world;
   odig = import ./odig world;
@@ -1149,6 +1151,7 @@ world:
   ordma = import ./ordma world;
   orm = import ./orm world;
   orocksdb = import ./orocksdb world;
+  osbx = import ./osbx world;
   osc = import ./osc world;
   osdp = import ./osdp world;
   osm_xml = import ./osm_xml world;
@@ -1562,6 +1565,7 @@ world:
   tsdl-mixer = import ./tsdl-mixer world;
   tsdl-ttf = import ./tsdl-ttf world;
   tuareg = import ./tuareg world;
+  tube = import ./tube world;
   tuntap = import ./tuntap world;
   type-beat = import ./type-beat world;
   type_conv = import ./type_conv world;
