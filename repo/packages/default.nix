@@ -7,6 +7,7 @@ world:
   Camldiets = import ./Camldiets world;
   FrontC = import ./FrontC world;
   ISO8601 = import ./ISO8601 world;
+  JsOfOCairo = import ./JsOfOCairo world;
   KaSim = import ./KaSim world;
   TCSLib = import ./TCSLib world;
   aacplus = import ./aacplus world;
@@ -32,6 +33,9 @@ world:
   amqp-client = import ./amqp-client world;
   ancient = import ./ancient world;
   angstrom = import ./angstrom world;
+  angstrom-async = import ./angstrom-async world;
+  angstrom-lwt-unix = import ./angstrom-lwt-unix world;
+  angstrom-unix = import ./angstrom-unix world;
   annexlib = import ./annexlib world;
   annot = import ./annot world;
   ansi-parse = import ./ansi-parse world;
@@ -168,6 +172,7 @@ world:
   bisect_ppx = import ./bisect_ppx world;
   bistro = import ./bistro world;
   bitcoin = import ./bitcoin world;
+  bitcoinml = import ./bitcoinml world;
   bitmasks = import ./bitmasks world;
   bitstring = import ./bitstring world;
   bitv = import ./bitv world;
@@ -246,12 +251,20 @@ world:
   coclobas = import ./coclobas world;
   codept = import ./codept world;
   cohttp = import ./cohttp world;
+  cohttp-async = import ./cohttp-async world;
+  cohttp-lwt = import ./cohttp-lwt world;
+  cohttp-lwt-jsoo = import ./cohttp-lwt-jsoo world;
+  cohttp-lwt-unix = import ./cohttp-lwt-unix world;
+  cohttp-top = import ./cohttp-top world;
   coinst = import ./coinst world;
   combine = import ./combine world;
   command_rpc = import ./command_rpc world;
   commonjs_of_ocaml = import ./commonjs_of_ocaml world;
   comparelib = import ./comparelib world;
   conduit = import ./conduit world;
+  conduit-async = import ./conduit-async world;
+  conduit-lwt = import ./conduit-lwt world;
+  conduit-lwt-unix = import ./conduit-lwt-unix world;
   conex = import ./conex world;
   conf-aclocal = import ./conf-aclocal world;
   conf-autoconf = import ./conf-autoconf world;
@@ -259,7 +272,9 @@ world:
   conf-binutils = import ./conf-binutils world;
   conf-blas = import ./conf-blas world;
   conf-bmake = import ./conf-bmake world;
+  conf-boost = import ./conf-boost world;
   conf-cairo = import ./conf-cairo world;
+  conf-cmake = import ./conf-cmake world;
   conf-emacs = import ./conf-emacs world;
   conf-env-travis = import ./conf-env-travis world;
   conf-expat = import ./conf-expat world;
@@ -284,6 +299,7 @@ world:
   conf-libev = import ./conf-libev world;
   conf-libffi = import ./conf-libffi world;
   conf-libgsasl = import ./conf-libgsasl world;
+  conf-libmosquitto = import ./conf-libmosquitto world;
   conf-libpcre = import ./conf-libpcre world;
   conf-libpng = import ./conf-libpng world;
   conf-libsodium = import ./conf-libsodium world;
@@ -293,6 +309,7 @@ world:
   conf-lua = import ./conf-lua world;
   conf-m4 = import ./conf-m4 world;
   conf-mpfr = import ./conf-mpfr world;
+  conf-mpi = import ./conf-mpi world;
   conf-mysql = import ./conf-mysql world;
   conf-nanomsg = import ./conf-nanomsg world;
   conf-ncurses = import ./conf-ncurses world;
@@ -321,6 +338,7 @@ world:
   conf-sdpa = import ./conf-sdpa world;
   conf-sfml2 = import ./conf-sfml2 world;
   conf-tcl = import ./conf-tcl world;
+  conf-time = import ./conf-time world;
   conf-tk = import ./conf-tk world;
   conf-vim = import ./conf-vim world;
   conf-wget = import ./conf-wget world;
@@ -441,13 +459,19 @@ world:
   dht = import ./dht world;
   digestif = import ./digestif world;
   dispatch = import ./dispatch world;
+  dispatch-js = import ./dispatch-js world;
   distributed = import ./distributed world;
   distwit = import ./distwit world;
   diy = import ./diy world;
   dlist = import ./dlist world;
   dns = import ./dns world;
+  dns-async = import ./dns-async world;
   dns-forward = import ./dns-forward world;
+  dns-forward-lwt-unix = import ./dns-forward-lwt-unix world;
+  dns-lwt = import ./dns-lwt world;
+  dns-lwt-unix = import ./dns-lwt-unix world;
   dnscurve = import ./dnscurve world;
+  dnssd = import ./dnssd world;
   doc-ock = import ./doc-ock world;
   doc-ock-html = import ./doc-ock-html world;
   doc-ock-xml = import ./doc-ock-xml world;
@@ -507,6 +531,9 @@ world:
   facile = import ./facile world;
   faillib = import ./faillib world;
   faraday = import ./faraday world;
+  faraday-async = import ./faraday-async world;
+  faraday-lwt = import ./faraday-lwt world;
+  faraday-lwt-unix = import ./faraday-lwt-unix world;
   farfadet = import ./farfadet world;
   fat-filesystem = import ./fat-filesystem world;
   fd-send-recv = import ./fd-send-recv world;
@@ -717,6 +744,7 @@ world:
   jsoo_router = import ./jsoo_router world;
   jsoo_storage = import ./jsoo_storage world;
   junit = import ./junit world;
+  jupyter = import ./jupyter world;
   jwt = import ./jwt world;
   kafka = import ./kafka world;
   kaputt = import ./kaputt world;
@@ -904,6 +932,7 @@ world:
   mirage-tcpip-xen = import ./mirage-tcpip-xen world;
   mirage-time = import ./mirage-time world;
   mirage-time-lwt = import ./mirage-time-lwt world;
+  mirage-time-unix = import ./mirage-time-unix world;
   mirage-types = import ./mirage-types world;
   mirage-types-lwt = import ./mirage-types-lwt world;
   mirage-unix = import ./mirage-unix world;
@@ -935,7 +964,6 @@ world:
   more-ocaml = import ./more-ocaml world;
   mosquitto = import ./mosquitto world;
   mparser = import ./mparser world;
-  mpi = import ./mpi world;
   mpp = import ./mpp world;
   mpris = import ./mpris world;
   mqtt = import ./mqtt world;
