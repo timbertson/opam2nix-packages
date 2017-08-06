@@ -91,6 +91,7 @@ world:
   aws-ssm = import ./aws-ssm world;
   aws-sts = import ./aws-sts world;
   baardskeerder = import ./baardskeerder world;
+  bamboo = import ./bamboo world;
   bap = import ./bap world;
   bap-abi = import ./bap-abi world;
   bap-api = import ./bap-api world;
@@ -282,6 +283,7 @@ world:
   conf-glade = import ./conf-glade world;
   conf-glew = import ./conf-glew world;
   conf-glib-2 = import ./conf-glib-2 world;
+  conf-glpk = import ./conf-glpk world;
   conf-gmp = import ./conf-gmp world;
   conf-gmp-powm-sec = import ./conf-gmp-powm-sec world;
   conf-gnomecanvas = import ./conf-gnomecanvas world;
@@ -583,6 +585,7 @@ world:
   gdbprofiler = import ./gdbprofiler world;
   gedcom = import ./gedcom world;
   gen = import ./gen world;
+  gen-bs = import ./gen-bs world;
   gen_js_api = import ./gen_js_api world;
   gen_server = import ./gen_server world;
   genet = import ./genet world;
@@ -1170,6 +1173,7 @@ world:
   operf-macro = import ./operf-macro world;
   operf-micro = import ./operf-micro world;
   opium = import ./opium world;
+  opium_kernel = import ./opium_kernel world;
   oplay = import ./oplay world;
   optcomp = import ./optcomp world;
   optimization1d = import ./optimization1d world;
