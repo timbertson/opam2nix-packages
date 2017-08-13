@@ -41,6 +41,8 @@ world:
   ansi-parse = import ./ansi-parse world;
   ansicolor = import ./ansicolor world;
   anycache = import ./anycache world;
+  anycache-async = import ./anycache-async world;
+  anycache-lwt = import ./anycache-lwt world;
   ao = import ./ao world;
   apalogretrieve = import ./apalogretrieve world;
   aperf = import ./aperf world;
@@ -218,6 +220,9 @@ world:
   camlzip = import ./camlzip world;
   camomile = import ./camomile world;
   capnp = import ./capnp world;
+  capnp-rpc = import ./capnp-rpc world;
+  capnp-rpc-lwt = import ./capnp-rpc-lwt world;
+  capnp-rpc-unix = import ./capnp-rpc-unix world;
   captureio = import ./captureio world;
   caradoc = import ./caradoc world;
   caravan = import ./caravan world;
@@ -235,6 +240,8 @@ world:
   chamo = import ./chamo world;
   channel = import ./channel world;
   charrua-client = import ./charrua-client world;
+  charrua-client-lwt = import ./charrua-client-lwt world;
+  charrua-client-mirage = import ./charrua-client-mirage world;
   charrua-core = import ./charrua-core world;
   charrua-unix = import ./charrua-unix world;
   choice = import ./choice world;
@@ -247,6 +254,7 @@ world:
   cmark = import ./cmark world;
   cmdliner = import ./cmdliner world;
   cmdtui = import ./cmdtui world;
+  cmdtui-lambda-term = import ./cmdtui-lambda-term world;
   cmitomli = import ./cmitomli world;
   coccinelle = import ./coccinelle world;
   coclobas = import ./coclobas world;
@@ -430,6 +438,7 @@ world:
   ctypes-foreign = import ./ctypes-foreign world;
   cubicle = import ./cubicle world;
   cudf = import ./cudf world;
+  curly = import ./curly world;
   curses = import ./curses world;
   custom_printf = import ./custom_printf world;
   d3 = import ./d3 world;
@@ -1588,6 +1597,7 @@ world:
   transmission-rpc = import ./transmission-rpc world;
   travis-opam = import ./travis-opam world;
   travis-senv = import ./travis-senv world;
+  trax = import ./trax world;
   tree_layout = import ./tree_layout world;
   treeprint = import ./treeprint world;
   trie = import ./trie world;
