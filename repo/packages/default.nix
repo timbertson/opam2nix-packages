@@ -5,7 +5,9 @@ world:
   BetterErrors = import ./BetterErrors world;
   CamlGI = import ./CamlGI world;
   Camldiets = import ./Camldiets world;
+  DrawGrammar = import ./DrawGrammar world;
   FrontC = import ./FrontC world;
+  General = import ./General world;
   ISO8601 = import ./ISO8601 world;
   JsOfOCairo = import ./JsOfOCairo world;
   KaSim = import ./KaSim world;
@@ -173,6 +175,7 @@ world:
   bisect = import ./bisect world;
   bisect-summary = import ./bisect-summary world;
   bisect_ppx = import ./bisect_ppx world;
+  bisect_ppx-ocamlbuild = import ./bisect_ppx-ocamlbuild world;
   bistro = import ./bistro world;
   bitcoin = import ./bitcoin world;
   bitcoinml = import ./bitcoinml world;
@@ -314,6 +317,7 @@ world:
   conf-libpng = import ./conf-libpng world;
   conf-libsodium = import ./conf-libsodium world;
   conf-libuv = import ./conf-libuv world;
+  conf-linux-libc-dev = import ./conf-linux-libc-dev world;
   conf-lldb = import ./conf-lldb world;
   conf-llvm = import ./conf-llvm world;
   conf-lua = import ./conf-lua world;
@@ -634,6 +638,7 @@ world:
   graphql = import ./graphql world;
   graphql-async = import ./graphql-async world;
   graphql-lwt = import ./graphql-lwt world;
+  graphql_ppx = import ./graphql_ppx world;
   grenier = import ./grenier world;
   grib = import ./grib world;
   gsasl = import ./gsasl world;
@@ -861,6 +866,7 @@ world:
   mikmatch = import ./mikmatch world;
   milter = import ./milter world;
   mindstorm = import ./mindstorm world;
+  minicli = import ./minicli world;
   minilight = import ./minilight world;
   minima-theme = import ./minima-theme world;
   minios-xen = import ./minios-xen world;
