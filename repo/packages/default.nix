@@ -285,6 +285,7 @@ world:
   conf-blas = import ./conf-blas world;
   conf-bmake = import ./conf-bmake world;
   conf-boost = import ./conf-boost world;
+  conf-brotli = import ./conf-brotli world;
   conf-cairo = import ./conf-cairo world;
   conf-cmake = import ./conf-cmake world;
   conf-emacs = import ./conf-emacs world;
@@ -420,6 +421,7 @@ world:
   cpdf = import ./cpdf world;
   cpm = import ./cpm world;
   cppo = import ./cppo world;
+  cppo_ocamlbuild = import ./cppo_ocamlbuild world;
   cpuid = import ./cpuid world;
   crc = import ./crc world;
   crdt-ml = import ./crdt-ml world;
@@ -847,6 +849,7 @@ world:
   mascot = import ./mascot world;
   maxminddb = import ./maxminddb world;
   mbr-format = import ./mbr-format world;
+  mccs = import ./mccs world;
   mechaml = import ./mechaml world;
   melt = import ./melt world;
   memcad = import ./memcad world;
@@ -1322,6 +1325,7 @@ world:
   ppx_fields_conv = import ./ppx_fields_conv world;
   ppx_fun = import ./ppx_fun world;
   ppx_getenv = import ./ppx_getenv world;
+  ppx_graphql = import ./ppx_graphql world;
   ppx_hardcaml = import ./ppx_hardcaml world;
   ppx_hash = import ./ppx_hash world;
   ppx_here = import ./ppx_here world;
@@ -1360,6 +1364,7 @@ world:
   ppx_type_conv = import ./ppx_type_conv world;
   ppx_typerep_conv = import ./ppx_typerep_conv world;
   ppx_variants_conv = import ./ppx_variants_conv world;
+  ppx_view = import ./ppx_view world;
   ppx_where = import ./ppx_where world;
   ppx_xml_conv = import ./ppx_xml_conv world;
   ppxx = import ./ppxx world;
@@ -1480,6 +1485,7 @@ world:
   shared-secret = import ./shared-secret world;
   shcaml = import ./shcaml world;
   shexp = import ./shexp world;
+  shine = import ./shine world;
   should = import ./should world;
   sibylfs = import ./sibylfs world;
   sibylfs-lem = import ./sibylfs-lem world;
