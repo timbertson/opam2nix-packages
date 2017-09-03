@@ -27,6 +27,7 @@ world:
   alba = import ./alba world;
   alberto = import ./alberto world;
   alcotest = import ./alcotest world;
+  alcotest-async = import ./alcotest-async world;
   aliases = import ./aliases world;
   alphaCaml = import ./alphaCaml world;
   alsa = import ./alsa world;
@@ -512,11 +513,14 @@ world:
   duration = import ./duration world;
   dyntype = import ./dyntype world;
   dypgen = import ./dypgen world;
+  earley = import ./earley world;
+  earley-ocaml = import ./earley-ocaml world;
   easy-format = import ./easy-format world;
   ecaml = import ./ecaml world;
   edn = import ./edn world;
   efl = import ./efl world;
   eigen = import ./eigen world;
+  elasticsearch-cli = import ./elasticsearch-cli world;
   electrumAnalyzer = import ./electrumAnalyzer world;
   elf2json = import ./elf2json world;
   eliom = import ./eliom world;
@@ -552,6 +556,7 @@ world:
   faraday-lwt = import ./faraday-lwt world;
   faraday-lwt-unix = import ./faraday-lwt-unix world;
   farfadet = import ./farfadet world;
+  farmhash = import ./farmhash world;
   fat-filesystem = import ./fat-filesystem world;
   fd-send-recv = import ./fd-send-recv world;
   fdkaac = import ./fdkaac world;
@@ -620,6 +625,7 @@ world:
   git-unix = import ./git-unix world;
   github = import ./github world;
   github-hooks = import ./github-hooks world;
+  github-hooks-unix = import ./github-hooks-unix world;
   github-jsoo = import ./github-jsoo world;
   github-unix = import ./github-unix world;
   glMLite = import ./glMLite world;
@@ -1525,6 +1531,7 @@ world:
   speex = import ./speex world;
   spelll = import ./spelll world;
   spf = import ./spf world;
+  sphinxcontrib-ocaml = import ./sphinxcontrib-ocaml world;
   spirv = import ./spirv world;
   spoc = import ./spoc world;
   spotify-cli = import ./spotify-cli world;
