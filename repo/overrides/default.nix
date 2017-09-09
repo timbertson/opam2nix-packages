@@ -55,6 +55,7 @@ in
 
 		solo5-kernel-vertio = disableStackProtection opamPackages.solo5-kernel-vertio;
 		solo5-kernel-ukvm = disableStackProtection opamPackages.solo5-kernel-ukvm;
+		nocrypto = disableStackProtection opamPackages.nocrypto;
 
 		zarith-xen = overrideAll (impl: {
 			buildPhase = "${pkgs.bash}/bin/bash ${./zarith-xen/install.sh}";
