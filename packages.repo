@@ -25,6 +25,7 @@ ocamlbuild@0
 ocamlgraph@1.8.5
 ppx_optcomp@113.24.00
 ppx_core@113.24.00
+ppx_deriving@4.1
 sexplib@112.35.00
 sexplib@113.00.00
 tcpip@2.4.3

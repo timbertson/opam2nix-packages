@@ -10,6 +10,7 @@ let
       camlp4 = opamSelection.camlp4;
       extlib = opamSelection.extlib;
       lablgtk = opamSelection.lablgtk or null;
+      lwt = opamSelection.lwt;
       lwt_glib = opamSelection.lwt_glib or null;
       lwt_react = opamSelection.lwt_react;
       obus = opamSelection.obus or null;

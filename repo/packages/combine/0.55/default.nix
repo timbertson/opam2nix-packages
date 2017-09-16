@@ -2,12 +2,13 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([  ] ++ (lib.attrValues opamDeps));
+    ([ (pkgs.unzip) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
     {
       menhir = opamSelection.menhir;
+      num = opamSelection.num;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind or null;
     };

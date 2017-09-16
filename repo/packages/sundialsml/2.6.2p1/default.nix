@@ -4,7 +4,7 @@ let
     inputs = lib.filter (dep: dep != true && dep != null)
     ([ (pkgs.epel-release or null) (pkgs."homebrew/science/sundials" or null)
         (pkgs.lapack-devel or null) (pkgs.libsundials-serial-dev or null)
-        (pkgs.sundials or null) (pkgs.sundials-devel or null) ] ++ (lib.attrValues opamDeps));
+        (pkgs.sundials or null) (pkgs.sundials-devel or null) (pkgs.unzip) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 

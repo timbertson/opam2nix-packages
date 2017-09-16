@@ -11,11 +11,13 @@ let
       camlzip = opamSelection.camlzip;
       cmdliner = opamSelection.cmdliner;
       conduit = opamSelection.conduit;
+      git = opamSelection.git;
       git-http = opamSelection.git-http;
       mtime = opamSelection.mtime;
       nocrypto = opamSelection.nocrypto;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind or null;
+      topkg = opamSelection.topkg;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;

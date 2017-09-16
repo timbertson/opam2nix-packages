@@ -9,14 +9,14 @@ let
     {
       cpuid = opamSelection.cpuid;
       cstruct = opamSelection.cstruct;
-      lwt = opamSelection.lwt or null;
+      cstruct-lwt = opamSelection.cstruct-lwt;
+      lwt = opamSelection.lwt;
       mirage-entropy = opamSelection.mirage-entropy or null;
       mirage-no-solo5 = opamSelection.mirage-no-solo5 or null;
       mirage-no-xen = opamSelection.mirage-no-xen or null;
       mirage-solo5 = opamSelection.mirage-solo5 or null;
       mirage-xen = opamSelection.mirage-xen or null;
       ocaml = opamSelection.ocaml;
-      ocaml-freestanding = opamSelection.ocaml-freestanding or null;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       ocb-stubblr = opamSelection.ocb-stubblr;

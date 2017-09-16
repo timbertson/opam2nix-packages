@@ -2,16 +2,18 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.unzip) ] ++ (lib.attrValues opamDeps));
+    ([  ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
     {
-      batteries = opamSelection.batteries;
+      cppo = opamSelection.cppo;
+      cppo_ocamlbuild = opamSelection.cppo_ocamlbuild;
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
-      webidl = opamSelection.webidl;
+      ppx_tools = opamSelection.ppx_tools;
+      result = opamSelection.result;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;
@@ -22,12 +24,12 @@ pkgs.stdenv.mkDerivation
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
-  name = "gen-bs-0.0.0";
+  name = "ppx_deriving-4.1";
   opamEnv = builtins.toJSON 
   {
     deps = opamDeps;
-    files = null;
-    name = "gen-bs";
+    files = ./files;
+    name = "ppx_deriving";
     ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
@@ -35,11 +37,12 @@ pkgs.stdenv.mkDerivation
   {
     opamSelection = opamSelection;
   };
+  prePatch = "cp -r ${./files}/* ./";
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "0gwspnsncjqj9a1amlslik6byhn2acfz8qszvk6mwq1vii42mwiw";
-    url = "https://github.com/0zat/gen-bs/archive/0.0.0.zip";
+    sha256 = "1fr16g121j6zinwcprzlhx2py4271n9jzs2m9hq2f3qli2b1p0vl";
+    url = "https://github.com/whitequark/ppx_deriving/archive/v4.1.tar.gz";
   };
 }
 

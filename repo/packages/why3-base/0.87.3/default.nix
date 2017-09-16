@@ -12,6 +12,7 @@ let
       coq = opamSelection.coq or null;
       lablgtk = opamSelection.lablgtk or null;
       menhir = opamSelection.menhir;
+      num = opamSelection.num;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
       ocamlgraph = opamSelection.ocamlgraph or null;

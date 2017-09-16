@@ -28,7 +28,7 @@ pkgs.stdenv.mkDerivation
   opamEnv = builtins.toJSON 
   {
     deps = opamDeps;
-    files = null;
+    files = ./files;
     name = "xapi-rrd";
     ocaml-version = world.ocamlVersion;
     spec = ./opam;
@@ -37,6 +37,7 @@ pkgs.stdenv.mkDerivation
   {
     opamSelection = opamSelection;
   };
+  prePatch = "cp -r ${./files}/* ./";
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {

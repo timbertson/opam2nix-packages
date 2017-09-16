@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       camlzip = opamSelection.camlzip;
+      num = opamSelection.num;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind or null;
       ocplib-simplex = opamSelection.ocplib-simplex;

@@ -23,16 +23,6 @@ in
 				'';
 		}) opamPackages.camlp4;
 
-		js_of_ocaml = overrideAll (impl: {
-			configurePhase = ''
-				sed -i -e 's|-I +camlp4|-package camlp4|' lib/Makefile
-			'';
-		}) opamPackages.js_of_ocaml;
-
-		cstruct = overrideAll (impl: {
-			installPhase = "make install JS_DEST=$OCAMLFIND_DESTDIR";
-		}) opamPackages.cstruct;
-
 		gmp-xen = overrideAll (impl: {
 			# this is a plain C lib
 			configurePhase = "unset OCAMLFIND_DESTDIR";

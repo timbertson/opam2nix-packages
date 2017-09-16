@@ -30,6 +30,8 @@ let
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind or null;
       prometheus-app = opamSelection.prometheus-app;
+      protocol-9p = opamSelection.protocol-9p;
+      protocol-9p-unix = opamSelection.protocol-9p-unix;
       result = opamSelection.result;
       rresult = opamSelection.rresult;
       uri = opamSelection.uri;

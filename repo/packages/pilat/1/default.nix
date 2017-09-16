@@ -2,7 +2,7 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([  ] ++ (lib.attrValues opamDeps));
+    ([ (pkgs.unzip) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
@@ -38,7 +38,7 @@ pkgs.stdenv.mkDerivation
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "156rwa14nz6m1b2k34sxzp4aj36fxxbk7c7ginyd6ild7zjn6kl3";
+    sha256 = "1sjpv66bqa4csd2hlcb8vh654qqwsqw7503dl6ikc351y2fwhk6w";
     url = "https://github.com/Stevendeo/Pilat/archive/master.zip";
   };
 }

@@ -4,7 +4,7 @@ let
     inputs = lib.filter (dep: dep != true && dep != null)
     ([
         (pkgs."https://gist.githubusercontent.com/whitequark/eef074a8daa14602e447/raw/c151d3ab2f35f6cac54c7ef7459e2bbfff852938/install.sh" or null)
-        (pkgs.liblz4-dev or null) ] ++ (lib.attrValues opamDeps));
+        (pkgs.liblz4-dev or null) (pkgs.unzip) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
