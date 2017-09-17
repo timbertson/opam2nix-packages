@@ -157,9 +157,8 @@ let
 				in stdenv.mkDerivation {
 					name = "${packageName}-${version}-repo";
 					inherit src;
-					buildPhase = ''
-						true
-					'';
+					configurePhase = "true";
+					buildPhase = "true";
 					installPhase = ''
 						dest="$out/packages/${packageName}/${packageName}.${version}"
 						mkdir -p "$dest"
