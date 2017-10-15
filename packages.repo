@@ -23,6 +23,7 @@ ocaml-src@4.01.0
 ocaml-src@4.02.3
 ocamlbuild@0
 ocamlgraph@1.8.5
+ocamlgraph@1.8.6
 ppx_optcomp@113.24.00
 ppx_core@113.24.00
 ppx_deriving@4.1
