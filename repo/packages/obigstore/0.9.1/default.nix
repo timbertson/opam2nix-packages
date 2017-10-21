@@ -12,9 +12,11 @@ let
       extprot = opamSelection.extprot;
       leveldb = opamSelection.leveldb;
       lwt = opamSelection.lwt;
+      num = opamSelection.num;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
       omake = opamSelection.omake;
+      ounit = opamSelection.ounit;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;

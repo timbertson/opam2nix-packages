@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       cstruct = opamSelection.cstruct;
+      cstruct-lwt = opamSelection.cstruct-lwt;
       lwt = opamSelection.lwt;
       mirage-fs-lwt = opamSelection.mirage-fs-lwt;
       mirage-kv-lwt = opamSelection.mirage-kv-lwt;

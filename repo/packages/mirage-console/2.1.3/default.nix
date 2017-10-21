@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       cmdliner = opamSelection.cmdliner;
+      cstruct-lwt = opamSelection.cstruct-lwt;
       mirage-types-lwt = opamSelection.mirage-types-lwt;
       mirage-unix = opamSelection.mirage-unix;
       mirage-xen = opamSelection.mirage-xen or null;

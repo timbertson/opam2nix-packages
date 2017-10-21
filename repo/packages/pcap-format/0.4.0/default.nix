@@ -13,7 +13,7 @@ let
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
-      ppx_tools = opamSelection.ppx_tools;
+      ppx_cstruct = opamSelection.ppx_cstruct;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;

@@ -3,7 +3,7 @@ let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
     ([ (pkgs.libsecp256k1 or null) (pkgs.libsecp256k1-dev or null)
-        (pkgs.libsecp256k1-git or null) ] ++ (lib.attrValues opamDeps));
+        (pkgs.libsecp256k1-git or null) (pkgs.unzip) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 

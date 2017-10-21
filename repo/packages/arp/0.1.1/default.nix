@@ -15,6 +15,7 @@ let
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
+      ppx_cstruct = opamSelection.ppx_cstruct;
       ppx_tools = opamSelection.ppx_tools;
       result = opamSelection.result;
       tcpip = opamSelection.tcpip or null;

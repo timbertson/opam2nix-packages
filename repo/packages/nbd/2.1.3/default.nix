@@ -9,7 +9,7 @@ let
     {
       cmdliner = opamSelection.cmdliner;
       cstruct = opamSelection.cstruct;
-      io-page = opamSelection.io-page;
+      io-page-unix = opamSelection.io-page-unix;
       lwt = opamSelection.lwt;
       mirage-block-unix = opamSelection.mirage-block-unix;
       mirage-types = opamSelection.mirage-types;

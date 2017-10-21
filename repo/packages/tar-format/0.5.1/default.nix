@@ -9,11 +9,12 @@ let
     {
       cmdliner = opamSelection.cmdliner;
       cstruct = opamSelection.cstruct;
+      cstruct-lwt = opamSelection.cstruct-lwt;
       lwt = opamSelection.lwt or null;
       mirage-types-lwt = opamSelection.mirage-types-lwt or null;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
-      ppx_tools = opamSelection.ppx_tools;
+      ppx_cstruct = opamSelection.ppx_cstruct;
       re = opamSelection.re;
     };
     opamSelection = world.opamSelection;

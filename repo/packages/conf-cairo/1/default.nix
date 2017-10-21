@@ -1,9 +1,9 @@
 world:
 let
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.cairo or null) (pkgs.cairo-devel or null)
-        (pkgs."graphics/cairo" or null) (pkgs.libcairo-devel or null)
-        (pkgs.libcairo2-dev or null) ] ++ (lib.attrValues opamDeps));
+    ([ (pkgs.cairo or null) (pkgs.cairo-dev or null)
+        (pkgs.cairo-devel or null) (pkgs."graphics/cairo" or null)
+        (pkgs.libcairo-devel or null) (pkgs.libcairo2-dev or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 

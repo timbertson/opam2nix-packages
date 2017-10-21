@@ -9,6 +9,7 @@ let
     {
       conf-gtksourceview = opamSelection.conf-gtksourceview;
       lablgtk = opamSelection.lablgtk;
+      num = opamSelection.num;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind or null;
       ocamlgraph = opamSelection.ocamlgraph;

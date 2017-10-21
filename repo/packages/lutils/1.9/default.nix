@@ -9,6 +9,7 @@ let
     {
       base-unix = opamSelection.base-unix;
       camlp4 = opamSelection.camlp4;
+      num = opamSelection.num;
       oasis = opamSelection.oasis;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;

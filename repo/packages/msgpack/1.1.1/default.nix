@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       meta_conv = opamSelection.meta_conv or null;
+      num = opamSelection.num;
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;

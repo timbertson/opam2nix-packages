@@ -13,6 +13,7 @@ let
       base64 = opamSelection.base64;
       cairo2 = opamSelection.cairo2 or null;
       cppo = opamSelection.cppo;
+      cppo_ocamlbuild = opamSelection.cppo_ocamlbuild;
       lwt = opamSelection.lwt;
       lwt-zmq = opamSelection.lwt-zmq;
       merlin = opamSelection.merlin or null;

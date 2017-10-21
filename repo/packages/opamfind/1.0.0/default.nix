@@ -7,6 +7,7 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      camlon = opamSelection.camlon;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
       omake = opamSelection.omake;

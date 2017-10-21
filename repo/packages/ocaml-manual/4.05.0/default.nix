@@ -35,7 +35,7 @@ pkgs.stdenv.mkDerivation
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "12na82pywzbvc99c7zwkyn8db0iw0ch7hyv7dig65pdsksrd3wfx";
+    sha256 = "176di245d6qn6zq6zli9jhlkg65p49lf0bxy5js39g6v90v74915";
     url = "http://caml.inria.fr/distrib/ocaml-4.05/ocaml-4.05-refman-html.tar.gz";
   };
 }

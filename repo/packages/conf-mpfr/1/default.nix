@@ -1,7 +1,7 @@
 world:
 let
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.libmpfr-dev or null) (pkgs.mpfr or null)
+    ([ (pkgs.libmpfr-dev or null) (pkgs.mpfr or null) (pkgs.mpfr-dev or null)
         (pkgs.mpfr-devel or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;

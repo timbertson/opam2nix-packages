@@ -9,6 +9,7 @@ let
     {
       camlp4 = opamSelection.camlp4;
       conf-zlib = opamSelection.conf-zlib;
+      num = opamSelection.num;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind or null;
     };

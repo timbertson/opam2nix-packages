@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       mysql = opamSelection.mysql or null;
+      num = opamSelection.num;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
       pcre = opamSelection.pcre;

@@ -9,6 +9,7 @@ let
     {
       base-unix = opamSelection.base-unix;
       cppo = opamSelection.cppo;
+      cppo_ocamlbuild = opamSelection.cppo_ocamlbuild;
       csv = opamSelection.csv;
       estring = opamSelection.estring or null;
       lwt = opamSelection.lwt;

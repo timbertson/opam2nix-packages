@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       cstruct = opamSelection.cstruct;
+      cstruct-lwt = opamSelection.cstruct-lwt;
       jbuilder = opamSelection.jbuilder;
       lwt = opamSelection.lwt;
       ocaml = opamSelection.ocaml;

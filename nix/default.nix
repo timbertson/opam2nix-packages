@@ -160,6 +160,10 @@ let
 					configurePhase = "true";
 					buildPhase = "true";
 					installPhase = ''
+						if [ -z "${version}" ]; then
+							echo "Error: no version specified"
+							exit 1
+						fi
 						dest="$out/packages/${packageName}/${packageName}.${version}"
 						mkdir -p "$dest"
 						mv ${opamFilename} "$dest/opam"

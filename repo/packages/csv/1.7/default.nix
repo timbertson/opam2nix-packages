@@ -39,7 +39,7 @@ pkgs.stdenv.mkDerivation
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "140qcrnm2dd55mr8kyv5kbm8xpnn8khwm859psq6y0512qaidb8q";
+    sha256 = "0sc7m83rhx4h29ys9493glrgssy9c2j7mp8v09vxx5qpj5fcxwgp";
     url = "https://math.umons.ac.be/anum/software/csv/csv-1.7.tar.gz";
   };
 }

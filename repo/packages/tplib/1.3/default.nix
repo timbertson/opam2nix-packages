@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       mlgmp = opamSelection.mlgmp or null;
+      num = opamSelection.num;
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;

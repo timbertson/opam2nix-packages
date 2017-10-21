@@ -13,6 +13,7 @@ let
       fieldslib = opamSelection.fieldslib;
       jane-street-headers = opamSelection.jane-street-headers;
       jbuilder = opamSelection.jbuilder;
+      num = opamSelection.num;
       ocaml = opamSelection.ocaml;
       ocaml-migrate-parsetree = opamSelection.ocaml-migrate-parsetree;
       ocamlfind = opamSelection.ocamlfind or null;

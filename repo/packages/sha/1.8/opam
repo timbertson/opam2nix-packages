@@ -1,0 +1,8 @@
+opam-version: "1"
+maintainer: "https://github.com/ocaml/opam-repository/issues"
+homepage: "https://github.com/vincenthz/ocaml-sha"
+build: make
+remove: [["ocamlfind" "remove" "sha"]]
+depends: ["ocamlfind"]
+available: os = "linux"
+install: [make "install"]

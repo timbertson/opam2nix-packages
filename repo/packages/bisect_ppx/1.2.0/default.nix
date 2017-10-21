@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       cppo = opamSelection.cppo;
+      cppo_ocamlbuild = opamSelection.cppo_ocamlbuild;
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;

@@ -7,6 +7,7 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      camlp4 = opamSelection.camlp4;
       cmdliner = opamSelection.cmdliner;
       cudf = opamSelection.cudf;
       dose = opamSelection.dose;

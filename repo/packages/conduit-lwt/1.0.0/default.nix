@@ -13,6 +13,7 @@ let
       lwt = opamSelection.lwt;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind or null;
+      ppx_sexp_conv = opamSelection.ppx_sexp_conv;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;

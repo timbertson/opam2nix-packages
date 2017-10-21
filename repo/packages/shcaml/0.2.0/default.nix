@@ -9,6 +9,7 @@ let
     {
       base-unix = opamSelection.base-unix or null;
       cppo = opamSelection.cppo;
+      cppo_ocamlbuild = opamSelection.cppo_ocamlbuild;
       hmap = opamSelection.hmap;
       lwt = opamSelection.lwt or null;
       ocaml = opamSelection.ocaml;

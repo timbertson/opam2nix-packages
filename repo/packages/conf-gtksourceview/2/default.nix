@@ -1,7 +1,8 @@
 world:
 let
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.gtksourceview or null) (pkgs.gtksourceview2-devel or null)
+    ([ (pkgs.gtksourceview or null) (pkgs.gtksourceview2 or null)
+        (pkgs.gtksourceview2-dev or null) (pkgs.gtksourceview2-devel or null)
         (pkgs."libgtksourceview2.0-dev" or null) (pkgs.libxml2 or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;

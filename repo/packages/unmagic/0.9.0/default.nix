@@ -10,6 +10,7 @@ let
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
       omake = opamSelection.omake;
+      ppx_deriving = opamSelection.ppx_deriving;
       ppx_typerep_conv = opamSelection.ppx_typerep_conv;
       spotlib = opamSelection.spotlib;
       typerep = opamSelection.typerep;

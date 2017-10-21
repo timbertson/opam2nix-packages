@@ -1,8 +1,8 @@
 world:
 let
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.libmysqlclient-dev or null) (pkgs.mysql-connector-c or null)
-        (pkgs.mysql-devel or null) ] ++ (lib.attrValues opamDeps));
+    ([ (pkgs.libmysqlclient-dev or null) (pkgs.mariadb-dev or null)
+        (pkgs.mysql-connector-c or null) (pkgs.mysql-devel or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 

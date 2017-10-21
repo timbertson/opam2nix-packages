@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       cstruct = opamSelection.cstruct;
+      cstruct-lwt = opamSelection.cstruct-lwt;
       io-page = opamSelection.io-page;
       lwt = opamSelection.lwt;
       mirage-types = opamSelection.mirage-types;

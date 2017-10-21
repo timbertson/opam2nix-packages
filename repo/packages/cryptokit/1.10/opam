@@ -1,0 +1,11 @@
+opam-version: "1.2"
+maintainer: "opam-devel@lists.ocaml.org"
+build: make
+remove: [["ocamlfind" "remove" "cryptokit"]]
+depends: [
+  "ocamlfind"
+  "ocamlbuild" {build}
+  "conf-zlib"
+  "num"
+]
+install: [make "install"]

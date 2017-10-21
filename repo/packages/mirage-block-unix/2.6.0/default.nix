@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       cstruct = opamSelection.cstruct;
+      cstruct-lwt = opamSelection.cstruct-lwt;
       io-page = opamSelection.io-page;
       logs = opamSelection.logs;
       lwt = opamSelection.lwt;
@@ -15,6 +16,7 @@ let
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
+      ppx_cstruct = opamSelection.ppx_cstruct;
       result = opamSelection.result;
       rresult = opamSelection.rresult;
       uri = opamSelection.uri;

@@ -15,6 +15,7 @@ let
       lwt = opamSelection.lwt;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind or null;
+      ppx_sexp_conv = opamSelection.ppx_sexp_conv;
       ssl = opamSelection.ssl or null;
       tls = opamSelection.tls or null;
       uri = opamSelection.uri;

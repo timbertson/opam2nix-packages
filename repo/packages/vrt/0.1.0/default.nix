@@ -12,11 +12,13 @@ let
       async_find = opamSelection.async_find;
       async_shell = opamSelection.async_shell;
       async_unix = opamSelection.async_unix;
+      camlp4 = opamSelection.camlp4;
       core = opamSelection.core;
       core_extended = opamSelection.core_extended;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
       sexplib = opamSelection.sexplib;
+      type_conv = opamSelection.type_conv;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;

@@ -7,9 +7,10 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      cmdliner = opamSelection.cmdliner;
+      cstruct = opamSelection.cstruct;
       dns = opamSelection.dns;
       duration = opamSelection.duration;
-      io-page = opamSelection.io-page;
       lwt = opamSelection.lwt;
       mirage-kv-lwt = opamSelection.mirage-kv-lwt;
       mirage-profile = opamSelection.mirage-profile;

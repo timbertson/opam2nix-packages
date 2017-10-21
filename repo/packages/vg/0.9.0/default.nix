@@ -10,6 +10,9 @@ let
       cairo2 = opamSelection.cairo2 or null;
       gg = opamSelection.gg;
       js_of_ocaml = opamSelection.js_of_ocaml;
+      js_of_ocaml-compiler = opamSelection.js_of_ocaml-compiler;
+      js_of_ocaml-ocamlbuild = opamSelection.js_of_ocaml-ocamlbuild;
+      js_of_ocaml-ppx = opamSelection.js_of_ocaml-ppx;
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;

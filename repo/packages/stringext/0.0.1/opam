@@ -1,0 +1,15 @@
+opam-version: "1.2"
+maintainer: "rudi.grinberg@gmail.com"
+
+build: [
+  ["ocaml" "setup.ml" "-configure"]
+  ["ocaml" "setup.ml" "-build"]
+]
+remove: [["ocamlfind" "remove" "stringext"]]
+
+depends: [
+  "ocamlfind"
+  "ocamlbuild" {build}
+]
+dev-repo: "git://github.com/rgrinberg/stringext"
+install: ["ocaml" "setup.ml" "-install"]

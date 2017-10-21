@@ -11,6 +11,7 @@ let
       jbuilder = opamSelection.jbuilder;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
+      ppx_cstruct = opamSelection.ppx_cstruct;
       ppx_tools = opamSelection.ppx_tools;
       re = opamSelection.re;
       result = opamSelection.result;

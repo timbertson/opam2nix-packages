@@ -2,12 +2,12 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.libsdl2-dev or null) (pkgs."libsdl2.0-devel" or null)
-        (pkgs.sdl2 or null) ] ++ (lib.attrValues opamDeps));
+    ([  ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      conf-sdl2 = opamSelection.conf-sdl2;
       ctypes = opamSelection.ctypes;
       ctypes-foreign = opamSelection.ctypes-foreign;
       ocaml = opamSelection.ocaml;

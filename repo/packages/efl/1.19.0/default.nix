@@ -2,9 +2,7 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.efl or null)
-        (pkgs."https://gist.githubusercontent.com/axiles/9f586339249397c08a3c3b8b66793a51/raw/52685ac061c36c15ba48f8c9d3fb876fb2bc7c15/install_efl_1_19_on_ubuntu" or null)
-        ] ++ (lib.attrValues opamDeps));
+    ([ (pkgs.efl or null) (pkgs.libelementary-dev or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 

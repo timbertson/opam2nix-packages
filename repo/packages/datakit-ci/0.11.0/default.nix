@@ -16,7 +16,7 @@ let
       datakit-client-9p = opamSelection.datakit-client-9p;
       datakit-github = opamSelection.datakit-github;
       fmt = opamSelection.fmt;
-      github = opamSelection.github;
+      github-unix = opamSelection.github-unix;
       io-page = opamSelection.io-page;
       jbuilder = opamSelection.jbuilder;
       logs = opamSelection.logs;

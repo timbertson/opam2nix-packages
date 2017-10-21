@@ -13,9 +13,9 @@ let
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
+      ppx_cstruct = opamSelection.ppx_cstruct;
       ppx_deriving = opamSelection.ppx_deriving;
       ppx_sexp_conv = opamSelection.ppx_sexp_conv;
-      ppx_tools = opamSelection.ppx_tools;
       result = opamSelection.result;
       sexplib = opamSelection.sexplib;
       topkg = opamSelection.topkg;

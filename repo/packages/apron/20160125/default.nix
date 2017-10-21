@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       camlidl = opamSelection.camlidl;
+      conf-perl = opamSelection.conf-perl;
       conf-ppl = opamSelection.conf-ppl or null;
       mlgmpidl = opamSelection.mlgmpidl;
       ocaml = opamSelection.ocaml;

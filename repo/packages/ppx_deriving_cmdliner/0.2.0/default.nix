@@ -9,6 +9,7 @@ let
     {
       cmdliner = opamSelection.cmdliner;
       cppo = opamSelection.cppo;
+      cppo_ocamlbuild = opamSelection.cppo_ocamlbuild;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
       ppx_deriving = opamSelection.ppx_deriving;

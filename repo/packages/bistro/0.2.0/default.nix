@@ -13,6 +13,7 @@ let
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
       ocamlgraph = opamSelection.ocamlgraph;
+      ppx_deriving = opamSelection.ppx_deriving;
       ppx_tools = opamSelection.ppx_tools;
       pvem = opamSelection.pvem;
       rresult = opamSelection.rresult;

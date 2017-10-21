@@ -7,6 +7,7 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      cmdliner = opamSelection.cmdliner;
       dns = opamSelection.dns;
       duration = opamSelection.duration;
       io-page = opamSelection.io-page;

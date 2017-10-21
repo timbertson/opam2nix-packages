@@ -11,6 +11,7 @@ let
       channel = opamSelection.channel;
       cmdliner = opamSelection.cmdliner;
       cstruct = opamSelection.cstruct;
+      cstruct-lwt = opamSelection.cstruct-lwt;
       dns = opamSelection.dns;
       fmt = opamSelection.fmt;
       ipaddr = opamSelection.ipaddr;
@@ -21,6 +22,8 @@ let
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
+      ppx_cstruct = opamSelection.ppx_cstruct;
+      ppx_sexp_conv = opamSelection.ppx_sexp_conv;
       ppx_tools = opamSelection.ppx_tools;
       result = opamSelection.result;
       rresult = opamSelection.rresult;

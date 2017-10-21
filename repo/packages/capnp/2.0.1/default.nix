@@ -42,7 +42,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0k2js8jrjq7xsd20ik03xg4vb9iivbygam6z4s7bp1s0n9vbnxr1";
-    url = "https://github.com/pelzlpj/capnp-ocaml/archive/v2.0.1.tar.gz";
+    url = "https://github.com/capnproto/capnp-ocaml/archive/v2.0.1.tar.gz";
   };
 }
 

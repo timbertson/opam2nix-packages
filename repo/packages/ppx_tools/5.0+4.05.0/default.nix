@@ -36,7 +36,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "1dv3llvmxw1adphfqkw0l74b11p1ca9g207z5i0pmmwgz7i0a7h3";
-    url = "https://github.com/alainfrisch/ppx_tools/archive/5.0+4.05.0.tar.gz";
+    url = "https://github.com/ocaml-ppx/ppx_tools/archive/5.0+4.05.0.tar.gz";
   };
 }
 

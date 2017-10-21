@@ -12,6 +12,7 @@ let
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
+      ppx_cstruct = opamSelection.ppx_cstruct;
       topkg = opamSelection.topkg;
     };
     opamSelection = world.opamSelection;

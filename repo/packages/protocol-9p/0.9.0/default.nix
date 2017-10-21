@@ -12,7 +12,9 @@ let
       base-unix = opamSelection.base-unix;
       cmdliner = opamSelection.cmdliner;
       cstruct = opamSelection.cstruct;
+      cstruct-lwt = opamSelection.cstruct-lwt;
       fmt = opamSelection.fmt;
+      io-page-unix = opamSelection.io-page-unix;
       lambda-term = opamSelection.lambda-term or null;
       logs = opamSelection.logs;
       lwt = opamSelection.lwt;
@@ -23,6 +25,7 @@ let
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
+      ppx_cstruct = opamSelection.ppx_cstruct;
       ppx_deriving = opamSelection.ppx_deriving;
       ppx_sexp_conv = opamSelection.ppx_sexp_conv;
       ppx_tools = opamSelection.ppx_tools;

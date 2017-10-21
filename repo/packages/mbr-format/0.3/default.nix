@@ -13,6 +13,7 @@ let
       ipaddr = opamSelection.ipaddr;
       lwt = opamSelection.lwt;
       mirage-types = opamSelection.mirage-types;
+      mirage-types-lwt = opamSelection.mirage-types-lwt;
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;

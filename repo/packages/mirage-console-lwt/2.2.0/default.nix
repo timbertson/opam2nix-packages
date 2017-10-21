@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       cstruct = opamSelection.cstruct;
+      cstruct-lwt = opamSelection.cstruct-lwt;
       lwt = opamSelection.lwt;
       mirage-console = opamSelection.mirage-console;
       ocaml = opamSelection.ocaml;

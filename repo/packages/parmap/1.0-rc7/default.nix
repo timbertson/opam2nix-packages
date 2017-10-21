@@ -7,6 +7,7 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      conf-aclocal = opamSelection.conf-aclocal;
       conf-autoconf = opamSelection.conf-autoconf;
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;

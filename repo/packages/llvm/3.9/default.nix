@@ -2,13 +2,14 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.cmake or null)
-        (pkgs."https://gist.githubusercontent.com/jpdeplaix/53a7f91155e9d98dcfb18afcd1d6c529/raw" or null)
-        (pkgs."llvm-3.9-dev" or null) ] ++ (lib.attrValues opamDeps));
+    ([  ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      conf-cmake = opamSelection.conf-cmake;
+      conf-llvm = opamSelection.conf-llvm;
+      conf-python-2-7 = opamSelection.conf-python-2-7;
       ctypes = opamSelection.ctypes;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;

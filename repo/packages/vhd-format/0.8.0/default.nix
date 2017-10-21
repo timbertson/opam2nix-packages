@@ -8,7 +8,9 @@ let
     opamDeps = 
     {
       cstruct = opamSelection.cstruct;
+      cstruct-lwt = opamSelection.cstruct-lwt;
       io-page = opamSelection.io-page;
+      io-page-unix = opamSelection.io-page-unix;
       ipaddr = opamSelection.ipaddr;
       lwt = opamSelection.lwt;
       mirage-types-lwt = opamSelection.mirage-types-lwt;
@@ -16,6 +18,7 @@ let
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       ounit = opamSelection.ounit;
+      ppx_cstruct = opamSelection.ppx_cstruct;
       ppx_tools = opamSelection.ppx_tools;
       uuidm = opamSelection.uuidm;
     };

@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       dyntype = opamSelection.dyntype;
+      num = opamSelection.num;
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;

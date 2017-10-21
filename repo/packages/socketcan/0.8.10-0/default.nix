@@ -2,14 +2,14 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.kernel-headers or null) (pkgs.linux-headers or null)
-        (pkgs.linux-libc-dev or null) ] ++ (lib.attrValues opamDeps));
+    ([  ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
     {
       base-bytes = opamSelection.base-bytes;
       base-unix = opamSelection.base-unix;
+      conf-linux-libc-dev = opamSelection.conf-linux-libc-dev;
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;

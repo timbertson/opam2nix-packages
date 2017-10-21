@@ -14,6 +14,7 @@ let
       containers = opamSelection.containers;
       core_kernel = opamSelection.core_kernel or null;
       cppo = opamSelection.cppo;
+      cppo_ocamlbuild = opamSelection.cppo_ocamlbuild;
       js_of_ocaml = opamSelection.js_of_ocaml or null;
       lablgtk = opamSelection.lablgtk or null;
       menhir = opamSelection.menhir;

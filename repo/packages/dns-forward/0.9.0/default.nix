@@ -23,6 +23,7 @@ let
       mtime = opamSelection.mtime;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind or null;
+      ppx_sexp_conv = opamSelection.ppx_sexp_conv;
       result = opamSelection.result;
       rresult = opamSelection.rresult;
       sexplib = opamSelection.sexplib;

@@ -10,7 +10,7 @@ let
       cstruct = opamSelection.cstruct;
       jbuilder = opamSelection.jbuilder;
       ocaml = opamSelection.ocaml;
-      ocamlfind = opamSelection.ocamlfind;
+      ocamlfind = opamSelection.ocamlfind or null;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;

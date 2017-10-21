@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       base-unix = opamSelection.base-unix;
+      conf-linux-libc-dev = opamSelection.conf-linux-libc-dev;
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;

@@ -17,7 +17,7 @@ cmd = [
 	'--src', os.path.join(here, '../opam-repository'),
 	'--cache', os.path.join(here, '../cache'),
 	'--max-age', '7776000',
-	'--num-versions', '3',
+	'--num-versions', '2.3.1',
 	'--ignore-broken'
 ]
 

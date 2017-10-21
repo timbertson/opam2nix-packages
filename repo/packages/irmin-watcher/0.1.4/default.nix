@@ -45,7 +45,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0xba4638cqd28xz92csj04sihbl9l71d4j3m3rd0as3y19knmywy";
-    url = "https://github.com/samoht/irmin-watcher/releases/download/0.1.4/irmin-watcher-0.1.4.tbz";
+    url = "https://github.com/mirage/irmin-watcher/releases/download/0.1.4/irmin-watcher-0.1.4.tbz";
   };
   unpackCmd = "tar -xf \"$curSrc\"";
 }

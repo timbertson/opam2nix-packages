@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       camlidl = opamSelection.camlidl;
+      num = opamSelection.num;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
     };

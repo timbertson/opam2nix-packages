@@ -10,6 +10,7 @@ let
       camlp4 = opamSelection.camlp4;
       js_of_ocaml = opamSelection.js_of_ocaml;
       lwt = opamSelection.lwt;
+      num = opamSelection.num;
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;

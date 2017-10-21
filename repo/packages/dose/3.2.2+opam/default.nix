@@ -7,6 +7,7 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      camlp4 = opamSelection.camlp4;
       cudf = opamSelection.cudf;
       extlib = opamSelection.extlib or null;
       extlib-compat = opamSelection.extlib-compat or null;

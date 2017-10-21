@@ -9,9 +9,11 @@ let
     opamDeps = 
     {
       alcotest = opamSelection.alcotest;
+      camlp4 = opamSelection.camlp4;
       cmdliner = opamSelection.cmdliner;
       conduit = opamSelection.conduit;
       dns = opamSelection.dns;
+      duration = opamSelection.duration;
       ezxmlm = opamSelection.ezxmlm;
       git = opamSelection.git;
       ipaddr = opamSelection.ipaddr;
@@ -19,8 +21,12 @@ let
       irmin-unix = opamSelection.irmin-unix;
       libvirt = opamSelection.libvirt;
       lwt = opamSelection.lwt;
+      mirage-kv-lwt = opamSelection.mirage-kv-lwt;
+      mirage-profile = opamSelection.mirage-profile;
+      mirage-stack-lwt = opamSelection.mirage-stack-lwt;
+      mirage-time = opamSelection.mirage-time;
       ocaml = opamSelection.ocaml;
-      ocamlfind = opamSelection.ocamlfind or null;
+      ocamlfind = opamSelection.ocamlfind;
       uuidm = opamSelection.uuidm;
       vchan = opamSelection.vchan;
       xen-api-client = opamSelection.xen-api-client;

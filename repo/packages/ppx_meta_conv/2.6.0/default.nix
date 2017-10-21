@@ -42,7 +42,7 @@ pkgs.stdenv.mkDerivation
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "1xxp1vwcn0bax90d05n43j07q8yn2kg0h5xf3grrmbmhz080w7rf";
+    sha256 = "1q28hxzx6k6y6bq0y775n4y65kyr6w63jd7g3xyv3h0q0ncy198z";
     url = "https://bitbucket.org/camlspotter/ppx_meta_conv/get/2.6.0.tar.gz";
   };
 }

@@ -1,9 +1,11 @@
 world:
 let
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([
-        (pkgs."https://gist.githubusercontent.com/Kakadu/7dc6f7c9f8760f7fbace/raw/295dd3528cf9cf2be7a67a9752e530353bb6211b/get_qt.sh" or null)
-        (pkgs.qt5-default or null) (pkgs.qtdeclarative5-dev or null) ] ++ (lib.attrValues opamDeps));
+    ([ (pkgs.qt5 or null) (pkgs.qt5-default or null) (pkgs.qt5-qmake or null)
+        (pkgs.qt5-qtbase-dev or null) (pkgs.qt5-qtbase-devel or null)
+        (pkgs.qt5-qtdeclarative-dev or null)
+        (pkgs.qt5-qtdeclarative-devel or null)
+        (pkgs.qtdeclarative5-dev or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 

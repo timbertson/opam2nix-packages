@@ -1,0 +1,9 @@
+opam-version: "1.2"
+maintainer: "https://github.com/ocaml/opam-repository/issues"
+build: make
+remove: [["ocamlfind" "remove" "ocaml-safepass"]]
+depends: [
+  "ocamlfind"
+  "ocamlbuild" {build}
+]
+install: [make "install"]

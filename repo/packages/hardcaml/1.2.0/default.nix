@@ -10,11 +10,13 @@ let
       astring = opamSelection.astring;
       base-bytes = opamSelection.base-bytes;
       base-unix = opamSelection.base-unix;
-      camlp4 = opamSelection.camlp4 or null;
+      camlp4 = opamSelection.camlp4;
       ctypes = opamSelection.ctypes or null;
       ctypes-foreign = opamSelection.ctypes-foreign or null;
-      js_of_ocaml = opamSelection.js_of_ocaml or null;
+      js_of_ocaml = opamSelection.js_of_ocaml;
+      js_of_ocaml-camlp4 = opamSelection.js_of_ocaml-camlp4;
       lwt = opamSelection.lwt or null;
+      num = opamSelection.num;
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;

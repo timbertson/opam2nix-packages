@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       cstruct = opamSelection.cstruct;
+      cstruct-lwt = opamSelection.cstruct-lwt;
       io-page = opamSelection.io-page or null;
       lwt = opamSelection.lwt or null;
       mirage-block = opamSelection.mirage-block or null;
@@ -16,7 +17,7 @@ let
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
-      ppx_tools = opamSelection.ppx_tools;
+      ppx_cstruct = opamSelection.ppx_cstruct;
       re = opamSelection.re;
       result = opamSelection.result;
       topkg = opamSelection.topkg;

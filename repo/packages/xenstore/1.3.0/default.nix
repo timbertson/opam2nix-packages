@@ -9,12 +9,12 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
-      camlp4 = opamSelection.camlp4;
       cstruct = opamSelection.cstruct;
       lwt = opamSelection.lwt;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
       ounit = opamSelection.ounit;
+      ppx_cstruct = opamSelection.ppx_cstruct;
       ppx_tools = opamSelection.ppx_tools;
     };
     opamSelection = world.opamSelection;

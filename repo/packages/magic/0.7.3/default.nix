@@ -2,7 +2,8 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.libmagic-dev or null) ] ++ (lib.attrValues opamDeps));
+    ([ (pkgs.file-dev or null) (pkgs.file-devel or null)
+        (pkgs.libmagic or null) (pkgs.libmagic-dev or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 

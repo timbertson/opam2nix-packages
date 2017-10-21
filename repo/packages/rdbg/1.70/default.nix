@@ -10,6 +10,7 @@ let
       base-unix = opamSelection.base-unix;
       camlp4 = opamSelection.camlp4;
       lutils = opamSelection.lutils;
+      num = opamSelection.num;
       oasis = opamSelection.oasis;
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;

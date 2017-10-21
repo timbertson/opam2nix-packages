@@ -9,6 +9,7 @@ let
     {
       cstruct = opamSelection.cstruct;
       io-page = opamSelection.io-page;
+      io-page-unix = opamSelection.io-page-unix;
       ipaddr = opamSelection.ipaddr;
       lwt = opamSelection.lwt;
       mirage-types = opamSelection.mirage-types;

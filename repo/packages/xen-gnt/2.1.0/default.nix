@@ -7,6 +7,7 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      camlp4 = opamSelection.camlp4;
       cmdliner = opamSelection.cmdliner;
       cstruct = opamSelection.cstruct;
       io-page = opamSelection.io-page;
@@ -15,7 +16,6 @@ let
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind or null;
-      ounit = opamSelection.ounit;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;

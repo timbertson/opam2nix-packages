@@ -2,13 +2,11 @@ world:
 let
     inputs = lib.filter (dep: dep != true && dep != null)
     ([ (pkgs.librdkit-dev or null) (pkgs.python-rdkit or null)
-        (pkgs.python2-rdkit or null) (pkgs.rdkit or null)
-        (pkgs.rdkit-devel or null) ] ++ (lib.attrValues opamDeps));
+        (pkgs.python2-rdkit or null) (pkgs.rdkit-devel or null) ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
     {
-      conf-python-2-7 = opamSelection.conf-python-2-7;
       ocaml = opamSelection.ocaml;
     };
     opamSelection = world.opamSelection;

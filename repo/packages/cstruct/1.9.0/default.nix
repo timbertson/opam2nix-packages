@@ -2,7 +2,7 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.time or null) ] ++ (lib.attrValues opamDeps));
+    ([  ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
@@ -11,6 +11,7 @@ let
       base-bytes = opamSelection.base-bytes;
       base-unix = opamSelection.base-unix or null;
       camlp4 = opamSelection.camlp4 or null;
+      conf-time = opamSelection.conf-time;
       lwt = opamSelection.lwt or null;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;

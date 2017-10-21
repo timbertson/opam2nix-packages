@@ -15,6 +15,7 @@ let
       ocplib-endian = opamSelection.ocplib-endian;
       omake = opamSelection.omake;
       res = opamSelection.res;
+      sexplib = opamSelection.sexplib;
       uint = opamSelection.uint;
     };
     opamSelection = world.opamSelection;
@@ -43,7 +44,7 @@ pkgs.stdenv.mkDerivation
   src = fetchurl 
   {
     sha256 = "0cfrkinbfd44acv5gik0w73yzlzvvnq1rggw58lhbfji1ijqnwdl";
-    url = "https://github.com/pelzlpj/capnp-ocaml/archive/v2.1.1.tar.gz";
+    url = "https://github.com/capnproto/capnp-ocaml/archive/v2.1.1.tar.gz";
   };
 }
 

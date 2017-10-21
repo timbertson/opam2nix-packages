@@ -11,6 +11,7 @@ let
       camlimages = opamSelection.camlimages;
       camlp4 = opamSelection.camlp4;
       lablgl = opamSelection.lablgl;
+      num = opamSelection.num;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
     };

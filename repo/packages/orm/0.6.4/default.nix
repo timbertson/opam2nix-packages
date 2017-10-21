@@ -8,9 +8,11 @@ let
     opamDeps = 
     {
       dyntype = opamSelection.dyntype;
+      num = opamSelection.num;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
       sqlite3 = opamSelection.sqlite3;
+      type_conv = opamSelection.type_conv;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;

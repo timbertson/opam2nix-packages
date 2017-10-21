@@ -16,6 +16,7 @@ let
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind or null;
       ocamlgraph = opamSelection.ocamlgraph;
+      ocplib-endian = opamSelection.ocplib-endian;
       uri = opamSelection.uri;
     };
     opamSelection = world.opamSelection;

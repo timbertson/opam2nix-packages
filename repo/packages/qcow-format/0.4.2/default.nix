@@ -12,6 +12,7 @@ let
       cmdliner = opamSelection.cmdliner;
       cstruct = opamSelection.cstruct;
       fmt = opamSelection.fmt;
+      io-page-unix = opamSelection.io-page-unix;
       logs = opamSelection.logs;
       lwt = opamSelection.lwt;
       mirage-block = opamSelection.mirage-block;

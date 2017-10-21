@@ -9,6 +9,7 @@ let
     {
       camlp4 = opamSelection.camlp4 or null;
       lwt = opamSelection.lwt or null;
+      num = opamSelection.num;
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;

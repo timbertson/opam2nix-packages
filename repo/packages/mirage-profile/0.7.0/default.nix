@@ -15,6 +15,7 @@ let
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       ocplib-endian = opamSelection.ocplib-endian;
+      ppx_cstruct = opamSelection.ppx_cstruct;
       ppx_tools = opamSelection.ppx_tools;
     };
     opamSelection = world.opamSelection;

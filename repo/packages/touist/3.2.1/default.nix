@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       cppo = opamSelection.cppo;
+      cppo_ocamlbuild = opamSelection.cppo_ocamlbuild;
       fileutils = opamSelection.fileutils;
       menhir = opamSelection.menhir;
       minisat = opamSelection.minisat;

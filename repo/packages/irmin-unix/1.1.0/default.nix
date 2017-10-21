@@ -7,6 +7,7 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      cmdliner = opamSelection.cmdliner;
       git-unix = opamSelection.git-unix;
       irmin = opamSelection.irmin;
       irmin-git = opamSelection.irmin-git;

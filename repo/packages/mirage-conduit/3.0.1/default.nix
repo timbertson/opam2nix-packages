@@ -15,6 +15,7 @@ let
       mirage-types-lwt = opamSelection.mirage-types-lwt;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind or null;
+      ppx_sexp_conv = opamSelection.ppx_sexp_conv;
       tls = opamSelection.tls;
       vchan = opamSelection.vchan;
     };

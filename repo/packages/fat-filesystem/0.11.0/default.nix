@@ -10,6 +10,7 @@ let
       cmdliner = opamSelection.cmdliner;
       cstruct = opamSelection.cstruct;
       io-page = opamSelection.io-page;
+      io-page-unix = opamSelection.io-page-unix;
       lwt = opamSelection.lwt;
       mirage-block-unix = opamSelection.mirage-block-unix;
       mirage-types = opamSelection.mirage-types;
@@ -17,6 +18,7 @@ let
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
       ounit = opamSelection.ounit;
+      ppx_cstruct = opamSelection.ppx_cstruct;
       ppx_tools = opamSelection.ppx_tools;
       re = opamSelection.re;
     };

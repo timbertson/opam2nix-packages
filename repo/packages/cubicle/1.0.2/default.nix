@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       functory = opamSelection.functory or null;
+      num = opamSelection.num;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
     };

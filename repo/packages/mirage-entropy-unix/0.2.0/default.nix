@@ -9,6 +9,7 @@ let
     {
       camlp4 = opamSelection.camlp4;
       cstruct = opamSelection.cstruct;
+      cstruct-lwt = opamSelection.cstruct-lwt;
       mirage-types-lwt = opamSelection.mirage-types-lwt;
       mirage-unix = opamSelection.mirage-unix;
       ocaml = opamSelection.ocaml;

@@ -8,6 +8,7 @@ let
     opamDeps = 
     {
       batteries = opamSelection.batteries;
+      num = opamSelection.num;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind;
     };

@@ -11,6 +11,7 @@ let
       base-unix = opamSelection.base-unix;
       containers = opamSelection.containers;
       menhir = opamSelection.menhir;
+      num = opamSelection.num;
       oasis = opamSelection.oasis;
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
