@@ -18,11 +18,11 @@ remove: [
 ]
 depends: [
   "ocamlfind" { build }
-  "omake" { build }
+  "omake" { build & < "0.10" }
   "spotlib"
   "typerep"
   "ppx_typerep_conv" { build }
-  "ppx_deriving"
+  "ppx_deriving" { <= "4.1" } 
 ]
 available: [
   ocaml-version >= "4.03.0"

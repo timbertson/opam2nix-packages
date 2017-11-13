@@ -11,7 +11,7 @@ build-test: ["jbuilder" "runtest" "-p" name]
 
 depends: [
   "capnp" { >= "3.0.0" }
-  "capnp-rpc"
+  "capnp-rpc" { < "0.2" }
   "lwt"
   "astring"
   "fmt"
