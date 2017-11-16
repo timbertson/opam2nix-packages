@@ -1,0 +1,36 @@
+opam-version: "1.2"
+maintainer: "andy.ray@ujamjar.com"
+license: "BSD"
+homepage: "http://mjambon.com/micmatch.html"
+doc: ["http://mjambon.com/mikmatch-manual.html"]
+bug-reports: "https://github.com/mjambon/mikmatch/issues"
+dev-repo: "git://github.com/mjambon/mikmatch.git"
+authors: [ "Martin Jambon" ]
+build: [
+  [make "str"]
+  [make] {"%{pcre:installed}%"}
+]
+install: [
+  [make "install-str"]
+  [make "install"] {"%{pcre:installed}%"}
+]
+remove: [
+  [make "uninstall-str"]
+  [make "uninstall"] {"%{pcre:installed}%"}
+]
+depends: [
+  "ocamlfind" {build}
+  "camlp4" {build}
+  "tophide" {>= "1.0.2"}
+]
+depopts: [
+  "pcre"
+]
+conflicts: [
+  "pcre" {!= "7.0.4"}
+]
+patches: [
+  "mikmatch.patch"
+  "fix_build.patch"
+]
+available: [ ocaml-version >= "4.01" & ocaml-version < "4.02" ]

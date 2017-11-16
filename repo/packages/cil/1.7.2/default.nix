@@ -1,0 +1,44 @@
+world:
+let
+    fetchurl = pkgs.fetchurl;
+    inputs = lib.filter (dep: dep != true && dep != null)
+    ([  ] ++ (lib.attrValues opamDeps));
+    lib = pkgs.lib;
+    opam2nix = world.opam2nix;
+    opamDeps = 
+    {
+      num = opamSelection.num;
+      ocaml = opamSelection.ocaml;
+      ocamlbuild = opamSelection.ocamlbuild;
+      ocamlfind = opamSelection.ocamlfind;
+    };
+    opamSelection = world.opamSelection;
+    pkgs = world.pkgs;
+in
+pkgs.stdenv.mkDerivation 
+{
+  buildInputs = inputs;
+  buildPhase = "${opam2nix}/bin/opam2nix invoke build";
+  configurePhase = "true";
+  installPhase = "${opam2nix}/bin/opam2nix invoke install";
+  name = "cil-1.7.2";
+  opamEnv = builtins.toJSON 
+  {
+    deps = opamDeps;
+    files = null;
+    name = "cil";
+    ocaml-version = world.ocamlVersion;
+    spec = ./opam;
+  };
+  passthru = 
+  {
+    opamSelection = opamSelection;
+  };
+  propagatedBuildInputs = inputs;
+  src = fetchurl 
+  {
+    sha256 = "1v07sydr4f14gqyvnv5cxv2fcvh73dicqn6fdj39pqbmmnp2rw2j";
+    url = "http://downloads.sourceforge.net/project/cil/cil/cil-1.7.2.tar.gz";
+  };
+}
+

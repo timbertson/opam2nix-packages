@@ -1,0 +1,16 @@
+opam-version: "1"
+maintainer: "smimram@gmail.com"
+build: [
+  ["./configure" "--prefix" prefix]
+  [make]
+]
+remove: [["ocamlfind" "remove" "speex"]]
+depends: [
+  "ocamlfind"
+  "ogg"
+]
+depexts: [
+  [["ubuntu"] ["libspeex-dev"]]
+  [["debian"] ["libspeex-dev"]]
+]
+install: [make "install"]

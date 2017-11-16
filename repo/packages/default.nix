@@ -786,6 +786,7 @@ world:
   js_of_ocaml-tyxml = import ./js_of_ocaml-tyxml world;
   json-pointer = import ./json-pointer world;
   json-predicate = import ./json-predicate world;
+  json-rpc = import ./json-rpc world;
   json-static = import ./json-static world;
   json-wheel = import ./json-wheel world;
   json-wheel_jane_street_overlay = import ./json-wheel_jane_street_overlay world;
@@ -848,6 +849,7 @@ world:
   llvm = import ./llvm world;
   llvmgraph = import ./llvmgraph world;
   lo = import ./lo world;
+  loga = import ./loga world;
   logs = import ./logs world;
   logs-syslog = import ./logs-syslog world;
   logtk = import ./logtk world;
@@ -1030,6 +1032,7 @@ world:
   mpris = import ./mpris world;
   mqtt = import ./mqtt world;
   mqtt_client = import ./mqtt_client world;
+  mrt-format = import ./mrt-format world;
   msat = import ./msat world;
   msgpack = import ./msgpack world;
   msgpck = import ./msgpck world;

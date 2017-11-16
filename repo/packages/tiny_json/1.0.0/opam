@@ -1,0 +1,13 @@
+opam-version: "1"
+maintainer: "jun.furuse@gmail.com"
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+]
+remove: ["ocamlfind" "remove" "tiny_json"]
+depends: [
+  "ocamlfind"
+  "omake"
+]
+available: os = "linux" & ocaml-version >= "4.0.0"
+install: ["ocaml" "setup.ml" "-install"]
