@@ -343,6 +343,7 @@ world:
   conf-lua = import ./conf-lua world;
   conf-m4 = import ./conf-m4 world;
   conf-mariadb = import ./conf-mariadb world;
+  conf-mecab = import ./conf-mecab world;
   conf-mpfr = import ./conf-mpfr world;
   conf-mpi = import ./conf-mpi world;
   conf-mysql = import ./conf-mysql world;
@@ -886,6 +887,7 @@ world:
   maxminddb = import ./maxminddb world;
   mbr-format = import ./mbr-format world;
   mccs = import ./mccs world;
+  mecab = import ./mecab world;
   mechaml = import ./mechaml world;
   melt = import ./melt world;
   memcad = import ./memcad world;
@@ -1016,6 +1018,7 @@ world:
   mldonkey = import ./mldonkey world;
   mlgmp = import ./mlgmp world;
   mlgmpidl = import ./mlgmpidl world;
+  mlmpfr = import ./mlmpfr world;
   mlpost = import ./mlpost world;
   mm = import ./mm world;
   mmseg = import ./mmseg world;
@@ -1369,6 +1372,7 @@ world:
   ppx_deriving_hardcaml = import ./ppx_deriving_hardcaml world;
   ppx_deriving_morphism = import ./ppx_deriving_morphism world;
   ppx_deriving_protobuf = import ./ppx_deriving_protobuf world;
+  ppx_deriving_protocol = import ./ppx_deriving_protocol world;
   ppx_deriving_yojson = import ./ppx_deriving_yojson world;
   ppx_distr_guards = import ./ppx_distr_guards world;
   ppx_dotbracket = import ./ppx_dotbracket world;
@@ -1609,6 +1613,7 @@ world:
   sslconf = import ./sslconf world;
   starterkit = import ./starterkit world;
   stationary = import ./stationary world;
+  statmemprof-emacs = import ./statmemprof-emacs world;
   statsd-client = import ./statsd-client world;
   statverif = import ./statverif world;
   stb_image = import ./stb_image world;
@@ -1663,6 +1668,7 @@ world:
   tiny_json = import ./tiny_json world;
   tiny_json_conv = import ./tiny_json_conv world;
   tip-parser = import ./tip-parser world;
+  tjr_simple_earley = import ./tjr_simple_earley world;
   tls = import ./tls world;
   tlstunnel = import ./tlstunnel world;
   toml = import ./toml world;
