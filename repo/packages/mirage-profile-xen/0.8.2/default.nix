@@ -1,0 +1,49 @@
+world:
+let
+    fetchurl = pkgs.fetchurl;
+    inputs = lib.filter (dep: dep != true && dep != null)
+    ([  ] ++ (lib.attrValues opamDeps));
+    lib = pkgs.lib;
+    opam2nix = world.opam2nix;
+    opamDeps = 
+    {
+      io-page = opamSelection.io-page;
+      io-page-xen = opamSelection.io-page-xen;
+      jbuilder = opamSelection.jbuilder;
+      mirage-profile = opamSelection.mirage-profile;
+      mirage-xen-minios = opamSelection.mirage-xen-minios;
+      ocaml = opamSelection.ocaml;
+      ocamlfind = opamSelection.ocamlfind or null;
+      ocplib-endian = opamSelection.ocplib-endian;
+    };
+    opamSelection = world.opamSelection;
+    pkgs = world.pkgs;
+in
+pkgs.stdenv.mkDerivation 
+{
+  buildInputs = inputs;
+  buildPhase = "${opam2nix}/bin/opam2nix invoke build";
+  configurePhase = "true";
+  installPhase = "${opam2nix}/bin/opam2nix invoke install";
+  name = "mirage-profile-xen-0.8.2";
+  opamEnv = builtins.toJSON 
+  {
+    deps = opamDeps;
+    files = null;
+    name = "mirage-profile-xen";
+    ocaml-version = world.ocamlVersion;
+    spec = ./opam;
+  };
+  passthru = 
+  {
+    opamSelection = opamSelection;
+  };
+  propagatedBuildInputs = inputs;
+  src = fetchurl 
+  {
+    sha256 = "1i72bx90x2ci9v5cx7qmlhc2ry6g1v1557yfjsabxsk4bxaai006";
+    url = "https://github.com/mirage/mirage-profile/releases/download/v0.8.2/mirage-profile-0.8.2.tbz";
+  };
+  unpackCmd = "tar -xf \"$curSrc\"";
+}
+

@@ -17,6 +17,7 @@ world:
   "4.05+1" = import ./4.05+1 world;
   "4.05+system" = import ./4.05+system world;
   "4.06+1" = import ./4.06+1 world;
-  latest = import ./4.06+1 world;
+  "4.06+system" = import ./4.06+system world;
+  latest = import ./4.06+system world;
 }
 

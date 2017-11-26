@@ -283,6 +283,7 @@ world:
   cohttp-lwt = import ./cohttp-lwt world;
   cohttp-lwt-jsoo = import ./cohttp-lwt-jsoo world;
   cohttp-lwt-unix = import ./cohttp-lwt-unix world;
+  cohttp-mirage = import ./cohttp-mirage world;
   cohttp-top = import ./cohttp-top world;
   coinst = import ./coinst world;
   combine = import ./combine world;
