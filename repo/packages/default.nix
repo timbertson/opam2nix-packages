@@ -661,6 +661,7 @@ world:
   gmp-freestanding = import ./gmp-freestanding world;
   gmp-xen = import ./gmp-xen world;
   gnuplot = import ./gnuplot world;
+  goblint-cil = import ./goblint-cil world;
   google-drive-ocamlfuse = import ./google-drive-ocamlfuse world;
   gperftools = import ./gperftools world;
   gpr = import ./gpr world;
@@ -713,6 +714,8 @@ world:
   horned_worm = import ./horned_worm world;
   http2https = import ./http2https world;
   http_router = import ./http_router world;
+  httpaf = import ./httpaf world;
+  httpaf-async = import ./httpaf-async world;
   humane-re = import ./humane-re world;
   hvsock = import ./hvsock world;
   hweak = import ./hweak world;
@@ -799,6 +802,7 @@ world:
   jsoo_storage = import ./jsoo_storage world;
   junit = import ./junit world;
   jupyter = import ./jupyter world;
+  jupyter-archimedes = import ./jupyter-archimedes world;
   jwt = import ./jwt world;
   kafka = import ./kafka world;
   kaputt = import ./kaputt world;
@@ -1219,11 +1223,13 @@ world:
   opam-bundle = import ./opam-bundle world;
   opam-client = import ./opam-client world;
   opam-core = import ./opam-core world;
+  opam-depext = import ./opam-depext world;
   opam-devel = import ./opam-devel world;
   opam-doc = import ./opam-doc world;
   opam-ed = import ./opam-ed world;
   opam-file-format = import ./opam-file-format world;
   opam-format = import ./opam-format world;
+  opam-installer = import ./opam-installer world;
   opam-installext = import ./opam-installext world;
   opam-lib = import ./opam-lib world;
   opam-package-upgrade = import ./opam-package-upgrade world;
@@ -1411,6 +1417,7 @@ world:
   ppx_pattern_guard = import ./ppx_pattern_guard world;
   ppx_pipebang = import ./ppx_pipebang world;
   ppx_poly_record = import ./ppx_poly_record world;
+  ppx_protocol_conv = import ./ppx_protocol_conv world;
   ppx_regexp = import ./ppx_regexp world;
   ppx_sexp = import ./ppx_sexp world;
   ppx_sexp_conv = import ./ppx_sexp_conv world;

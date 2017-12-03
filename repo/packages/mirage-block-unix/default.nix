@@ -6,8 +6,8 @@ world:
   "1.2.2" = import ./1.2.2 world;
   "2.6.0" = import ./2.6.0 world;
   "2.7.0" = import ./2.7.0 world;
-  "2.8.2" = import ./2.8.2 world;
   "2.8.3" = import ./2.8.3 world;
-  latest = import ./2.8.3 world;
+  "2.8.4" = import ./2.8.4 world;
+  latest = import ./2.8.4 world;
 }
 
