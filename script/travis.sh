@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -eux
 if [ "$TRAVIS_EVENT_TYPE" != "cron" ]; then
 	: not a cron build, ignoring
