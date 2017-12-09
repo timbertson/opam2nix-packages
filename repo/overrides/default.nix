@@ -21,6 +21,12 @@ in
 					sed -i -e 's|"+|"../ocaml/|' "$f"
 				done
 				'';
+			nativeBuildInputs = impl.nativeBuildInputs ++ [ which ];
+                        # see https://github.com/NixOS/nixpkgs/commit/b2a4eb839a530f84a0b522840a6a4cac51adcba1
+                        # if we strip binaries we can get weird errors such that:
+                        # /nix/store/.../bin/camlp4orf not found or is not a bytecode executable file
+                        # when executing camlp4orf
+                        dontStrip = true;
 		}) opamPackages.camlp4;
 
 		gmp-xen = overrideAll (impl: {
@@ -39,13 +45,39 @@ in
 			'';
 		}) opamPackages.lwt;
 
+                llvm = overrideAll (impl: {
+                  nativeBuildInputs = impl.nativeBuildInputs ++ [ pkgconfig python ];
+                  propagatedBuildInputs = impl.propagatedBuildInputs ++ [ llvm_5 ];
+                  installPhase = ''
+                    bash -ex install.sh ${llvm_5}/bin/llvm-config $out/lib ${cmake}/bin/cmake make
+                    '';
+                }) opamPackages.llvm;
+
 		ctypes = overrideAll (impl: {
 			nativeBuildInputs = impl.nativeBuildInputs ++ [ pkgconfig libffi ncurses ];
+                        patches = (impl.patches or []) ++ [./install_ocaml_integers_h_once.patch];
 		}) opamPackages.ctypes;
 
 		solo5-kernel-vertio = disableStackProtection opamPackages.solo5-kernel-vertio;
 		solo5-kernel-ukvm = disableStackProtection opamPackages.solo5-kernel-ukvm;
 		nocrypto = disableStackProtection opamPackages.nocrypto;
+
+                piqilib = overrideAll (impl: {
+                  nativeBuildInputs = impl.nativeBuildInputs ++ [ which makeWrapper ];
+                  # hack -- for some reason the makefile system ignores OCAMLPATH.
+                  configurePhase = ''
+                    mkdir .bin
+                    makeWrapper $(which ocamlfind) .bin/ocamlfind --prefix OCAMLPATH : "$OCAMLPATH"
+                    export PATH=$(readlink -f .bin):$PATH
+                  ''+impl.configurePhase;
+                }) opamPackages.piqilib;
+
+                zarith = overrideAll (impl: {
+                  nativeBuildInputs = impl.nativeBuildInputs ++ [ perl ];
+                  configurePhase = ''
+                    patchShebangs .
+                  ''+impl.configurePhase;
+                }) opamPackages.zarith;
 
 		zarith-xen = overrideAll (impl: {
 			buildPhase = "${pkgs.bash}/bin/bash ${./zarith-xen/install.sh}";
