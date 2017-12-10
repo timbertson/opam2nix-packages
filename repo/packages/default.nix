@@ -350,6 +350,7 @@ world:
   conf-mysql = import ./conf-mysql world;
   conf-nanomsg = import ./conf-nanomsg world;
   conf-ncurses = import ./conf-ncurses world;
+  conf-neko = import ./conf-neko world;
   conf-ode = import ./conf-ode world;
   conf-openbabel = import ./conf-openbabel world;
   conf-openblas = import ./conf-openblas world;
@@ -771,6 +772,7 @@ world:
   javascriptcore = import ./javascriptcore world;
   jbuilder = import ./jbuilder world;
   jekyll-format = import ./jekyll-format world;
+  jemalloc = import ./jemalloc world;
   jenga = import ./jenga world;
   jhupllib = import ./jhupllib world;
   jingoo = import ./jingoo world;
@@ -1434,6 +1436,7 @@ world:
   ppx_view = import ./ppx_view world;
   ppx_where = import ./ppx_where world;
   ppx_xml_conv = import ./ppx_xml_conv world;
+  ppxfind = import ./ppxfind world;
   ppxx = import ./ppxx world;
   primes = import ./primes world;
   printbox = import ./printbox world;
@@ -1792,6 +1795,7 @@ world:
   win-error = import ./win-error world;
   win-eventlog = import ./win-eventlog world;
   wiringpi = import ./wiringpi world;
+  wtf8 = import ./wtf8 world;
   wxOCaml = import ./wxOCaml world;
   wyrd = import ./wyrd world;
   x509 = import ./x509 world;
