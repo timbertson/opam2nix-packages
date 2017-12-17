@@ -10,6 +10,7 @@ tags:          [ "org:mirage" ]
 available:     [ ocaml-version >= "4.02.0" ]
 
 build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "false"
+                "--jobs" "1"
                 "--with-lwt" "%{lwt:installed}%"
                 "--xen" "%{mirage-xen:installed}%"
                 "--freestanding" "%{mirage-solo5:installed}%"]
@@ -33,7 +34,7 @@ depends: [
 ]
 
 conflicts: [
-  "topkg" {<"0.8.0"}
+  "topkg" {<"0.9.1"}
   "ocb-stubblr" {<"0.1.0"}
   "mirage-xen" {<"2.2.0"}
   "sexplib" {="v0.9.0"}

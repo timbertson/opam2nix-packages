@@ -19,6 +19,7 @@ world:
   acme = import ./acme world;
   acpc = import ./acpc world;
   aez = import ./aez world;
+  afl = import ./afl world;
   afl-persistent = import ./afl-persistent world;
   ago = import ./ago world;
   agrep = import ./agrep world;
@@ -210,6 +211,7 @@ world:
   bsdowl = import ./bsdowl world;
   bson = import ./bson world;
   bt = import ./bt world;
+  build_path_prefix_map = import ./build_path_prefix_map world;
   bulletml = import ./bulletml world;
   c3 = import ./c3 world;
   cache = import ./cache world;
@@ -251,6 +253,7 @@ world:
   cdrom = import ./cdrom world;
   cduce = import ./cduce world;
   cduce_ws = import ./cduce_ws world;
+  certify = import ./certify world;
   cfg = import ./cfg world;
   cfgen = import ./cfgen world;
   cfstream = import ./cfstream world;
@@ -306,6 +309,7 @@ world:
   conf-cairo = import ./conf-cairo world;
   conf-capnproto = import ./conf-capnproto world;
   conf-cmake = import ./conf-cmake world;
+  conf-efl = import ./conf-efl world;
   conf-emacs = import ./conf-emacs world;
   conf-env-travis = import ./conf-env-travis world;
   conf-expat = import ./conf-expat world;
@@ -351,6 +355,7 @@ world:
   conf-nanomsg = import ./conf-nanomsg world;
   conf-ncurses = import ./conf-ncurses world;
   conf-neko = import ./conf-neko world;
+  conf-numa = import ./conf-numa world;
   conf-ode = import ./conf-ode world;
   conf-openbabel = import ./conf-openbabel world;
   conf-openblas = import ./conf-openblas world;
@@ -662,6 +667,7 @@ world:
   gmp-freestanding = import ./gmp-freestanding world;
   gmp-xen = import ./gmp-xen world;
   gnuplot = import ./gnuplot world;
+  goblint = import ./goblint world;
   goblint-cil = import ./goblint-cil world;
   google-drive-ocamlfuse = import ./google-drive-ocamlfuse world;
   gperftools = import ./gperftools world;
@@ -832,6 +838,7 @@ world:
   launchd = import ./launchd world;
   lazy-trie = import ./lazy-trie world;
   lbfgs = import ./lbfgs world;
+  lbvs_consent = import ./lbvs_consent world;
   ledit = import ./ledit world;
   lemonade = import ./lemonade world;
   lemonade-sqlite = import ./lemonade-sqlite world;
@@ -910,6 +917,7 @@ world:
   mesh = import ./mesh world;
   mesh-display = import ./mesh-display world;
   mesh-easymesh = import ./mesh-easymesh world;
+  mesh-graphics = import ./mesh-graphics world;
   mesh-triangle = import ./mesh-triangle world;
   message-switch = import ./message-switch world;
   meta_conv = import ./meta_conv world;
@@ -1076,6 +1084,7 @@ world:
   nsq = import ./nsq world;
   nullable-array = import ./nullable-array world;
   num = import ./num world;
+  numalib = import ./numalib world;
   numerix = import ./numerix world;
   nunchaku = import ./nunchaku world;
   oasis = import ./oasis world;
@@ -1099,6 +1108,7 @@ world:
   ocaml-data-notation = import ./ocaml-data-notation world;
   ocaml-expat = import ./ocaml-expat world;
   ocaml-freestanding = import ./ocaml-freestanding world;
+  ocaml-gist = import ./ocaml-gist world;
   ocaml-http = import ./ocaml-http world;
   ocaml-indent = import ./ocaml-indent world;
   ocaml-inifiles = import ./ocaml-inifiles world;
@@ -1119,6 +1129,7 @@ world:
   ocaml-top = import ./ocaml-top world;
   ocaml-topexpect = import ./ocaml-topexpect world;
   ocaml-twt = import ./ocaml-twt world;
+  ocaml-webworker = import ./ocaml-webworker world;
   ocaml-xdg-basedir = import ./ocaml-xdg-basedir world;
   ocaml-xml-rpc = import ./ocaml-xml-rpc world;
   ocaml-zmq = import ./ocaml-zmq world;
@@ -1762,6 +1773,7 @@ world:
   vector3 = import ./vector3 world;
   vg = import ./vg world;
   vhd-format = import ./vhd-format world;
+  vhd-format-lwt = import ./vhd-format-lwt world;
   vhd-tool = import ./vhd-tool world;
   vhdlib = import ./vhdlib world;
   virtual_dom = import ./virtual_dom world;
