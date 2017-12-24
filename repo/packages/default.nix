@@ -355,6 +355,7 @@ world:
   conf-nanomsg = import ./conf-nanomsg world;
   conf-ncurses = import ./conf-ncurses world;
   conf-neko = import ./conf-neko world;
+  conf-npm = import ./conf-npm world;
   conf-numa = import ./conf-numa world;
   conf-ode = import ./conf-ode world;
   conf-openbabel = import ./conf-openbabel world;
@@ -396,6 +397,7 @@ world:
   containers = import ./containers world;
   cookie-js = import ./cookie-js world;
   coq = import ./coq world;
+  coq-serapi = import ./coq-serapi world;
   coq-shell = import ./coq-shell world;
   coqide = import ./coqide world;
   cordova = import ./cordova world;
@@ -1422,6 +1424,7 @@ world:
   ppx_metaquot = import ./ppx_metaquot world;
   ppx_monadic = import ./ppx_monadic world;
   ppx_monoid = import ./ppx_monoid world;
+  ppx_nanocaml = import ./ppx_nanocaml world;
   ppx_netblob = import ./ppx_netblob world;
   ppx_optcomp = import ./ppx_optcomp world;
   ppx_optional = import ./ppx_optional world;
