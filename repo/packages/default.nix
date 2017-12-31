@@ -527,6 +527,7 @@ world:
   doc-ock-xml = import ./doc-ock-xml world;
   docker-api = import ./docker-api world;
   dockerfile = import ./dockerfile world;
+  dockerfile-cmd = import ./dockerfile-cmd world;
   dockerfile-opam = import ./dockerfile-opam world;
   docout = import ./docout world;
   dog = import ./dog world;
@@ -880,8 +881,11 @@ world:
   lwt-binio = import ./lwt-binio world;
   lwt-parallel = import ./lwt-parallel world;
   lwt-zmq = import ./lwt-zmq world;
+  lwt_camlp4 = import ./lwt_camlp4 world;
   lwt_glib = import ./lwt_glib world;
+  lwt_log = import ./lwt_log world;
   lwt_named_threads = import ./lwt_named_threads world;
+  lwt_ppx = import ./lwt_ppx world;
   lwt_react = import ./lwt_react world;
   lwt_ssl = import ./lwt_ssl world;
   lymp = import ./lymp world;
@@ -1131,6 +1135,7 @@ world:
   ocaml-top = import ./ocaml-top world;
   ocaml-topexpect = import ./ocaml-topexpect world;
   ocaml-twt = import ./ocaml-twt world;
+  ocaml-version = import ./ocaml-version world;
   ocaml-webworker = import ./ocaml-webworker world;
   ocaml-xdg-basedir = import ./ocaml-xdg-basedir world;
   ocaml-xml-rpc = import ./ocaml-xml-rpc world;
@@ -1468,6 +1473,7 @@ world:
   protocol-9p = import ./protocol-9p world;
   protocol-9p-tool = import ./protocol-9p-tool world;
   protocol-9p-unix = import ./protocol-9p-unix world;
+  protocol_version_header = import ./protocol_version_header world;
   proverif = import ./proverif world;
   psq = import ./psq world;
   ptime = import ./ptime world;
@@ -1510,6 +1516,7 @@ world:
   reason = import ./reason world;
   reason-parser = import ./reason-parser world;
   receive-mail = import ./receive-mail world;
+  record_builder = import ./record_builder world;
   records = import ./records world;
   redis = import ./redis world;
   redis-lwt = import ./redis-lwt world;
@@ -1622,6 +1629,7 @@ world:
   spf = import ./spf world;
   sphinxcontrib-ocaml = import ./sphinxcontrib-ocaml world;
   spirv = import ./spirv world;
+  splay_tree = import ./splay_tree world;
   spoc = import ./spoc world;
   spotify-cli = import ./spotify-cli world;
   spotify-web-api = import ./spotify-web-api world;
@@ -1683,6 +1691,7 @@ world:
   text = import ./text world;
   text-tags = import ./text-tags world;
   textutils = import ./textutils world;
+  textutils_kernel = import ./textutils_kernel world;
   textwrap = import ./textwrap world;
   tftp = import ./tftp world;
   tgls = import ./tgls world;
@@ -1849,6 +1858,7 @@ world:
   xxhash = import ./xxhash world;
   yajl = import ./yajl world;
   yajl-extra = import ./yajl-extra world;
+  yaml = import ./yaml world;
   yices2 = import ./yices2 world;
   yojson = import ./yojson world;
   yurt = import ./yurt world;
