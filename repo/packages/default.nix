@@ -68,6 +68,7 @@ world:
   async-mvar = import ./async-mvar world;
   async-zmq = import ./async-zmq world;
   async_core = import ./async_core world;
+  async_durable = import ./async_durable world;
   async_extended = import ./async_extended world;
   async_extra = import ./async_extra world;
   async_find = import ./async_find world;
@@ -78,6 +79,7 @@ world:
   async_kernel = import ./async_kernel world;
   async_parallel = import ./async_parallel world;
   async_rpc_kernel = import ./async_rpc_kernel world;
+  async_sendfile = import ./async_sendfile world;
   async_shell = import ./async_shell world;
   async_smtp = import ./async_smtp world;
   async_ssl = import ./async_ssl world;
@@ -355,6 +357,7 @@ world:
   conf-nanomsg = import ./conf-nanomsg world;
   conf-ncurses = import ./conf-ncurses world;
   conf-neko = import ./conf-neko world;
+  conf-netsnmp = import ./conf-netsnmp world;
   conf-npm = import ./conf-npm world;
   conf-numa = import ./conf-numa world;
   conf-ode = import ./conf-ode world;
@@ -369,6 +372,7 @@ world:
   conf-python-2-7-dev = import ./conf-python-2-7-dev world;
   conf-qt = import ./conf-qt world;
   conf-rdkit = import ./conf-rdkit world;
+  conf-rocksdb = import ./conf-rocksdb world;
   conf-sdl-gfx = import ./conf-sdl-gfx world;
   conf-sdl-image = import ./conf-sdl-image world;
   conf-sdl-mixer = import ./conf-sdl-mixer world;
@@ -498,6 +502,7 @@ world:
   debian-formats = import ./debian-formats world;
   decompress = import ./decompress world;
   delimcc = import ./delimcc world;
+  delimited_parsing = import ./delimited_parsing world;
   depext = import ./depext world;
   depgraph = import ./depgraph world;
   depyt = import ./depyt world;
@@ -543,6 +548,7 @@ world:
   dtools = import ./dtools world;
   dum = import ./dum world;
   dumpast = import ./dumpast world;
+  dune_watch = import ./dune_watch world;
   duppy = import ./duppy world;
   duration = import ./duration world;
   dyntype = import ./dyntype world;
@@ -598,6 +604,7 @@ world:
   fftw3 = import ./fftw3 world;
   fieldslib = import ./fieldslib world;
   fileutils = import ./fileutils world;
+  findlib_top = import ./findlib_top world;
   fix = import ./fix world;
   flac = import ./flac world;
   flock = import ./flock world;
@@ -740,6 +747,7 @@ world:
   imaplet-lwt = import ./imaplet-lwt world;
   immutable = import ./immutable world;
   incr_dom = import ./incr_dom world;
+  incr_dom_widgets = import ./incr_dom_widgets world;
   incr_map = import ./incr_map world;
   incr_select = import ./incr_select world;
   incremental = import ./incremental world;
@@ -777,6 +785,7 @@ world:
   itv-tree = import ./itv-tree world;
   ivy = import ./ivy world;
   jane-street-headers = import ./jane-street-headers world;
+  jane-street-tests = import ./jane-street-tests world;
   javalib = import ./javalib world;
   javascriptcore = import ./javascriptcore world;
   jbuilder = import ./jbuilder world;
@@ -1041,6 +1050,7 @@ world:
   mlgmpidl = import ./mlgmpidl world;
   mlmpfr = import ./mlmpfr world;
   mlpost = import ./mlpost world;
+  mlt_parser = import ./mlt_parser world;
   mm = import ./mm world;
   mmseg = import ./mmseg world;
   modelica_ml = import ./modelica_ml world;
