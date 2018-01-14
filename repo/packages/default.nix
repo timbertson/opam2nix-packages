@@ -188,6 +188,7 @@ world:
   bindlib = import ./bindlib world;
   biniou = import ./biniou world;
   biocaml = import ./biocaml world;
+  bip32 = import ./bip32 world;
   bisect = import ./bisect world;
   bisect-summary = import ./bisect-summary world;
   bisect_ppx = import ./bisect_ppx world;
@@ -1614,6 +1615,7 @@ world:
   smtp = import ./smtp world;
   snabela = import ./snabela world;
   snappy = import ./snappy world;
+  socialpeek = import ./socialpeek world;
   sociaml-facebook-api = import ./sociaml-facebook-api world;
   sociaml-oauth-client = import ./sociaml-oauth-client world;
   sociaml-tumblr-api = import ./sociaml-tumblr-api world;
