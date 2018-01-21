@@ -1468,6 +1468,7 @@ world:
   ppx_xml_conv = import ./ppx_xml_conv world;
   ppxfind = import ./ppxfind world;
   ppxx = import ./ppxx world;
+  prettiest = import ./prettiest world;
   primes = import ./primes world;
   printbox = import ./printbox world;
   prob-cache = import ./prob-cache world;
@@ -1806,6 +1807,7 @@ world:
   voaacenc = import ./voaacenc world;
   vorbis = import ./vorbis world;
   vpnkit = import ./vpnkit world;
+  vpt = import ./vpt world;
   vrt = import ./vrt world;
   wamp = import ./wamp world;
   wamp-msgpck = import ./wamp-msgpck world;
@@ -1874,6 +1876,7 @@ world:
   yices2 = import ./yices2 world;
   yojson = import ./yojson world;
   yurt = import ./yurt world;
+  z3 = import ./z3 world;
   zarith = import ./zarith world;
   zarith-freestanding = import ./zarith-freestanding world;
   zarith-xen = import ./zarith-xen world;
