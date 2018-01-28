@@ -824,11 +824,13 @@ world:
   junit = import ./junit world;
   jupyter = import ./jupyter world;
   jupyter-archimedes = import ./jupyter-archimedes world;
+  jupyter-kernel = import ./jupyter-kernel world;
   jwt = import ./jwt world;
   kafka = import ./kafka world;
   kaputt = import ./kaputt world;
   ketrew = import ./ketrew world;
   key-parsers = import ./key-parsers world;
+  kicadsch = import ./kicadsch world;
   kinetic-client = import ./kinetic-client world;
   krb5 = import ./krb5 world;
   kyotocabinet = import ./kyotocabinet world;
@@ -870,6 +872,7 @@ world:
   linenoise = import ./linenoise world;
   linkage = import ./linkage world;
   links = import ./links world;
+  links-postgresql = import ./links-postgresql world;
   lipsum = import ./lipsum world;
   liquidsoap = import ./liquidsoap world;
   liquidsoap-daemon = import ./liquidsoap-daemon world;
@@ -944,6 +947,7 @@ world:
   minicli = import ./minicli world;
   minilight = import ./minilight world;
   minima-theme = import ./minima-theme world;
+  minimal = import ./minimal world;
   minios-xen = import ./minios-xen world;
   minisat = import ./minisat world;
   minivpt = import ./minivpt world;
@@ -1747,6 +1751,7 @@ world:
   tuntap = import ./tuntap world;
   type-beat = import ./type-beat world;
   type_conv = import ./type_conv world;
+  typebeat = import ./typebeat world;
   typehashlib = import ./typehashlib world;
   typerep = import ./typerep world;
   typerep_extended = import ./typerep_extended world;
