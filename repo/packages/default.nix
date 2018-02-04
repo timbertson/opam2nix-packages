@@ -248,6 +248,14 @@ world:
   capnp-rpc-mirage = import ./capnp-rpc-mirage world;
   capnp-rpc-unix = import ./capnp-rpc-unix world;
   captureio = import ./captureio world;
+  caqti = import ./caqti world;
+  caqti-async = import ./caqti-async world;
+  caqti-driver-mariadb = import ./caqti-driver-mariadb world;
+  caqti-driver-postgresql = import ./caqti-driver-postgresql world;
+  caqti-driver-sqlite3 = import ./caqti-driver-sqlite3 world;
+  caqti-dynload = import ./caqti-dynload world;
+  caqti-lwt = import ./caqti-lwt world;
+  caqti-type-calendar = import ./caqti-type-calendar world;
   caradoc = import ./caradoc world;
   caravan = import ./caravan world;
   cbor = import ./cbor world;
@@ -461,6 +469,7 @@ world:
   cpuid = import ./cpuid world;
   crc = import ./crc world;
   crdt-ml = import ./crdt-ml world;
+  crowbar = import ./crowbar world;
   crunch = import ./crunch world;
   cry = import ./cry world;
   crypt = import ./crypt world;
@@ -562,6 +571,7 @@ world:
   efl = import ./efl world;
   eigen = import ./eigen world;
   elasticsearch-cli = import ./elasticsearch-cli world;
+  electrod = import ./electrod world;
   electrumAnalyzer = import ./electrumAnalyzer world;
   elf2json = import ./elf2json world;
   eliom = import ./eliom world;
@@ -816,6 +826,7 @@ world:
   json-static = import ./json-static world;
   json-wheel = import ./json-wheel world;
   json-wheel_jane_street_overlay = import ./json-wheel_jane_street_overlay world;
+  json_of_jsonm = import ./json_of_jsonm world;
   jsondiff = import ./jsondiff world;
   jsonm = import ./jsonm world;
   jsoo_broadcastchannel = import ./jsoo_broadcastchannel world;
@@ -1294,6 +1305,7 @@ world:
   oqamldebug = import ./oqamldebug world;
   orakuda = import ./orakuda world;
   ordma = import ./ordma world;
+  orec = import ./orec world;
   orm = import ./orm world;
   orocksdb = import ./orocksdb world;
   osbx = import ./osbx world;

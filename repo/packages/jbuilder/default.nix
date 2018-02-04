@@ -8,6 +8,7 @@ world:
   "1.0+beta14" = import ./1.0+beta14 world;
   "1.0+beta15" = import ./1.0+beta15 world;
   "1.0+beta16" = import ./1.0+beta16 world;
+  "1.0+beta17" = import ./1.0+beta17 world;
   "1.0+beta2" = import ./1.0+beta2 world;
   "1.0+beta3" = import ./1.0+beta3 world;
   "1.0+beta4" = import ./1.0+beta4 world;
@@ -16,6 +17,6 @@ world:
   "1.0+beta7" = import ./1.0+beta7 world;
   "1.0+beta8" = import ./1.0+beta8 world;
   "1.0+beta9" = import ./1.0+beta9 world;
-  latest = import ./1.0+beta16 world;
+  latest = import ./1.0+beta17 world;
 }
 
