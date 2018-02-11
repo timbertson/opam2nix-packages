@@ -12,6 +12,7 @@ world:
   "8.7.0" = import ./8.7.0 world;
   "8.7.1" = import ./8.7.1 world;
   "8.7.1+1" = import ./8.7.1+1 world;
-  latest = import ./8.7.1+1 world;
+  "8.7.1+2" = import ./8.7.1+2 world;
+  latest = import ./8.7.1+2 world;
 }
 

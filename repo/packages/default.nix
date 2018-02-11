@@ -213,6 +213,7 @@ world:
   bsbnative = import ./bsbnative world;
   bsdowl = import ./bsdowl world;
   bson = import ./bson world;
+  bst = import ./bst world;
   bt = import ./bt world;
   build_path_prefix_map = import ./build_path_prefix_map world;
   bulletml = import ./bulletml world;
@@ -270,6 +271,7 @@ world:
   cfstream = import ./cfstream world;
   cgi = import ./cgi world;
   cgroups = import ./cgroups world;
+  chalk = import ./chalk world;
   chamo = import ./chamo world;
   channel = import ./channel world;
   charrua-client = import ./charrua-client world;
@@ -820,6 +822,7 @@ world:
   js_of_ocaml-ppx = import ./js_of_ocaml-ppx world;
   js_of_ocaml-toplevel = import ./js_of_ocaml-toplevel world;
   js_of_ocaml-tyxml = import ./js_of_ocaml-tyxml world;
+  json-derivers = import ./json-derivers world;
   json-pointer = import ./json-pointer world;
   json-predicate = import ./json-predicate world;
   json-rpc = import ./json-rpc world;
