@@ -59,17 +59,25 @@ let
 		#   {"lwt" = ">=1.5.0"; }
 		#   {"lwt" = true; }
 		packageNames = flattenSpecs packageNameOfVersionPair;
-
+		defaulted = value: dfl: if (value == null) then dfl else value;
 		defaultOcamlAttr = "ocaml";
-		defaultOcamlVersion = ocamlAttr: with builtins; (parseDrvName (getAttr ocamlAttr pkgs).name).version;
+		configureOcamlImpl = ocamlAttr: let
+				attr = defaulted ocamlAttr defaultOcamlAttr;
+				attrPath = lib.splitString "." attr;
+			in {
+				impl = lib.getAttrFromPath attrPath pkgs;
+				args = ["--ocaml-attr" attr];
+			};
+		parseOcamlVersion = impl: with builtins; (parseDrvName impl.name).version;
 		defaultBasePackages = ["base-unix" "base-bigarray" "base-threads"]; #XXX this is a hack.
 		defaultArgs = [];
 
 		selectLax = {
 			# used by `build`, so that you can combine import-time (world) options
 			# with select-time options
-			ocamlAttr ? defaultOcamlAttr,
-			ocamlVersion ? defaultOcamlVersion ocamlAttr,
+			ocamlAttr ? null,
+			ocaml ? null,
+			ocamlVersion ? null,
 			basePackages ? defaultBasePackages,
 			packages,
 			extraRepos ? [],
@@ -77,19 +85,26 @@ let
 			... # ignored
 		}:
 			with lib;
+			let
+				ocamlSpec = configureOcamlImpl ocamlAttr;
+				extraRepoArgs = map (repo: "--repo \"${buildNixRepo repo}\"") extraRepos;
+				cmd = ''env OCAMLRUNPARAM=b ${impl}/bin/opam2nix-select --dest "$out" \
+					--ocaml-version ${defaulted ocamlVersion (parseOcamlVersion ocamlSpec.impl)} \
+					--base-packages ${concatStringsSep "," basePackages} \
+					${concatStringsSep " " ocamlSpec.args} \
+					${concatStringsSep " " extraRepoArgs} \
+					${concatStringsSep " " args} \
+					${concatStringsSep " " (packageSpecs packages)} \
+				;
+				'';
+			in
 			# possible format for "specs":
 			# list of strings
 			# object with key = pkgname, attr = versionSpec, or
 			# list with intermixed strings / objects
 			runCommand "opam-selection.nix" {} ''
-			env OCAMLRUNPARAM=b ${impl}/bin/opam2nix-select --dest "$out" \
-				--ocaml-version ${ocamlVersion} \
-				--ocaml-attr ${ocamlAttr} \
-				--base-packages ${concatStringsSep "," basePackages} \
-				${concatStringsSep " " (map (repo: "--repo \"${buildNixRepo repo}\"") extraRepos)} \
-				${concatStringsSep " " args} \
-				${concatStringsSep " " (packageSpecs packages)} \
-			;
+				echo + ${cmd}
+				${cmd}
 			'';
 
 		# builds a nix repo from an opam repo. Doesn't allow for customisation like
@@ -102,8 +117,9 @@ let
 
 		selectStrict = {
 			# exposed as `select`, so you know if you're using an invalid argument
-			ocamlAttr ? defaultOcamlAttr,
-			ocamlVersion ? defaultOcamlVersion ocamlAttr,
+			ocamlAttr ? null,
+			ocamlVersion ? null,
+			ocaml ? null,
 			basePackages ? defaultBasePackages,
 			packages,
 			extraRepos ? [],
@@ -117,7 +133,7 @@ let
 		importSelectionsFile = selection_file: world:
 			assert opam2nix.format_version == 1; let result = (import repository ({
 				inherit pkgs opam2nix; # default, overrideable
-				ocamlVersion = with builtins; (parseDrvName result.opamSelection.ocaml.name).version;
+				ocamlVersion = parseOcamlVersion result.opamSelection.ocaml;
 				select = (import selection_file);
 				format_version = import ../repo/format_version.nix;
 			} // world // {
