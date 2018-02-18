@@ -22,7 +22,7 @@ in {
 			base="$(dirname "$(dirname ''${BASH_SOURCE[0]})")"
 			export OCAML_TOPLEVEL_PATH="$base/lib/toplevel"
 		}
-		envHooks+=(setToplevelPath)
+		addEnvHooks "$targetOffset" setToplevelPath
 
 		addOCamlPath () {
 			if test -d "''$1/lib"; then
@@ -37,7 +37,7 @@ in {
 			export OCAMLFIND_DESTDIR="''$out/lib/"
 			mkdir -p "''$out/lib"
 		}
-		envHooks+=(addOCamlPath)
+		addEnvHooks "$targetOffset" addOCamlPath
 	'';
 }
 
