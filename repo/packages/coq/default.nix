@@ -9,10 +9,10 @@ world:
   "8.5.3" = import ./8.5.3 world;
   "8.6" = import ./8.6 world;
   "8.6.1" = import ./8.6.1 world;
-  "8.7.0" = import ./8.7.0 world;
   "8.7.1" = import ./8.7.1 world;
   "8.7.1+1" = import ./8.7.1+1 world;
   "8.7.1+2" = import ./8.7.1+2 world;
-  latest = import ./8.7.1+2 world;
+  "8.7.2" = import ./8.7.2 world;
+  latest = import ./8.7.2 world;
 }
 

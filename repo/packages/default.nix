@@ -35,6 +35,7 @@ world:
   alsa = import ./alsa world;
   alt-ergo = import ./alt-ergo world;
   altgr-ergo = import ./altgr-ergo world;
+  amf = import ./amf world;
   amqp-client = import ./amqp-client world;
   ancient = import ./ancient world;
   angstrom = import ./angstrom world;
@@ -1135,6 +1136,7 @@ world:
   obuild = import ./obuild world;
   obus = import ./obus world;
   obytelib = import ./obytelib world;
+  oc45 = import ./oc45 world;
   ocal = import ./ocal world;
   ocaml-arg = import ./ocaml-arg world;
   ocaml-basics = import ./ocaml-basics world;
@@ -1307,6 +1309,7 @@ world:
   opus = import ./opus world;
   oqamldebug = import ./oqamldebug world;
   orakuda = import ./orakuda world;
+  orandforest = import ./orandforest world;
   ordma = import ./ordma world;
   orec = import ./orec world;
   orm = import ./orm world;
@@ -1748,6 +1751,7 @@ world:
   touist = import ./touist world;
   tplib = import ./tplib world;
   tptp = import ./tptp world;
+  traildb = import ./traildb world;
   trakeva = import ./trakeva world;
   transmission-rpc = import ./transmission-rpc world;
   travis-opam = import ./travis-opam world;

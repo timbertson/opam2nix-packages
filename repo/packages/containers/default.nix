@@ -4,8 +4,7 @@ world:
   "1.4" = import ./1.4 world;
   "1.5.1" = import ./1.5.1 world;
   "1.5.2" = import ./1.5.2 world;
-  "2.0+alpha1" = import ./2.0+alpha1 world;
-  "2.0+alpha2" = import ./2.0+alpha2 world;
-  latest = import ./2.0+alpha2 world;
+  "2.0" = import ./2.0 world;
+  latest = import ./2.0 world;
 }
 
