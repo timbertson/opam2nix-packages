@@ -3,6 +3,12 @@ with self.pkgs;
 with lib;
 let
 	overrideAll = fn: versions: mapAttrs (version: def: lib.overrideDerivation def fn) versions;
+	overrideIf = predicate: fn: versions:
+		mapAttrs (version: def:
+			if predicate version then
+				lib.overrideDerivation def fn
+			else def
+		) versions;
 
 	# XXX it's not really a `configure` phase, is it?
 	addNcurses = def: overrideAll (impl: { nativeBuildInputs = impl.nativeBuildInputs ++ [ncurses]; }) def;
@@ -39,9 +45,25 @@ in
 			'';
 		}) opamPackages.lwt;
 
-		ctypes = overrideAll (impl: {
-			nativeBuildInputs = impl.nativeBuildInputs ++ [ pkgconfig libffi ncurses ];
-		}) opamPackages.ctypes;
+		ctypes =
+		let
+			base =
+				overrideAll (impl: {
+					nativeBuildInputs = impl.nativeBuildInputs ++ [ pkgconfig libffi ncurses ];
+				}) opamPackages.ctypes;
+			withHeaderPatch =
+			overrideIf (version: lib.elem version [
+				# hardcode recent versions prior to https://github.com/ocamllabs/ocaml-ctypes/pull/557
+				"0.11.4"
+				"0.11.5"
+				"0.12.0"
+				"0.12.1"
+				"0.13.0"
+				"0.13.1"
+			]) (impl: {
+					patches = (impl.patches or []) ++ [./ctypes/install-headers-once.patch];
+				}) base;
+		in withHeaderPatch;
 
 		solo5-kernel-vertio = disableStackProtection opamPackages.solo5-kernel-vertio;
 		solo5-kernel-ukvm = disableStackProtection opamPackages.solo5-kernel-ukvm;
