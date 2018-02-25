@@ -7,9 +7,11 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      alcotest = opamSelection.alcotest or null;
+      jbuilder = opamSelection.jbuilder;
+      nocrypto = opamSelection.nocrypto;
       ocaml = opamSelection.ocaml;
-      ocamlbuild = opamSelection.ocamlbuild;
-      ocamlfind = opamSelection.ocamlfind;
+      ocamlfind = opamSelection.ocamlfind or null;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;
@@ -20,12 +22,12 @@ pkgs.stdenv.mkDerivation
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
-  name = "camllib-1.3.0";
+  name = "pbkdf-0.3.0";
   opamEnv = builtins.toJSON 
   {
     deps = opamDeps;
     files = null;
-    name = "camllib";
+    name = "pbkdf";
     ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
@@ -36,8 +38,8 @@ pkgs.stdenv.mkDerivation
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "1gd9zym3hzlmsamm92xvd6mwgq6w4y1kby6i777vacmn0q0gil7z";
-    url = "http://nberth.space/pool/camllib/camllib-1.3.0.tar.gz";
+    sha256 = "0q3ynfidkdnj44l8a974yybfxgbc9m81g7qvq42ig46w5b315z8c";
+    url = "https://github.com/abeaumont/ocaml-pbkdf/archive/0.3.0.tar.gz";
   };
 }
 

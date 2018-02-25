@@ -7,19 +7,11 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
-      cmdliner = opamSelection.cmdliner or null;
-      ctypes = opamSelection.ctypes or null;
-      ctypes-foreign = opamSelection.ctypes-foreign or null;
-      hex = opamSelection.hex;
-      integers = opamSelection.integers;
+      batteries = opamSelection.batteries;
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
-      ounit = opamSelection.ounit or null;
-      ppx_deriving = opamSelection.ppx_deriving;
-      ppx_deriving_yojson = opamSelection.ppx_deriving_yojson;
-      topkg = opamSelection.topkg;
-      zarith = opamSelection.zarith;
+      ounit = opamSelection.ounit;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;
@@ -30,12 +22,12 @@ pkgs.stdenv.mkDerivation
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
-  name = "pkcs11-0.12.0";
+  name = "ucorelib-0.1.0";
   opamEnv = builtins.toJSON 
   {
     deps = opamDeps;
     files = null;
-    name = "pkcs11";
+    name = "ucorelib";
     ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
@@ -46,9 +38,8 @@ pkgs.stdenv.mkDerivation
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "1szzg15c9jgx1nj3rkm12w37g85i14c0qs7k232x88bq59z7psw4";
-    url = "https://github.com/cryptosense/pkcs11/releases/download/v0.12.0/pkcs11-0.12.0.tbz";
+    sha256 = "00r2snbqh2wldxxpdmrliich5xb7afnjl9mqhbv9blyhwgq3c375";
+    url = "https://github.com/yoriyuki/ucorelib/archive/v0.1.0.tar.gz";
   };
-  unpackCmd = "tar -xf \"$curSrc\"";
 }
 

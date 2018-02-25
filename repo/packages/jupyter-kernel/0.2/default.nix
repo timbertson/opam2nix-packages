@@ -7,8 +7,22 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
+      ISO8601 = opamSelection.ISO8601;
+      atdgen = opamSelection.atdgen;
+      base-bytes = opamSelection.base-bytes;
+      base-unix = opamSelection.base-unix;
+      hex = opamSelection.hex;
+      jbuilder = opamSelection.jbuilder;
+      lwt = opamSelection.lwt;
+      lwt-zmq = opamSelection.lwt-zmq;
+      nocrypto = opamSelection.nocrypto;
       ocaml = opamSelection.ocaml;
       ocamlfind = opamSelection.ocamlfind or null;
+      result = opamSelection.result;
+      tyxml = opamSelection.tyxml or null;
+      uuidm = opamSelection.uuidm;
+      yojson = opamSelection.yojson;
+      zmq = opamSelection.zmq;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;
@@ -19,12 +33,12 @@ pkgs.stdenv.mkDerivation
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
-  name = "camlp5-7.00";
+  name = "jupyter-kernel-0.2";
   opamEnv = builtins.toJSON 
   {
     deps = opamDeps;
-    files = ./files;
-    name = "camlp5";
+    files = null;
+    name = "jupyter-kernel";
     ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
@@ -32,12 +46,11 @@ pkgs.stdenv.mkDerivation
   {
     opamSelection = opamSelection;
   };
-  prePatch = "cp -r ${./files}/* ./";
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "1zbw16lyzzmdnddl452r1l3vq51ppz47zcbmq1w9r1wgwn42698b";
-    url = "https://github.com/camlp5/camlp5/archive/rel700.tar.gz";
+    sha256 = "1gvjg0vp0861wsman5sq7riangpqkfsyndasfyf5lb4bqsl2rqxc";
+    url = "https://github.com/ocaml-jupyter/jupyter-kernel/archive/0.2.tar.gz";
   };
 }
 

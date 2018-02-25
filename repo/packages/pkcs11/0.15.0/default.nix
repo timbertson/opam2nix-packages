@@ -7,17 +7,19 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
-      camlp5 = opamSelection.camlp5;
-      cmdliner = opamSelection.cmdliner;
-      coq = opamSelection.coq;
+      cmdliner = opamSelection.cmdliner or null;
+      ctypes = opamSelection.ctypes or null;
+      ctypes-foreign = opamSelection.ctypes-foreign or null;
+      hex = opamSelection.hex;
+      integers = opamSelection.integers;
       ocaml = opamSelection.ocaml;
       ocamlbuild = opamSelection.ocamlbuild;
       ocamlfind = opamSelection.ocamlfind;
+      ounit = opamSelection.ounit or null;
       ppx_deriving = opamSelection.ppx_deriving;
-      ppx_driver = opamSelection.ppx_driver;
-      ppx_import = opamSelection.ppx_import;
-      ppx_sexp_conv = opamSelection.ppx_sexp_conv;
-      sexplib = opamSelection.sexplib;
+      ppx_deriving_yojson = opamSelection.ppx_deriving_yojson;
+      topkg = opamSelection.topkg;
+      zarith = opamSelection.zarith;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;
@@ -28,12 +30,12 @@ pkgs.stdenv.mkDerivation
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
-  name = "coq-serapi-8.7.1+0.4.8";
+  name = "pkcs11-0.15.0";
   opamEnv = builtins.toJSON 
   {
     deps = opamDeps;
     files = null;
-    name = "coq-serapi";
+    name = "pkcs11";
     ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
@@ -44,8 +46,9 @@ pkgs.stdenv.mkDerivation
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "0pljycibh0zj22i7xk8484nq76zzhaq2f2balxi62m4wylz847ll";
-    url = "https://github.com/ejgallego/coq-serapi/archive/8.7.1+0.4.8.tar.gz";
+    sha256 = "0q4zx204564lv73mjnk6sjsra66wda0j5gh2n5hj5n7p8w1f71zk";
+    url = "https://github.com/cryptosense/pkcs11/releases/download/v0.15.0/pkcs11-0.15.0.tbz";
   };
+  unpackCmd = "tar -xf \"$curSrc\"";
 }
 

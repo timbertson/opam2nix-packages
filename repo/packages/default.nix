@@ -579,6 +579,7 @@ world:
   elf2json = import ./elf2json world;
   eliom = import ./eliom world;
   email_message = import ./email_message world;
+  emile = import ./emile world;
   emoji = import ./emoji world;
   enumerate = import ./enumerate world;
   enumerators = import ./enumerators world;
@@ -595,6 +596,7 @@ world:
   extlib-compat = import ./extlib-compat world;
   extprot = import ./extprot world;
   extunix = import ./extunix world;
+  ezgzip = import ./ezgzip world;
   ezirmin = import ./ezirmin world;
   ezjsonm = import ./ezjsonm world;
   ezjsonm-lwt = import ./ezjsonm-lwt world;
@@ -884,6 +886,7 @@ world:
   libvhd = import ./libvhd world;
   libvirt = import ./libvirt world;
   lilis = import ./lilis world;
+  line-up-words = import ./line-up-words world;
   linenoise = import ./linenoise world;
   linkage = import ./linkage world;
   links = import ./links world;
@@ -1519,6 +1522,7 @@ world:
   pvem = import ./pvem world;
   pvem_lwt_unix = import ./pvem_lwt_unix world;
   pxp = import ./pxp world;
+  py = import ./py world;
   pyml = import ./pyml world;
   qbf = import ./qbf world;
   qcheck = import ./qcheck world;

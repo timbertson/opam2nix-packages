@@ -2,16 +2,22 @@ world:
 let
     fetchurl = pkgs.fetchurl;
     inputs = lib.filter (dep: dep != true && dep != null)
-    ([ (pkgs.libsecp256k1 or null) (pkgs.libsecp256k1-dev or null)
-        (pkgs.unzip) ] ++ (lib.attrValues opamDeps));
+    ([  ] ++ (lib.attrValues opamDeps));
     lib = pkgs.lib;
     opam2nix = world.opam2nix;
     opamDeps = 
     {
-      oasis = opamSelection.oasis;
+      alcotest = opamSelection.alcotest or null;
+      astring = opamSelection.astring;
+      benchmark = opamSelection.benchmark or null;
+      camlzip = opamSelection.camlzip;
+      jbuilder = opamSelection.jbuilder;
       ocaml = opamSelection.ocaml;
-      ocamlbuild = opamSelection.ocamlbuild;
-      ocamlfind = opamSelection.ocamlfind;
+      ocamlfind = opamSelection.ocamlfind or null;
+      ocplib-endian = opamSelection.ocplib-endian;
+      odoc = opamSelection.odoc or null;
+      qcheck = opamSelection.qcheck or null;
+      rresult = opamSelection.rresult;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;
@@ -22,12 +28,12 @@ pkgs.stdenv.mkDerivation
   buildPhase = "${opam2nix}/bin/opam2nix invoke build";
   configurePhase = "true";
   installPhase = "${opam2nix}/bin/opam2nix invoke install";
-  name = "secp256k1-0.1.5";
+  name = "ezgzip-0.2.0";
   opamEnv = builtins.toJSON 
   {
     deps = opamDeps;
     files = null;
-    name = "secp256k1";
+    name = "ezgzip";
     ocaml-version = world.ocamlVersion;
     spec = ./opam;
   };
@@ -38,8 +44,8 @@ pkgs.stdenv.mkDerivation
   propagatedBuildInputs = inputs;
   src = fetchurl 
   {
-    sha256 = "1fgy288qhib3lm55d8q5n9f4hnjp22gdzwybd1qw4kz0nccl9nfj";
-    url = "https://github.com/dakk/secp256k1-ml/archive/0.1.5.zip";
+    sha256 = "1yxv3k25j8raba0vm2p2gx5jb5bh1ngvgmbgcz681pkdf08036rn";
+    url = "https://github.com/hcarty/ezgzip/archive/v0.2.0.tar.gz";
   };
 }
 
