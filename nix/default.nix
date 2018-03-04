@@ -78,7 +78,7 @@ let
 			ocamlAttr ? null,
 			ocaml ? null,
 			ocamlVersion ? null,
-			basePackages ? defaultBasePackages,
+			basePackages ? null,
 			packages,
 			extraRepos ? [],
 			args ? defaultArgs,
@@ -88,9 +88,11 @@ let
 			let
 				ocamlSpec = configureOcamlImpl ocamlAttr;
 				extraRepoArgs = map (repo: "--repo \"${buildNixRepo repo}\"") extraRepos;
+				ocamlVersionResolved = parseOcamlVersion ocamlSpec.impl;
+				basePackagesResolved = defaulted basePackages defaultBasePackages;
 				cmd = ''env OCAMLRUNPARAM=b ${impl}/bin/opam2nix-select --dest "$out" \
-					--ocaml-version ${defaulted ocamlVersion (parseOcamlVersion ocamlSpec.impl)} \
-					--base-packages ${concatStringsSep "," basePackages} \
+					--ocaml-version ${defaulted ocamlVersion ocamlVersionResolved} \
+					--base-packages ${concatStringsSep "," basePackagesResolved} \
 					${concatStringsSep " " ocamlSpec.args} \
 					${concatStringsSep " " extraRepoArgs} \
 					${concatStringsSep " " args} \
@@ -120,7 +122,7 @@ let
 			ocamlAttr ? null,
 			ocamlVersion ? null,
 			ocaml ? null,
-			basePackages ? defaultBasePackages,
+			basePackages ? null,
 			packages,
 			extraRepos ? [],
 			args ? defaultArgs,
@@ -170,40 +172,44 @@ let
 				opamRepo = let
 					opamFilename = attrs.opamFile or "\"$(find . -maxdepth 1 -name 'opam' -o -name '*.opam')\"";
 					src = attrs.src;
-				in stdenv.mkDerivation {
-					name = "${packageName}-${version}-repo";
-					inherit src;
-					configurePhase = "true";
-					buildPhase = "true";
-					installPhase = ''
-						if [ -z "${version}" ]; then
-							echo "Error: no version specified"
-							exit 1
-						fi
-						dest="$out/packages/${packageName}/${packageName}.${version}"
-						mkdir -p "$dest"
-						cp ${opamFilename} "$dest/opam"
-						if ! [ -f "$dest/opam" ]; then
-							echo "Error: opam file not created"
-							exit 1
-						fi
-						if [ -f "${src}" ]; then
-							echo 'archive: "${src}"' > "$dest/url"
-						else
-							echo 'local: "${src}"' > "$dest/url"
-						fi
-					'';
-				};
-				packageSet = utils.buildPackageSet (drvAttrs // {
+					in stdenv.mkDerivation {
+						name = "${packageName}-${version}-repo";
+						inherit src;
+						configurePhase = "true";
+						buildPhase = "true";
+						installPhase = ''
+							if [ -z "${version}" ]; then
+								echo "Error: no version specified"
+								exit 1
+							fi
+							dest="$out/packages/${packageName}/${packageName}.${version}"
+							mkdir -p "$dest"
+							cp ${opamFilename} "$dest/opam"
+							if ! [ -f "$dest/opam" ]; then
+								echo "Error: opam file not created"
+								exit 1
+							fi
+							if [ -f "${src}" ]; then
+								echo 'archive: "${src}"' > "$dest/url"
+							else
+								echo 'local: "${src}"' > "$dest/url"
+							fi
+						'';
+					};
+
+				opamAttrs = (drvAttrs // {
 					# `packages` is undocumented, left for consistency
 					packages = (attrs.extraPackages or attrs.packages or []) ++ [ "${packageName}=${version}" ];
 					extraRepos = (attrs.extraRepos or []) ++ [ opamRepo ];
 				});
+
+				packageSet = utils.buildPackageSet opamAttrs;
 				drv = builtins.getAttr packageName packageSet;
 				passthru = {
 					opam2nix = {
 						repo = opamRepo;
 						packages = packageSet;
+						selection = utils.selectionsFileLax opamAttrs;
 					};
 				} // (attrs.passthru or {});
 			in

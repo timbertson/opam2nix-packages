@@ -7,15 +7,8 @@ let
     opam2nix = world.opam2nix;
     opamDeps = 
     {
-      js_of_ocaml-compiler = opamSelection.js_of_ocaml-compiler or null;
-      menhir = opamSelection.menhir or null;
       ocaml = opamSelection.ocaml;
-      ocaml-migrate-parsetree = opamSelection.ocaml-migrate-parsetree or null;
       ocamlfind = opamSelection.ocamlfind;
-      odoc = opamSelection.odoc or null;
-      ppx_driver = opamSelection.ppx_driver or null;
-      reason = opamSelection.reason or null;
-      utop = opamSelection.utop or null;
     };
     opamSelection = world.opamSelection;
     pkgs = world.pkgs;
