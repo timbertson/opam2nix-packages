@@ -383,6 +383,7 @@ world:
   conf-python-2-7 = import ./conf-python-2-7 world;
   conf-python-2-7-dev = import ./conf-python-2-7-dev world;
   conf-qt = import ./conf-qt world;
+  conf-r = import ./conf-r world;
   conf-rdkit = import ./conf-rdkit world;
   conf-rocksdb = import ./conf-rocksdb world;
   conf-sdl-gfx = import ./conf-sdl-gfx world;
