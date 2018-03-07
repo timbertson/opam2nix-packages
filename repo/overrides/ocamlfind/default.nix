@@ -2,8 +2,9 @@ world: def:
 let
 	ocaml_version = (builtins.parseDrvName world.opamSelection.ocaml.name).version;
 in {
-	patches = [ ./install_topfind.patch ];
+	patches = (def.patches or []) ++ [ ./install_topfind.patch ];
 	buildPhase = ''
+		${world.opam2nix}/bin/opam2nix invoke prebuild
 		echo 'ldconf="ignore"' >> findlib.conf.in
 		./configure \
 			-bindir $out/bin \
