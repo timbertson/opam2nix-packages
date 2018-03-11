@@ -1154,6 +1154,7 @@ world:
   ocaml-indent = import ./ocaml-indent world;
   ocaml-inifiles = import ./ocaml-inifiles world;
   ocaml-js-stdlib = import ./ocaml-js-stdlib world;
+  ocaml-logicalform = import ./ocaml-logicalform world;
   ocaml-lua = import ./ocaml-lua world;
   ocaml-makefile = import ./ocaml-makefile world;
   ocaml-manual = import ./ocaml-manual world;
@@ -1318,6 +1319,7 @@ world:
   orec = import ./orec world;
   orm = import ./orm world;
   orocksdb = import ./orocksdb world;
+  orsvm_e1071 = import ./orsvm_e1071 world;
   osbx = import ./osbx world;
   osc = import ./osc world;
   osdp = import ./osdp world;
