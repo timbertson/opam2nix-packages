@@ -213,7 +213,7 @@ let
 					};
 				} // (attrs.passthru or {});
 			in
-			lib.addPassthru drv passthru;
+			lib.extendDerivation true passthru drv;
 	};
 
 	impl = stdenv.mkDerivation {
