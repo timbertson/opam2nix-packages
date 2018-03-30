@@ -164,17 +164,37 @@ let
 		# Like `buildPackageSpec` but only returns the single selected package.
 		buildPackage = name: buildPackageConstraint { inherit name; };
 
-		# build a nix derivation from a (local) opam library, i.e. one not in the official repositories
-		buildOpamPackage = attrs:
-			let
-				drvAttrs = removeAttrs attrs ["src" "opamFile" "packageName" "version" "passthru" ];
-				parsedName = builtins.parseDrvName attrs.name;
-				packageName = attrs.packageName or parsedName.name;
-				version = attrs.version or parsedName.version;
 
-				opamRepo = let
+		# Build a nix derivation from a (local) opam library, i.e. one not in the
+		# official repositories
+		buildOpamPackage =
+			{ name ? parsedName + "-" + parsedVersion
+			, __parsedName ? builtins.parseDrvName attrs.name
+			, packageName ? __parsedName.name
+			, version ? parsedName.version
+			, ...
+			} @ attrs:
+
+			assert attrs ? name || (attrs ? packageName) && (attrs ? version);
+
+			let
+				attrs' = removeAttrs attrs ["name" "packageName" "version" "src" "passthru" ];
+				info = utils.buildOpamPackages
+					(attrs' // { packagesParsed = [ { inherit packageName version src; } ]; });
+				drv = builtins.getAttr packageName info.packageSet;
+				passthru = { opam2nix = info; } // (attrs.passthru or {});
+			in
+			lib.extendDerivation true passthru drv;
+
+
+		# Build nix derivations from (local) opam libraries, i.e. ones not in the
+		# official repositories.
+		buildOpamPackages = { packagesParsed, ... } @ attrs:
+			let
+				drvAttrs = removeAttrs attrs [ "opamFile" "packagesParsed" ];
+
+				opamRepo = { packageName, version, src }: let
 					opamFilename = attrs.opamFile or "\"$(find . -maxdepth 1 -name 'opam' -o -name '*.opam')\"";
-					src = attrs.src;
 					in stdenv.mkDerivation {
 						name = "${packageName}-${version}-repo";
 						inherit src;
@@ -200,22 +220,19 @@ let
 						'';
 					};
 
-				opamAttrs = (drvAttrs // {
-					specs = (attrs.specs or []) ++ [ { name = packageName; constraint = "=" + version; } ];
-					extraRepos = (attrs.extraRepos or []) ++ [ opamRepo ];
-				});
+				makeSpec = { packageName, version, ... }: { name = packageName; constraint = "=${version}"; };
 
-				packageSet = utils.buildPackageSet opamAttrs;
-				drv = builtins.getAttr packageName packageSet;
-				passthru = {
-					opam2nix = {
-						repo = opamRepo;
-						packages = packageSet;
-						selection = utils.selectionsFileLax opamAttrs;
-					};
-				} // (attrs.passthru or {});
+				opamAttrs = (drvAttrs // {
+					# `specs` is undocumented, left for consistency
+					specs = (attrs.specs or []) ++ map makeSpec attrs.packagesParsed;
+					extraRepos = (attrs.extraRepos or []) ++ map opamRepo attrs.packagesParsed;
+				});
 			in
-			lib.extendDerivation true passthru drv;
+			{
+				repo = opamRepo;
+				packageSet = utils.buildPackageSet opamAttrs;
+				selection = utils.selectionsFileLax opamAttrs;
+			};
 	};
 
 	impl = stdenv.mkDerivation {
