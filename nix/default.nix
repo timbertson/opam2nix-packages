@@ -196,7 +196,7 @@ let
 
 				opamAttrs = (drvAttrs // {
 					# `specs` is undocumented, left for consistency
-					specs = (attrs.extraPackages or attrs.specs or [])
+					specs = (attrs.specs or [])
 					  ++ [ { name = packageName; constraint = "=" + version; } ];
 					extraRepos = (attrs.extraRepos or []) ++ [ opamRepo ];
 				});
