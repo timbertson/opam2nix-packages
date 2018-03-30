@@ -27,7 +27,12 @@ One you've copied `release.nix` as `opam2nix-packages.nix`, you can use it like 
     # and include each direct dependency in your `buildInputs`. This will
     # include the `ocaml` dependency:
     mkDerivation {
-      buildInputs = opam2nix.build { packages = ["lwt"]; };
+      buildInputs = opam2nix.build {
+        packages = [
+          { name = "lwt"; }
+          { name = "irmin"; constraint = "=1.3.2"; }
+        ];
+      };
       ( ... )
     };
 
@@ -41,7 +46,7 @@ One you've copied `release.nix` as `opam2nix-packages.nix`, you can use it like 
 
 The utility `buildPackageSet` is very useful for re-exposing all transitive ocaml dependencies for debugging purposes:
 
-    passThru.ocamlPackages = opam2nix.buildPackageSet { packages = ["lwt"]' };
+    passThru.ocamlPackages = opam2nix.buildPackageSet { packages = [ { name = "lwt"; } ]' };
 
 This can be used with e.g. `nix-build -A ocamlPackages.lwt default.nix` if you need to build an individual dependency (but in your project's configuration; i.e. taking all optional dependencies and constraints into account). It accepts all the same arguments as `build` and produces an object with keys for every transitive dependency, rather than a list of direct dependencies.
 
@@ -54,7 +59,7 @@ accepted by the lower level `selectionsFile` and `importSelectionsFile` function
     - `ocamlAttr`: defaults to "ocaml"
     - `ocamlVersion`: default is extracted from the derivaiton name of `pkgs.<ocamlAttr>`, should rarely need to be overriden
     - `basePackages`: defaults to `["base-unix" "base-bigarray" "base-threads"]`, which is hacky.
-    - `packages`: string list of package names
+    - `packages`: list of records with a name and optional constraint field.
     - `args`: extra list of string arguments to pass to the `opam2nix` tool (default `[]`)
     - `extraRepos`: extra list of string arguments to pass to the `opam2nix` tool (default `[]`)
 

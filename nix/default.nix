@@ -37,29 +37,22 @@ let
 	};
 	utils = let
 
-		flattenSingleSpec = attrMapper: obj: if builtins.isString obj
-			then [obj] # plain string
-			else lib.mapAttrsToList attrMapper obj;
+		## Specifications
 
-		flattenSpecs = attrMapper: specs: if builtins.isList specs
-			then lib.concatMap (flattenSingleSpec attrMapper) specs
-			else (flattenSingleSpec attrMapper) specs;
+		# A specification is attrset with a `name` field and optional `constraint`
+		# field. Names and constraints are defined as in OPAM.
+		#
+		#   { name = "foo"; constraint = ">4.0.0"; }
 
-		specOfVersionPair = name: spec: assert spec != null; assert name != null; if spec == true then name else
-			if lib.any (pfx: lib.hasPrefix pfx spec) ["!" "<" "=" ">"]
-				then "'${name}${spec}'" # includes relop
-				else "'${name}=${spec}'"; # no relop, assume exact version
-		packageSpecs = flattenSpecs specOfVersionPair;
+		# Normalize a specification collection into a list of concatenated name+constraints
+		packageSpecs = map ({ name, constraint ? "" }: "'${name}${constraint}'");
 
-		packageNameOfVersionPair = name: spec: name;
+		# get a list of package names from a specification collection
+		packageNames = map ({ name, ... }: name);
 
-		# get a list of package names from a list of specifications
-		# a specification is e.g.:
-		#   "lambda-term"
-		#   {"lwt" = ">=1.5.0"; }
-		#   {"lwt" = true; }
-		packageNames = flattenSpecs packageNameOfVersionPair;
-		defaulted = value: dfl: if (value == null) then dfl else value;
+		## Other stuff
+
+		defaulted = value: dfl: if value == null then dfl else value;
 		defaultOcamlAttr = "ocaml";
 		configureOcamlImpl = ocamlAttr: let
 				attr = defaulted ocamlAttr defaultOcamlAttr;
@@ -68,7 +61,8 @@ let
 				impl = lib.getAttrFromPath attrPath pkgs;
 				args = ["--ocaml-attr" attr];
 			};
-		parseOcamlVersion = impl: with builtins; (parseDrvName impl.name).version;
+		parseOcamlVersion = { name, ... }: (builtins.parseDrvName name).version;
+
 		defaultBasePackages = ["base-unix" "base-bigarray" "base-threads"]; #XXX this is a hack.
 		defaultArgs = [];
 
@@ -158,8 +152,11 @@ let
 			let selections = (utils.buildPackageSet args); in
 			[selections.ocaml] ++ (utils.packagesOfSelections packages selections);
 
-		# Like build but only returns the single selected package.
-		buildPackage = name: args: builtins.getAttr name (utils.buildPackageSet ({ packages = [name]; } // args));
+		# Takes a single spec and only returns a single selected package matching that.
+		buildPackageSpec = spec: args: builtins.getAttr name (utils.buildPackageSet ({ packages = [spec]; } // args));
+
+		# Like `buildPackageConstraint` but only returns the single selected package.
+		buildPackage = name: buildPackageConstraint { inherit name; };
 
 		# build a nix derivation from a (local) opam library, i.e. one not in the official repositories
 		buildOpamPackage = attrs:
@@ -199,7 +196,8 @@ let
 
 				opamAttrs = (drvAttrs // {
 					# `packages` is undocumented, left for consistency
-					packages = (attrs.extraPackages or attrs.packages or []) ++ [ "${packageName}=${version}" ];
+					packages = (attrs.extraPackages or attrs.packages or [])
+					  ++ [ { name = packageName; constraint = "=" + version; } ];
 					extraRepos = (attrs.extraRepos or []) ++ [ opamRepo ];
 				});
 
