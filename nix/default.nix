@@ -45,10 +45,10 @@ let
 		#   { name = "foo"; constraint = ">4.0.0"; }
 
 		# Normalize a specification collection into a list of concatenated name+constraints
-		packageSpecs = map ({ name, constraint ? "" }: "'${name}${constraint}'");
+		specStrings = map ({ name, constraint ? "" }: "'${name}${constraint}'");
 
 		# get a list of package names from a specification collection
-		packageNames = map ({ name, ... }: name);
+		specNames = map ({ name, ... }: name);
 
 		## Other stuff
 
@@ -73,7 +73,7 @@ let
 			ocaml ? null,
 			ocamlVersion ? null,
 			basePackages ? null,
-			packages,
+			specs,
 			extraRepos ? [],
 			args ? defaultArgs,
 			... # ignored
@@ -90,7 +90,7 @@ let
 					${concatStringsSep " " ocamlSpec.args} \
 					${concatStringsSep " " extraRepoArgs} \
 					${concatStringsSep " " args} \
-					${concatStringsSep " " (packageSpecs packages)} \
+					${concatStringsSep " " (specStrings specs)} \
 				;
 				'';
 			in
@@ -117,7 +117,7 @@ let
 			ocamlVersion ? null,
 			ocaml ? null,
 			basePackages ? null,
-			packages,
+			specs,
 			extraRepos ? [],
 			args ? defaultArgs,
 		}@conf: selectLax conf;
@@ -137,25 +137,25 @@ let
 					++ map (path: import (buildNixRepo path)) (world.extraRepos or []);
 			})); in result.opamSelection;
 
-		inherit buildNixRepo packageNames;
+		inherit buildNixRepo specNames;
 
 		# get the implementation of each specified package in the selections.
 		# Selections are the result of `build` (or importing the selection file)
 		packagesOfSelections = specs: selections:
-			map (name: builtins.getAttr name selections) (packageNames specs);
+			map (name: builtins.getAttr name selections) (specNames specs);
 
 		# Select-and-import. Returns a selection object with attributes for each extant package
-		buildPackageSet = { packages, ... }@args: (utils.importSelectionsFile (selectLax args) args);
+		buildPackageSet = { specs, ... }@args: (utils.importSelectionsFile (selectLax args) args);
 
 		# like just the attribute values from `buildPackageSet`, but also includes ocaml dependency
-		build = { packages, ... }@args:
+		build = { specs, ... }@args:
 			let selections = (utils.buildPackageSet args); in
-			[selections.ocaml] ++ (utils.packagesOfSelections packages selections);
+			[selections.ocaml] ++ (utils.packagesOfSelections specs selections);
 
 		# Takes a single spec and only returns a single selected package matching that.
-		buildPackageSpec = spec: args: builtins.getAttr name (utils.buildPackageSet ({ packages = [spec]; } // args));
+		buildPackageSpec = spec: args: builtins.getAttr name (utils.buildPackageSet ({ specs = [spec]; } // args));
 
-		# Like `buildPackageConstraint` but only returns the single selected package.
+		# Like `buildPackageSpec` but only returns the single selected package.
 		buildPackage = name: buildPackageConstraint { inherit name; };
 
 		# build a nix derivation from a (local) opam library, i.e. one not in the official repositories
@@ -195,8 +195,8 @@ let
 					};
 
 				opamAttrs = (drvAttrs // {
-					# `packages` is undocumented, left for consistency
-					packages = (attrs.extraPackages or attrs.packages or [])
+					# `specs` is undocumented, left for consistency
+					specs = (attrs.extraPackages or attrs.specs or [])
 					  ++ [ { name = packageName; constraint = "=" + version; } ];
 					extraRepos = (attrs.extraRepos or []) ++ [ opamRepo ];
 				});

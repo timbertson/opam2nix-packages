@@ -12,7 +12,7 @@ stdenv.mkDerivation {
 		mkdir -p $out
 		${
 			lib.concatStringsSep "\n" (
-				map (name: "ln -s ${builtins.getAttr name deps} $out/${name}") world.packages
+				map (name: "ln -s ${builtins.getAttr name deps} $out/${name}") world.specs
 			)
 		}
 	'';
