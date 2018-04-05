@@ -47,6 +47,14 @@ let
 		# Normalize a list of specs into a list of concatenated name+constraints
 		specStrings = map ({ name, constraint ? "" }: "'${name}${constraint}'");
 
+		# toSpec and toSpecs are utilities for allowing a shorthand string "x"
+		# to stand for ({name = "x";})
+		toSpec = obj: if builtins.isString obj
+			then { name = obj; } # plain string
+			else obj; # assume well-formed spec
+
+		toSpecs = map toSpec;
+
 		# get a list of package names from a specification collection
 		packageNames = map ({ name, ... }: name);
 
@@ -136,7 +144,7 @@ let
 				extraPackages = map (path: import (buildNixRepo path)) (world.extraRepos or []);
 			})); in result.opamSelection;
 
-		inherit buildNixRepo packageNames;
+		inherit buildNixRepo packageNames toSpec toSpecs;
 
 		# get the implementation of each specified package in the selections.
 		# Selections are the result of `build` (or importing the selection file)
@@ -144,7 +152,7 @@ let
 			map (name: builtins.getAttr name selections) (packageNames specs);
 
 		# Select-and-import. Returns a selection object with attributes for each extant package
-		buildPackageSet = { specs, ... }@args: (utils.importSelectionsFile (selectLax args) args);
+		buildPackageSet = args: (utils.importSelectionsFile (selectLax args) args);
 
 		# like just the attribute values from `buildPackageSet`, but also includes ocaml dependency
 		build = { specs, ... }@args:
