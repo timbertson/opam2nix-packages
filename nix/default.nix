@@ -37,29 +37,22 @@ let
 	};
 	utils = let
 
-		flattenSingleSpec = attrMapper: obj: if builtins.isString obj
-			then [obj] # plain string
-			else lib.mapAttrsToList attrMapper obj;
+		## Specifications
 
-		flattenSpecs = attrMapper: specs: if builtins.isList specs
-			then lib.concatMap (flattenSingleSpec attrMapper) specs
-			else (flattenSingleSpec attrMapper) specs;
+		# A specification is attrset with a `name` field and optional `constraint`
+		# field. Names and constraints are defined as in OPAM.
+		#
+		#   { name = "foo"; constraint = ">4.0.0"; }
 
-		specOfVersionPair = name: spec: assert spec != null; assert name != null; if spec == true then name else
-			if lib.any (pfx: lib.hasPrefix pfx spec) ["!" "<" "=" ">"]
-				then "'${name}${spec}'" # includes relop
-				else "'${name}=${spec}'"; # no relop, assume exact version
-		packageSpecs = flattenSpecs specOfVersionPair;
+		# Normalize a specification collection into a list of concatenated name+constraints
+		specStrings = map ({ name, constraint ? "" }: "'${name}${constraint}'");
 
-		packageNameOfVersionPair = name: spec: name;
+		# get a list of package names from a specification collection
+		specNames = map ({ name, ... }: name);
 
-		# get a list of package names from a list of specifications
-		# a specification is e.g.:
-		#   "lambda-term"
-		#   {"lwt" = ">=1.5.0"; }
-		#   {"lwt" = true; }
-		packageNames = flattenSpecs packageNameOfVersionPair;
-		defaulted = value: dfl: if (value == null) then dfl else value;
+		## Other stuff
+
+		defaulted = value: dfl: if value == null then dfl else value;
 		defaultOcamlAttr = "ocaml";
 		configureOcamlImpl = ocamlAttr: let
 				attr = defaulted ocamlAttr defaultOcamlAttr;
@@ -68,7 +61,8 @@ let
 				impl = lib.getAttrFromPath attrPath pkgs;
 				args = ["--ocaml-attr" attr];
 			};
-		parseOcamlVersion = impl: with builtins; (parseDrvName impl.name).version;
+		parseOcamlVersion = { name, ... }: (builtins.parseDrvName name).version;
+
 		defaultBasePackages = ["base-unix" "base-bigarray" "base-threads"]; #XXX this is a hack.
 		defaultArgs = [];
 
@@ -79,7 +73,7 @@ let
 			ocaml ? null,
 			ocamlVersion ? null,
 			basePackages ? null,
-			packages,
+			specs,
 			extraRepos ? [],
 			args ? defaultArgs,
 			... # ignored
@@ -96,7 +90,7 @@ let
 					${concatStringsSep " " ocamlSpec.args} \
 					${concatStringsSep " " extraRepoArgs} \
 					${concatStringsSep " " args} \
-					${concatStringsSep " " (packageSpecs packages)} \
+					${concatStringsSep " " (specStrings specs)} \
 				;
 				'';
 			in
@@ -111,7 +105,7 @@ let
 
 		# builds a nix repo from an opam repo. Doesn't allow for customisation like
 		# overrides etc, but useful for adding non-upstreamed opam packages into the world
-		buildNixRepo = opamRepo: runCommand "opam2nix-repo" {} ''
+		buildNixRepo = opamRepo: runCommand "opam2nix-${opamRepo.name}" {} ''
 			mkdir -p "$out/packages"
 			env OCAMLRUNPARAM=b ${impl}/bin/opam2nix generate --src "${opamRepo}" --cache .cache --dest "$out/packages" '*'
 			echo 'import ./packages' > "$out/default.nix"
@@ -123,7 +117,7 @@ let
 			ocamlVersion ? null,
 			ocaml ? null,
 			basePackages ? null,
-			packages,
+			specs,
 			extraRepos ? [],
 			args ? defaultArgs,
 		}@conf: selectLax conf;
@@ -143,23 +137,26 @@ let
 					++ map (path: import (buildNixRepo path)) (world.extraRepos or []);
 			})); in result.opamSelection;
 
-		inherit buildNixRepo packageNames;
+		inherit buildNixRepo specNames;
 
 		# get the implementation of each specified package in the selections.
 		# Selections are the result of `build` (or importing the selection file)
 		packagesOfSelections = specs: selections:
-			map (name: builtins.getAttr name selections) (packageNames specs);
+			map (name: builtins.getAttr name selections) (specNames specs);
 
 		# Select-and-import. Returns a selection object with attributes for each extant package
-		buildPackageSet = { packages, ... }@args: (utils.importSelectionsFile (selectLax args) args);
+		buildPackageSet = { specs, ... }@args: (utils.importSelectionsFile (selectLax args) args);
 
 		# like just the attribute values from `buildPackageSet`, but also includes ocaml dependency
-		build = { packages, ... }@args:
+		build = { specs, ... }@args:
 			let selections = (utils.buildPackageSet args); in
-			[selections.ocaml] ++ (utils.packagesOfSelections packages selections);
+			[selections.ocaml] ++ (utils.packagesOfSelections specs selections);
 
-		# Like build but only returns the single selected package.
-		buildPackage = name: args: builtins.getAttr name (utils.buildPackageSet ({ packages = [name]; } // args));
+		# Takes a single spec and only returns a single selected package matching that.
+		buildPackageSpec = spec: args: builtins.getAttr spec.name (utils.buildPackageSet ({ specs = [spec]; } // args));
+
+		# Like `buildPackageSpec` but only returns the single selected package.
+		buildPackage = name: buildPackageConstraint { inherit name; };
 
 		# build a nix derivation from a (local) opam library, i.e. one not in the official repositories
 		buildOpamPackage = attrs:
@@ -198,8 +195,9 @@ let
 					};
 
 				opamAttrs = (drvAttrs // {
-					# `packages` is undocumented, left for consistency
-					packages = (attrs.extraPackages or attrs.packages or []) ++ [ "${packageName}=${version}" ];
+					# `specs` is undocumented, left for consistency
+					specs = (attrs.specs or [])
+					  ++ [ { name = packageName; constraint = "=" + version; } ];
 					extraRepos = (attrs.extraRepos or []) ++ [ opamRepo ];
 				});
 
