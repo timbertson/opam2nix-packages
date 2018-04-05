@@ -133,8 +133,7 @@ let
 				select = (import selection_file);
 				format_version = import ../repo/format_version.nix;
 			} // world // {
-				extraPackages = (world.extraPackages or [])
-					++ map (path: import (buildNixRepo path)) (world.extraRepos or []);
+				extraPackages = map (path: import (buildNixRepo path)) (world.extraRepos or []);
 			})); in result.opamSelection;
 
 		inherit buildNixRepo packageNames;
@@ -161,7 +160,7 @@ let
 		# build a nix derivation from a (local) opam library, i.e. one not in the official repositories
 		buildOpamPackage = attrs:
 			let
-				drvAttrs = removeAttrs attrs ["src" "opamFile" "packageName" "version" "passthru" "extraPackages" ];
+				drvAttrs = removeAttrs attrs ["src" "opamFile" "packageName" "version" "passthru" ];
 				parsedName = builtins.parseDrvName attrs.name;
 				packageName = attrs.packageName or parsedName.name;
 				version = attrs.version or parsedName.version;
