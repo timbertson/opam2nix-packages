@@ -44,7 +44,7 @@ let
 		#
 		#   { name = "foo"; constraint = ">4.0.0"; }
 
-		# Normalize a specification collection into a list of concatenated name+constraints
+		# Normalize a list of specs into a list of concatenated name+constraints
 		specStrings = map ({ name, constraint ? "" }: "'${name}${constraint}'");
 
 		# get a list of package names from a specification collection
@@ -195,9 +195,7 @@ let
 					};
 
 				opamAttrs = (drvAttrs // {
-					# `specs` is undocumented, left for consistency
-					specs = (attrs.specs or [])
-					  ++ [ { name = packageName; constraint = "=" + version; } ];
+					specs = (attrs.specs or []) ++ [ { name = packageName; constraint = "=" + version; } ];
 					extraRepos = (attrs.extraRepos or []) ++ [ opamRepo ];
 				});
 
