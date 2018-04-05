@@ -1,0 +1,6 @@
+{
+	"type": "fetchFromGitHub",
+	"repo": "opam2nix-packages",
+	"owner": "timbertson"
+}
+

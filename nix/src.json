@@ -1,0 +1,15 @@
+{
+  "fetch": {
+    "args": {
+      "owner": "timbertson",
+      "repo": "opam2nix-packages",
+      "rev": "6aad3a6c9e2816050a3b31aa6a9795fd1a227c61",
+      "sha256": "1pmkz1palik55yvzzd1crxw65a9ygwifscl2062350dk8fhrkb8x"
+    },
+    "fn": "fetchFromGitHub",
+    "rev": "6aad3a6c9e2816050a3b31aa6a9795fd1a227c61"
+  },
+  "owner": "timbertson",
+  "repo": "opam2nix-packages",
+  "type": "fetchFromGitHub"
+}

@@ -1,38 +1,13 @@
-{ pkgs ? import <nixpkgs> {} }:
-{ src, opam2nix ? null, opam2nixImpl ? null }:
+{ pkgs ? import <nixpkgs> {}, opam2nixBin ? pkgs.callPackage ../opam2nix/nix/default.nix {} }:
 with pkgs;
-let _opam2nix = opam2nix; in
 let
-	makeDirectory = name: src: runCommand name {} ''
-		if [ ! -e "${src}" ]; then
-			echo "Error: ${src} does not exist"
-			echo "  (Note: if you passed in a `src` attribute which doesn't"
-			echo "  contain a nested opam2nix directory, you need to provide"
-			echo "  an explicit `opam2nix` argument too)"
-			exit 1
-		fi
-		if [ -f "${src}" ]; then
-			mkdir "$out"
-			tar xaf ${src} -C "$out" --strip-components=1;
-		else
-			ln -s "${src}" "$out"
-		fi
-	'';
-
-	srcDir = makeDirectory "opam2nix-packages-src" src;
-	opam2nix = let
-		buildFromSrc = src: pkgs.callPackage "${src}/nix" {} { inherit src; };
-	in
-		if opam2nixImpl != null
-			then opam2nixImpl
-			else if _opam2nix != null
-				then buildFromSrc (makeDirectory "opam2nix-src" _opam2nix)
-				else buildFromSrc "${src}/opam2nix";
+	src = (nix-update-source.fetch ./src.json).src;
 
 	repository = stdenv.mkDerivation {
 		name = "opam2nix-repo";
-		buildCommand = ''
-			ln -s ${srcDir}/repo $out
+		inherit src;
+		installPhase = ''
+			cp -r repo $out
 		'';
 	};
 	utils = let
@@ -135,8 +110,9 @@ let
 		selectionsFile = selectStrict;
 		selectionsFileLax = selectLax;
 		importSelectionsFile = selection_file: world:
-			assert opam2nix.format_version == 1; let result = (import repository ({
-				inherit pkgs opam2nix; # default, overrideable
+			assert opam2nixBin.format_version == 1; let result = (import repository ({
+				inherit pkgs; # defaults, overrideable
+				opam2nix = opam2nixBin;
 				ocamlVersion = parseOcamlVersion result.opamSelection.ocaml;
 				select = (import selection_file);
 				format_version = import ../repo/format_version.nix;
@@ -220,10 +196,11 @@ let
 	};
 
 	impl = stdenv.mkDerivation {
-		name = "opam2nix-packages-${lib.removeSuffix "\n" (builtins.readFile ../VERSION)}";
+		name = "opam2nix-packages-0.3";
+		inherit src;
 		buildCommand = ''
 			mkdir -p $out/bin
-			ln -s ${opam2nix}/bin/opam2nix $out/bin/
+			ln -s ${opam2nixBin}/bin/opam2nix $out/bin/
 			ln -s ${repository} $out/repo
 			cat > $out/bin/opam2nix-select <<EOF
 #!${bash}/bin/bash
@@ -233,10 +210,9 @@ EOF
 			chmod +x $out/bin/opam2nix-select
 		'';
 
-		buildInputs = [ opam2nix ];
 		passthru = utils // {
 			formatVersion = 1;
-			inherit opam2nix;
+			inherit opam2nixBin;
 		};
 	};
 in
