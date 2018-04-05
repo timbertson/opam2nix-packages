@@ -48,7 +48,7 @@ let
 		specStrings = map ({ name, constraint ? "" }: "'${name}${constraint}'");
 
 		# get a list of package names from a specification collection
-		specNames = map ({ name, ... }: name);
+		packageNames = map ({ name, ... }: name);
 
 		## Other stuff
 
@@ -137,12 +137,12 @@ let
 					++ map (path: import (buildNixRepo path)) (world.extraRepos or []);
 			})); in result.opamSelection;
 
-		inherit buildNixRepo specNames;
+		inherit buildNixRepo packageNames;
 
 		# get the implementation of each specified package in the selections.
 		# Selections are the result of `build` (or importing the selection file)
 		packagesOfSelections = specs: selections:
-			map (name: builtins.getAttr name selections) (specNames specs);
+			map (name: builtins.getAttr name selections) (packageNames specs);
 
 		# Select-and-import. Returns a selection object with attributes for each extant package
 		buildPackageSet = { specs, ... }@args: (utils.importSelectionsFile (selectLax args) args);
