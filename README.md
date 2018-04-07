@@ -89,6 +89,15 @@ accepted by the lower level `selectionsFile` and `importSelectionsFile` function
    - `opamFilename`: the opam file path within `src`
    - also accepts options accepted by either `selectionsFile` or `importSelectionsFile`
 
+ - `opam2nix.buildOpamPackages`: build a package set with many an opam packages
+   from source, rather than from all from a repository
+   - `packagesParsed` a list of (most) of the arguments accepted by `opam2nix.buildOpamPackage`
+     - `src`
+     - `packageName`: the name of OPAM package
+     - `version`: the version of the OPAM package
+     - `opamFilename`: the opam file path within `src`
+   - also accepts options accepted by either `selectionsFile` or `importSelectionsFile`
+
 ## Hacking
 
 This repo contains generated `.nix` expressions, as well as some overrides required for a bunch of packages which don't quite work out of the box.
@@ -137,4 +146,3 @@ Instead, you should call it from your main `.nix` file like so:
       buildInputs = [ selection.lwt ];
       # ...
     }
-
