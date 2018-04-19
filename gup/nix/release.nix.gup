@@ -1,61 +1,11 @@
 #!/usr/bin/env python
-from __future__ import print_function
-import sys, os, json
-from subprocess import *
-
-dest, target = sys.argv[1:]
-
-def gupcat(path):
-	check_call(['gup', '-u', path])
-	with open(path) as f:
-		return f.read().strip()
-
-def fetchgitargs(url, dir, commit):
-	path = os.path.normpath(os.path.join(os.path.dirname(__file__), '..', '..', dir))
-	print('checking out {url}#{commit} from {path}'.format(url=url, path=path, commit=commit))
-	json_str = check_output(['nix-prefetch-git', path, commit])
-	args = json.loads(json_str)
-	del args['date']
-
-	# replace dir with public URL
-	args['url'] = url
-	args['fetchSubmodules'] = False
-	source_text = json.dumps(args, indent=2, separators=(';',' = ')).rstrip('}\n') + ';\n}'
-	return '\n'.join(['\t' + line.replace('  ', '\t') for line in source_text.splitlines()])
+from common import *
 
 template='''
-{ pkgs ? import <nixpkgs> {}}:
-with pkgs;
-let
-	# For development, set OPAM2NIX_DEVEL to your local
-	# opam2nix repo path
-	devRepo = builtins.getEnv "OPAM2NIX_DEVEL";
-	src = fetchgit %(fetchgit_src)s;
-	opam2nix = fetchgit %(fetchgit_opam2nix)s;
-in
-if devRepo != "" then
-	let toPath = s: /. + s; in
-	callPackage "${devRepo}/nix" {} {
-		src = toPath "${devRepo}/nix/local.tgz";
-		opam2nix = let devSrc = "${devRepo}/opam2nix/nix/local.tgz"; in
-			if builtins.pathExists devSrc then toPath devSrc else opam2nix;
-	}
-else callPackage "${src}/nix" {} { inherit src opam2nix; }
+{ pkgs ? import <nixpkgs> {}, opam2nix ? null}:
+if opam2nix != null then opam2nix else (
+	with pkgs;
+	%s
+)
 '''
-
-contents = template % {
-	'fetchgit_src': fetchgitargs(
-		url = "https://github.com/timbertson/opam2nix-packages.git",
-		dir=".",
-		commit=gupcat('release.packages.commit'),
-	),
-	'fetchgit_opam2nix': fetchgitargs(
-		url = "https://github.com/timbertson/opam2nix.git",
-		dir="opam2nix",
-		commit=gupcat('release.opam2nix.commit'),
-	)
-}
-
-with open(dest, 'w') as dest:
-	dest.write(contents)
-
+write_target(template % (opam2nix_expr()))

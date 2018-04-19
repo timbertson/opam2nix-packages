@@ -1,0 +1,37 @@
+#!bash -eu
+cd "$(dirname "$2")"
+here="$(pwd)"
+local_repo="$(cd .. && pwd)"
+revision_file="$here/release.packages.commit"
+
+function do_bump {
+	echo "Updating $revision_file"
+	gup -u "$revision_file"
+}
+gup --always
+if [ -f release.packages.commit ]; then
+	# filter out automated commits (where each file touched is a gup target)
+	commit="$(cat release.packages.commit)"
+	echo "Comparing $commit to HEAD"
+	git diff-tree -r --no-commit-id --name-only "$commit" HEAD | while read f; do
+		if ! gup --buildable "../$f"; then
+			do_bump
+			break
+		fi
+	done
+else
+	do_bump
+fi
+
+rev="$(cat "$revision_file")"
+"$(nix-build --no-out-link -A nix-update-source '<nixpkgs>')"/bin/nix-update-source \
+	-o "$1" \
+	--set type fetchgit \
+	--set rev "$rev" \
+	--set url "$local_repo" \
+	;
+
+sed -i -e 's|"url": "[^"]*"|"url": "https://github.com/timbertson/opam2nix-packages.git"|' "$1"
+
+#TODO: for nix-update-source 0.5+, instead of the above `sed`
+	#--substitute url "https://github.com/timbertson/opam2nix-packages.git" \

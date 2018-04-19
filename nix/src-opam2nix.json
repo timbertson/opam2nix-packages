@@ -1,0 +1,14 @@
+{
+  "fetch": {
+    "args": {
+      "fetchSubmodules": true,
+      "rev": "db3228a5c49c184530f11f65a20621567135c327",
+      "sha256": "03myq1yhcfi0dilzrm43gzyiy3pqxpl2ja0hw8wma5yzxf40hlhj",
+      "url": "https://github.com/timbertson/opam2nix.git"
+    },
+    "fn": "fetchgit",
+    "rev": "db3228a5c49c184530f11f65a20621567135c327",
+    "type": "fetchgit",
+    "url": "https://github.com/timbertson/opam2nix.git"
+  }
+}

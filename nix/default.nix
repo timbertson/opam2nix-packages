@@ -1,7 +1,9 @@
-{ pkgs ? import <nixpkgs> {}, opam2nixBin ? pkgs.callPackage ../opam2nix/nix/default.nix {} }:
+{ pkgs ? import <nixpkgs> {}, opam2nixBin ? pkgs.callPackage ../opam2nix/nix/default.nix {}}:
 with pkgs;
 let
-	src = (nix-update-source.fetch ./src.json).src;
+
+	# to support IFD in release.nix/overlay.nix, we build from `../` if it's already a store path
+	src = if lib.isStorePath ../. then (lib.info "Note: building self frmo store" ../.) else (nix-update-source.fetch ./src.json).src;
 
 	repository = stdenv.mkDerivation {
 		name = "opam2nix-repo";

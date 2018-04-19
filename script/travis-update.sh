@@ -19,7 +19,7 @@ rm -f .push
 if ! git diff --quiet --exit-code; then
 	git add --all opam-repository repo/packages
 	git commit -m "Automated package update";
-	gup nix/release.nix
-	git commit -m "Bump release.nix" nix/release.nix;
+	gup nix/all
+	git commit -m "Bump release nix expressions" nix
 	touch .push
 fi
