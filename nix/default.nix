@@ -3,7 +3,7 @@ with pkgs;
 let
 
 	# to support IFD in release.nix/overlay.nix, we build from `../` if it's already a store path
-	src = if lib.isStorePath ../. then (lib.info "Note: building self frmo store" ../.) else (nix-update-source.fetch ./src.json).src;
+	src = if lib.isStorePath ../. then ../. else (nix-update-source.fetch ./src.json).src;
 
 	repository = stdenv.mkDerivation {
 		name = "opam2nix-repo";
