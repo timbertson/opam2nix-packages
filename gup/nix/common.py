@@ -29,4 +29,4 @@ check_call(['gup', '-u', os.path.join(os.path.dirname(__file__), 'common.py')])
 def write_target(contents):
 	dest, target = sys.argv[1:]
 	with open(dest, 'w') as dest:
-		dest.write(contents)
+		dest.write(contents.lstrip())

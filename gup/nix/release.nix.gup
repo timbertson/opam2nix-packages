@@ -2,10 +2,8 @@
 from common import *
 
 template='''
-{ pkgs ? import <nixpkgs> {}, opam2nix ? null}:
-if opam2nix != null then opam2nix else (
-	with pkgs;
-	%s
-)
+{ pkgs ? import <nixpkgs> {}}:
+with pkgs;
+%s
 '''
 write_target(template % (opam2nix_expr()))

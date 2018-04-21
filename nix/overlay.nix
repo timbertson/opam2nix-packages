@@ -1,4 +1,3 @@
-
 self: super: with super; {
 	opam2nix = let
 		src = fetchgit {

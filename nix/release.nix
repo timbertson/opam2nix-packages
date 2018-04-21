@@ -1,8 +1,6 @@
-
-{ pkgs ? import <nixpkgs> {}, opam2nix ? null}:
-if opam2nix != null then opam2nix else (
-	with pkgs;
-	let
+{ pkgs ? import <nixpkgs> {}}:
+with pkgs;
+let
 		src = fetchgit {
 			"url" = "https://github.com/timbertson/opam2nix-packages.git";
 			"fetchSubmodules" = true;
@@ -19,4 +17,3 @@ if opam2nix != null then opam2nix else (
 	callPackage "${src}/nix" {
 		opam2nixBin = callPackage "${opam2nixSrc}/nix" {};
 	}
-)
