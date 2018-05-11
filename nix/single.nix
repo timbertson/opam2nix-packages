@@ -1,7 +1,9 @@
-{ pkg, shell ? null }:
+{ pkgs ? import <nixpkgs> {},
+	opam2nix ? pkgs.callPackage ./default.nix {},
+	pkg, shell ? null
+}:
 let
-	pkgs = import <nixpkgs> {};
-	pkgSet = (import ./local.nix {}).buildPackageSet {
+	pkgSet = opam2nix.buildPackageSet {
 		specs = [ { name = pkg; } ];
 		ocamlAttr = "ocaml-ng.ocamlPackages_4_05.ocaml";
 	};

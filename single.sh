@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 set -eux
-exec nix-build --no-out-link nix/single.nix --show-trace --argstr pkg "$@"
+exec nix-pin build --no-out-link --path nix/single.nix --show-trace --argstr pkg "$@"
