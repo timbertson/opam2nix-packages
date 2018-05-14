@@ -35,6 +35,20 @@ let
 		# get a list of package names from a specification collection
 		packageNames = map ({ name, ... }: name);
 
+		normalizePackageArgs = {
+			name, src,
+			packageName ? null,
+			version ? null,
+			opamFile ? null
+		}:
+			let parsedName = builtins.parseDrvName name; in
+			{
+				inherit src;
+				packageName = defaulted packageName parsedName.name;
+				version = defaulted version parsedName.version;
+				opamFileSh = defaulted opamFile "\"$(find . -maxdepth 1 -name 'opam' -o -name '*.opam')\"";
+			};
+
 		## Other stuff
 
 		defaulted = value: dfl: if value == null then dfl else value;
@@ -50,6 +64,13 @@ let
 
 		defaultBasePackages = ["base-unix" "base-bigarray" "base-threads"]; #XXX this is a hack.
 		defaultArgs = [];
+
+		partitionAttrs = attrNames: attrs:
+			with lib;
+			[
+				(filterAttrs (name: val: elem name attrNames) attrs) # named attrs
+				(filterAttrs (name: val: !(elem name attrNames)) attrs) # other attrs
+			];
 
 		selectLax = {
 			# used by `build`, so that you can combine import-time (world) options
@@ -107,6 +128,50 @@ let
 			args ? defaultArgs,
 		}@conf: selectLax conf;
 
+		buildOpamRepo = { packageName, version, src, opamFileSh }:
+			stdenv.mkDerivation {
+				name = "${packageName}-${version}-repo";
+				inherit src;
+				configurePhase = "true";
+				buildPhase = "true";
+				installPhase = ''
+					if [ -z "${version}" ]; then
+						echo "Error: no version specified"
+						exit 1
+					fi
+					dest="$out/packages/${packageName}/${packageName}.${version}"
+					mkdir -p "$dest"
+					cp ${opamFileSh} "$dest/opam"
+					if ! [ -f "$dest/opam" ]; then
+						echo "Error: opam file not created"
+						exit 1
+					fi
+					if [ -f "${src}" ]; then
+						echo 'archive: "${src}"' > "$dest/url"
+					else
+						echo 'local: "${src}"' > "$dest/url"
+					fi
+				'';
+			};
+
+		buildOpamPackages = packages: drvAttrs:
+			let
+				normalizedPackages = map normalizePackageArgs packages;
+				specOfPackage = { packageName, version, ... }: { name = packageName; constraint = "=" + version; };
+				opamRepos = map buildOpamRepo normalizedPackages;
+
+				opamAttrs = (drvAttrs // {
+					specs = (drvAttrs.specs or []) ++ (map specOfPackage normalizedPackages);
+					extraRepos = (drvAttrs.extraRepos or []) ++ opamRepos;
+				});
+			in
+			{
+				inherit opamRepos;
+				packages = utils.buildPackageSet opamAttrs;
+				selection = utils.selectionsFileLax opamAttrs;
+			}
+		;
+
 	in {
 		# low-level selecting & importing
 		selectionsFile = selectStrict;
@@ -143,54 +208,21 @@ let
 		# Like `buildPackageSpec` but only returns the single selected package.
 		buildPackage = name: buildPackageConstraint { inherit name; };
 
-		# build a nix derivation from a (local) opam library, i.e. one not in the official repositories
+		buildOpamPackages = packages: drvAttrs: buildOpamPackages packages drvAttrs;
+
 		buildOpamPackage = attrs:
+			with lib;
 			let
-				drvAttrs = removeAttrs attrs ["src" "opamFile" "packageName" "version" "passthru" ];
-				parsedName = builtins.parseDrvName attrs.name;
-				packageName = attrs.packageName or parsedName.name;
-				version = attrs.version or parsedName.version;
-
-				opamRepo = let
-					opamFilename = attrs.opamFile or "\"$(find . -maxdepth 1 -name 'opam' -o -name '*.opam')\"";
-					src = attrs.src;
-					in stdenv.mkDerivation {
-						name = "${packageName}-${version}-repo";
-						inherit src;
-						configurePhase = "true";
-						buildPhase = "true";
-						installPhase = ''
-							if [ -z "${version}" ]; then
-								echo "Error: no version specified"
-								exit 1
-							fi
-							dest="$out/packages/${packageName}/${packageName}.${version}"
-							mkdir -p "$dest"
-							cp ${opamFilename} "$dest/opam"
-							if ! [ -f "$dest/opam" ]; then
-								echo "Error: opam file not created"
-								exit 1
-							fi
-							if [ -f "${src}" ]; then
-								echo 'archive: "${src}"' > "$dest/url"
-							else
-								echo 'local: "${src}"' > "$dest/url"
-							fi
-						'';
-					};
-
-				opamAttrs = (drvAttrs // {
-					specs = (attrs.specs or []) ++ [ { name = packageName; constraint = "=" + version; } ];
-					extraRepos = (attrs.extraRepos or []) ++ [ opamRepo ];
-				});
-
-				packageSet = utils.buildPackageSet opamAttrs;
-				drv = builtins.getAttr packageName packageSet;
+				partitioned = partitionAttrs ["name" "src" "opamFile" "packageName" "version" ] attrs;
+				packageAttrs = elemAt partitioned 0;
+				drvAttrs = removeAttrs (elemAt partitioned 1) ["passthru"];
+				result = buildOpamPackages [packageAttrs] drvAttrs;
+				normalizedPackage = normalizePackageArgs packageAttrs;
+				drv = builtins.getAttr normalizedPackage.packageName result.packages;
 				passthru = {
 					opam2nix = {
-						repo = opamRepo;
-						packages = packageSet;
-						selection = utils.selectionsFileLax opamAttrs;
+						inherit (result) packages selection;
+						repo = elemAt result.opamRepos 0;
 					};
 				} // (attrs.passthru or {});
 			in
