@@ -187,7 +187,7 @@ let
 				extraPackages = map (path: import (buildNixRepo path)) (world.extraRepos or []);
 			})); in result.opamSelection;
 
-		inherit buildNixRepo packageNames toSpec toSpecs;
+		inherit buildNixRepo packageNames toSpec toSpecs buildOpamPackages;
 
 		# get the implementation of each specified package in the selections.
 		# Selections are the result of `build` (or importing the selection file)
@@ -207,8 +207,6 @@ let
 
 		# Like `buildPackageSpec` but only returns the single selected package.
 		buildPackage = name: buildPackageConstraint { inherit name; };
-
-		buildOpamPackages = packages: drvAttrs: buildOpamPackages packages drvAttrs;
 
 		buildOpamPackage = attrs:
 			with lib;
