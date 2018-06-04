@@ -89,7 +89,17 @@ accepted by the lower level `selectionsFile` and `importSelectionsFile` function
    - `packageName`: optional, defaults to the first component of `name`
    - `version`: optional, defaults to the second component of `name`
    - `opamFilename`: the opam file path within `src`
+   - `passthru`: extra passthru attributes, optional
    - also accepts options accepted by either `selectionsFile` or `importSelectionsFile`
+
+ - `opam2nix.buildOpamPackages`: build multiple opam packages from source, rather than from a repository. Takes two arguments:
+   - first, a list of attrsets containing package attributes (meanings and defaults match those described in `buildOpamPackage`):
+     - `src`
+     - `name`
+     - `packageName`: optional, defaults to the first component of `name`
+     - `version`: optional, defaults to the second component of `name`
+     - `opamFilename`: the opam file path within `src`
+   - second, an attrset of additional options accepted by either `selectionsFile` or `importSelectionsFile`
 
 ## Hacking
 
