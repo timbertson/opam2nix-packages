@@ -113,7 +113,7 @@ You hopefully don't have to know in order to use this repo - the above instructi
 
 ### Step 1: generate a set of `nix` package definitions based on an opam repository.
 
-    $ opam2nix repo --src ~/.opam/repo/ocaml.org --dest <dest>/nix/packages --cache <dest>/cache '*@latest'
+    $ opam2nix repo --src ~/.opam/repo/ocaml.org --dest <dest>/nix/packages '*@latest'
 
 This traverses the repo, scans the packages you've selected, downloads sources that it hasn't cached, reads `opam` files for dependencies, and spits out a `.nix` file for each version of each package.
 

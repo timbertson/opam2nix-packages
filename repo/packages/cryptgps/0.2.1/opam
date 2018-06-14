@@ -1,9 +1,0 @@
-opam-version: "1"
-maintainer: "https://github.com/ocaml/opam-repository/issues"
-build: [
-  [make "all"]
-  [make "opt"]
-]
-remove: [["ocamlfind" "remove" "cryptgps"]]
-depends: ["ocamlfind"]
-install: [make "install"]

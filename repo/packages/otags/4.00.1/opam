@@ -1,9 +1,0 @@
-opam-version: "1.2"
-maintainer: "sebastien.fricker@gmail.com"
-build: [
-  ["./configure" "--prefix" prefix]
-  [make]
-]
-depends: ["ocamlbuild"]
-available: ocaml-version >= "4.00.0" & ocaml-version < "4.01.0"
-install: [make "install"]

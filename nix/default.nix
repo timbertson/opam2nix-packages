@@ -113,7 +113,7 @@ let
 		# overrides etc, but useful for adding non-upstreamed opam packages into the world
 		buildNixRepo = opamRepo: runCommand "opam2nix-${opamRepo.name}" {} ''
 			mkdir -p "$out/packages"
-			env OCAMLRUNPARAM=b ${impl}/bin/opam2nix generate --src "${opamRepo}" --cache .cache --dest "$out/packages" '*'
+			env OCAMLRUNPARAM=b ${impl}/bin/opam2nix generate --src "${opamRepo}" --dest "$out/packages" '*'
 			echo 'import ./packages' > "$out/default.nix"
 		'';
 

@@ -1,6 +1,0 @@
-lib: [
-  "genlet.cma"
-  "gengenlet.cmi"
-  "genlet.cmxa"
-  "META"
-]

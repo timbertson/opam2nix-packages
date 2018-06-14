@@ -1,6 +1,0 @@
-opam-version: "1"
-maintainer: "https://github.com/ocaml/opam-repository/issues"
-build: [make "reallyall"]
-remove: [["ocamlfind" "remove" "syslog"]]
-depends: ["ocamlfind"]
-install: [make "install"]

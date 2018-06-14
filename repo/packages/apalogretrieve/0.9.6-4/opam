@@ -1,4 +1,0 @@
-opam-version: "1"
-maintainer: "https://github.com/ocaml/opam-repository/issues"
-homepage: "http://www.first.in-berlin.de/software/tools/apalogretrieve/"
-build: [["sh" "compile.native"]]

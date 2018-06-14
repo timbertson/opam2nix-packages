@@ -3,30 +3,31 @@ from __future__ import print_function
 
 import os, sys, optparse, subprocess
 p = optparse.OptionParser()
-p.add_option("--update", action='store_true')
 p.add_option("--unclean", action='store_true')
 p.add_option("--dev", action='store_true')
 opts, args = p.parse_args()
 here = os.path.dirname(__file__)
 
-opam2nix_base = os.path.join(here, ('../opam2nix' if opts.dev else '../opam2nix/local'))
+opam2nix_base = None
+if opts.dev:
+	opam2nix_base = os.path.join(here, '../opam2nix')
+elif 'OPAM2NIX_BIN' in os.environ:
+	opam2nix_base = os.environ['OPAM2NIX_BIN']
+else:
+	opam2nix_base = subprocess.check_output(['nix-build', '--no-out-link', '-A', 'opam2nixBin', os.path.join(here, '../shell.nix')]).strip()
 
 cmd = [
 	os.path.join(opam2nix_base, 'bin/opam2nix'),
 	'generate',
 	'--src', os.path.join(here, '../opam-repository'),
-	'--cache', os.path.join(here, '../cache'),
-	'--max-age', '7776000',
+	'--digest-map', os.path.join(here, 'digest.json'),
 	'--num-versions', '2.3.2',
 	'--ignore-broken'
 ]
 
 include_default_packages = True
 
-if opts.update:
-	cmd.extend(['--update', '--dest', os.path.join(here, 'packages')])
-	cmd.extend(args)
-elif opts.unclean:
+if opts.unclean:
 	cmd.extend(['--unclean', '--dest', os.path.join(here, 'packages')])
 	cmd.extend(args)
 	include_default_packages = False
@@ -46,7 +47,6 @@ if include_default_packages:
 
 subprocess.check_call([
 	'gup', '-u',
-	opam2nix_base,
 	os.path.join(here, '../packages.repo'),
 	os.path.join(here, '../.opam-repository.stamp'),
 ])

@@ -29,9 +29,5 @@ rev="$(cat "$revision_file")"
 	--set type fetchgit \
 	--set rev "$rev" \
 	--set url "$local_repo" \
+	--substitute url "https://github.com/timbertson/opam2nix-packages.git" \
 	;
-
-sed -i -e 's|"url": "[^"]*"|"url": "https://github.com/timbertson/opam2nix-packages.git"|' "$1"
-
-#TODO: for nix-update-source 0.5+, instead of the above `sed`
-	#--substitute url "https://github.com/timbertson/opam2nix-packages.git" \
