@@ -25,6 +25,7 @@ def fetchgit(filename):
 	return nix_of_json(params['fetch']['args'])
 
 check_call(['gup', '-u', os.path.join(os.path.dirname(__file__), 'common.py')])
+check_call(['gup', '-u', 'src-opam-repository.json'])
 
 def write_target(contents):
 	dest, target = sys.argv[1:]

@@ -3,5 +3,7 @@
 /local
 /nix/local.tgz
 /nix/release.*.commit
+/repo/packages
+/opam-repository
 .gup/
 *.stamp

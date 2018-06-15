@@ -6,7 +6,7 @@ I'm hoping to make it stable and a future part of `nixpkgs`. But for now, it's j
 
 ## Important note on using in your own project:
 
-Don't try to clone `opam2nix` as part of your own derivation. If you instead copy the current `nix/release.nix` into your own source code you can import _just that one file_ (unsing `pkgs.callPackage) and it'll in turn clone the relevant commit from this repository and bootstrap itself. If needed, you can replace in the git URLs or revisions with the latest commits (or a commit in your fork).
+Don't try to clone `opam2nix` as part of your own derivation. If you instead copy the current `nix/release.nix` into your own source code you can import _just that one file_ (using `pkgs.callPackage) and it'll in turn clone the relevant commit from this repository and bootstrap itself. If needed, you can replace in the git URLs or revisions with the latest commits (or a commit in your fork).
 
 Alternatively, you can copy `nix/overlay.nix` into `~/.config/nixpkgs/overlays` to make `opam2nix` available at the toplevel of your nixpkgs installation.
 
@@ -67,9 +67,7 @@ accepted by the lower level `selectionsFile` and `importSelectionsFile` function
 
  - `opam2nix.importSelectionsFile selections_file` takes an attribute set with the following properties, all optional:
    - `pkgs`: defaults to the `pkgs` set opam2nix was imported with
-   - `overrides`: function accepting a `world` argument and returning attributes to be overriden / added
-   - `extraRepos`: as passed to `selectionsFile`
-   - `opam2nix`: override the the opam2nix binary used for invoking build / install steps of packages
+   - `overrides`: function accepting `{self, super}` arguments and returning attributes to be overriden / added
 
  - `opam2nix.buildPackageSet`: returns an attrset with an attribute for each selected package
    - accepts any option accepted by either `selectionsFile` or `importSelectionsFile`
@@ -107,46 +105,39 @@ This repo contains generated `.nix` expressions, as well as some overrides requi
 
 To add specific package versions, add them in `packages.repo` and rebuild.
 
-# Manual operation / how does it all work?
+# How does it all work?
 
-You hopefully don't have to know in order to use this repo - the above instructions should be enough to use these packages without ever delving into the command line utility yourself, but here's how it works:
+You hopefully don't have to know in order to use this repo - the above instructions should be enough to use these packages without ever delving into the guts of it, but chances are something will break, or maybe you're just curious:
 
 ### Step 1: generate a set of `nix` package definitions based on an opam repository.
 
-    $ opam2nix repo --src ~/.opam/repo/ocaml.org --dest <dest>/nix/packages '*@latest'
+The inputs are:
 
-This traverses the repo, scans the packages you've selected, downloads sources that it hasn't cached, reads `opam` files for dependencies, and spits out a `.nix` file for each version of each package.
+ - opam2nix
+ - a checkout of the official `opam-repository` git repo
+ - a digest map
+
+See `makeRepository` in `nix/default.nix` for the flags passed to `opam2nix generate`.
+
+This traverses the repo and generates a nix expression for each version of each package. The mapping of opam digests to nix digests means we can produce a working nix derivation without actually downloading any sources.
+
+During development or to perform updates, this derivation can be invoked as a shell, in order to download unknown sources, verify them and add them to the existing digest map. This is used in `gup repo/packages`.
 
 ### Step 2: Implement manual overrides
 
 The above step generates "pure" package definitions based only on the information in the `opam` repository. But in order to integrate cleanly with `nixpkgs`, some generated packages need to be modified. This is implemented as a nix expression which wraps the generated packages. You should probably start with the `repo/default.nix` and `repo/overrides` from the `opam2nix-packages` repo, and make any changes you need from there.
 
-### Step 3: select exact versions of each dependency
+### Step 2: select exact versions of each dependency
 
-The generated `.nix` files are pretty dumb - they know the difference between mandatory and optional dependencies, but that's about all. They rely on you giving them a valid set of dependencies which satisfy all versioning constraints, conflicts, etc. Conveniently, this is exactly what `opam`'s solver does - but instead of actually installing everything, let's just get it to create a `nix` expression of the packages it _would_ install:
+The generated `.nix` files are pretty dumb - they know the difference between mandatory and optional dependencies, but that's about all. They rely on you giving them a valid set of dependencies which satisfy all versioning constraints, conflicts, etc. Conveniently, this is exactly what `opam`'s solver does - but instead of actually installing everything, let's just get it to create a `nix` expression of the packages it _would_ install.
 
-    $ opam2nix select \
-      --repo <dest>/nix \
-      --dest <dest>/selection.nix
-      --ocaml-version 4.01.0 \
-      --ocaml-attr ocaml \
-      --base-packages 'base-unix,base-bigarray,base-threads' \
-      lwt
+This is done by `selectStrict` in `nix/default.nix`, and uses `opam2nix select`.
 
-You shouldn't modify this `selections.nix` file directly, as you'll regenerate it whenever your dependencies change.
-Instead, you should call it from your main `.nix` file like so:
+### Step 3: Build the world
 
-    { pkgs ? import <nixpkgs> {}}:
-    let
-      selection = pkgs.callPackage ./dest/selection.nix {
-        # one day, both of these may be rolled into `nixpkgs`, making them optional:
-        opam2nix = pkgs.callPackage /path/to/opam2nix/default.nix {};
-        opamPackages = import ./<dest>/nix { inherit pkgs; };
-      };
-    in
-    {
-      name = "foo-bar";
-      buildInputs = [ selection.lwt ];
-      # ...
-    }
+We have the pure packages, generated from the upstream repo. We also have the selections, which picks the appropriate version of each necessary package.
+
+Since nothing is perfect, we also have a number of hooks so we can modify packages, add additional repos, etc. This set of customizations is imaginatively called the "world", and is built from the arguments you pass to `buildPackage`, etc (described above). This is implemented as a fixpoint in `applyWorld` (in `nix/default.nix`), melding the generated package set, all customizations (including the builtin ones in `./repo/overrides`), plus the selections.
+
+The building of individual package versions is also done by `opam2nix` - instead of trying to convert the build phase of each package into a shell script, we run `opam2nix invoke {configure|build}`, and pass it (via the environment) a JSON document describing the context of this package - where the `opam` file is, which of its optional dependencies are installed (and where), etc. This uses the opam API to execute the appropriate build actions directly.
 

@@ -16,6 +16,7 @@ let
 	opamPackages = super.opamPackages;
 in
 {
+	ocaml = self.pkgs.callPackage ./ocaml.nix {} super.ocaml;
 	opamPackages = super.opamPackages // {
 		ocamlfind = overrideAll ((import ./ocamlfind) self) opamPackages.ocamlfind;
 

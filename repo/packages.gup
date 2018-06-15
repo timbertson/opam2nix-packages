@@ -4,51 +4,48 @@ from __future__ import print_function
 import os, sys, optparse, subprocess
 p = optparse.OptionParser()
 p.add_option("--unclean", action='store_true')
-p.add_option("--dev", action='store_true')
 opts, args = p.parse_args()
 here = os.path.dirname(__file__)
 
-opam2nix_base = None
-if opts.dev:
-	opam2nix_base = os.path.join(here, '../opam2nix')
-elif 'OPAM2NIX_BIN' in os.environ:
-	opam2nix_base = os.environ['OPAM2NIX_BIN']
-else:
-	opam2nix_base = subprocess.check_output(['nix-build', '--no-out-link', '-A', 'opam2nixBin', os.path.join(here, '../shell.nix')]).strip()
+try:
+	opam2nix_base = None
+	opam2nix_dev = os.path.join(here, '../opam2nix')
+	if os.path.exists(os.path.join(opam2nix_dev, 'bin')):
+		print('Using development opam2nix', file=sys.stderr)
+		opam2nix_base = opam2nix_dev
 
-cmd = [
-	os.path.join(opam2nix_base, 'bin/opam2nix'),
-	'generate',
-	'--src', os.path.join(here, '../opam-repository'),
-	'--digest-map', os.path.join(here, 'digest.json'),
-	'--num-versions', '2.3.2',
-	'--ignore-broken'
-]
+	opam_repo = os.path.join(here, 'opam-repository')
+	if os.path.exists(opam_repo):
+		print('Using development opam-repo', file=sys.stderr)
+		subprocess.check_call(['gup', '-u', '../nix/src-opam-repository.json'])
 
-include_default_packages = True
+	cmd = [
+		'nix-shell', os.path.join(here, '../shell.nix'),
+		'--show-trace',
+		'-A', '_generateOfficialPackages',
+		'--argstr', 'digestMap', os.path.join(here, 'digest.json'),
+		]
 
-if opts.unclean:
-	cmd.extend(['--unclean', '--dest', os.path.join(here, 'packages')])
-	cmd.extend(args)
-	include_default_packages = False
-else:
-	assert len(args) == 2
-	dest, target = args
-	cmd.extend(['--dest', dest])
+	if opam2nix_base is not None:
+		cmd.extend(['--argstr', 'opam2nixBin', opam2nix_base])
 
-if include_default_packages:
-	cmd.append('*')
+	# include_default_packages = True
 
-	with open(os.path.join(here, '../packages.repo')) as repo_list:
-		for line in repo_list.readlines():
-			line = line.strip()
-			if line.startswith('#'): continue
-			cmd.append(line)
+	if opts.unclean:
+		cmd.extend(['--arg', 'unclean', 'true'])
+		cmd.extend(['--argstr', 'dest', os.path.join(here, 'packages')])
+		packages = args
+	else:
+		assert len(args) == 2
+		subprocess.check_call([
+			'gup', '--always'
+		])
+		dest, target = args
+		cmd.extend(['--argstr', 'dest', dest])
+		packages = ['*']
 
-subprocess.check_call([
-	'gup', '-u',
-	os.path.join(here, '../packages.repo'),
-	os.path.join(here, '../.opam-repository.stamp'),
-])
-print(repr(cmd), file=sys.stderr)
-subprocess.check_call(cmd)
+	cmd.extend(['--arg', 'packages', '[' + ' '.join(['"%s"' % p for p in packages]) + ']'])
+	print(repr(cmd), file=sys.stderr)
+	subprocess.check_call(cmd)
+except subprocess.CalledProcessError:
+	sys.exit(1)

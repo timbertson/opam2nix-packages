@@ -4,22 +4,17 @@ set -eux
 git config user.name 'travis-ci';
 git config user.email 'travis-ci@gfxmonk.net';
 
+mkdir -p opam-repository
 pushd opam-repository
-	rm -f .push
-	git fetch git://github.com/ocaml/opam-repository.git
-	if ! git diff --quiet --exit-code FETCH_HEAD; then
-		git merge --no-edit FETCH_HEAD
-		touch .push
-	fi
+	git clone git://github.com/ocaml/opam-repository.git
 popd
 
-
 rm -f .push
-./repo/packages.gup --update
+gup repo/packages
 if ! git diff --quiet --exit-code; then
-	git add --all opam-repository repo/packages
+	git add -u repo/digest.json nix/
 	git commit -m "Automated package update";
 	gup nix/all
-	git commit -m "Bump release nix expressions" nix
+	git commit -u -m "Bump release nix expressions" nix
 	touch .push
 fi
