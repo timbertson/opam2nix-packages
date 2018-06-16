@@ -99,6 +99,18 @@ accepted by the lower level `selectionsFile` and `importSelectionsFile` function
      - `opamFilename`: the opam file path within `src`
    - second, an attrset of additional options accepted by either `selectionsFile` or `importSelectionsFile`
 
+## What gets cached, and what gets rebuilt?
+
+The inputs that define whether a given package needs to be rebuilt are:
+
+ - The exact version of the `opam2nix` tool used. This is used as part of the build step for every package, so that's unavoidable.
+ - Any dependant package changes. This could either be a version change of it (or one of its transitive dependencies), or
+   the availability / unavailability of an optional dependency in the selection.
+
+Notably, an update to this repository itself will cause a new set of `nix` files to be generated (one per available package version), but if the version of the `opam2nix` tool has not changed, no package implementations will need to be rebuilt.
+
+Currently regeneration of the packageset and the selection process are both lightweight (they produce a bunch of small files very quickly), but they are also extremely verbose. This is a holdover from the days where things failed a lot more often, and should be turned off by default in the future.
+
 ## Hacking
 
 This repo contains generated `.nix` expressions, as well as some overrides required for a bunch of packages which don't quite work out of the box.
