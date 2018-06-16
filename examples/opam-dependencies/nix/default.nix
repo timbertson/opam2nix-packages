@@ -4,7 +4,7 @@ stdenv.mkDerivation {
 	name = "opam2nix-hello";
 	src = ../.;
 	buildInputs = opam2nix.build {
-		packages = [ "ocamlbuild" "ocamlfind" "lwt" ];
+		specs = opam2nix.toSpecs [ "ocamlbuild" "ocamlfind" "lwt" ];
 		ocamlAttr = "ocaml_4_03";
 	};
 	buildPhase = ''
