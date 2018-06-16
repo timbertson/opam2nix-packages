@@ -1,0 +1,14 @@
+{
+  "fetch": {
+    "args": {
+      "fetchSubmodules": true,
+      "rev": "a1d14205cde429387186e73c8d764536687eb406",
+      "sha256": "1zv75x9qq4vnk0n22zrxsi65a9jdl7f18mgs8dvd08hcwjfwmpky",
+      "url": "https://github.com/timbertson/opam2nix-packages.git"
+    },
+    "fn": "fetchgit",
+    "rev": "a1d14205cde429387186e73c8d764536687eb406",
+    "type": "fetchgit",
+    "url": "/home/tim/dev/ocaml/opam2nix-packages"
+  }
+}

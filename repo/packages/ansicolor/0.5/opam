@@ -1,7 +1,0 @@
-opam-version: "1"
-maintainer: "https://github.com/ocaml/opam-repository/issues"
-homepage: "http://projects.phauna.org/ansicolor/"
-build: [make "OCAMLMAKEFILE=./OCamlMakefile"]
-remove: [["ocamlfind" "remove" "ansicolor"]]
-depends: ["ocamlfind"]
-install: [make "install" "OCAMLMAKEFILE=./OCamlMakefile"]

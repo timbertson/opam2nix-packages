@@ -1,11 +1,13 @@
 { pkgs ? import <nixpkgs> {}, ci ? false}:
 let
-	base = import ./nix/default.nix { inherit pkgs; };
+	base = (pkgs.nix-pin.api {}).callPackage ./nix/default.nix {};
 	extraPackages = with pkgs;
-		[ gup ] ++ (
+		[ gup base.opam2nixBin nix-pin ] ++ (
 			if ci then [ nix-prefetch-scripts ] else []
 		);
 in
-pkgs.lib.overrideDerivation base (o: {
-	nativeBuildInputs = o.nativeBuildInputs ++ extraPackages;
-})
+pkgs.stdenv.mkDerivation {
+	name = "shell";
+	buildInput = extraPackages;
+	passthru = base;
+}

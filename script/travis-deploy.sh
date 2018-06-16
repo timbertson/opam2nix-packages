@@ -32,8 +32,8 @@ function use_key {
 	ssh-add "keys/$1.key"
 }
 
-use_key opam-repository
-push opam-repository git@github.com:timbertson/opam-repository.git HEAD:master
+# use_key opam-repository
+# push opam-repository git@github.com:timbertson/opam-repository.git HEAD:master
 
 use_key opam2nix-packages
 push . git@github.com:timbertson/opam2nix-packages.git HEAD:"$TRAVIS_BRANCH"

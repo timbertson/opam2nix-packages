@@ -1,9 +1,0 @@
-opam-version: "1"
-maintainer: "https://github.com/ocaml/opam-repository/issues"
-homepage: "https://glade.gnome.org/"
-license: "LGPL 2.1"
-build: [["pkg-config" "libglade-2.0"]]
-depexts: [
-  [["debian"] ["libglade2-dev"]]
-  [["ubuntu"] ["libglade2-dev"]]
-]
