@@ -133,7 +133,7 @@ let
 						echo "Error: no version specified"
 						exit 1
 					fi
-					dest="$out/${packageName}/${packageName}.${version}"
+					dest="$out/packages/${packageName}/${packageName}.${version}"
 					mkdir -p "$dest"
 					cp ${opamFileSh} "$dest/opam"
 					if ! [ -f "$dest/opam" ]; then
@@ -222,6 +222,7 @@ let
 			digestMap ? null,
 			ignoreBroken ? null,
 			unclean ? null,
+			offline ? null,
 			dest ? null,
 		}: with lib; (
 			let
@@ -230,19 +231,16 @@ let
 			optionalArg = prefix: arg: if arg == null then [] else [prefix arg];
 			flags = [
 				"--src" opamRepository
-				"--digest-map" digestMap
-				"--num-versions" numVersions
 				"--dest" finalDest
 			]
 				++ (optional (defaulted ignoreBroken false) "--ignore-broken")
 				++ (optional (defaulted unclean false) "--unclean")
+				++ (optional (defaulted offline true) "--offline")
 				++ (optionalArg "--num-versions" numVersions)
 				++ (optionalArg "--digest-map" digestMap)
 				++ map (p: "'${p}'") (defaulted packages ["*"])
 			; in
 			stdenv.mkDerivation rec {
-				# use nix-shell -A makeRepository to
-				# build a repo without making a derivation
 				name = "opam2nix-generated-packages";
 				shellHook = "if [ '$dest' == '$out' ]; then echo '$dest must be set in shell mode'; exit 1; fi\n" + buildCommand + "\nexit 0";
 				buildCommand = ''
@@ -263,14 +261,15 @@ let
 			opam2nixBin ? null,
 			dest ? null,
 			unclean ? null,
+			offline ? null,
 			packages ? null
 		}: makeRepository {
-			inherit opamRepository digestMap dest unclean packages opam2nixBin;
+			inherit opamRepository digestMap dest unclean packages opam2nixBin offline;
 			numVersions = "2.3.2";
 			ignoreBroken = true;
 		};
 
-		generatedPackages = generateOfficialPackages {};
+		generatedPackages = generateOfficialPackages { offline = true; };
 
 	in {
 		# low-level selecting & importing
@@ -281,6 +280,8 @@ let
 				inherit pkgs; # defaults, overrideable
 				select = import selection_file;
 			} // world)).selection;
+		importSelectionsFileLax = selection_file: world:
+			api.importSelectionsFile selection_file (filterWorldArgs world);
 
 		inherit buildNixRepo packageNames toSpec toSpecs buildOpamPackages opam2nixBin;
 
@@ -293,7 +294,7 @@ let
 			map (name: builtins.getAttr name selections) (packageNames specs);
 
 		# Select-and-import. Returns a selection object with attributes for each extant package
-		buildPackageSet = args: (api.importSelectionsFile (selectLax args) (filterWorldArgs args));
+		buildPackageSet = args: (api.importSelectionsFileLax (selectLax args) args);
 
 		# like just the attribute values from `buildPackageSet`, but also includes ocaml dependency
 		build = { specs, ... }@args:
@@ -318,7 +319,7 @@ let
 				passthru = {
 					opam2nix = {
 						inherit (result) packages selection;
-						repo = generatedPackages;
+						repo = elemAt result.opamRepos 0;
 					};
 				} // (attrs.passthru or {});
 			in

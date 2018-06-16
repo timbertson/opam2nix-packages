@@ -23,6 +23,7 @@ try:
 		'nix-shell', os.path.join(here, '../shell.nix'),
 		'--show-trace',
 		'-A', '_generateOfficialPackages',
+		'--argstr', 'offline', 'false',
 		'--argstr', 'digestMap', os.path.join(here, 'digest.json'),
 		]
 
