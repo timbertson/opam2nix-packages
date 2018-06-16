@@ -3,6 +3,8 @@ with self.pkgs;
 with lib;
 let
 	overrideAll = fn: versions: mapAttrs (version: def: lib.overrideDerivation def fn) versions;
+	addPatches = patches: orig: { patches = (orig.patches or []) ++ patches; };
+	patchAll = patches: overrideAll (addPatches patches);
 	overrideIf = predicate: fn: versions:
 		mapAttrs (version: def:
 			if predicate version then
@@ -18,7 +20,20 @@ in
 {
 	ocaml = self.pkgs.callPackage ./ocaml.nix {} super.ocaml;
 	opamPackages = super.opamPackages // {
-		ocamlfind = overrideAll ((import ./ocamlfind) self) opamPackages.ocamlfind;
+		"0install" = overrideAll (impl:
+			# disable tests, beause they require additional setup
+			{
+				buildInputs = [ pkgs.makeWrapper ];
+				configurePhase = ''
+					# ZI makes it very difficult to opt out of tests
+					sed -i -e 's|tests/test\.|__disabled_tests/test.|' ocaml/Makefile
+				'';
+				preFixup = ''
+					wrapProgram $out/bin/0install \
+						--prefix PATH : "${pkgs.gnupg}/bin"
+				'';
+			}
+		) opamPackages."0install";
 
 		camlp4 = overrideAll (impl: {
 			# camlp4 uses +camlp4 directory, but when installed individually it's just
@@ -36,22 +51,6 @@ in
 			dontStrip = true;
 		}) opamPackages.camlp4;
 
-		gmp-xen = overrideAll (impl: {
-			# this is a plain C lib
-			configurePhase = "unset OCAMLFIND_DESTDIR";
-		}) opamPackages.gmp-xen;
-
-		lablgtk = overrideAll (impl: {
-			nativeBuildInputs = impl.nativeBuildInputs ++ [ pkgconfig gtk2.dev ];
-		}) opamPackages.lablgtk;
-
-		lwt = overrideAll (impl: {
-			nativeBuildInputs = impl.nativeBuildInputs ++ [ ncurses ];
-			setupHook = writeText "setupHook.sh" ''
-				export LD_LIBRARY_PATH="$(dirname "$(dirname ''${BASH_SOURCE[0]})")/lib/lwt''${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
-			'';
-		}) opamPackages.lwt;
-
 		ctypes =
 		let
 			base =
@@ -67,10 +66,17 @@ in
 				"0.12.1"
 				"0.13.0"
 				"0.13.1"
-			]) (impl: {
-					patches = (impl.patches or []) ++ [./ctypes/install-headers-once.patch];
-				}) base;
+			]) (addPatches [./ctypes/install-headers-once.patch]) base;
 		in withHeaderPatch;
+
+		gmp-xen = overrideAll (impl: {
+			# this is a plain C lib
+			configurePhase = "unset OCAMLFIND_DESTDIR";
+		}) opamPackages.gmp-xen;
+
+		lablgtk = overrideAll (impl: {
+			nativeBuildInputs = impl.nativeBuildInputs ++ [ pkgconfig gtk2.dev ];
+		}) opamPackages.lablgtk;
 
 		llvm = overrideAll (impl: {
 			nativeBuildInputs = impl.nativeBuildInputs ++ [ pkgconfig python ];
@@ -80,9 +86,19 @@ in
 				'';
 		}) opamPackages.llvm;
 
-		solo5-kernel-vertio = disableStackProtection opamPackages.solo5-kernel-vertio;
-		solo5-kernel-ukvm = disableStackProtection opamPackages.solo5-kernel-ukvm;
+		lwt = overrideAll (impl: {
+			nativeBuildInputs = impl.nativeBuildInputs ++ [ ncurses ];
+			setupHook = writeText "setupHook.sh" ''
+				export LD_LIBRARY_PATH="$(dirname "$(dirname ''${BASH_SOURCE[0]})")/lib/lwt''${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+			'';
+		}) opamPackages.lwt;
+
 		nocrypto = disableStackProtection opamPackages.nocrypto;
+		ocamlfind = overrideAll ((import ./ocamlfind) self) opamPackages.ocamlfind;
+		ocb-stubblr = patchAll [./ocb-stubblr/optional-opam.diff] opamPackages.ocb-stubblr; # https://github.com/pqwy/ocb-stubblr/pull/10
+
+		# fallout of https://github.com/ocaml/opam-repository/pull/6657
+		omake = addNcurses opamPackages.omake;
 
 		piqilib = overrideAll (impl: {
 			nativeBuildInputs = impl.nativeBuildInputs ++ [ which makeWrapper ];
@@ -93,6 +109,9 @@ in
 				export PATH=$(readlink -f .bin):$PATH
 			''+impl.configurePhase;
 		}) opamPackages.piqilib;
+
+		solo5-kernel-vertio = disableStackProtection opamPackages.solo5-kernel-vertio;
+		solo5-kernel-ukvm = disableStackProtection opamPackages.solo5-kernel-ukvm;
 
 		zarith = overrideAll (impl: {
 			nativeBuildInputs = impl.nativeBuildInputs ++ [ perl ];
@@ -105,23 +124,5 @@ in
 			buildPhase = "${pkgs.bash}/bin/bash ${./zarith-xen/install.sh}";
 			installPhase = "true";
 		}) opamPackages.zarith-xen;
-
-		"0install" = overrideAll (impl:
-			# disable tests, beause they require additional setup
-			{
-				buildInputs = [ pkgs.makeWrapper ];
-				configurePhase = ''
-					# ZI makes it very difficult to opt out of tests
-					sed -i -e 's|tests/test\.|__disabled_tests/test.|' ocaml/Makefile
-				'';
-				preFixup = ''
-					wrapProgram $out/bin/0install \
-						--prefix PATH : "${pkgs.gnupg}/bin"
-				'';
-			}
-		) opamPackages."0install";
-
-		# fallout of https://github.com/ocaml/opam-repository/pull/6657
-		omake = addNcurses opamPackages.omake;
 	};
 }
