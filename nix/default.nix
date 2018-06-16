@@ -4,7 +4,7 @@ let
 	defaultPkgs = pkgs;
 
 	# to support IFD in release.nix/overlay.nix, we build from `../` if it's already a store path
-	src = if lib.isStorePath ../. then ../. else (nix-update-source.fetch ./src.json).src;
+	src = if lib.isStorePath ../. then ../. else (nix-update-source.fetch ./release/src.json).src;
 
 	api = let
 
@@ -256,7 +256,7 @@ let
 		# for `digestMap` to be exhaustive, so this is strongly bound to this
 		# exact checkout of `opam2nix-packages`
 		generateOfficialPackages = {
-			opamRepository ? (nix-update-source.fetch ./src-opam-repository.json).src,
+			opamRepository ? (nix-update-source.fetch ./release/src-opam-repository.json).src,
 			digestMap ? ../repo/digest.json,
 			opam2nixBin ? null,
 			dest ? null,
