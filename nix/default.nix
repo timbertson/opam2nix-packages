@@ -255,8 +255,10 @@ let
 		# The package selection is restricted to this exact set due to the need
 		# for `digestMap` to be exhaustive, so this is strongly bound to this
 		# exact checkout of `opam2nix-packages`
+		defaultOpamRepository = (nix-update-source.fetch ./release/src-opam-repository.json).src;
+
 		generateOfficialPackages = {
-			opamRepository ? (nix-update-source.fetch ./release/src-opam-repository.json).src,
+			opamRepository ? defaultOpamRepository,
 			digestMap ? ../repo/digest.json,
 			opam2nixBin ? null,
 			dest ? null,
@@ -325,6 +327,7 @@ let
 			in
 			lib.extendDerivation true passthru drv;
 
+		opamRepository = defaultOpamRepository;
 		opamPackages =
 			let
 				opamPackages = import generatedPackages {};
