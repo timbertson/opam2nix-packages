@@ -7,3 +7,4 @@
 /opam-repository
 .gup/
 *.stamp
+/opam2nix

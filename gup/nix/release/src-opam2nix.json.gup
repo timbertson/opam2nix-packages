@@ -1,0 +1,10 @@
+#!bash -eu
+cd "$(dirname "$2")"
+local_repo="$(cd ../../opam2nix && pwd)"
+if ! [ -e "$local_repo" ]; then
+	echo "No opam2nix checkout present, not updating"
+	gup --leave
+	exit 0
+fi
+gup -u "$local_repo/nix/src.json"
+cp "$local_repo/nix/src.json" "$1"

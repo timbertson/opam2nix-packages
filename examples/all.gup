@@ -1,0 +1,10 @@
+#!/bin/bash
+set -eu
+here="$(dirname "$0")"
+cd "$here"
+find * -maxdepth 0 -type d | while read example; do
+	pushd "$example"
+		echo "*** Building example: $example ***"
+		nix-build --no-out-link --show-trace
+	popd
+done

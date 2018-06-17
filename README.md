@@ -113,9 +113,14 @@ Currently regeneration of the packageset and the selection process are both ligh
 
 ## Hacking
 
-This repo contains generated `.nix` expressions, as well as some overrides required for a bunch of packages which don't quite work out of the box.
+To work with the dependencies of this package, you can clone the relevant dependency into your workspace with one of:
 
-To add specific package versions, add them in `packages.repo` and rebuild.
+```
+git clone git://github.com/gfxmonk/opam2nix.git
+git clone git://github.com/ocaml/opam-repository.git
+```
+
+If you run `gup nix/all`, files in `nix/release` will be updated to use the locally checked-out versions of these dependencies. Note that `opam2nix` will only use a released version, while opam-repository will use the exact commit SHA. If you need to use an unreleased `opam2nix` version, you should use [nix-pin](https://github.com/timbertson/nix-pin).
 
 # How does it all work?
 
