@@ -16,6 +16,6 @@ rev="$(cat opam-repository.commit)"
 	--set type fetchgit \
 	--set rev "$rev" \
 	--set url "$local_repo" \
-	--substitute url "https://github.com/opam/opam-repository.git" \
+	--substitute url "https://github.com/ocaml/opam-repository.git" \
 	;
 
