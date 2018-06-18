@@ -2,9 +2,9 @@ self: super: with super; {
 	opam2nix = let
 		src = fetchgit {
 			"url" = "https://github.com/timbertson/opam2nix-packages.git";
-			"fetchSubmodules" = true;
-			"sha256" = "07zg31c7m0cl4rcvr8ngs22ikvllwy43246gl4wvm70kqj6d10sn";
-			"rev" = "b44450dabe3da132c6da959e8c19fe9a5ed7815e";
+			"fetchSubmodules" = false;
+			"sha256" = "0awmvzfswz4s06qcwbl1ff1ndz4dfkkdpis2w2mzsknb8qy4dapv";
+			"rev" = "75319dcfc253d76c95599252ebc015cacb96556d";
 		};
 		opam2nixSrc = fetchFromGitHub {
 			"owner" = "timbertson";
