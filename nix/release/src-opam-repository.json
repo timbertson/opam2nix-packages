@@ -1,14 +1,15 @@
 {
   "fetch": {
     "args": {
-      "fetchSubmodules": true,
+      "fetchSubmodules": false,
       "rev": "7aa76a7d6e3083a26d855a06daf8374388a190a3",
       "sha256": "040h3i7jr4dvb8a9ipxa0700bpy0wxdv695i5lql2wnvm66hd94k",
       "url": "https://github.com/ocaml/opam-repository.git"
     },
     "fn": "fetchgit",
+    "localRepo": "../../opam-repository",
     "rev": "7aa76a7d6e3083a26d855a06daf8374388a190a3",
     "type": "fetchgit",
-    "url": "/home/tim/dev/ocaml/opam2nix-packages/opam-repository"
+    "url": "https://github.com/ocaml/opam-repository.git"
   }
 }
