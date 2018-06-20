@@ -26,8 +26,9 @@ fi
 rev="$(cat "$revision_file")"
 "$(nix-build --no-out-link -A nix-update-source '<nixpkgs>')"/bin/nix-update-source \
 	-o "$1" \
-	--set type fetchgit \
+	--set type fetchFromGitHub \
 	--set rev "$rev" \
-	--set url "$local_repo" \
-	--substitute url "https://github.com/timbertson/opam2nix-packages.git" \
+	--set repo "opam2nix-packages" \
+	--set owner "timbertson" \
+	--set localRepo "$local_repo" \
 	;

@@ -1,11 +1,11 @@
 { pkgs ? import <nixpkgs> {}}:
 with pkgs;
 let
-		src = fetchgit {
-			"url" = "https://github.com/timbertson/opam2nix-packages.git";
-			"fetchSubmodules" = false;
-			"sha256" = "0awmvzfswz4s06qcwbl1ff1ndz4dfkkdpis2w2mzsknb8qy4dapv";
-			"rev" = "75319dcfc253d76c95599252ebc015cacb96556d";
+		src = fetchFromGitHub {
+			"owner" = "timbertson";
+			"repo" = "opam2nix-packages";
+			"sha256" = "071lxxsyjs7261jxwwgdha7rsp60gg3rw0kgr5hhfx3m28zmx6q8";
+			"rev" = "3af26b4c3dab1d6355b66a848aa4e55c818dd428";
 		};
 		opam2nixSrc = fetchFromGitHub {
 			"owner" = "timbertson";

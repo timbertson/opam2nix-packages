@@ -4,7 +4,7 @@ from subprocess import *
 
 def opam2nix_expr():
 	return '''let
-		src = fetchgit %(fetch_src)s;
+		src = fetchFromGitHub %(fetch_src)s;
 		opam2nixSrc = fetchFromGitHub %(fetch_opam2nix)s;
 		opam2nixBin = callPackage "${opam2nixSrc}/nix" {};
 	in
