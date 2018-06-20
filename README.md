@@ -86,7 +86,7 @@ accepted by the lower level `selectionsFile` and `importSelectionsFile` function
    - `name`
    - `packageName`: optional, defaults to the first component of `name`
    - `version`: optional, defaults to the second component of `name`
-   - `opamFilename`: the opam file path within `src`
+   - `opamFile`: the opam file path within `src`
    - `passthru`: extra passthru attributes, optional
    - also accepts options accepted by either `selectionsFile` or `importSelectionsFile`
 
@@ -96,7 +96,7 @@ accepted by the lower level `selectionsFile` and `importSelectionsFile` function
      - `name`
      - `packageName`: optional, defaults to the first component of `name`
      - `version`: optional, defaults to the second component of `name`
-     - `opamFilename`: the opam file path within `src`
+     - `opamFile`: the opam file path within `src`
    - second, an attrset of additional options accepted by either `selectionsFile` or `importSelectionsFile`
 
 ## What gets cached, and what gets rebuilt?
