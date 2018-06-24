@@ -1,4 +1,7 @@
-{ pkgs ? import <nixpkgs> {}, opam2nixBin ? pkgs.callPackage ../opam2nix/nix/default.nix {}}:
+{
+	pkgs ? import <nixpkgs> {},
+	opam2nixBin ? pkgs.callPackage "${(pkgs.nix-update-source.fetch ./release/src-opam2nix.json).src}/nix" {}
+}:
 with pkgs;
 let
 	defaultPkgs = pkgs;
