@@ -14,9 +14,10 @@ rev="$(cat opam-repository.commit)"
 
 "$(nix-build --no-out-link -A nix-update-source '<nixpkgs>')"/bin/nix-update-source \
 	-o "$1" \
-	--set type fetchgit \
+	--set type fetchFromGitHub \
 	--set rev "$rev" \
-	--set url "https://github.com/ocaml/opam-repository.git" \
+	--set owner ocaml \
+	--set repo opam-repository \
 	--set localRepo "$repo" \
 	;
 
