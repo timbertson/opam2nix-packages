@@ -23,7 +23,7 @@ try:
 		'nix-shell', os.path.join(here, '../shell.nix'),
 		'--show-trace',
 		'-A', '_generateOfficialPackages',
-		'--argstr', 'offline', 'false',
+		'--arg', 'offline', 'false',
 		'--argstr', 'digestMap', os.path.join(here, 'digest.json'),
 		]
 
@@ -46,6 +46,7 @@ try:
 		packages = ['*']
 
 	cmd.extend(['--arg', 'packages', '[' + ' '.join(['"%s"' % p for p in packages]) + ']'])
+	cmd.extend(['--run', 'true'])
 	print(repr(cmd), file=sys.stderr)
 	subprocess.check_call(cmd)
 except subprocess.CalledProcessError:

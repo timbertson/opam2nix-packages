@@ -8,7 +8,7 @@ function run_ci() {
 	./examples/all.gup
 }
 
-if [ "${TRAVIS_EVENT_TYPE:-}" = "cron" ]; then
+if [ "${TRAVIS_EVENT_TYPE:-}" = "cron" -o "${TRAVIS_BRANCH}" = "cron" ]; then
 	run_scheduled
 else
 	run_ci

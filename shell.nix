@@ -8,6 +8,6 @@ let
 in
 pkgs.stdenv.mkDerivation {
 	name = "shell";
-	buildInput = extraPackages;
+	buildInputs = extraPackages;
 	passthru = base;
 }

@@ -1,6 +1,6 @@
 #!bash -eu
 cd "$(dirname "$2")"
-local_repo="$(cd ../../opam2nix && pwd)"
+local_repo="../../opam2nix"
 if ! [ -e "$local_repo" ]; then
 	echo "No opam2nix checkout present, not updating"
 	gup --leave
