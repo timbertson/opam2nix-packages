@@ -8,7 +8,7 @@ I'm hoping to make it stable and a future part of `nixpkgs`. But for now, it's j
 
 Don't try to clone `opam2nix` as part of your own derivation. If you instead copy the current `nix/release/default.nix` into your own source code you can import _just that one file_ (using `pkgs.callPackage) and it'll in turn clone the relevant commit from this repository and bootstrap itself. If needed, you can replace in the git URLs or revisions with the latest commits (or a commit in your fork).
 
-Alternatively, you can copy `nix/overlay.nix` into `~/.config/nixpkgs/overlays` to make `opam2nix` available at the toplevel of your nixpkgs installation.
+Alternatively, you can `gup nix/release/overlay.nix` and then copy this file into `~/.config/nixpkgs/overlays` to make `opam2nix` available at the toplevel of your nixpkgs installation.
 
 ## Getting started:
 
