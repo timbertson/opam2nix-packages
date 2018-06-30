@@ -8,3 +8,4 @@
 .gup/
 *.stamp
 /opam2nix
+nix/release/overlay.nix
