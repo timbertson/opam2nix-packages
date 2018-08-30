@@ -6,7 +6,7 @@ I'm hoping to make it stable and a future part of `nixpkgs`. But for now, it's j
 
 ## Important note on using in your own project:
 
-Don't try to clone `opam2nix` as part of your own derivation. If you instead copy the current `nix/release/default.nix` into your own source code you can import _just that one file_ (using `pkgs.callPackage) and it'll in turn clone the relevant commit from this repository and bootstrap itself. If needed, you can replace in the git URLs or revisions with the latest commits (or a commit in your fork).
+Don't try to clone `opam2nix` as part of your own derivation. If you instead copy the current `nix/release/default.nix` into your own source code you can import _just that one file_ (using `pkgs.callPackage`) and it'll in turn clone the relevant commit from this repository and bootstrap itself. If needed, you can replace in the git URLs or revisions with the latest commits (or a commit in your fork).
 
 Alternatively, you can copy `nix/overlay.nix` into `~/.config/nixpkgs/overlays` to make `opam2nix` available at the toplevel of your nixpkgs installation.
 
@@ -16,7 +16,7 @@ The easiest way to get started is to check out the [examples/](./examples/) dire
 
 ## Detailed usage instructions:
 
-One you've copied `release.nix` as `opam2nix-packages.nix`, you can use it like so:
+Once you've copied `nix/release/default.nix` as `opam2nix-packages.nix`, you can use it like so:
 
     let
       opam2nix = pkgs.callPackage ./opam2nix-packages.nix {};
@@ -120,7 +120,7 @@ git clone git://github.com/gfxmonk/opam2nix.git
 git clone git://github.com/ocaml/opam-repository.git
 ```
 
-If you run `gup nix/all`, files in `nix/release` will be updated to use the locally checked-out versions of these dependencies. Note that `opam2nix` will only use a released version, while opam-repository will use the exact commit SHA. If you need to use an unreleased `opam2nix` version, you should use [nix-pin](https://github.com/timbertson/nix-pin).
+If you run `gup nix/all` at the root, files in `nix/release` will be updated to use the locally checked-out versions of these dependencies. Note that `opam2nix` will only use a released version, while opam-repository will use the exact commit SHA. If you need to use an unreleased `opam2nix` version, you should use [nix-pin](https://github.com/timbertson/nix-pin).
 
 # How does it all work?
 
