@@ -45,6 +45,8 @@ try:
 		cmd.extend(['--argstr', 'dest', dest])
 		packages = ['*']
 
+	cmd.extend(['--arg', 'verbose', 'true'])
+
 	cmd.extend(['--arg', 'packages', '[' + ' '.join(['"%s"' % p for p in packages]) + ']'])
 	cmd.extend(['--run', 'true'])
 	print(repr(cmd), file=sys.stderr)

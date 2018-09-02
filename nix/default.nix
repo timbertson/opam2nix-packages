@@ -225,6 +225,7 @@ let
 			digestMap ? null,
 			ignoreBroken ? null,
 			unclean ? null,
+			verbose ? null,
 			offline ? null,
 			dest ? null,
 		}: with lib; (
@@ -238,6 +239,7 @@ let
 			]
 				++ (optional (defaulted ignoreBroken false) "--ignore-broken")
 				++ (optional (defaulted unclean false) "--unclean")
+				++ (optional (defaulted verbose false) "--verbose")
 				++ (optional (defaulted offline true) "--offline")
 				++ (optionalArg "--num-versions" numVersions)
 				++ (optionalArg "--digest-map" digestMap)
@@ -267,9 +269,10 @@ let
 			dest ? null,
 			unclean ? null,
 			offline ? null,
+			verbose ? null,
 			packages ? null
 		}: makeRepository {
-			inherit opamRepository digestMap dest unclean packages opam2nixBin offline;
+			inherit opamRepository digestMap dest unclean packages opam2nixBin offline verbose;
 			numVersions = "2.3.2";
 			ignoreBroken = true;
 		};

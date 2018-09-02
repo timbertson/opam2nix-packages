@@ -1,5 +1,4 @@
 #!bash -eu
-gup --always
 cd ../../opam-repository
 git rev-parse HEAD > "$1"
 gup --contents "$1"

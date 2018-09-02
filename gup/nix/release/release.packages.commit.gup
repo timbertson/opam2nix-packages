@@ -1,5 +1,4 @@
 #!bash -eu
-gup --always
 cd ../../
 git rev-parse HEAD > "$1"
 gup --contents "$1"

@@ -9,7 +9,7 @@ if [ ! -e opam-repository ]; then
 fi
 
 rm -f .push
-gup repo/packages nix/release/src-opam-repository.json
+gup repo/packages gup nix/src-opam-repository.json
 if ! git diff --quiet --exit-code; then
 	git add -u repo nix/
 	git commit -m "Automated package update";
