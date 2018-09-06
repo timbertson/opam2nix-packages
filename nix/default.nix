@@ -6,6 +6,11 @@ with pkgs;
 let
 	defaultPkgs = pkgs;
 
+	# workaround https://github.com/NixOS/nixpkgs/issues/45933
+	addPassthru = attrs: drv:
+		assert lib.isDerivation drv;
+		drv.overrideAttrs (orig: { passthru = orig.passthru // attrs; });
+
 	# to support IFD in release.nix/overlay.nix, we build from `../` if it's already a store path
 	src = if lib.isStorePath ../. then ../. else (nix-update-source.fetch ./release/src.json).src;
 
@@ -328,7 +333,7 @@ let
 					};
 				} // (attrs.passthru or {});
 			in
-			lib.extendDerivation true passthru drv;
+			addPassthru passthru drv;
 
 		opamRepository = defaultOpamRepository;
 		opamPackages =
@@ -341,7 +346,7 @@ let
 					in
 					lib.mapAttrs (name: versionPackages:
 						let versions = lib.filter realVersion (lib.attrNames versionPackages); in
-						lib.extendDerivation true (
+						addPassthru (
 							lib.listToAttrs (map (version: {
 								name = builtins.replaceStrings ["."] ["_"] version;
 								value = api.buildPackageSpec { inherit name; constraint = "=${version}"; } buildArgs;
@@ -349,7 +354,7 @@ let
 						) (api.buildPackage name buildArgs)
 					) opamPackages;
 			in
-			lib.extendDerivation true {
+			addPassthru {
 				"4_05" = make "ocamlPackages_4_05";
 			} generatedPackages;
 	};
