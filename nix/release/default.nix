@@ -4,14 +4,14 @@ let
 		src = fetchFromGitHub {
 			"owner" = "timbertson";
 			"repo" = "opam2nix-packages";
-			"sha256" = "071lxxsyjs7261jxwwgdha7rsp60gg3rw0kgr5hhfx3m28zmx6q8";
-			"rev" = "3af26b4c3dab1d6355b66a848aa4e55c818dd428";
+			"sha256" = "1xzsg4dv0mlj5lgv1alipsim53i4jx1f2ghywf6bj0y7rki10d0m";
+			"rev" = "99a00f37b9d6a86f9f6c2b1c3119363679e8add9";
 		};
 		opam2nixSrc = fetchFromGitHub {
 			"owner" = "timbertson";
 			"repo" = "opam2nix";
-			"sha256" = "1khq1b0c7ry8854nwl0qkfq0kddf4g49xmj1yp2bifk8kh2waqb7";
-			"rev" = "version-0.3.1";
+			"sha256" = "07xvim1yq55pc16kp2v191larwy5hv1k0725i8f5nxqb2kayjf51";
+			"rev" = "version-0.3.2";
 		};
 		opam2nixBin = callPackage "${opam2nixSrc}/nix" {};
 	in
