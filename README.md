@@ -58,7 +58,7 @@ accepted by the lower level `selectionsFile` and `importSelectionsFile` function
 ## Configuration
 
  - `opam2nix.selectionsFile` takes an attribute set with the following properties:
-    - `ocamlAttr`: defaults to "ocaml"
+    - `ocamlAttr`: defaults to "ocaml". Alternate versions are e.g. `ocaml-ng.ocamlPackages_4_05.ocaml`
     - `ocamlVersion`: default is extracted from the derivaiton name of `pkgs.<ocamlAttr>`, should rarely need to be overriden
     - `basePackages`: defaults to `["base-unix" "base-bigarray" "base-threads"]`, which is hacky.
     - `specs`: list of records with a name and optional constraint field.
