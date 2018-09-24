@@ -236,7 +236,7 @@ let
 			let
 			finalDest = defaulted dest "$out";
 			finalOpam2nixBin = defaulted opam2nixBin defaultOpam2nixBin;
-			optionalArg = prefix: arg: if arg == null then [] else [prefix arg];
+			optionalArg = prefix: arg: if arg == null then [] else [prefix "'${arg}'"];
 			flags = [
 				"--src" opamRepository
 				"--dest" finalDest
@@ -275,7 +275,7 @@ let
 			packages ? null
 		}: makeRepository {
 			inherit opamRepository digestMap dest unclean packages opam2nixBin offline;
-			numVersions = "2.3.2";
+			# numVersions = "*.*.2";
 			ignoreBroken = true;
 		};
 
