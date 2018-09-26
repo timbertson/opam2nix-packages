@@ -2,18 +2,18 @@
 with self.pkgs;
 with lib;
 let
-	overrideAll = fn: versions: mapAttrs (version: def: lib.overrideDerivation def fn) versions;
+	overrideAll = fn: versions: mapAttrs (version: def: def.overrideAttrs fn) versions;
 	addPatches = patches: orig: { patches = (orig.patches or []) ++ patches; };
 	patchAll = patches: overrideAll (addPatches patches);
 	overrideIf = predicate: fn: versions:
 		mapAttrs (version: def:
 			if predicate version then
-				lib.overrideDerivation def fn
+				def.overrideAttrs fn
 			else def
 		) versions;
 
 	# XXX it's not really a `configure` phase, is it?
-	addNcurses = def: overrideAll (impl: { nativeBuildInputs = impl.nativeBuildInputs ++ [ncurses]; }) def;
+	addNcurses = def: overrideAll (impl: { buildInputs = impl.buildInputs ++ [ncurses]; }) def;
 	disableStackProtection = def: overrideAll (impl: { hardeningDisable = [ "stackprotector" ]; }) def;
 	opamPackages = super.opamPackages;
 in
@@ -35,27 +35,40 @@ in
 			}
 		) opamPackages."0install";
 
-		camlp4 = overrideAll (impl: {
-			# camlp4 uses +camlp4 directory, but when installed individually it's just
-			# ../ocaml/camlp4
-			configurePhase = ''
-				find . -name META.in | while read f; do
-					sed -i -e 's|"+|"../ocaml/|' "$f"
-				done
+		camlp4 = overrideAll (impl:
+			let
+				isSystem = lib.hasSuffix "+system" impl.version;
+
+				camlVersion = with lib; head (splitString "+" impl.version);
+				camlVersionAttr = replaceStrings ["."] ["_"] camlVersion;
+				nixOcamlPackages = lib.getAttr "ocamlPackages_${camlVersionAttr}" self.pkgs.ocaml-ng;
+			in (if isSystem then {
+				# patch system META, and depend on the "system" (nixpkgs) camlp4
+				propagatedBuildInputs = (impl.propagatedBuildInputs or []) ++ [ which nixOcamlPackages.camlp4 ];
+				configurePhase = ''
+					substituteInPlace META.in --replace '"+camlp4"' '"${nixOcamlPackages.camlp4}/lib/ocaml/${nixOcamlPackages.ocaml.version}/site-lib/camlp4"'
 				'';
-			nativeBuildInputs = impl.nativeBuildInputs ++ [ which ];
-			# see https://github.com/NixOS/nixpkgs/commit/b2a4eb839a530f84a0b522840a6a4cac51adcba1
-			# if we strip binaries we can get weird errors such that:
-			# /nix/store/.../bin/camlp4orf not found or is not a bytecode executable file
-			# when executing camlp4orf
-			dontStrip = true;
-		}) opamPackages.camlp4;
+			} else {
+				# patch non-system META to point to ../ocaml/camlp4
+				configurePhase = ''
+					find . -name META.in | while read f; do
+						sed -i -e 's|"+|"../ocaml/|' "$f"
+					done
+					'';
+				buildInputs = impl.buildInputs ++ [ which ];
+				# see https://github.com/NixOS/nixpkgs/commit/b2a4eb839a530f84a0b522840a6a4cac51adcba1
+				# if we strip binaries we can get weird errors such that:
+				# /nix/store/.../bin/camlp4orf not found or is not a bytecode executable file
+				# when executing camlp4orf
+				dontStrip = true;
+			})
+		) opamPackages.camlp4;
 
 		ctypes =
 		let
 			base =
 				overrideAll (impl: {
-					nativeBuildInputs = impl.nativeBuildInputs ++ [ pkgconfig libffi ncurses ];
+					buildInputs = impl.buildInputs ++ [ pkgconfig libffi ncurses ];
 				}) opamPackages.ctypes;
 			withHeaderPatch =
 			overrideIf (version: lib.elem version [
@@ -75,11 +88,11 @@ in
 		}) opamPackages.gmp-xen;
 
 		lablgtk = overrideAll (impl: {
-			nativeBuildInputs = impl.nativeBuildInputs ++ [ pkgconfig gtk2.dev ];
+			buildInputs = impl.buildInputs ++ [ pkgconfig gtk2.dev ];
 		}) opamPackages.lablgtk;
 
 		llvm = overrideAll (impl: {
-			nativeBuildInputs = impl.nativeBuildInputs ++ [ pkgconfig python ];
+			buildInputs = impl.buildInputs ++ [ pkgconfig python ];
 			propagatedBuildInputs = impl.propagatedBuildInputs ++ [ llvm_5 ];
 			installPhase = ''
 				bash -ex install.sh ${llvm_5}/bin/llvm-config $out/lib ${cmake}/bin/cmake make
@@ -87,7 +100,7 @@ in
 		}) opamPackages.llvm;
 
 		lwt = overrideAll (impl: {
-			nativeBuildInputs = impl.nativeBuildInputs ++ [ ncurses ];
+			buildInputs = impl.buildInputs ++ [ ncurses ];
 			setupHook = writeText "setupHook.sh" ''
 				export LD_LIBRARY_PATH="$(dirname "$(dirname ''${BASH_SOURCE[0]})")/lib/lwt''${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 			'';
@@ -101,7 +114,7 @@ in
 		omake = addNcurses opamPackages.omake;
 
 		piqilib = overrideAll (impl: {
-			nativeBuildInputs = impl.nativeBuildInputs ++ [ which makeWrapper ];
+			buildInputs = impl.buildInputs ++ [ which makeWrapper ];
 			# hack -- for some reason the makefile system ignores OCAMLPATH.
 			configurePhase = ''
 				mkdir .bin
@@ -114,7 +127,7 @@ in
 		solo5-kernel-ukvm = disableStackProtection opamPackages.solo5-kernel-ukvm;
 
 		zarith = overrideAll (impl: {
-			nativeBuildInputs = impl.nativeBuildInputs ++ [ perl ];
+			buildInputs = impl.buildInputs ++ [ perl ];
 			configurePhase = ''
 				patchShebangs .
 			''+impl.configurePhase;

@@ -1,5 +1,6 @@
 { pkgs ? import <nixpkgs> {}, ci ? false}:
 let
+	upstream = pkgs.callPackage ./nix/default.nix {};
 	base = (pkgs.nix-pin.api {}).callPackage ./nix/default.nix {};
 	extraPackages = with pkgs;
 		[ gup base.opam2nixBin nix-pin ] ++ (
@@ -9,5 +10,5 @@ in
 pkgs.stdenv.mkDerivation {
 	name = "shell";
 	buildInputs = extraPackages;
-	passthru = base;
+	passthru = base // { inherit upstream; };
 }

@@ -9,7 +9,7 @@ let
 	# workaround https://github.com/NixOS/nixpkgs/issues/45933
 	addPassthru = attrs: drv:
 		assert lib.isDerivation drv;
-		drv.overrideAttrs (orig: { passthru = orig.passthru // attrs; });
+		drv.overrideAttrs (orig: { passthru = (orig.passthru or {}) // attrs; });
 
 	# to support IFD in release.nix/overlay.nix, we build from `../` if it's already a store path
 	src = if lib.isStorePath ../. then ../. else (nix-update-source.fetch ./release/src.json).src;
