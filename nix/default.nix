@@ -9,7 +9,7 @@ let
 	# workaround https://github.com/NixOS/nixpkgs/issues/45933
 	addPassthru = attrs: drv:
 		assert lib.isDerivation drv;
-		drv.overrideAttrs (orig: { passthru = orig.passthru // attrs; });
+		drv.overrideAttrs (orig: { passthru = (orig.passthru or {}) // attrs; });
 
 	# to support IFD in release.nix/overlay.nix, we build from `../` if it's already a store path
 	src = if lib.isStorePath ../. then ../. else (nix-update-source.fetch ./release/src.json).src;
@@ -237,7 +237,7 @@ let
 			let
 			finalDest = defaulted dest "$out";
 			finalOpam2nixBin = defaulted opam2nixBin defaultOpam2nixBin;
-			optionalArg = prefix: arg: if arg == null then [] else [prefix arg];
+			optionalArg = prefix: arg: if arg == null then [] else [prefix "'${arg}'"];
 			flags = [
 				"--src" opamRepository
 				"--dest" finalDest
@@ -278,7 +278,7 @@ let
 			packages ? null
 		}: makeRepository {
 			inherit opamRepository digestMap dest unclean packages opam2nixBin offline verbose;
-			numVersions = "2.3.2";
+			# numVersions = "*.*.2";
 			ignoreBroken = true;
 		};
 

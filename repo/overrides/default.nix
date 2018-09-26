@@ -35,21 +35,34 @@ in
 			}
 		) opamPackages."0install";
 
-		camlp4 = overrideAll (impl: {
-			# camlp4 uses +camlp4 directory, but when installed individually it's just
-			# ../ocaml/camlp4
-			configurePhase = ''
-				find . -name META.in | while read f; do
-					sed -i -e 's|"+|"../ocaml/|' "$f"
-				done
+		camlp4 = overrideAll (impl:
+			let
+				isSystem = lib.hasSuffix "+system" impl.version;
+
+				camlVersion = with lib; head (splitString "+" impl.version);
+				camlVersionAttr = replaceStrings ["."] ["_"] camlVersion;
+				nixOcamlPackages = lib.getAttr "ocamlPackages_${camlVersionAttr}" self.pkgs.ocaml-ng;
+			in (if isSystem then {
+				# patch system META, and depend on the "system" (nixpkgs) camlp4
+				propagatedBuildInputs = (impl.propagatedBuildInputs or []) ++ [ which nixOcamlPackages.camlp4 ];
+				configurePhase = ''
+					substituteInPlace META.in --replace '"+camlp4"' '"${nixOcamlPackages.camlp4}/lib/ocaml/${nixOcamlPackages.ocaml.version}/site-lib/camlp4"'
 				'';
-			buildInputs = impl.buildInputs ++ [ which ];
-			# see https://github.com/NixOS/nixpkgs/commit/b2a4eb839a530f84a0b522840a6a4cac51adcba1
-			# if we strip binaries we can get weird errors such that:
-			# /nix/store/.../bin/camlp4orf not found or is not a bytecode executable file
-			# when executing camlp4orf
-			dontStrip = true;
-		}) opamPackages.camlp4;
+			} else {
+				# patch non-system META to point to ../ocaml/camlp4
+				configurePhase = ''
+					find . -name META.in | while read f; do
+						sed -i -e 's|"+|"../ocaml/|' "$f"
+					done
+					'';
+				buildInputs = impl.buildInputs ++ [ which ];
+				# see https://github.com/NixOS/nixpkgs/commit/b2a4eb839a530f84a0b522840a6a4cac51adcba1
+				# if we strip binaries we can get weird errors such that:
+				# /nix/store/.../bin/camlp4orf not found or is not a bytecode executable file
+				# when executing camlp4orf
+				dontStrip = true;
+			})
+		) opamPackages.camlp4;
 
 		ctypes =
 		let
