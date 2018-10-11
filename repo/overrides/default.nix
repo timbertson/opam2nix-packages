@@ -107,6 +107,11 @@ in
 		}) opamPackages.lwt;
 
 		nocrypto = disableStackProtection opamPackages.nocrypto;
+		num = overrideAll (x: {
+			installPhase = ''
+				make findlib-install
+			'';
+		}) opamPackages.num;
 		ocamlfind = overrideAll ((import ./ocamlfind) self) opamPackages.ocamlfind;
 		ocb-stubblr = patchAll [./ocb-stubblr/optional-opam.diff] opamPackages.ocb-stubblr; # https://github.com/pqwy/ocb-stubblr/pull/10
 
