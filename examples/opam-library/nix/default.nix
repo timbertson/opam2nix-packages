@@ -5,7 +5,7 @@ opam2nix.buildOpamPackage rec {
 	src = ../.;
 
 	# opam specific settings:
-	ocamlAttr = "ocaml_4_03";
+	# ocamlAttr = "ocaml_4_03";
 	# packageName = "hello"; # default: derived from `name` attribute
 	# opamFile = "hello.opam"; # default: "${packageName}.opam"
 }

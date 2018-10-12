@@ -5,7 +5,7 @@ stdenv.mkDerivation {
 	src = ../.;
 	buildInputs = opam2nix.build {
 		specs = opam2nix.toSpecs [ "ocamlbuild" "ocamlfind" "lwt" ];
-		ocamlAttr = "ocaml_4_03";
+		# ocamlAttr = "ocaml_4_03";
 	};
 	buildPhase = ''
 		ocamlbuild -use-ocamlfind hello.native
