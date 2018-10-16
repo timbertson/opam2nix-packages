@@ -25,6 +25,10 @@ in {
 		}
 		addEnvHooks "$targetOffset" setToplevelPath
 
+		findlibPreBuildAction () {
+			mkdir -p "''$out/lib"
+		}
+
 		addOCamlPath () {
 			if test -d "''$1/lib"; then
 				export OCAMLPATH="''${OCAMLPATH}''${OCAMLPATH:+:}''$1/lib"
@@ -36,7 +40,7 @@ in {
 				fi
 			fi
 			export OCAMLFIND_DESTDIR="''$out/lib/"
-			mkdir -p "''$out/lib"
+			export preBuildPhases="''${preBuildPhases:+$preBuildPhases }findlibPreBuildAction"
 		}
 		addEnvHooks "$targetOffset" addOCamlPath
 	'';

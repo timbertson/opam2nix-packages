@@ -252,7 +252,14 @@ let
 			; in
 			stdenv.mkDerivation rec {
 				name = "opam2nix-generated-packages";
-				shellHook = "if [ '$dest' == '$out' ]; then echo '$dest must be set in shell mode'; exit 1; fi\n" + buildCommand + "\nexit 0";
+				shellHook = ''
+					if [ '${finalDest}' == '$out' ]; then
+						echo 'ERROR: dest must be set in shell mode (opam2nix.makeRepository)'
+						exit 1
+					fi
+					${buildCommand}
+					exit 0
+				'';
 				buildCommand = ''
 					mkdir -p "${finalDest}"
 					echo "+ ${finalOpam2nixBin}/bin/opam2nix generate" ${concatStringsSep " " flags}
