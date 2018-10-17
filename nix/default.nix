@@ -81,6 +81,7 @@ let
 			ocaml ? null,
 			ocamlVersion ? null,
 			basePackages ? null,
+			verbose ? null,
 			specs,
 			extraRepos ? [],
 			args ? defaultArgs,
@@ -92,17 +93,20 @@ let
 				extraRepoArgs = map (repo: "--repo \"${buildNixRepo repo}\"") extraRepos;
 				ocamlVersionResolved = parseOcamlVersion ocamlSpec.impl;
 				basePackagesResolved = defaulted basePackages defaultBasePackages;
-				cmd = ''env OCAMLRUNPARAM=b ${opam2nixBin}/bin/opam2nix select \
-					--repo ${generatedPackages} \
-					--dest "$out" \
-					--ocaml-version ${defaulted ocamlVersion ocamlVersionResolved} \
-					--base-packages ${concatStringsSep "," basePackagesResolved} \
-					${concatStringsSep " " ocamlSpec.args} \
-					${concatStringsSep " " extraRepoArgs} \
-					${concatStringsSep " " args} \
-					${concatStringsSep " " (specStrings specs)} \
-				;
-				'';
+				cmd = concatStringsSep " " ([
+					"env" "OCAMLRUNPARAM=b" "${opam2nixBin}/bin/opam2nix" "select"
+					"--repo" generatedPackages
+					"--dest" "$out"
+					"--ocaml-version" (defaulted ocamlVersion ocamlVersionResolved)
+					"--base-packages"
+					(concatStringsSep "," basePackagesResolved)
+				]
+					++ (optional (defaulted verbose false) "--verbose")
+					++ ocamlSpec.args
+					++ extraRepoArgs
+					++ args
+					++ (specStrings specs)
+				);
 			in
 			# possible format for "specs":
 			# list of strings
@@ -124,6 +128,7 @@ let
 			ocamlAttr ? null,
 			ocamlVersion ? null,
 			ocaml ? null,
+			verbose ? null,
 			basePackages ? null,
 			specs,
 			extraRepos ? [],

@@ -3,6 +3,7 @@ opam2nix.buildOpamPackage rec {
 	version = "0.0.1";
 	name = "hello-${version}";
 	src = ../.;
+	verbose = true;
 
 	# opam specific settings:
 	# ocamlAttr = "ocaml_4_03";

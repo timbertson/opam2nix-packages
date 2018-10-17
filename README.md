@@ -62,6 +62,7 @@ accepted by the lower level `selectionsFile` and `importSelectionsFile` function
     - `ocamlVersion`: default is extracted from the derivaiton name of `pkgs.<ocamlAttr>`, should rarely need to be overriden
     - `basePackages`: defaults to `["base-unix" "base-bigarray" "base-threads"]`, which is hacky.
     - `specs`: list of records with a name and optional constraint field.
+    - `verbose`: boolean, defaults to false
     - `args`: extra list of string arguments to pass to the `opam2nix` tool (default `[]`)
     - `extraRepos`: extra list of opem repos (directories) to include
 
