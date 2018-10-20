@@ -183,7 +183,7 @@ let
 		# packages to apply customisations.
 		filterWorldArgs = attrs: {
 			pkgs = attrs.pkgs or null;
-			overrides = attrs.select or null;
+			overrides = attrs.overrides or null;
 		};
 		applyWorld = {
 			select,
@@ -243,7 +243,8 @@ let
 			finalDest = defaulted dest "$out";
 			finalOpam2nixBin = defaulted opam2nixBin defaultOpam2nixBin;
 			optionalArg = prefix: arg: if arg == null then [] else [prefix "'${arg}'"];
-			flags = [
+			cmd = [
+				"${finalOpam2nixBin}/bin/opam2nix" "generate"
 				"--src" opamRepository
 				"--dest" finalDest
 			]
@@ -267,8 +268,8 @@ let
 				'';
 				buildCommand = ''
 					mkdir -p "${finalDest}"
-					echo "+ ${finalOpam2nixBin}/bin/opam2nix generate" ${concatStringsSep " " flags}
-					${finalOpam2nixBin}/bin/opam2nix generate ${concatStringsSep " " flags}
+					echo "+ " ${concatStringsSep " " cmd}
+					${concatStringsSep " " cmd}
 				'';
 			}
 		);
