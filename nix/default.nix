@@ -11,8 +11,9 @@ let
 		assert lib.isDerivation drv;
 		drv.overrideAttrs (orig: { passthru = (orig.passthru or {}) // attrs; });
 
+	isStorePath = x: lib.isStorePath (builtins.toString x); # workaround https://github.com/NixOS/nixpkgs/issues/48743
 	# to support IFD in release.nix/overlay.nix, we build from `../` if it's already a store path
-	src = if lib.isStorePath ../. then ../. else (nix-update-source.fetch ./release/src.json).src;
+	src = if isStorePath ../. then ../. else (nix-update-source.fetch ./release/src.json).src;
 
 	api = let
 
