@@ -3,7 +3,7 @@ let
 	upstream = pkgs.callPackage ./nix/default.nix {};
 	base = (pkgs.nix-pin.api {}).callPackage ./nix/default.nix {};
 	extraPackages = with pkgs;
-		[ gup base.opam2nixBin nix-pin ] ++ (
+		[ python gup base.opam2nixBin nix nix-pin ] ++ (
 			if ci then [ nix-prefetch-scripts ] else []
 		);
 in
