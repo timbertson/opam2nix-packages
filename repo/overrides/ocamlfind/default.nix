@@ -40,7 +40,9 @@ in {
 				fi
 			fi
 			export OCAMLFIND_DESTDIR="''$out/lib/"
-			export preBuildPhases="''${preBuildPhases:+$preBuildPhases }findlibPreBuildAction"
+			if [[ $preBuildPhases != *findlibPreBuildAction* ]]; then
+				export preBuildPhases="''${preBuildPhases:+$preBuildPhases }findlibPreBuildAction"
+			fi
 		}
 		addEnvHooks "$targetOffset" addOCamlPath
 	'';
