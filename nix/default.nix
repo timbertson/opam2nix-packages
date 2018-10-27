@@ -1,15 +1,24 @@
 {
 	pkgs ? import <nixpkgs> {},
-	opam2nixBin ? pkgs.callPackage "${(pkgs.nix-update-source.fetch ./release/src-opam2nix.json).src}/nix" {},
+	opam2nixBin ? null,
 
 	# The official set of generated packages, which used to live in ./repo. The package selection
 	# is restricted to this exact set due to the need for `digestMap` to be exhaustive, so this
 	# is strongly bound to this exact checkout of `opam2nix-packages`, but it's an argument since
 	# we inject it in release/default.nix
-	opamRepository ? (pkgs.nix-update-source.fetch ./release/src-opam-repository.json).src,
+	opamRepository ? null,
 }:
 with pkgs;
 let
+	defaulted = value: dfl: if value == null then dfl else value;
+	deps = {
+		opam2nixBin = defaulted opam2nixBin (pkgs.callPackage "${(pkgs.nix-update-source.fetch ./release/src-opam2nix.json).src}/nix" {});
+		opamRepository = defaulted opamRepository ((pkgs.nix-update-source.fetch ./release/src-opam-repository.json).src);
+	};
+in
+let
+	opam2nixBin = deps.opam2nixBin;
+	opamRepository = deps.opamRepository;
 	defaultPkgs = pkgs;
 
 	addPassthru = attrs: drv:
@@ -60,7 +69,6 @@ let
 
 		## Other stuff
 
-		defaulted = value: dfl: if value == null then dfl else value;
 		defaultOcamlAttr = "ocaml";
 		configureOcamlImpl = ocamlAttr: let
 				attr = defaulted ocamlAttr defaultOcamlAttr;
