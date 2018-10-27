@@ -1,18 +1,24 @@
 {
 	pkgs ? import <nixpkgs> {},
-	opam2nixBin ? pkgs.callPackage "${(pkgs.nix-update-source.fetch ./release/src-opam2nix.json).src}/nix" {}
+	opam2nixBin ? pkgs.callPackage "${(pkgs.nix-update-source.fetch ./release/src-opam2nix.json).src}/nix" {},
+
+	# The official set of generated packages, which used to live in ./repo. The package selection
+	# is restricted to this exact set due to the need for `digestMap` to be exhaustive, so this
+	# is strongly bound to this exact checkout of `opam2nix-packages`, but it's an argument since
+	# we inject it in release/default.nix
+	opamRepository ? (pkgs.nix-update-source.fetch ./release/src-opam-repository.json).src,
 }:
 with pkgs;
 let
 	defaultPkgs = pkgs;
 
-	# workaround https://github.com/NixOS/nixpkgs/issues/45933
 	addPassthru = attrs: drv:
 		assert lib.isDerivation drv;
 		drv.overrideAttrs (orig: { passthru = (orig.passthru or {}) // attrs; });
 
+	# workaround https://github.com/NixOS/nixpkgs/issues/45933
 	isStorePath = x: lib.isStorePath (builtins.toString x); # workaround https://github.com/NixOS/nixpkgs/issues/48743
-	# to support IFD in release.nix/overlay.nix, we build from `../` if it's already a store path
+	# to support IFD in nix/release, we build from `../` if it's already a store path
 	src = if isStorePath ../. then ../. else (nix-update-source.fetch ./release/src.json).src;
 
 	api = let
@@ -275,11 +281,7 @@ let
 			}
 		);
 
-		# The official set of generated packages, which used to live in ./repo.
-		# The package selection is restricted to this exact set due to the need
-		# for `digestMap` to be exhaustive, so this is strongly bound to this
-		# exact checkout of `opam2nix-packages`
-		defaultOpamRepository = (nix-update-source.fetch ./release/src-opam-repository.json).src;
+		defaultOpamRepository = opamRepository;
 
 		generateOfficialPackages = {
 			opamRepository ? defaultOpamRepository,

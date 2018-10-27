@@ -2,7 +2,7 @@
 /result/
 /local
 /nix/local.tgz
-/nix/release.*.commit
+/nix/release/*.commit
 /repo/packages
 /opam-repository
 .gup/

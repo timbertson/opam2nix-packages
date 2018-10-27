@@ -1,2 +1,2 @@
 #!bash -eu
-gup -u release/{default,overlay}.nix release/src.json
+gup -u release/{src,src-opam2nix}.json
