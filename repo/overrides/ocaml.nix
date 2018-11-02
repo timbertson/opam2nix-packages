@@ -2,7 +2,7 @@
 # Findlib's opam package gets away with it by shadowing the `ocaml` binary on $PATH,
 # but that won't work in a nix build environment
 { makeWrapper, lib }: impl:
-impl.overrideAttrs (orig: {
+lib.overrideDerivation impl (orig: {
 	buildInputs = (orig.buildInputs or []) ++ [ makeWrapper ];
 	postInstall = (orig.postInstall or "") + ''
 		mv $out/bin/ocaml $out/bin/.ocaml.wrapped
