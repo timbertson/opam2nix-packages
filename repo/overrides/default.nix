@@ -136,6 +136,7 @@ in
 
 		zarith = overrideAll (impl: {
 			nativeBuildInputs = (impl.nativeBuildInputs or []) ++ [ perl ];
+			buildInputs = impl.buildInputs ++ [ gmp ];
 			configurePhase = ''
 				patchShebangs .
 			''+impl.configurePhase;
