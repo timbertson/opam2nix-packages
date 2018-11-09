@@ -64,6 +64,11 @@ in
 			})
 		) opamPackages.camlp4;
 
+		conf-sqlite3 = overrideAll (impl: {
+			nativeBuildInputs = (impl.buildInputs or []) ++ [ pkgconfig ];
+			buildInputs = impl.buildInputs ++ [ sqlite ];
+		}) opamPackages.conf-sqlite3;
+
 		ctypes =
 		let
 			base =
@@ -134,6 +139,10 @@ in
 		solo5-kernel-vertio = disableStackProtection opamPackages.solo5-kernel-vertio;
 		solo5-kernel-ukvm = disableStackProtection opamPackages.solo5-kernel-ukvm;
 
+		sqlite3 = overrideAll (impl: {
+			buildInputs = impl.buildInputs ++ [ sqlite ];
+		}) opamPackages.sqlite3;
+		
 		zarith = overrideAll (impl: {
 			nativeBuildInputs = (impl.nativeBuildInputs or []) ++ [ perl ];
 			configurePhase = ''
