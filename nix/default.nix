@@ -382,7 +382,7 @@ let
 					) opamPackages;
 			in
 			addPassthru {
-				"4_05" = make "ocamlPackages_4_05";
+				"4_06" = make "ocamlPackages_4_06";
 			} generatedPackages;
 	};
 in

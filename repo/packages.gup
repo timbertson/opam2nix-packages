@@ -17,7 +17,7 @@ try:
 	opam_repo = os.path.join(here, 'opam-repository')
 	if os.path.exists(opam_repo):
 		print('Using development opam-repo', file=sys.stderr)
-		subprocess.check_call(['gup', '-u', '../nix/src-opam-repository.json'])
+		subprocess.check_call(['gup', '-u', '../nix/release/src-opam-repository.json'])
 
 	cmd = [
 		'nix-shell', os.path.join(here, '../shell.nix'),
