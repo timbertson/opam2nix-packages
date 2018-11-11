@@ -1,18 +1,34 @@
 {
 	pkgs ? import <nixpkgs> {},
-	opam2nixBin ? pkgs.callPackage "${(pkgs.nix-update-source.fetch ./release/src-opam2nix.json).src}/nix" {}
+	opam2nixBin ? null,
+
+	# The official set of generated packages, which used to live in ./repo. The package selection
+	# is restricted to this exact set due to the need for `digestMap` to be exhaustive, so this
+	# is strongly bound to this exact checkout of `opam2nix-packages`, but it's an argument since
+	# we inject it in release/default.nix
+	opamRepository ? null,
 }:
 with pkgs;
 let
+	defaulted = value: dfl: if value == null then dfl else value;
+	deps = {
+		opam2nixBin = defaulted opam2nixBin (pkgs.callPackage "${(pkgs.nix-update-source.fetch ./release/src-opam2nix.json).src}/nix" {});
+		opamRepository = defaulted opamRepository ((pkgs.nix-update-source.fetch ./release/src-opam-repository.json).src);
+	};
+in
+let
+	opam2nixBin = deps.opam2nixBin;
+	opamRepository = deps.opamRepository;
 	defaultPkgs = pkgs;
 
-	# workaround https://github.com/NixOS/nixpkgs/issues/45933
 	addPassthru = attrs: drv:
 		assert lib.isDerivation drv;
 		drv.overrideAttrs (orig: { passthru = (orig.passthru or {}) // attrs; });
 
-	# to support IFD in release.nix/overlay.nix, we build from `../` if it's already a store path
-	src = if lib.isStorePath ../. then ../. else (nix-update-source.fetch ./release/src.json).src;
+	# workaround https://github.com/NixOS/nixpkgs/issues/45933
+	isStorePath = x: lib.isStorePath (builtins.toString x); # workaround https://github.com/NixOS/nixpkgs/issues/48743
+	# to support IFD in nix/release, we build from `../` if it's already a store path
+	src = if isStorePath ../. then ../. else (nix-update-source.fetch ./release/src.json).src;
 
 	api = let
 
@@ -53,7 +69,6 @@ let
 
 		## Other stuff
 
-		defaulted = value: dfl: if value == null then dfl else value;
 		defaultOcamlAttr = "ocaml";
 		configureOcamlImpl = ocamlAttr: let
 				attr = defaulted ocamlAttr defaultOcamlAttr;
@@ -81,6 +96,7 @@ let
 			ocaml ? null,
 			ocamlVersion ? null,
 			basePackages ? null,
+			verbose ? null,
 			specs,
 			extraRepos ? [],
 			args ? defaultArgs,
@@ -92,17 +108,20 @@ let
 				extraRepoArgs = map (repo: "--repo \"${buildNixRepo repo}\"") extraRepos;
 				ocamlVersionResolved = parseOcamlVersion ocamlSpec.impl;
 				basePackagesResolved = defaulted basePackages defaultBasePackages;
-				cmd = ''env OCAMLRUNPARAM=b ${opam2nixBin}/bin/opam2nix select \
-					--repo ${generatedPackages} \
-					--dest "$out" \
-					--ocaml-version ${defaulted ocamlVersion ocamlVersionResolved} \
-					--base-packages ${concatStringsSep "," basePackagesResolved} \
-					${concatStringsSep " " ocamlSpec.args} \
-					${concatStringsSep " " extraRepoArgs} \
-					${concatStringsSep " " args} \
-					${concatStringsSep " " (specStrings specs)} \
-				;
-				'';
+				cmd = concatStringsSep " " ([
+					"env" "OCAMLRUNPARAM=b" "${opam2nixBin}/bin/opam2nix" "select"
+					"--repo" generatedPackages
+					"--dest" "$out"
+					"--ocaml-version" (defaulted ocamlVersion ocamlVersionResolved)
+					"--base-packages"
+					(concatStringsSep "," basePackagesResolved)
+				]
+					++ (optional (defaulted verbose false) "--verbose")
+					++ ocamlSpec.args
+					++ extraRepoArgs
+					++ args
+					++ (specStrings specs)
+				);
 			in
 			# possible format for "specs":
 			# list of strings
@@ -124,6 +143,7 @@ let
 			ocamlAttr ? null,
 			ocamlVersion ? null,
 			ocaml ? null,
+			verbose ? null,
 			basePackages ? null,
 			specs,
 			extraRepos ? [],
@@ -178,7 +198,7 @@ let
 		# packages to apply customisations.
 		filterWorldArgs = attrs: {
 			pkgs = attrs.pkgs or null;
-			overrides = attrs.select or null;
+			overrides = attrs.overrides or null;
 		};
 		applyWorld = {
 			select,
@@ -230,6 +250,7 @@ let
 			digestMap ? null,
 			ignoreBroken ? null,
 			unclean ? null,
+			verbose ? null,
 			offline ? null,
 			dest ? null,
 		}: with lib; (
@@ -237,12 +258,14 @@ let
 			finalDest = defaulted dest "$out";
 			finalOpam2nixBin = defaulted opam2nixBin defaultOpam2nixBin;
 			optionalArg = prefix: arg: if arg == null then [] else [prefix "'${arg}'"];
-			flags = [
+			cmd = [
+				"${finalOpam2nixBin}/bin/opam2nix" "generate"
 				"--src" opamRepository
 				"--dest" finalDest
 			]
 				++ (optional (defaulted ignoreBroken false) "--ignore-broken")
 				++ (optional (defaulted unclean false) "--unclean")
+				++ (optional (defaulted verbose false) "--verbose")
 				++ (optional (defaulted offline true) "--offline")
 				++ (optionalArg "--num-versions" numVersions)
 				++ (optionalArg "--digest-map" digestMap)
@@ -260,17 +283,13 @@ let
 				'';
 				buildCommand = ''
 					mkdir -p "${finalDest}"
-					echo "+ ${finalOpam2nixBin}/bin/opam2nix generate" ${concatStringsSep " " flags}
-					${finalOpam2nixBin}/bin/opam2nix generate ${concatStringsSep " " flags}
+					echo "+ " ${concatStringsSep " " cmd}
+					${concatStringsSep " " cmd}
 				'';
 			}
 		);
 
-		# The official set of generated packages, which used to live in ./repo.
-		# The package selection is restricted to this exact set due to the need
-		# for `digestMap` to be exhaustive, so this is strongly bound to this
-		# exact checkout of `opam2nix-packages`
-		defaultOpamRepository = (nix-update-source.fetch ./release/src-opam-repository.json).src;
+		defaultOpamRepository = opamRepository;
 
 		generateOfficialPackages = {
 			opamRepository ? defaultOpamRepository,
@@ -279,9 +298,10 @@ let
 			dest ? null,
 			unclean ? null,
 			offline ? null,
+			verbose ? null,
 			packages ? null
 		}: makeRepository {
-			inherit opamRepository digestMap dest unclean packages opam2nixBin offline;
+			inherit opamRepository digestMap dest unclean packages opam2nixBin offline verbose;
 			# numVersions = "*.*.2";
 			ignoreBroken = true;
 		};
