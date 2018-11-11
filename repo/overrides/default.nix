@@ -23,7 +23,7 @@ in
 		"0install" = overrideAll (impl:
 			# disable tests, beause they require additional setup
 			{
-				buildInputs = [ pkgs.makeWrapper ];
+				nativeBuildInputs = [ pkgs.makeWrapper ];
 				configurePhase = ''
 					# ZI makes it very difficult to opt out of tests
 					sed -i -e 's|tests/test\.|__disabled_tests/test.|' ocaml/Makefile
@@ -55,7 +55,7 @@ in
 						sed -i -e 's|"+|"../ocaml/|' "$f"
 					done
 					'';
-				buildInputs = impl.buildInputs ++ [ which ];
+				nativeBuildInputs = (impl.nativeBuildInputs or []) ++ [ which ];
 				# see https://github.com/NixOS/nixpkgs/commit/b2a4eb839a530f84a0b522840a6a4cac51adcba1
 				# if we strip binaries we can get weird errors such that:
 				# /nix/store/.../bin/camlp4orf not found or is not a bytecode executable file
@@ -68,7 +68,8 @@ in
 		let
 			base =
 				overrideAll (impl: {
-					buildInputs = impl.buildInputs ++ [ pkgconfig libffi ncurses ];
+					nativeBuildInputs = (impl.nativeBuildInputs or []) ++ [ pkgconfig ];
+					buildInputs = impl.buildInputs ++ [ libffi ncurses ];
 				}) opamPackages.ctypes;
 			withHeaderPatch =
 			overrideIf (version: lib.elem version [
@@ -88,11 +89,12 @@ in
 		}) opamPackages.gmp-xen;
 
 		lablgtk = overrideAll (impl: {
-			buildInputs = impl.buildInputs ++ [ pkgconfig gtk2.dev ];
+			nativeBuildInputs = (impl.nativeBuildInputs or []) ++ [ pkgconfig ];
+			buildInputs = impl.buildInputs ++ [ gtk2.dev ];
 		}) opamPackages.lablgtk;
 
 		llvm = overrideAll (impl: {
-			buildInputs = impl.buildInputs ++ [ pkgconfig python ];
+			nativeBuildInputs = (impl.nativeBuildInputs or []) ++ [ pkgconfig python ];
 			propagatedBuildInputs = impl.propagatedBuildInputs ++ [ llvm_5 ];
 			installPhase = ''
 				bash -ex install.sh ${llvm_5}/bin/llvm-config $out/lib ${cmake}/bin/cmake make
@@ -120,7 +122,7 @@ in
 		omake = addNcurses opamPackages.omake;
 
 		piqilib = overrideAll (impl: {
-			buildInputs = impl.buildInputs ++ [ which makeWrapper ];
+			nativeBuildInputs = (impl.nativeBuildInputs or []) ++ [ which makeWrapper ];
 			# hack -- for some reason the makefile system ignores OCAMLPATH.
 			configurePhase = ''
 				mkdir .bin
@@ -133,7 +135,7 @@ in
 		solo5-kernel-ukvm = disableStackProtection opamPackages.solo5-kernel-ukvm;
 
 		zarith = overrideAll (impl: {
-			buildInputs = impl.buildInputs ++ [ perl ];
+			nativeBuildInputs = (impl.nativeBuildInputs or []) ++ [ perl ];
 			configurePhase = ''
 				patchShebangs .
 			''+impl.configurePhase;
