@@ -116,7 +116,7 @@ in
 		}) opamPackages.num;
 		ocamlfind = overrideAll ((import ./ocamlfind) self) opamPackages.ocamlfind;
 		ocp-build = addNcurses opamPackages.ocp-build;
-		ocb-stubblr = patchAll [./ocb-stubblr/optional-opam.diff] opamPackages.ocb-stubblr; # https://github.com/pqwy/ocb-stubblr/pull/10
+		ocb-stubblr = patchAll [./ocb-stubblr/disable-opam.diff] opamPackages.ocb-stubblr;
 
 		# fallout of https://github.com/ocaml/opam-repository/pull/6657
 		omake = addNcurses opamPackages.omake;
