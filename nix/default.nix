@@ -158,7 +158,7 @@ let
 				buildPhase = "true";
 				installPhase = ''
 					if [ -z "${version}" ]; then
-						echo "Error: no version specified"
+						echo "Error: no version specified for buildOpamRepo"
 						exit 1
 					fi
 					dest="$out/packages/${packageName}/${packageName}.${version}"

@@ -45,7 +45,8 @@ try:
 		cmd.extend(['--argstr', 'dest', dest])
 		packages = ['*']
 
-	cmd.extend(['--arg', 'verbose', 'true'])
+	if os.environ.get('CI', 'false') != 'true':
+		cmd.extend(['--arg', 'verbose', 'true'])
 
 	cmd.extend(['--arg', 'packages', '[' + ' '.join(['"%s"' % p for p in packages]) + ']'])
 	cmd.extend(['--run', 'true'])
