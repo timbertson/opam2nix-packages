@@ -70,12 +70,19 @@ let
 		## Other stuff
 
 		defaultOcamlAttr = "ocaml";
-		configureOcamlImpl = ocamlAttr: let
+		configureOcamlImpl = { ocamlAttr, ocaml }: let
 				attr = defaulted ocamlAttr defaultOcamlAttr;
 				attrPath = lib.splitString "." attr;
 			in {
-				impl = lib.getAttrFromPath attrPath pkgs;
-				args = ["--ocaml-attr" attr];
+				impl = defaulted ocaml (lib.getAttrFromPath attrPath pkgs);
+				args = if ocaml == null
+					then ["--ocaml-attr" attr]
+					# Without unsafeDiscardOutputDependency, we end up with all the recursive build inputs
+					# for ocaml and its dependencies (all the way to building stdenv from source).
+					# See
+					#  - https://github.com/NixOS/nix/commit/437077c39dd7abb44b2ab02cb9c6215d125bef04
+					#  - https://github.com/NixOS/nix/issues/1245
+					else ["--ocaml-drv" (builtins.unsafeDiscardOutputDependency ocaml.drvPath)];
 			};
 		parseOcamlVersion = { name, ... }: (builtins.parseDrvName name).version;
 
@@ -104,7 +111,7 @@ let
 		}:
 			with lib;
 			let
-				ocamlSpec = configureOcamlImpl ocamlAttr;
+				ocamlSpec = configureOcamlImpl { inherit ocamlAttr ocaml; };
 				extraRepoArgs = map (repo: "--repo \"${buildNixRepo repo}\"") extraRepos;
 				ocamlVersionResolved = parseOcamlVersion ocamlSpec.impl;
 				basePackagesResolved = defaulted basePackages defaultBasePackages;
@@ -315,7 +322,7 @@ let
 		importSelectionsFile = selection_file: world:
 			(applyWorld ({
 				inherit pkgs; # defaults, overrideable
-				select = import selection_file;
+				select = lib.info "Importing selections: ${selection_file}" (import selection_file);
 			} // world)).selection;
 		importSelectionsFileLax = selection_file: world:
 			api.importSelectionsFile selection_file (filterWorldArgs world);
