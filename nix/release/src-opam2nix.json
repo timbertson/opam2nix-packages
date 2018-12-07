@@ -3,12 +3,12 @@
     "args": {
       "owner": "timbertson",
       "repo": "opam2nix",
-      "rev": "version-0.4.6",
-      "sha256": "1xza4snsl2vas0gmxpbffshmyrzrp4z72b1hmxl60ylska84b837"
+      "rev": "version-0.4.8",
+      "sha256": "0akrkadz6wbhw74zmjba86f3ngmynx2syqdkkxvh9h07j6y049jh"
     },
     "fn": "fetchFromGitHub",
-    "rev": "version-0.4.6",
-    "version": "0.4.6"
+    "rev": "version-0.4.8",
+    "version": "0.4.8"
   },
   "localRepo": "..",
   "owner": "timbertson",
