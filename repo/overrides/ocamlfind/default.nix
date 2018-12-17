@@ -19,32 +19,20 @@ in {
 	'';
 
 	setupHook = world.pkgs.writeText "setupHook.sh" ''
-		setToplevelPath () {
-			base="$(dirname "$(dirname ''${BASH_SOURCE[0]})")"
-			export OCAML_TOPLEVEL_PATH="$base/lib/toplevel"
-		}
-		addEnvHooks "$targetOffset" setToplevelPath
-
 		findlibPreBuildAction () {
 			mkdir -p "''$out/lib"
 		}
 
-		addOCamlPath () {
-			if test -d "''$1/lib"; then
-				export OCAMLPATH="''${OCAMLPATH}''${OCAMLPATH:+:}''$1/lib"
-
-				if test -d "''$1/lib/stublibs"; then
-					export CAML_LD_LIBRARY_PATH="''${CAML_LD_LIBRARY_PATH}''${CAML_LD_LIBRARY_PATH:+:}''$1/lib/stublibs"
-				else
-					export CAML_LD_LIBRARY_PATH="''${CAML_LD_LIBRARY_PATH}''${CAML_LD_LIBRARY_PATH:+:}''$1/lib"
-				fi
-			fi
+		findlibSetup () {
+			base="$(dirname "$(dirname ''${BASH_SOURCE[0]})")"
+			export OCAML_TOPLEVEL_PATH="$base/lib/toplevel"
 			export OCAMLFIND_DESTDIR="''$out/lib/"
 			if [[ $preBuildPhases != *findlibPreBuildAction* ]]; then
 				export preBuildPhases="''${preBuildPhases:+$preBuildPhases }findlibPreBuildAction"
 			fi
 		}
-		addEnvHooks "$targetOffset" addOCamlPath
+
+		addEnvHooks "$targetOffset" findlibSetup
 	'';
 }
 

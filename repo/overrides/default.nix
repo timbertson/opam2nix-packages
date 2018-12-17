@@ -18,7 +18,7 @@ let
 	opamPackages = super.opamPackages;
 in
 {
-	ocaml = self.pkgs.callPackage ./ocaml.nix {} super.ocaml;
+	ocaml = self.pkgs.callPackage ./ocaml {} super.ocaml;
 	opamPackages = super.opamPackages // {
 		"0install" = overrideAll (impl:
 			# disable tests, beause they require additional setup
