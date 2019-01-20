@@ -357,15 +357,23 @@ let
 				partitioned = partitionAttrs ["name" "src" "opamFile" "packageName" "version" ] attrs;
 				packageAttrs = elemAt partitioned 0;
 				drvAttrs = removeAttrs (elemAt partitioned 1) ["passthru"];
+				extraSpecs = drvAttrs.specs or null;
 				result = buildOpamPackages [packageAttrs] drvAttrs;
 				normalizedPackage = normalizePackageArgs packageAttrs;
-				drv = builtins.getAttr normalizedPackage.packageName result.packages;
 				passthru = {
 					opam2nix = {
 						inherit (result) packages selection;
 						repo = elemAt result.opamRepos 0;
 					};
 				} // (attrs.passthru or {});
+
+				getPkg = name: builtins.getAttr name result.packages;
+				baseDrv = getPkg normalizedPackage.packageName;
+				# if `specs` is passed, make the returned derivation depend on those extra selections
+				drv = if extraSpecs == null then baseDrv else
+					baseDrv.overrideAttrs (o: {
+						buildInputs = (o.buildInputs or []) ++ (map (spec: getPkg spec.name) extraSpecs);
+					});
 			in
 			addPassthru passthru drv;
 
