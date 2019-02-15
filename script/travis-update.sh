@@ -9,6 +9,7 @@ if [ ! -e opam-repository ]; then
 fi
 
 rm -f .push
+gup -u nix/release/src-opam-repository.json
 gup repo/packages
 if ! git diff --quiet --exit-code; then
 	git add -u repo nix/
