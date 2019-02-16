@@ -65,11 +65,17 @@ accepted by the lower level `selectionsFile` and `importSelectionsFile` function
     - `specs`: list of records with a name and optional constraint field.
     - `verbose`: boolean, defaults to false
     - `args`: extra list of string arguments to pass to the `opam2nix` tool (default `[]`)
-    - `extraRepos`: extra list of opem repos (directories) to include
+    - `extraRepos`: extra list of opam repos (directories) to include
 
  - `opam2nix.importSelectionsFile selections_file` takes an attribute set with the following properties, all optional:
    - `pkgs`: defaults to the `pkgs` set opam2nix was imported with
    - `overrides`: function accepting `{self, super}` arguments and returning attributes to be overridden / added
+
+ - `opam2nix.buildOpamRepo`: builds an opam repository suitable for passing in to `extraRepos` from the following arguments:
+   - `src`: path to a folder or archive
+   - `package`: must match the opam package name
+   - `version`: must match the opam package version
+   - `opamFile`: name of `.opam` file (defaults to trying `$name.opam` and `opam`)
 
  - `opam2nix.buildPackageSet`: returns an attrset with an attribute for each selected package
    - accepts any option accepted by either `selectionsFile` or `importSelectionsFile`

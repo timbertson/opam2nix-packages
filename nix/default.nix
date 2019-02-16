@@ -61,10 +61,9 @@ let
 		}:
 			let parsedName = builtins.parseDrvName name; in
 			{
-				inherit src;
-				packageName = defaulted packageName parsedName.name;
+				inherit src opamFile;
+				package = defaulted packageName parsedName.name;
 				version = defaulted version parsedName.version;
-				opamFileSh = defaulted opamFile "\"$(find . -maxdepth 1 -name 'opam' -o -name '*.opam')\"";
 			};
 
 		## Other stuff
@@ -117,6 +116,7 @@ let
 				basePackagesResolved = defaulted basePackages defaultBasePackages;
 				cmd = concatStringsSep " " ([
 					"env" "OCAMLRUNPARAM=b" "${opam2nixBin}/bin/opam2nix" "select"
+				] ++ extraRepoArgs ++ [ # extra repos take priority over official one
 					"--repo" generatedPackages
 					"--dest" "$out"
 					"--ocaml-version" (defaulted ocamlVersion ocamlVersionResolved)
@@ -125,7 +125,6 @@ let
 				]
 					++ (optional (defaulted verbose false) "--verbose")
 					++ ocamlSpec.args
-					++ extraRepoArgs
 					++ args
 					++ (specStrings specs)
 				);
@@ -157,9 +156,14 @@ let
 			args ? defaultArgs,
 		}@conf: selectLax conf;
 
-		buildOpamRepo = { packageName, version, src, opamFileSh }:
+		buildOpamRepo = { package, version, src, opamFile ? null }:
+			let opamFileSh = defaulted opamFile (lib.concatStringsSep ";" [
+				"$(if [ -e '${package}.opam' ]; then echo '${package}.opam'"
+				"else echo opam"
+				"fi)"
+			]); in
 			stdenv.mkDerivation {
-				name = "${packageName}-${version}-repo";
+				name = "${package}-${version}-repo";
 				inherit src;
 				configurePhase = "true";
 				buildPhase = "true";
@@ -168,13 +172,14 @@ let
 						echo "Error: no version specified for buildOpamRepo"
 						exit 1
 					fi
-					dest="$out/packages/${packageName}/${packageName}.${version}"
+					dest="$out/packages/${package}/${package}.${version}"
 					mkdir -p "$dest"
-					cp ${opamFileSh} "$dest/opam"
-					if ! [ -f "$dest/opam" ]; then
-						echo "Error: opam file not created"
+					opamFile="${opamFileSh}"
+					if ! [ -n "$opamFile" -a -e "$opamFile" ]; then
+						echo 'Error: opam file (`${package}.opam` or `opam`) not found in ${src}'
 						exit 1
 					fi
+					cp "$opamFile" "$dest/opam"
 					if [ -f "${src}" ]; then
 						echo 'archive: "${src}"' > "$dest/url"
 					else
@@ -186,7 +191,7 @@ let
 		buildOpamPackages = packages: drvAttrs:
 			let
 				normalizedPackages = map normalizePackageArgs packages;
-				specOfPackage = { packageName, version, ... }: { name = packageName; constraint = "=" + version; };
+				specOfPackage = { package, version, ... }: { name = package; constraint = "=" + version; };
 				opamRepos = map buildOpamRepo normalizedPackages;
 
 				opamAttrs = (drvAttrs // {
@@ -228,7 +233,7 @@ let
 			mergeOpamPackages = self:
 				let
 					invokeRepo = repo: (import repo) self;
-					addRepo = acc: repo: mergeTwoLevels acc (invokeRepo repo);
+					addRepo = acc: repo: mergeTwoLevels (invokeRepo repo) acc;
 				in
 				lib.foldl addRepo {} self.repositories;
 		in
@@ -327,7 +332,7 @@ let
 		importSelectionsFileLax = selection_file: world:
 			api.importSelectionsFile selection_file (filterWorldArgs world);
 
-		inherit buildNixRepo packageNames toSpec toSpecs buildOpamPackages opam2nixBin;
+		inherit buildOpamRepo buildNixRepo packageNames toSpec toSpecs buildOpamPackages opam2nixBin;
 
 		# used in build scripts
 		_generateOfficialPackages = generateOfficialPackages;
@@ -368,7 +373,7 @@ let
 				} // (attrs.passthru or {});
 
 				getPkg = name: builtins.getAttr name result.packages;
-				baseDrv = getPkg normalizedPackage.packageName;
+				baseDrv = getPkg normalizedPackage.package;
 				# if `specs` is passed, make the returned derivation depend on those extra selections
 				drv = if extraSpecs == null then baseDrv else
 					baseDrv.overrideAttrs (o: {
