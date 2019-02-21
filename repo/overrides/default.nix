@@ -64,6 +64,10 @@ in
 			})
 		) opamPackages.camlp4;
 
+		camlzip = overrideAll (impl: {
+			buildInputs = impl.buildInputs ++ [ zlib.dev ];
+		}) opamPackages.camlzip;
+
 		ctypes =
 		let
 			base =
