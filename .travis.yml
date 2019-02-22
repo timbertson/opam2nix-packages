@@ -12,5 +12,3 @@ cache:
   - cache
 before_install:
   - ./script/travis-decrypt.sh
-notifications:
-  email: false
