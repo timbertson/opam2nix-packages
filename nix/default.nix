@@ -225,7 +225,7 @@ let
 			extend = rattrs: f: self: let super = rattrs self; in super // f { inherit self super; };
 			defaultOverrides = import ../repo/overrides;
 			userOverrides = defaulted overrides noop;
-			format_version = 2;
+			format_version = 3;
 
 			# packages have structure <name>.<version> - we want to combine all versions across
 			# repos without merging the derivation attributes of individual versions
