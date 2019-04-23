@@ -1,7 +1,5 @@
 world: def:
-let
-	ocaml_version = (builtins.parseDrvName world.opamSelection.ocaml.name).version;
-in {
+{
 	patches = (def.patches or []) ++ [ ./install_topfind.patch ];
 	buildPhase = ''
 		${world.opam2nix}/bin/opam2nix invoke prebuild
