@@ -114,6 +114,16 @@ in
 
 		nocrypto = disableStackProtection opamPackages.nocrypto;
 		ocamlfind = overrideAll ((import ./ocamlfind) self) opamPackages.ocamlfind;
+
+		# ocaml-system expects to find ocamlc at "$(Sys.executable_name)c", but that doesn't work when `ocaml` is a wrapper.
+		# Use `which` to find the executable named "ocaml" instead
+		ocaml-system = overrideAll (impl: {
+			configurePhase = ''
+				OCAMLBIN="$(${pkgs.which}/bin/which ocaml)"
+				sed -i -e "s|Sys\.executable_name|\"$OCAMLBIN\"|g" gen_ocaml_config.ml.in
+			'';
+		}) opamPackages.ocaml-system;
+
 		ocp-build = addNcurses opamPackages.ocp-build;
 		ocb-stubblr = patchAll [./ocb-stubblr/disable-opam.diff] opamPackages.ocb-stubblr;
 
