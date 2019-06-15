@@ -106,6 +106,7 @@ let
 			specs,
 			extraRepos ? [],
 			args ? defaultArgs,
+			OPAMSOLVERTIMEOUT ? null,
 			... # ignored
 		}:
 			with lib;
@@ -114,15 +115,19 @@ let
 				extraRepoArgs = map (repo: "--repo \"${buildNixRepo repo}\"") extraRepos;
 				ocamlVersionResolved = parseOcamlVersion ocamlSpec.impl;
 				basePackagesResolved = defaulted basePackages defaultBasePackages;
-				cmd = concatStringsSep " " ([
-					"env" "OCAMLRUNPARAM=b" "${opam2nixBin}/bin/opam2nix" "select"
-				] ++ extraRepoArgs ++ [ # extra repos take priority over official one
-					"--repo" generatedPackages
-					"--dest" "$out"
-					"--ocaml-version" (defaulted ocamlVersion ocamlVersionResolved)
-					"--base-packages"
-					(concatStringsSep "," basePackagesResolved)
-				]
+				envCmd = ["env" "OCAMLRUNPARAM=b"] ++ (
+					if OPAMSOLVERTIMEOUT == null then [] else ["OPAMSOLVERTIMEOUT=${toString OPAMSOLVERTIMEOUT}"]
+				);
+				cmd = concatStringsSep " " (
+					envCmd ++
+					[ "${opam2nixBin}/bin/opam2nix" "select" ] ++
+					extraRepoArgs ++ [ # extra repos take priority over official one
+						"--repo" generatedPackages
+						"--dest" "$out"
+						"--ocaml-version" (defaulted ocamlVersion ocamlVersionResolved)
+						"--base-packages"
+						(concatStringsSep "," basePackagesResolved)
+					]
 					++ (optional (defaulted verbose false) "--verbose")
 					++ ocamlSpec.args
 					++ args
@@ -154,6 +159,7 @@ let
 			specs,
 			extraRepos ? [],
 			args ? defaultArgs,
+			OPAMSOLVERTIMEOUT ? null,
 		}@conf: selectLax conf;
 
 		buildOpamRepo = { package, version, src, opamFile ? null }:
