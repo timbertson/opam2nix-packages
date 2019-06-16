@@ -9,4 +9,4 @@ function ocamlPathSetup {
 		fi
 	fi
 }
-addEnvHooks "$targetOffset" ocamlPathSetup
+addEnvHooks "$hostOffset" ocamlPathSetup

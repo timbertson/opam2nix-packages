@@ -25,9 +25,11 @@ copy = drv: stdenv.mkDerivation {
 	inherit (drv) name;
 	inherit propagatedBuildInputs;
 	buildCommand = ''
-		cp -a ${drv} $out
-		chmod +w $out/bin
-	'' + wrapScript;
+		cp -r ${drv} $out
+		chmod -R +w $out
+		${wrapScript}
+		fixupPhase
+	''; # ^ fixupPhase installs propagatedBuildInputs
 };
 in
 
