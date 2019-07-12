@@ -107,6 +107,12 @@ accepted by the lower level `selectionsFile` and `importSelectionsFile` function
      - `opamFile`: the opam file path within `src`
    - second, an attrset of additional options accepted by either `selectionsFile` or `importSelectionsFile`
 
+# How do opam depexts work?
+
+For depexts specifically of type "nixpkgs", those will become mandatory (and they're resolved as attributes on whatever pkgs is in use).
+
+If a package has depexts but none of them are for nixpkgs, they'll all become optional depexts - if there is a nixpkgs attribute matching that name it'll be used, otherwise no dep is added.
+
 ## What gets cached, and what gets rebuilt?
 
 The inputs that define whether a given package needs to be rebuilt are:
