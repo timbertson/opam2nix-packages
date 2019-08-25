@@ -1,6 +1,5 @@
 world: def:
 {
-	patches = (def.patches or []) ++ [ ./install_topfind.patch ];
 	buildPhase = ''
 		${world.opam2nix}/bin/opam2nix invoke prebuild
 		echo 'ldconf="ignore"' >> findlib.conf.in
@@ -11,6 +10,7 @@ world: def:
 			-config $out/etc/findlib.conf \
 			-no-custom \
 		;
+		sed -i -e '/INSTALL_TOPFIND/ s/OCAML_CORE_STDLIB/OCAML_SITELIB/' src/findlib/Makefile
 		make all
 		make opt
 		make install
