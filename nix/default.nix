@@ -170,10 +170,7 @@ let
 			]); in
 			stdenv.mkDerivation {
 				name = "${package}-${version}-repo";
-				inherit src;
-				configurePhase = "true";
-				buildPhase = "true";
-				installPhase = ''
+				buildCommand = ''
 					if [ -z "${version}" ]; then
 						echo "Error: no version specified for buildOpamRepo"
 						exit 1
