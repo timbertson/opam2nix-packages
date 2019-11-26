@@ -1,8 +1,8 @@
-<img src="http://gfxmonk.net/dist/status/project/opam2nix.png">
+# Note: this repository is now unused
 
-# opam2nix is experimental software
+The external `opam2nix-packages` repository became unnecessary as of `opam2nix` v1. It remains here only to support users of prior `opam2nix` versions. All new users should go to the [opam2nix](https://github.com/timbertson/opam2nix) repository.
 
-I'm hoping to make it stable and a future part of `nixpkgs`. But for now, it's just this code which might work sometimes, and will probably change a lot. It's quite complex, and it's likely that some simpler patterns will make themselves obvious after some more extensive use.
+----
 
 ## Important note on using in your own project:
 
