@@ -3,14 +3,14 @@
     "args": {
       "owner": "timbertson",
       "repo": "opam2nix-packages",
-      "rev": "5154c5b5ee0b9eae62938a141da36399683f00b9",
-      "sha256": "0rd8wdwzfj1zj8007h1zhnm0nzdzskzc3wgw6yxk5psbbljl0zmw"
+      "rev": "3054b9d29b7fabc09aede8daa973f964f846e721",
+      "sha256": "0p0xpfahr6yd1sdk2dcf9mdk092a0rvvlzsqw705sd0wdgsqgyms"
     },
     "fn": "fetchFromGitHub",
     "localRepo": "/home/travis/build/timbertson/opam2nix-packages",
     "owner": "timbertson",
     "repo": "opam2nix-packages",
-    "rev": "5154c5b5ee0b9eae62938a141da36399683f00b9",
+    "rev": "3054b9d29b7fabc09aede8daa973f964f846e721",
     "type": "fetchFromGitHub"
   }
 }
