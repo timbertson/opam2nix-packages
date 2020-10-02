@@ -25,7 +25,7 @@ world: def:
 			base="$(dirname "$(dirname ''${BASH_SOURCE[0]})")"
 			export OCAML_TOPLEVEL_PATH="$base/lib/toplevel"
 			export OCAMLFIND_DESTDIR="''$out/lib/"
-			if [[ $preBuildPhases != *findlibPreBuildAction* ]]; then
+			if [[ ''${preBuildPhases:-} != *findlibPreBuildAction* ]]; then
 				export preBuildPhases="''${preBuildPhases:+$preBuildPhases }findlibPreBuildAction"
 			fi
 		}
