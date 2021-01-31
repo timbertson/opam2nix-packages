@@ -3,14 +3,14 @@
     "args": {
       "owner": "ocaml",
       "repo": "opam-repository",
-      "rev": "5d523b7e56aa5f4273d75868733b33ce75676358",
-      "sha256": "1hi0jp13mbv9nxc5c35bnc2103yybimg2apiw5dxjibir5qdwdq8"
+      "rev": "4a7aed8240097974267dd2d5585f2f5bcc702772",
+      "sha256": "00736dw6i8ni9yl4pdd9hwwscplbvkzl1kwcdinwanyimimnn68f"
     },
     "fn": "fetchFromGitHub",
     "localRepo": "../../opam-repository",
     "owner": "ocaml",
     "repo": "opam-repository",
-    "rev": "5d523b7e56aa5f4273d75868733b33ce75676358",
+    "rev": "4a7aed8240097974267dd2d5585f2f5bcc702772",
     "type": "fetchFromGitHub"
   }
 }
